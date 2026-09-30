@@ -82,9 +82,17 @@ Smart technology... in service of people.
 
 ## Visual system
 
-- Palette (UNVERIFIED, carried from v2 and not checked against the live site):
-  Navy `#163456` for the ground, Lime `#B2CB07` for light and single accents only, White `#FFFFFF` for type,
-  plus a tint of navy at 60% for secondary lines. Lime stays under about 5% of any frame, which keeps it premium.
+- Palette (VERIFIED: pixel-sampled from the client's logo, `assets/logo-reference.png`):
+  Navy `#163456` for the ground (about 95% of the logo image), Lime `#B2CB07` for light and single accents,
+  White `#FFFFFF` for type and the hero "T". Derived tints: navy-light `#334D6B` for secondary lines and
+  panels, lime-soft `#BDD01B` for glow edges. Lime stays under about 5% of any frame, which keeps it premium.
+- Logo motifs to animate (taken from the lockup):
+  - The white "T" in SMAR**T**ECH is taller than the other letters and outlined. The line of light from scene 8
+    draws exactly this "T", so the logo reveal is the payoff of the metaphor rather than a pasted-on end card.
+  - The lime circle mark with its "T." (T plus dot): the dot is the robot. It is the small lime node that sits
+    beside the person in scene 10 and settles back into the mark at the close.
+  - Thin, wide-set capitals in the wordmark: on-screen type copies that weight (Light, wide tracking).
+- Still needed: a vector logo (SVG/AI/EPS) or a PNG at least 3000 px wide. The reference is 475x140 and will blur at 1080p.
 - Type: one geometric sans (for example Manrope or Inter Tight) in Light and Regular weights only, with wide tracking on single words.
   Monospace appears only in the audit trail. Swap in the brand font if SmartTechNXT has one.
 - Motion: slow ease-in-out (cubic 0.65, 0, 0.35, 1), no bounces or overshoot, and 0.6 to 1.2 s transitions.
