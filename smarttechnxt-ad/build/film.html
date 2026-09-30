@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SmartTechNXT — The Welcome</title>
+<script src="timeline.js"></script>
+<style>
+@font-face{font-family:Manrope;font-weight:200;src:url(node_modules/@fontsource/manrope/files/manrope-latin-200-normal.woff2)}
+@font-face{font-family:Manrope;font-weight:300;src:url(node_modules/@fontsource/manrope/files/manrope-latin-300-normal.woff2)}
+@font-face{font-family:Manrope;font-weight:400;src:url(node_modules/@fontsource/manrope/files/manrope-latin-400-normal.woff2)}
+@font-face{font-family:Mono;font-weight:400;src:url(node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-400-normal.woff2)}
+:root{--navy:#163456;--navy-l:#334D6B;--navy-d:#0E2640;--lime:#B2CB07;--lime-s:#BDD01B;--white:#FFFFFF;--paper:#EEF1F4}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#000;overflow:hidden}
+#stage{position:relative;width:1920px;height:1080px;overflow:hidden;font-family:Manrope,sans-serif;color:var(--white);
+  background:radial-gradient(ellipse 70% 70% at 50% 48%,#1C4068 0%,var(--navy) 55%,var(--navy-d) 100%)}
+.abs{position:absolute;left:0;top:0;will-change:transform,opacity}
+.mono{font-family:Mono,monospace;letter-spacing:.18em;text-transform:uppercase}
+#grain{position:absolute;inset:0;opacity:.06;pointer-events:none;mix-blend-mode:overlay}
+#vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 80% 80% at 50% 50%,transparent 55%,rgba(5,18,32,.75) 100%)}
+
+/* Act 1 */
+#door{position:absolute;top:220px;height:600px;left:960px;width:0;transform:translateX(-50%);
+  background:linear-gradient(180deg,rgba(189,208,27,0) 0%,rgba(189,208,27,.55) 22%,rgba(200,220,60,.9) 50%,rgba(189,208,27,.55) 78%,rgba(189,208,27,0) 100%);
+  box-shadow:0 0 60px 12px rgba(178,203,7,.28),0 0 200px 50px rgba(178,203,7,.10);border-radius:2px}
+.sheet{position:absolute;width:220px;height:300px;background:var(--paper);border-radius:3px;
+  box-shadow:0 30px 60px rgba(0,0,0,.35),0 2px 6px rgba(0,0,0,.2);padding:28px 24px;overflow:hidden}
+.sheet i{display:block;height:6px;border-radius:3px;background:#C9D1DA;margin-bottom:14px}
+.sheet i.h{height:10px;width:55%;background:#9FAAB6;margin-bottom:22px}
+.sheet i.s{width:62%}
+.slab{position:absolute;width:170px;height:9px;background:var(--paper);border-radius:1.5px;box-shadow:0 2px 4px rgba(0,0,0,.25)}
+.fig{position:absolute;width:120px;height:220px}
+.fig svg{width:100%;height:100%;overflow:visible}
+.label{position:absolute;font-size:15px;color:rgba(255,255,255,.62);white-space:nowrap;transform:translateX(-50%)}
+.word{position:absolute;top:880px;font-weight:200;font-size:44px;letter-spacing:.32em;text-transform:uppercase;white-space:nowrap;transform:translateX(-50%)}
+.panel{position:absolute;width:360px;height:180px;border-radius:14px;background:rgba(51,77,107,.55);
+  border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(6px);padding:18px 22px}
+.panel .bar{display:flex;gap:7px;margin-bottom:22px}
+.panel .bar b{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.22)}
+.panel .t{font-size:13px;color:rgba(255,255,255,.55);margin-bottom:16px}
+.panel .f{height:26px;border-radius:6px;background:rgba(255,255,255,.07);margin-bottom:10px;width:92%}
+.chip{position:absolute;padding:9px 16px;border-radius:8px;background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.25);font-family:Mono,monospace;font-size:16px;letter-spacing:.06em;white-space:nowrap}
+#cursor{position:absolute;width:22px;height:22px}
+.caption{position:absolute;left:960px;top:880px;transform:translateX(-50%);font-weight:200;font-size:46px;letter-spacing:.06em;white-space:nowrap}
+
+/* Act 2 */
+#flowline{position:absolute;top:540px;left:960px;height:3px;width:0;transform:translate(-50%,-50%);border-radius:2px;
+  background:var(--lime);box-shadow:0 0 18px 4px rgba(178,203,7,.55),0 0 60px 10px rgba(178,203,7,.2)}
+#logo{position:absolute;left:0;top:0;display:flex;align-items:center;gap:46px;transform-origin:0 0}
+#mark{width:150px;height:150px;flex:none}
+#wordmark{display:flex;align-items:flex-end;font-size:112px;line-height:1;letter-spacing:.045em;white-space:nowrap}
+#wordmark .lm{color:var(--lime);font-weight:200}
+#wordmark .nx{color:var(--white);font-weight:300;font-size:92px;letter-spacing:.01em;margin-left:.06em}
+#tsvg{width:74px;height:146px;margin:0 .02em;overflow:visible;flex:none}
+#tagline{position:absolute;left:960px;top:700px;transform:translateX(-50%);font-weight:200;font-size:34px;white-space:nowrap;color:rgba(255,255,255,.9)}
+
+/* Act 3 */
+#node{position:absolute;width:20px;height:20px;border-radius:50%;background:var(--lime);transform:translate(-50%,-50%);
+  box-shadow:0 0 22px 6px rgba(178,203,7,.55),0 0 70px 18px rgba(178,203,7,.18)}
+.step{position:absolute;left:960px;top:150px;transform:translateX(-50%);font-size:17px;white-space:nowrap;color:rgba(255,255,255,.7)}
+.step em{font-style:normal;color:var(--lime);margin-right:22px}
+#doc{width:300px;height:400px;padding:36px 30px}
+#doc i{margin-bottom:20px}
+#scan{position:absolute;height:2px;width:340px;background:var(--lime);box-shadow:0 0 16px 3px rgba(178,203,7,.6)}
+#formframe{position:absolute;border-radius:16px;border:1px solid rgba(255,255,255,.16);background:rgba(51,77,107,.35)}
+.tick{position:absolute;width:26px;height:26px;overflow:visible}
+#account{position:absolute;width:520px;height:300px;border-radius:18px;background:rgba(51,77,107,.6);
+  border:1px solid rgba(255,255,255,.16);padding:34px 38px}
+#account .av{width:72px;height:72px;border-radius:50%;border:1.5px solid rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:300}
+#account .nm{position:absolute;left:134px;top:40px;font-size:30px;font-weight:300}
+#account .st{position:absolute;left:134px;top:84px;font-size:14px;color:rgba(255,255,255,.55)}
+#account .rows{position:absolute;left:38px;right:38px;top:150px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+#account .rows div{height:92px;border-radius:10px;background:rgba(255,255,255,.06);padding:16px;font-size:13px;color:rgba(255,255,255,.6)}
+#account .rows b{display:block;margin-top:14px;color:var(--lime);font-weight:400;font-size:15px;letter-spacing:.12em}
+#badge{position:absolute;right:34px;top:38px;padding:9px 16px;border-radius:30px;background:var(--lime);color:var(--navy);font-size:14px;font-weight:400}
+.aud{position:absolute;font-family:Mono,monospace;font-size:19px;letter-spacing:.04em;white-space:nowrap;color:rgba(255,255,255,.8)}
+.aud span{color:rgba(255,255,255,.4);margin-right:26px}
+.adot{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--lime);transform:translate(-50%,-50%);box-shadow:0 0 10px 2px rgba(178,203,7,.5)}
+#thread{position:absolute;width:1.5px;background:linear-gradient(var(--lime),rgba(178,203,7,.3))}
+#fline{position:absolute;top:540px;left:220px;height:2px;width:0;background:rgba(255,255,255,.28)}
+#fline2{position:absolute;top:540px;left:220px;height:2px;width:0;background:var(--lime);box-shadow:0 0 14px 2px rgba(178,203,7,.45)}
+.stn{position:absolute;top:540px;width:26px;height:26px;border-radius:50%;border:1.5px solid rgba(255,255,255,.4);background:var(--navy);transform:translate(-50%,-50%)}
+.stn::after{content:"";position:absolute;inset:5px;border-radius:50%;background:var(--lime);opacity:var(--on,0);box-shadow:0 0 16px 4px rgba(178,203,7,calc(var(--on,0)*.6))}
+.slab2{position:absolute;width:170px;height:9px;background:var(--paper);border-radius:1.5px}
+.pt{position:absolute;width:5px;height:5px;border-radius:50%;background:var(--lime);box-shadow:0 0 8px 2px rgba(178,203,7,.5)}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="scene"></div>
+  <svg id="grain" width="1920" height="1080"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+  <div id="vignette"></div>
+</div>
+<script>
+const T = Object.fromEntries(TL.lines.map(l => [l.id, l]));
+const DUR = TL.duration;
+const scene = document.getElementById('scene');
+const $ = (html) => { const d = document.createElement('div'); d.innerHTML = html.trim(); const el = d.firstChild; scene.appendChild(el); return el; };
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+const ease = (p) => p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+const E = (t, a, b) => ease(clamp((t - a) / (b - a)));          // eased 0..1 progress
+const L = (t, a, b) => clamp((t - a) / (b - a));                 // linear progress
+const mix = (a, b, p) => a + (b - a) * p;
+const win = (t, a, b, c, d) => E(t, a, b) * (1 - E(t, c, d));    // fade in a->b, out c->d
+const set = (el, o) => { for (const k in o) el.style[k] = o[k]; };
+const at = (id, frac) => T[id].start + (T[id].end - T[id].start) * frac;  // estimated word time within a line
+
+const figSVG = (s = 1) => `<svg viewBox="0 0 120 220"><circle cx="60" cy="38" r="26" fill="none" stroke="#fff" stroke-width="${2 / s}"/>
+  <path d="M14 214 C14 132 30 88 60 88 C90 88 106 132 106 214" fill="none" stroke="#fff" stroke-width="${2 / s}" stroke-linecap="round"/></svg>`;
+const sheetHTML = (cls = '') => `<div class="sheet ${cls}"><i class="h"></i><i></i><i class="s"></i><i></i><i></i><i class="s"></i><i></i><i class="s"></i><i></i></div>`;
+
+/* ---------- Act 1 ---------- */
+const act1 = $('<div class="abs" style="width:1920px;height:1080px;transform-origin:960px 620px"></div>');
+const door = document.createElement('div'); door.id = 'door'; act1.appendChild(door);
+const stacks = [[], []];
+const stackX = [300, 1450], BASE = 790;
+const rnd = (i) => (Math.sin(i * 91.7) * 43758.5453) % 1;
+for (let s = 0; s < 2; s++) for (let i = 0; i < 34; i++) {
+  const el = document.createElement('div'); el.className = 'slab';
+  el.style.left = (stackX[s] + rnd(i + s * 50) * 10) + 'px'; el.style.top = (BASE - (i + 1) * 12) + 'px';
+  el.style.transform = `rotate(${rnd(i * 3 + s) * 1.6}deg)`; act1.appendChild(el); stacks[s].push(el);
+}
+const figs = [0, 1].map(i => { const f = document.createElement('div'); f.className = 'fig'; f.innerHTML = figSVG(); act1.appendChild(f); return f; });
+const figX = [560, 1240];
+const labels = ['New client', 'New employee'].map((t, i) => { const l = document.createElement('div'); l.className = 'label mono'; l.textContent = t; l.style.left = (figX[i] + 60) + 'px'; l.style.top = '818px'; act1.appendChild(l); return l; });
+const words = ['Forms', 'Copies', 'Signatures'].map((w, i) => { const e = document.createElement('div'); e.className = 'word'; e.textContent = w; e.style.left = (960 + (i - 1) * 440) + 'px'; act1.appendChild(e); return e; });
+const panelNames = ['CRM', 'HR system', 'Accounts'];
+const panelX = [300, 780, 1260], panelY = 110;
+const panels = panelNames.map((n, i) => { const p = document.createElement('div'); p.className = 'panel'; p.innerHTML = `<div class="bar"><b></b><b></b><b></b></div><div class="t mono">${n}</div><div class="f"></div><div class="f" style="width:70%"></div>`; p.style.left = panelX[i] + 'px'; p.style.top = panelY + 'px'; act1.appendChild(p); return p; });
+const dashSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+dashSVG.setAttribute('width', 1920); dashSVG.setAttribute('height', 1080); dashSVG.style.position = 'absolute'; dashSVG.style.left = 0; dashSVG.style.top = 0; dashSVG.style.overflow = 'visible';
+const dashes = [];
+for (let i = 0; i < 2; i++) for (let side = 0; side < 2; side++) {
+  const l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  const x0 = panelX[i] + 360, x1 = panelX[i + 1], mid = (x0 + x1) / 2;
+  const a = side ? x1 : x0, b = side ? mid + 16 : mid - 16;
+  l.setAttribute('x1', a); l.setAttribute('x2', a); l.setAttribute('y1', panelY + 90); l.setAttribute('y2', panelY + 90);
+  l.setAttribute('stroke', 'rgba(255,255,255,.45)'); l.setAttribute('stroke-width', 1.5); l.setAttribute('stroke-dasharray', '6 7');
+  l.dataset.a = a; l.dataset.b = b; dashSVG.appendChild(l); dashes.push(l);
+}
+act1.appendChild(dashSVG);
+const chip = document.createElement('div'); chip.className = 'chip'; chip.textContent = 'ID 8104 0231 088'; act1.appendChild(chip);
+const cursor = document.createElement('div'); cursor.id = 'cursor';
+cursor.innerHTML = '<svg viewBox="0 0 22 22" width="22" height="22"><path d="M3 2 L3 18 L7.5 13.8 L10.5 20 L13 19 L10 12.8 L16 12.8 Z" fill="#fff"/></svg>'; act1.appendChild(cursor);
+const lostCap = document.createElement('div'); lostCap.className = 'caption'; lostCap.textContent = 'the welcome gets lost.'; lostCap.style.color = 'rgba(255,255,255,.72)'; act1.appendChild(lostCap);
+
+const hero = $(sheetHTML());
+const tickSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+tickSVG.setAttribute('viewBox', '0 0 60 60'); tickSVG.setAttribute('width', 70); tickSVG.setAttribute('height', 70);
+set(tickSVG, { position: 'absolute', right: '26px', bottom: '24px', overflow: 'visible' });
+tickSVG.innerHTML = '<path d="M8 32 L24 47 L52 12" fill="none" stroke="#163456" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1 1"/>';
+hero.appendChild(tickSVG); const tickPath = tickSVG.firstChild;
+
+/* ---------- Act 2 ---------- */
+const flow = $('<div id="flowline"></div>');
+const logo = $(`<div id="logo">
+  <svg id="mark" viewBox="0 0 150 150"><circle cx="75" cy="75" r="75" fill="#B2CB07"/><circle cx="75" cy="75" r="64" fill="none" stroke="#fff" stroke-width="2.2"/>
+    <path d="M44 46 H106 V56 H80 V108 H70 V56 H44 Z" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/><circle cx="92" cy="104" r="4.5" fill="#fff"/></svg>
+  <div id="wordmark"><span class="lm">SMAR</span><svg id="tsvg" viewBox="0 0 74 146"><path id="tbar" d="M2 2 H72 V12 H42 V144 H32 V12 H2 Z" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" pathLength="1" stroke-dasharray="1 1"/></svg><span class="lm">ECH</span><span class="nx">nxt</span></div>
+</div>`);
+const markEl = logo.querySelector('#mark'), tbar = logo.querySelector('#tbar'), lms = logo.querySelectorAll('.lm, .nx');
+const tagline = $('<div id="tagline">Smart technology in service of people.</div>');
+
+/* ---------- Act 3 ---------- */
+const human = $(`<div class="fig" style="width:150px;height:275px">${figSVG(1.25)}</div>`);
+const node = $('<div id="node"></div>');
+const stepLbl = $('<div class="step mono"><em>01</em><span>Read</span></div>');
+const doc = $(sheetHTML()); doc.id = 'doc';
+const scan = $('<div id="scan"></div>');
+const fields = [['Full name', 'N. Khumalo'], ['ID number', '9104 •••• 088'], ['Address', 'Sandton, JHB'], ['Start date', '01 Nov']];
+const frame = $('<div id="formframe"></div>');
+const chips = fields.map(([k, v]) => $(`<div class="chip"><span style="opacity:.5">${k}</span>&nbsp;&nbsp;${v}</div>`));
+const ticks = fields.map(() => { const s = $('<svg class="tick" viewBox="0 0 26 26"><path d="M4 14 L10.5 20 L22 6" fill="none" stroke="#B2CB07" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1 1"/></svg>'); return s; });
+const account = $(`<div id="account"><div class="av">NK</div><div class="nm">N. Khumalo</div><div class="st mono">Account active</div><div id="badge" class="mono">Day 1 ready</div>
+  <div class="rows"><div class="mono">Email<b>✓ Ready</b></div><div class="mono">Payroll<b>✓ Ready</b></div><div class="mono">Access<b>✓ Ready</b></div></div></div>`);
+const badge = account.querySelector('#badge');
+const audits = [['07:58:02', 'Document received'], ['07:58:03', 'Identity validated'], ['07:58:04', 'Account created'], ['07:58:04', 'System access granted']]
+  .map(([ts, tx]) => { const a = $(`<div class="aud"><span>${ts}</span><b style="font-weight:400"></b></div>`); a.dataset.tx = tx; return a; });
+const thread = $('<div id="thread"></div>');
+const adots = audits.map(() => $('<div class="adot"></div>'));
+const fline = $('<div id="fline"></div>'), fline2 = $('<div id="fline2"></div>');
+const stnX = [220, 713, 1206, 1700], stnName = ['Onboarding', 'Invoices', 'Claims', 'Month-end'];
+const stns = stnX.map(x => { const s = $('<div class="stn"></div>'); s.style.left = x + 'px'; return s; });
+const stnL = stnName.map((n, i) => { const l = $(`<div class="label mono" style="top:585px;font-size:16px">${n}</div>`); l.style.left = stnX[i] + 'px'; return l; });
+const slabs2 = [], pts = [];
+for (let i = 0; i < 26; i++) { const e = $('<div class="slab2"></div>'); e.style.left = (875 + rnd(i + 7) * 10) + 'px'; e.style.top = (760 - (i + 1) * 12) + 'px'; slabs2.push(e); }
+for (let i = 0; i < 90; i++) { const p = $('<div class="pt"></div>'); p.dataset.x = 880 + Math.abs(rnd(i * 5 + 1)) * 170; p.dataset.i = i; pts.push(p); }
+const pfigs = [0, 1].map(() => $(`<div class="fig">${figSVG()}</div>`));
+const door2 = $('<div id="door"></div>');
+scene.appendChild(logo); scene.appendChild(tagline);   // keep logo on top
+
+/* measure logo geometry once fonts are ready */
+let G = null;
+function measure() {
+  set(logo, { transform: 'none', opacity: 1 });
+  const lr = logo.getBoundingClientRect(), tr = logo.querySelector('#tsvg').getBoundingClientRect();
+  G = { w: lr.width, h: lr.height, tx: tr.left - lr.left, ty: tr.top - lr.top, tw: tr.width };
+  G.cx = 960 - G.w / 2; G.cy = 540 - G.h / 2 - 20;
+}
+
+function render(t) {
+  if (!G) measure();
+  const P = T.paperwork, C = T.client, EM = T.employee, FO = T.forms, CH = T.checked, TY = T.typed, SY = T.systems, LO = T.lost,
+    FL = T.flowed, BR = T.brand, RO = T.robots, RE = T.read, VA = T.validate, SU = T.setup, RC = T.recorded, TR = T.traceable,
+    BY = T.beyond, ST = T.stacks, PE = T.people, LG = T.logo, TG = T.tagline;
+
+  /* ===== ACT 1 ===== */
+  const a1 = 1 - E(t, FL.start + .2, FL.start + 1.4);
+  const pull = E(t, LO.start, LO.end + 1.5);
+  set(act1, { opacity: a1, transform: `scale(${1 - .1 * pull})`, display: a1 <= 0 ? 'none' : 'block' });
+  // door: opens, gets blocked, narrows to nothing when the welcome is lost
+  const dOpen = E(t, .3, P.start + 1.2), dClose = E(t, LO.subs[1] - .3, LO.end + .6);
+  const dim = 1 - .7 * win(t, TY.start - .3, TY.start + .6, LO.start, LO.start + 1);
+  set(door, { width: (64 * dOpen * (1 - dClose)) + 'px', opacity: (dOpen * (1 - dClose) * dim).toFixed(3) });
+  // stacks grow with the admin
+  const nStack = 0 + 3 * E(t, FO.subs[0], FO.subs[0] + .5) + 4 * E(t, FO.subs[1], FO.subs[1] + .6) + 4 * E(t, at('forms', .8), at('forms', .8) + .6)
+    + 3 * E(t, CH.start, CH.end) + 4 * E(t, TY.start, SY.end) + 16 * E(t, LO.start, LO.end + .8);
+  const figA = [E(t, C.start - .2, C.start + .8), E(t, EM.start - .2, EM.start + .8)];
+  for (let s = 0; s < 2; s++) {
+    stacks[s].forEach((el, i) => { const v = clamp(nStack - i); el.style.opacity = v * figA[s] * dim; el.style.marginTop = ((1 - v) * -30) + 'px'; });
+    set(figs[s], { left: figX[s] + 'px', top: (570 + 16 * (1 - figA[s])) + 'px', opacity: figA[s] * (dim * .9 + .1) });
+    labels[s].style.opacity = figA[s] * .9 * (1 - E(t, TY.start - .5, TY.start + .3));
+  }
+  // Forms. Copies. Signatures.
+  const wt = [FO.subs[0], FO.subs[1] - .05, at('forms', .78)];
+  words.forEach((w, i) => { const o = win(t, wt[i], wt[i] + .5, CH.start - .4, CH.start + .3); set(w, { opacity: o, letterSpacing: (.5 - .18 * E(t, wt[i], wt[i] + 1.4)) + 'em' }); });
+  // panels, ferried value, broken lines
+  const pA = win(t, TY.start - .2, TY.start + .9, LO.start, LO.start + 1.1);
+  panels.forEach((p, i) => set(p, { opacity: pA * E(t, TY.start - .2 + i * .25, TY.start + .8 + i * .25), transform: `translateY(${14 * (1 - E(t, TY.start + i * .25, TY.start + 1 + i * .25))}px)` }));
+  const m1 = E(t, TY.subs[1] - .2, TY.subs[2] - .3), m2 = E(t, TY.subs[2], TY.end + .6);
+  const cx = mix(mix(panelX[0] + 40, panelX[1] + 40, m1), panelX[2] + 40, m2), cy = panelY + 128 - 30 * Math.sin(Math.PI * (m1 < 1 ? m1 : m2));
+  const chipA = win(t, TY.subs[1] - .5, TY.subs[1], SY.end - .2, SY.end + .6) * pA;
+  set(chip, { left: cx + 'px', top: cy + 'px', opacity: chipA });
+  set(cursor, { left: (cx + 150) + 'px', top: (cy + 26) + 'px', opacity: chipA });
+  dashes.forEach((l, i) => { const p = E(t, SY.subs[1] - .2 + (i % 2) * .15, SY.end + .2); const a = +l.dataset.a, b = +l.dataset.b; l.setAttribute('x2', mix(a, b, p)); l.style.opacity = pA * (1 - .55 * E(t, SY.end + .3, SY.end + .9)); });
+  lostCap.style.opacity = win(t, LO.subs[1] + .1, LO.subs[1] + 1.2, FL.start - 1.2, FL.start - .2);
+
+  // hero sheet: drifts in and blocks the door; tick drawn, erased, drawn again; then becomes the line of light
+  const drift = E(t, P.start - .6, P.end + 1.0);
+  const lift = E(t, FL.start, FL.start + .9), fold = E(t, FL.start + .8, FL.start + 1.7);
+  const hx = mix(-320, 850, drift), hy = 370 + 18 * Math.sin(t * .7) * (1 - drift) - 40 * lift;
+  set(hero, { left: hx + 'px', top: hy + 'px', transform: `rotate(${mix(-9, 0, drift)}deg) scale(${mix(1, 1.6, fold)}, ${mix(1, .01, fold)})`,
+    opacity: (1 - E(t, FL.start + 1.5, FL.start + 1.9)) * (1 - .6 * win(t, TY.start - .3, TY.start + .6, LO.start, LO.start + 1)),
+    background: fold > .2 ? `rgb(${mix(238, 178, fold)},${mix(241, 203, fold)},${mix(244, 7, fold)})` : '' });
+  const tk = E(t, CH.subs[0] + .05, CH.subs[0] + .6) * (1 - E(t, CH.subs[0] + .75, CH.subs[1] - .05)) + E(t, CH.subs[1] + .45, CH.subs[1] + 1.05) * (1 - E(t, LO.start, LO.start + .6));
+  tickPath.style.strokeDashoffset = 1 - tk;
+
+  /* ===== ACT 2 ===== */
+  const toLogo = E(t, BR.start - .5, BR.start + .7);
+  const flowW = mix(0, 1500, E(t, FL.start + 1.5, FL.end + 1.2));
+  const fx = mix(960, G.cx + G.tx + G.tw / 2, toLogo), fy = mix(540, G.cy + G.ty + 7, toLogo);
+  set(flow, { left: fx + 'px', top: fy + 'px', width: mix(flowW, G.tw, toLogo) + 'px', opacity: (t < FL.start + 1.4 ? 0 : 1) * (1 - E(t, BR.start + .5, BR.start + 1.0)) });
+
+  // logo: centre lockup -> corner bug -> centre lockup
+  const bug = E(t, RO.start - .8, RO.start + .6) * (1 - E(t, LG.start - .9, LG.start + .5));
+  const sc = mix(1, .26, bug), lx = mix(G.cx, 70, bug), ly = mix(G.cy, 58, bug);
+  const shown = t > BR.start - .6;
+  set(logo, { opacity: shown ? 1 : 0, transform: `translate(${lx}px,${ly}px) scale(${sc})` });
+  tbar.style.strokeDashoffset = 1 - E(t, BR.start + .2, BR.start + 1.3);
+  const wm = E(t, BR.start + .7, BR.start + 2.0);
+  lms.forEach(s => set(s, { opacity: wm, filter: `blur(${(1 - wm) * 14}px)` }));
+  const mk = E(t, BR.start + 1.1, BR.start + 2.1);
+  set(markEl, { opacity: mk, transform: `scale(${mix(.85, 1, mk)})` });
+  // bug dims during work so it never competes
+  if (bug > .5) logo.style.opacity = .85;
+  const tg = E(t, TG.start, TG.start + 1.8);
+  set(tagline, { opacity: tg, letterSpacing: mix(.42, .12, tg) + 'em' });
+
+  /* ===== ACT 3 ===== */
+  // robot node settles beside a person, level with them
+  const hA = win(t, RO.start - .2, RO.start + 1, RE.start - .6, RE.start + .2);
+  set(human, { left: '740px', top: '430px', opacity: hA * .95 });
+  const nIn = E(t, RO.subs[0] + .6, RO.subs[1] + .9);
+  let nx = mix(1500, 940, nIn), ny = mix(420, 520, nIn), nA = E(t, RO.subs[0] + .3, RO.subs[0] + 1.2);
+  // node goes to work: becomes the scan head
+  const toDoc = E(t, RE.start - .7, RE.start);
+  nx = mix(nx, 660, toDoc); ny = mix(ny, 330, toDoc);
+  const scanP = E(t, RE.start, RE.end + .5);
+  if (toDoc >= 1) { ny = mix(330, 730, scanP); }
+  nA *= 1 - E(t, VA.start - .2, VA.start + .3);
+  const pulse = 1 + .08 * Math.sin(t * 2.4);
+  set(node, { left: nx + 'px', top: ny + 'px', opacity: nA, transform: `translate(-50%,-50%) scale(${pulse})` });
+
+  const docA = win(t, RE.start - .8, RE.start, VA.start, VA.start + .8);
+  set(doc, { left: '510px', top: '330px', opacity: docA });
+  set(scan, { left: '490px', top: (ny - 1) + 'px', opacity: toDoc >= 1 ? (1 - E(t, RE.end + .3, RE.end + .7)) * docA : 0 });
+  // step labels
+  const stepOn = win(t, RE.start - .4, RE.start + .4, RC.start - .4, RC.start + .2);
+  const stepIdx = t < VA.start - .1 ? 0 : t < SU.start - .1 ? 1 : 2;
+  stepLbl.querySelector('em').textContent = '0' + (stepIdx + 1);
+  stepLbl.querySelector('span').textContent = ['Read', 'Validate', 'Set up'][stepIdx];
+  const stepFlick = Math.min(E(t, [RE.start, VA.start, SU.start][stepIdx] - .1, [RE.start, VA.start, SU.start][stepIdx] + .4), 1);
+  stepLbl.style.opacity = stepOn * (.3 + .7 * stepFlick);
+  // chips lift out as the scan line passes each row
+  const toForm = E(t, VA.start - .3, VA.start + .7);
+  const chipsA = 1 - E(t, SU.start - .2, SU.start + .5);
+  chips.forEach((c, i) => {
+    const rowY = 400 + i * 62, pass = E(t, RE.start + .2 + i * .38, RE.start + 1.1 + i * .38);
+    const x = mix(mix(560, 900, pass), 760, toForm), y = mix(rowY, 380 + i * 78, toForm);
+    set(c, { left: x + 'px', top: y + 'px', opacity: pass * chipsA, width: toForm > 0 ? mix(c.offsetWidth, 400, toForm) + 'px' : '' });
+    const tk2 = E(t, VA.start + .35 + i * .32, VA.start + .75 + i * .32);
+    set(ticks[i], { left: (1178) + 'px', top: (388 + i * 78) + 'px', opacity: toForm * chipsA });
+    ticks[i].firstChild.style.strokeDashoffset = 1 - tk2;
+  });
+  set(frame, { left: '730px', top: '340px', width: '490px', height: '350px', opacity: toForm * chipsA });
+  // account resolves, day-one badge
+  const acc = E(t, SU.start - .1, SU.start + 1.1), accOut = E(t, BY.start - .9, BY.start - .1);
+  const accX = mix(700, 330, E(t, RC.start - .5, RC.start + .6));
+  set(account, { left: accX + 'px', top: '390px', opacity: acc * (1 - accOut), transform: `scale(${mix(.94, 1, acc)})` });
+  const bd = E(t, at('setup', .62), at('setup', .62) + .6);
+  set(badge, { opacity: bd, transform: `scale(${mix(.7, 1, bd)})` });
+  // audit trail writes itself, then gets threaded (traceable)
+  const aOut = 1 - accOut;
+  audits.forEach((a, i) => {
+    const s = RC.start + .1 + i * .55, p = L(t, s, s + .7), tx = a.dataset.tx;
+    a.querySelector('b').textContent = tx.slice(0, Math.round(tx.length * p));
+    set(a, { left: '1010px', top: (408 + i * 62) + 'px', opacity: E(t, s - .2, s + .1) * aOut });
+    const dA = E(t, TR.subs[1] - .2 + i * .22, TR.subs[1] + .2 + i * .22);
+    set(adots[i], { left: '985px', top: (420 + i * 62) + 'px', opacity: dA * aOut });
+  });
+  const th = E(t, TR.subs[1], TR.subs[1] + 1.1);
+  set(thread, { left: '984px', top: '420px', height: (186 * th) + 'px', opacity: aOut });
+
+  // one flow, many processes
+  const fA = win(t, BY.start - .4, BY.start + .2, ST.start - .6, ST.start + .2);
+  const fd = E(t, BY.start, BY.subs[1] + .4);
+  set(fline, { width: (1480 * fd) + 'px', opacity: fA });
+  const hit = [BY.start + .5, BY.subs[1] + .05, at('beyond', .58), at('beyond', .76)];
+  const tokX = t < hit[0] ? stnX[0] : t >= hit[3] ? stnX[3] : (() => { for (let i = 0; i < 3; i++) if (t < hit[i + 1]) return mix(stnX[i], stnX[i + 1], E(t, hit[i] + .05, hit[i + 1])); })();
+  set(fline2, { width: (tokX - 220) + 'px', opacity: fA * (.75 + .25 * E(t, BY.subs[2], BY.subs[2] + 1)) });
+  stns.forEach((s, i) => { s.style.setProperty('--on', E(t, hit[i] - .1, hit[i] + .35)); s.style.opacity = fA * E(t, BY.start - .2 + i * .15, BY.start + .4 + i * .15); });
+  stnL.forEach((l, i) => l.style.opacity = fA * (.35 + .65 * E(t, hit[i] - .1, hit[i] + .4)));
+
+  // stacks dissolve into light
+  const sA = win(t, ST.start - .5, ST.start, ST.end + .6, ST.end + 1.1);
+  slabs2.forEach((e, i) => { const k = 25 - i, go = E(t, ST.start + .25 + k * .07, ST.start + .55 + k * .07); set(e, { opacity: sA * (1 - go) * .9, transform: `translateY(${-8 * go}px)` }); });
+  pts.forEach(p => {
+    const i = +p.dataset.i, row = i % 26, k = 25 - row, s0 = ST.start + .3 + k * .07;
+    const p2 = L(t, s0, s0 + 2.2), y0 = 760 - (row + 1) * 12;
+    set(p, { left: (+p.dataset.x + 30 * Math.sin(i + p2 * 3)) + 'px', top: (y0 - p2 * (160 + 90 * Math.abs(rnd(i)))) + 'px', opacity: (p2 > 0 && p2 < 1 ? Math.sin(Math.PI * p2) : 0) * sA });
+  });
+
+  // the welcome, restored
+  const peA = win(t, PE.start - .6, PE.start + .6, LG.start - 1.1, LG.start - .1);
+  const dW = E(t, PE.start - .3, PE.end + 1.2);
+  set(door2, { width: (8 + 150 * dW) + 'px', opacity: peA * .8 });
+  pfigs.forEach((f, i) => set(f, { left: (i ? 1080 : 720) + 'px', top: (560 + 12 * (1 - peA)) + 'px', opacity: peA, filter: 'drop-shadow(0 0 0 transparent)' }));
+
+  // final fade
+  document.getElementById('stage').style.filter = `brightness(${1 - E(t, DUR - .7, DUR)})`;
+}
+window.render = render;
+window.DUR = DUR;
+document.fonts.ready.then(() => { measure(); render(+(new URLSearchParams(location.search).get('t') || 0)); window.READY = true; });
+</script>
+</body>
+</html>

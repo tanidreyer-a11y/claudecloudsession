@@ -1,0 +1,65 @@
+TITLE: SmartTechNXT VO markers
+FCM: NON-DROP FRAME
+
+001  001      V     C        01:00:01:07 01:00:01:08 01:00:01:07 01:00:01:08  
+ |C:ResolveColorGreen |M:paperwork: Every new beginning... arrives with paperwork. |D:1
+
+002  001      V     C        01:00:05:01 01:00:05:02 01:00:05:01 01:00:05:02  
+ |C:ResolveColorGreen |M:client: A new client. |D:1
+
+003  001      V     C        01:00:06:28 01:00:06:29 01:00:06:28 01:00:06:29  
+ |C:ResolveColorGreen |M:employee: A new employee. |D:1
+
+004  001      V     C        01:00:09:02 01:00:09:03 01:00:09:02 01:00:09:03  
+ |C:ResolveColorGreen |M:forms: Forms... copies... signatures. |D:1
+
+005  001      V     C        01:00:13:02 01:00:13:03 01:00:13:02 01:00:13:03  
+ |C:ResolveColorGreen |M:checked: Checked... and checked again. |D:1
+
+006  001      V     C        01:00:16:13 01:00:16:14 01:00:16:13 01:00:16:14  
+ |C:ResolveColorGreen |M:typed: Details typed... from one screen... to the next. |D:1
+
+007  001      V     C        01:00:21:03 01:00:21:04 01:00:21:03 01:00:21:04  
+ |C:ResolveColorGreen |M:systems: Systems... that never speak to each other. |D:1
+
+008  001      V     C        01:00:25:02 01:00:25:03 01:00:25:02 01:00:25:03  
+ |C:ResolveColorGreen |M:lost: And somewhere between the files... the welcome gets lost. |D:1
+
+009  001      V     C        01:00:31:24 01:00:31:25 01:00:31:24 01:00:31:25  
+ |C:ResolveColorGreen |M:flowed: What if onboarding... simply flowed? |D:1
+
+010  001      V     C        01:00:36:04 01:00:36:05 01:00:36:04 01:00:36:05  
+ |C:ResolveColorGreen |M:brand: This is SmartTechNXT. |D:1
+
+011  001      V     C        01:00:40:18 01:00:40:19 01:00:40:18 01:00:40:19  
+ |C:ResolveColorGreen |M:robots: Intelligent software robots... working alongside your people. |D:1
+
+012  001      V     C        01:00:45:20 01:00:45:21 01:00:45:20 01:00:45:21  
+ |C:ResolveColorGreen |M:read: They read every document. |D:1
+
+013  001      V     C        01:00:48:07 01:00:48:08 01:00:48:07 01:00:48:08  
+ |C:ResolveColorGreen |M:validate: Validate every detail. |D:1
+
+014  001      V     C        01:00:50:28 01:00:50:29 01:00:50:28 01:00:50:29  
+ |C:ResolveColorGreen |M:setup: And set up each account... before day one. |D:1
+
+015  001      V     C        01:00:54:20 01:00:54:20 01:00:54:20 01:00:54:20  
+ |C:ResolveColorGreen |M:recorded: Every step... recorded. |D:1
+
+016  001      V     C        01:00:57:11 01:00:57:12 01:00:57:11 01:00:57:12  
+ |C:ResolveColorGreen |M:traceable: Every decision... traceable. |D:1
+
+017  001      V     C        01:01:00:24 01:01:00:25 01:01:00:24 01:01:00:25  
+ |C:ResolveColorGreen |M:beyond: And beyond onboarding... invoices... claims... month-end... the same quiet precision. |D:1
+
+018  001      V     C        01:01:08:18 01:01:08:19 01:01:08:18 01:01:08:19  
+ |C:ResolveColorGreen |M:stacks: No stacks. No bottlenecks. |D:1
+
+019  001      V     C        01:01:12:07 01:01:12:08 01:01:12:07 01:01:12:08  
+ |C:ResolveColorGreen |M:people: Just your people... free for the work that matters. |D:1
+
+020  001      V     C        01:01:18:00 01:01:18:01 01:01:18:00 01:01:18:01  
+ |C:ResolveColorGreen |M:logo: SmartTechNXT. |D:1
+
+021  001      V     C        01:01:20:24 01:01:20:25 01:01:20:24 01:01:20:25  
+ |C:ResolveColorGreen |M:tagline: Smart technology... in service of people. |D:1
