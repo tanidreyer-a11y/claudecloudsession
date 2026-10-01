@@ -1,8 +1,8 @@
 {
-  "name": "debi-promo",
+  "name": "saas-film",
   "version": "1.0.0",
   "private": true,
-  "description": "Debi promo video (ADC Innovations), built with Remotion",
+  "description": "Premium SaaS marketing film built with Remotion",
   "scripts": {
     "studio": "remotion studio src/index.ts",
     "audio": "node scripts/cues.mjs && python audio/build_audio.py",

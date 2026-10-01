@@ -1,6 +1,6 @@
 # Motion language
 
-## Curves & springs (Debi theme.ts)
+## Curves & springs
 - OUT `bezier(0.16,1,0.3,1)` entrances · IN `bezier(0.7,0,0.84,0)` exits · CAMERA `bezier(0.65,0,0.35,1)` camera/morphs/
   counters · SWEEP `bezier(0.22,1,0.36,1)` line draws & highlights.
 - Springs: pop {damping 13, stiffness 190, mass .8} (small pop-ups, ~4 % overshoot) · settle {200,120} (cards, no

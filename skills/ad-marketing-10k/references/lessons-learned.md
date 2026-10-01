@@ -7,7 +7,7 @@ Each item below cost at least one round of rework on a real client job. They are
 1. **Websites were blocked by the sandbox network policy.** Two sessions wasted effort assuming the site could be read.
    → Test reachability immediately. If blocked, use web search snippets that quote the site, and ask the user for the
    brand bible / logo / palette in the first message.
-2. **The brand skill file the user mentioned never reached the session.** → If a user references "my skill file",
+2. **The brand skill file the user mentioned never reached the session.** → If someone references "my skill file",
    search the repo, `~/.claude/skills`, and the user's skills; if missing, say so in one line and continue with defaults.
 3. **Colours sampled from a screenshot were wrong** (#163456/#B2CB07 vs the bible's #002548/#B5D334).
    → The brand bible is the source of truth. Pull colours from vector fills, not pixels.
@@ -19,12 +19,12 @@ Each item below cost at least one round of rework on a real client job. They are
    problem". → Name the concrete pain with specific artefacts (ID copy, proof of address, invoice #, 21:43 lead).
 6. **Too many features in one film** (invoices, onboarding, month-end, silos…). → One niche or one journey; mention the
    breadth once, late, in a single line.
-7. **The user values every line they wrote.** Cutting content to make room was rejected. → When pace feels rushed,
+7. **Clients value every line they wrote.** Cutting content to make room was rejected. → When pace feels rushed,
    first reformat (one idea per paragraph, blank lines) and shorten pauses — cut only with permission, and list what
    you'd cut in order of least value.
 8. **Pauses: both extremes failed.** A "..." every phrase made it sleepy; no paragraph breaks made it rushed.
    → ElevenLabs rhythm: one clean thought, then a pause, then the next. Big held pauses only around the hook word.
-9. **The user insisted: lead with pain.** A dream-first opening was rejected until it came *after* the pain.
+9. **The client insisted: lead with pain.** A dream-first opening was rejected until it came *after* the pain.
 10. **Emotion tags on ElevenLabs v3/v4 produced whispering** the user disliked; Multilingual v2 with a deep narrator
     ("Oliver Silk") at Speed ~0.87, Stability ~30, Similarity ~80, Style ~48 was the approved sound.
     → Offer tags only as an option; default to v2 with plain punctuation.
@@ -49,7 +49,7 @@ Each item below cost at least one round of rework on a real client job. They are
     take beyond the user's intent; if you add pauses, add them only at the hook word.
 19. **Inserting pauses after the fact** works: split the VO at silence points, insert silence, and time-warp the visuals
     with a smoothstep so motion slows into the pause instead of freezing (see production-pipeline.md).
-20. **No-voice versions were pointless to this user.** → Deliver one final mix unless asked.
+20. **No-voice versions were pointless to the client.** → Deliver one final mix unless asked.
 21. **Uploads over 30 MB fail.** → Always produce a share encode (CRF 21–22) alongside the master.
 22. **A stop-hook demanded commits while a render was still writing the MP4.** → Put the partial file in
     `.git/info/exclude`, remove the line and commit when the render completes.
@@ -60,18 +60,17 @@ Each item below cost at least one round of rework on a real client job. They are
 
 ## Advice & communication
 25. **Data claims about video vs posts**: LinkedIn B2B benchmarks (video lowest CTR) were correct for that platform but
-    the user's point (Reels/TikTok reach) was also right. → Always state the platform and metric a statistic applies to.
-26. **Pricing**: the user's R20k instinct was right for SA market (freelance R5–20k, mid studio R30–80k per 60 s).
+    the client's point (Reels/TikTok reach) was also right. → Always state the platform and metric a statistic applies to.
+26. **Pricing**: the R20k instinct was right for SA market (freelance R5–20k, mid studio R30–80k per 60 s).
     → Anchor at value, discount visibly for a first client, push retainers.
 
-## From the Debi build (Remotion, laptop) — merged from the original playbook
+## From an earlier Remotion laptop build (promo for an AI agent)
 27. **"Can I not even see half a clip?"** — long silent work made the client anxious. → Storyboard sheet early,
     a 5–10 s preview **with sound** before the full render, status lines every few minutes.
 28. **Brief times were wrong** ("click Approve at 20.3" was mid-"until"; the word was 20.9). → Sync to the stressed
     syllable from the loudness contour; tell the client which times moved.
 29. **The same transition whoosh on every cut** was the original complaint. → Music carries transitions; UI sounds
-    are chord notes; ≤ 3 different air moves per film. (The HTML films' `sound_design.py` still over-uses whooshes —
-    re-cue it.)
+    are chord notes; ≤ 3 different air moves per film. (The example cue list in `sound_design.py` over-uses whooshes — re-cue it.)
 30. **Old cut looked cheap**: tiny UI, empty frames between scenes, floating bubbles, flat green wash, same pop on
     everything, generic font. → See SKILL.md §2 table.
 31. **Data contradiction in the brief** (60 days overdue vs 14 for the same invoice). → Make fictional data identical everywhere.

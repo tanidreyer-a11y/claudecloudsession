@@ -1,9 +1,7 @@
 # Remotion engine (laptop builds)
 
-From the Debi build (Remotion 4.0.529, React 19, TypeScript 5.9). Template config is in `templates/remotion/`.
-The full Debi project (src/, scripts/cues.mjs, render.mjs, finish.mjs, stills.mjs, audio/build_audio.py,
-audio/analyse_vo.py) lives in the client's Debi folder — copy it into `templates/remotion/` when available
-(zip without node_modules).
+Proven with Remotion 4.0.529, React 19, TypeScript 5.9. Starter config is in `templates/remotion/`; add `src/`
+(index.ts, Root.tsx, timeline.ts, theme.ts, shots) and scripts (cues, render, finish, stills) per project.
 
 ## Project
 - Scaffold by hand (package.json, tsconfig, remotion.config.ts, src/index.ts, Root.tsx). Never `npx create-video`
@@ -25,7 +23,7 @@ audio/analyse_vo.py) lives in the client's Debi folder — copy it into `templat
 - `stills.mjs`: bundle once, one browser, render a list of seconds, tile a contact sheet; read it yourself.
 - `npx tsc --noEmit` before every render.
 
-## Rendering on a weak laptop (i5-7200U, 2 cores, 8 GB)
+## Rendering on a weak laptop (example: i5-7200U, 2 cores, 8 GB)
 - Software ~2.4 s/frame; **`--gl=angle` ~1.1 s/frame** — always use it.
 - A long single render crashed the PC once → **chunked, resumable renders** (360-frame chunks, skip finished, join
   with concat demuxer `-c copy`). Ask for keep-awake before long renders.

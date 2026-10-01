@@ -1,7 +1,7 @@
 # Sound design
 
 Sound is half of perceived quality. Two implementations exist:
-- **Musical (preferred)** — Debi `audio/build_audio.py` in `templates/remotion/` (numpy + scipy, all synthesised):
+- **Musical (preferred)** — a numpy + scipy synthesiser (port it into `scripts/sound_design.py` or a Remotion `audio/` script):
   warm pad (detuned saw+triangle, dark/bright lowpassed copies crossfaded by a brightness curve), sub on roots, faint
   shimmer, synthetic convolution reverb (~2.6 s); chord changes ON story beats; UI sounds as notes in the current
   chord (felt piano = messages, marimba = rows/letters, glass bell = confirmations); envelope ducking; loudness master.
