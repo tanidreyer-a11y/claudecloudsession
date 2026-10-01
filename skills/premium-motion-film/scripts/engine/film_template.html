@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Film</title>
+<style>
+/* Fonts: npm i @fontsource/roboto (or the brand's licensed font) and point @font-face at node_modules */
+:root{ --bg:#002548; --accent:#B5D334; --ink:#fff; --ink2:rgba(255,255,255,.62); --glass:rgba(255,255,255,.06); --stroke:rgba(255,255,255,.14) }
+*{box-sizing:border-box;margin:0;padding:0} html,body{background:#000;overflow:hidden}
+#stage{position:relative;width:1920px;height:1080px;overflow:hidden;background:var(--bg);color:var(--ink);font-family:Roboto,Helvetica,Arial,sans-serif}
+#world{position:absolute;left:0;top:0;transform-origin:0 0} #world>*{position:absolute}
+.c{transform:translate(-50%,-50%)}
+.card{width:420px;border-radius:16px;background:var(--glass);border:1px solid var(--stroke);padding:22px 24px}
+.dot{width:24px;height:24px;border-radius:50%;background:var(--accent);box-shadow:0 0 24px 6px rgba(181,211,52,.5)}
+.cap{position:absolute;left:160px;top:880px;font-size:30px;font-weight:300;letter-spacing:.34em;text-transform:uppercase}
+#iris{position:absolute;inset:0;background:var(--accent);opacity:0}
+#vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 75% 75% at 50% 50%,transparent 45%,rgba(0,0,0,.6) 100%)}
+</style></head>
+<body><div id="stage"><div id="world"></div><div id="screen" style="position:absolute;inset:0"></div><div id="iris"></div><div id="vig"></div></div>
+<script src="timing.js"></script><script src="film_template.js"></script></body></html>
