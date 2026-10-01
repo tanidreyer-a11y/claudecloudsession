@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ADC Innovations — Precision at Work</title>
+<style>
+@font-face{font-family:Manrope;font-weight:200;src:url(node_modules/@fontsource/manrope/files/manrope-latin-200-normal.woff2)}
+@font-face{font-family:Manrope;font-weight:300;src:url(node_modules/@fontsource/manrope/files/manrope-latin-300-normal.woff2)}
+@font-face{font-family:Manrope;font-weight:400;src:url(node_modules/@fontsource/manrope/files/manrope-latin-400-normal.woff2)}
+@font-face{font-family:Mono;font-weight:400;src:url(node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-400-normal.woff2)}
+/* ===== BRAND TOKENS (placeholder until ADC palette arrives) ===== */
+:root{
+  --bg:#06070A; --bg2:#0C0F16; --ink:#F4F5F7; --ink2:rgba(244,245,247,.6); --ink3:rgba(244,245,247,.32);
+  --glass:rgba(255,255,255,.055); --stroke:rgba(255,255,255,.12);
+  --a1:#7AA2FF; --a2:#B48BFF; --a3:#6FE3D2;         /* accent gradient */
+  --ok:#8FF0C8; --warn:#FF6B6B;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#000;overflow:hidden}
+#stage{position:relative;width:1920px;height:1080px;overflow:hidden;background:var(--bg);font-family:Manrope,sans-serif;color:var(--ink)}
+.abs{position:absolute;left:0;top:0}
+#aurora{position:absolute;inset:-20%;opacity:0;filter:blur(90px);
+  background:radial-gradient(40% 35% at 35% 45%,rgba(122,162,255,.55),transparent 70%),radial-gradient(35% 40% at 65% 55%,rgba(180,139,255,.45),transparent 70%),radial-gradient(30% 30% at 55% 30%,rgba(111,227,210,.35),transparent 70%)}
+#world{position:absolute;left:0;top:0;width:0;height:0;transform-origin:0 0}
+#world > *{position:absolute}
+.pt{position:absolute;border-radius:50%;background:#fff}
+.card{width:360px;border-radius:18px;background:var(--glass);border:1px solid var(--stroke);backdrop-filter:blur(10px);padding:22px 24px;transform:translate(-50%,-50%)}
+.card .k{font-family:Mono,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px}
+.card .v{font-size:24px;font-weight:300;margin-bottom:10px;white-space:nowrap}
+.card .s{font-size:15px;color:var(--ink2);white-space:nowrap}
+.card .bar{height:4px;border-radius:2px;background:rgba(255,255,255,.08);margin-top:16px;overflow:hidden}
+.card .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3))}
+.card .tag{position:absolute;right:18px;top:18px;font-family:Mono,monospace;font-size:12px;letter-spacing:.1em;padding:5px 10px;border-radius:20px;border:1px solid var(--stroke);color:var(--ink2)}
+.ball{width:26px;height:26px;border-radius:50%;transform:translate(-50%,-50%);
+  background:radial-gradient(circle at 35% 30%,#fff,#DDE6FF 30%,var(--a1) 60%,var(--a2));box-shadow:0 0 24px 6px rgba(122,162,255,.55),0 0 80px 20px rgba(180,139,255,.25)}
+.orb{width:96px;height:96px;border-radius:50%;transform:translate(-50%,-50%);
+  background:radial-gradient(circle at 35% 30%,#fff 0%,#CFE0FF 18%,var(--a1) 45%,var(--a2) 75%,#3B2A7A 100%);box-shadow:0 0 40px 10px rgba(122,162,255,.4),0 0 140px 40px rgba(180,139,255,.18)}
+.chip{transform:translate(-50%,0);font-family:Mono,monospace;font-size:14px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;padding:8px 14px;border-radius:30px;background:var(--glass);border:1px solid var(--stroke);color:var(--ink2)}
+.vline{width:1.5px;background:linear-gradient(rgba(255,255,255,0),rgba(255,255,255,.55));transform:translateX(-50%)}
+.hline{height:2px;background:rgba(255,255,255,.35)}
+.word{position:absolute;left:960px;transform:translateX(-50%);white-space:nowrap;font-weight:200;letter-spacing:.02em}
+.doc{width:460px;height:580px;border-radius:14px;background:#EEF0F4;color:#1A1D24;transform:translate(-50%,-50%);padding:40px 40px;box-shadow:0 40px 120px rgba(0,0,0,.6)}
+.doc h4{font-weight:400;font-size:22px;margin-bottom:6px}
+.doc .m{font-family:Mono,monospace;font-size:12px;color:#7A8090;margin-bottom:26px;letter-spacing:.06em}
+.doc .row{display:flex;justify-content:space-between;align-items:center;height:46px;border-bottom:1px solid #D7DBE3;font-size:16px}
+.doc .row b{font-weight:400;font-family:Mono,monospace;font-size:15px}
+.doc .row em{font-style:normal;width:22px;height:22px;border-radius:50%;background:#1A1D24;color:#fff;font-size:13px;display:flex;align-items:center;justify-content:center;opacity:0}
+#scanl{height:3px;background:linear-gradient(90deg,transparent,var(--a1),var(--a2),transparent);box-shadow:0 0 24px 6px rgba(122,162,255,.5);transform:translate(-50%,-50%)}
+.btn{transform:translate(-50%,-50%);padding:18px 38px;border-radius:40px;background:var(--ink);color:#0B0D12;font-size:22px;font-weight:400;white-space:nowrap}
+.node{width:22px;height:22px;border-radius:50%;border:1.5px solid rgba(255,255,255,.5);background:var(--bg);transform:translate(-50%,-50%)}
+.nlabel{font-family:Mono,monospace;font-size:16px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;transform:translate(-50%,-50%)}
+.log{font-family:Mono,monospace;font-size:17px;white-space:nowrap;color:var(--ink2)}
+.log span{color:var(--ink3);margin-right:22px}
+.tile{width:230px;height:130px;border-radius:16px;background:var(--glass);border:1px solid var(--stroke);transform:translate(-50%,-50%);padding:18px 20px}
+.tile .n{font-size:18px;font-weight:300;margin-bottom:34px;white-space:nowrap}
+.tile .tg{width:46px;height:26px;border-radius:13px;background:rgba(255,255,255,.12);position:relative}
+.tile .tg i{position:absolute;left:3px;top:3px;width:20px;height:20px;border-radius:50%;background:#fff}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+#grain{position:absolute;inset:0;opacity:.07;pointer-events:none;mix-blend-mode:overlay}
+#vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 75% 75% at 50% 50%,transparent 50%,rgba(0,0,0,.8) 100%)}
+#logo{position:absolute;left:960px;top:500px;transform:translate(-50%,-50%);font-size:118px;font-weight:300;letter-spacing:-.01em;white-space:nowrap}
+#logo b{font-weight:400}
+#desc{position:absolute;left:960px;top:610px;transform:translateX(-50%);font-size:30px;font-weight:200;letter-spacing:.14em;white-space:nowrap;color:var(--ink2)}
+#cta{position:absolute;left:960px;top:760px}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="aurora"></div>
+  <div id="bgpts" class="abs" style="width:1920px;height:1080px"></div>
+  <div id="world"></div>
+  <div id="screen" class="abs" style="width:1920px;height:1080px"></div>
+  <div id="flash"></div>
+  <svg id="grain" width="1920" height="1080"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+  <div id="vig"></div>
+</div>
+<script>
+/* word timings from the recorded VO (seconds) */
+const W = {
+  every:0.03, sees:2.25, invoices:3.67, bills:5.53, leads:7.26, people:8.97, onboard:9.96,
+  everyday:11.29, slips1:12.50, step:13.61, world:14.23, itself:15.95, almost:17.23,
+  meet:18.42, agents:19.38, digital:20.41, job:21.86, eachone:23.50, precise:24.57,
+  read:25.99, document:26.92, check:28.10, detail:29.19, act:30.16, seconds:30.97,
+  nothing1:31.82, slips2:32.10, fingers:33.40, leaves:34.30, without:35.32,
+  oneloop:36.52, prepares:37.48, approve:39.05, done:40.42, action:41.86, record:43.15,
+  choose:44.64, need:45.91, addmore:47.12, grow:48.33, adc:50.12, precision:52.05, atwork:53.12,
+  book:54.67, demo:56.23, end:57.10
+};
+const DUR = 58.6;
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+const io = p => p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;          // ease in-out cubic
+const out = p => 1 - Math.pow(1 - p, 4);                                           // ease out quart
+const inn = p => p * p * p;
+const E = (t, a, b, f = io) => f(clamp((t - a) / (b - a)));
+const mix = (a, b, p) => a + (b - a) * p;
+const win = (t, a, b, c, d) => E(t, a, b) * (1 - E(t, c, d));
+const S = (el, o) => { for (const k in o) el.style[k] = o[k]; };
+const world = document.getElementById('world'), screen = document.getElementById('screen');
+const mk = (html, parent = world) => { const d = document.createElement('div'); d.innerHTML = html.trim(); const el = d.firstChild; parent.appendChild(el); return el; };
+const at = (el, x, y) => { el.style.left = x + 'px'; el.style.top = y + 'px'; };
+const rnd = i => { const x = Math.sin(i * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
+
+/* ---------- keyframed tracks: [time, ...values], eased between keys ---------- */
+function track(keys, t, f = io) {
+  if (t <= keys[0][0]) return keys[0].slice(1);
+  for (let i = 0; i < keys.length - 1; i++) {
+    const a = keys[i], b = keys[i + 1];
+    if (t < b[0]) { const p = f(clamp((t - a[0]) / (b[0] - a[0]))); return a.slice(1).map((v, k) => mix(v, b[k + 1], p)); }
+  }
+  return keys[keys.length - 1].slice(1);
+}
+/* camera: [t, cx, cy, zoom, rotDeg] */
+const CAM = [
+  [0, 0, 0, 1.35, 0], [3.4, 60, 0, 1.0, 0],
+  [4.3, 420, 0, 1, 0], [6.1, 1020, 0, 1, 0], [7.9, 1620, 0, 1, 0], [9.6, 2220, 0, 1, 0],
+  [11.2, 2560, 0, 1.08, 0], [12.45, 2760, 20, 1.14, -4],
+  [13.55, 2900, 1500, 1.0, 0],                                  // fall DOWN with the ball
+  [14.25, 2900, 1500, 5.5, 0],                                  // dive THROUGH the light
+  [14.26, 2900, 1500, .7, 0], [15.8, 2900, 1500, .9, 0], [17.2, 2900, 1500, .95, 0],
+  [18.3, 2900, 1500, 1.25, 0], [19.3, 2900, 1500, 1.0, 0], [21.7, 2900, 1520, .92, 0],
+  [23.3, 2900, 1900, .9, 0],                                    // tilt DOWN along the drop lines
+  [24.5, 2787, 1440, 2.1, 6],                                   // snap IN on one agent
+  [25.9, 2787, 1440, 2.3, 8], [26.9, 2560, 700, 1.0, 0],        // rise UP into the document
+  [29.9, 2560, 700, 1.05, 0], [30.9, 3000, 700, 1.0, 0],
+  [31.8, 3400, 700, .95, 0], [33.4, 3950, 700, 1.1, 3],         // track RIGHT along the line
+  [35.3, 4450, 700, 1.0, 0], [36.4, 4550, 700, .9, 0],
+  [37.5, 4600, 700, .78, -8], [40.9, 4600, 700, .82, 10],       // orbit the loop
+  [41.9, 4840, 720, .8, 0], [44.5, 4880, 720, .8, 0],
+  [45.6, 4700, 700, .62, 0], [48.2, 4700, 700, .5, 0], [49.9, 4700, 700, .42, 0]
+];
+
+/* ---------- background particles (screen space, parallax) ---------- */
+const bg = document.getElementById('bgpts'); const bgp = [];
+for (let i = 0; i < 140; i++) { const p = mk('<div class="pt"></div>', bg); const s = 1 + rnd(i) * 2.2; S(p, { width: s + 'px', height: s + 'px' }); bgp.push({ el: p, x: rnd(i + 1) * 1920, y: rnd(i + 2) * 1080, d: .2 + rnd(i + 3) * .8, a: .15 + rnd(i + 4) * .5 }); }
+
+/* ---------- R1: line with tasks nobody sees ---------- */
+const line1 = mk('<div class="hline"></div>'); at(line1, -700, 0);
+const tasks = [
+  { x: 420, k: 'Invoice #1042', v: 'R 48 200.00', s: 'Overdue · 30 days', tag: 'UNPAID', t: 'invoices' },
+  { x: 1020, k: 'Supplier bill', v: '46 line items', s: 'Awaiting capture', tag: 'MANUAL', t: 'bills' },
+  { x: 1620, k: 'New lead · 21:43', v: '“Can you quote?”', s: 'No reply yet', tag: 'WAITING', t: 'leads' },
+  { x: 2220, k: 'New starter', v: 'T. Nkosi', s: 'Access pending', tag: 'DAY 3', t: 'people' }
+].map((c, i) => { const el = mk(`<div class="card"><div class="tag">${c.tag}</div><div class="k">${c.k}</div><div class="v">${c.v}</div><div class="s">${c.s}</div></div>`); c.el = el; c.i = i; return c; });
+const ghost = [];   // faint "work nobody sees" fragments
+for (let i = 0; i < 46; i++) { const g = mk('<div style="height:6px;border-radius:3px;background:rgba(255,255,255,.14)"></div>'); ghost.push({ el: g, x: -800 + rnd(i + 20) * 1700, y: -420 + rnd(i + 30) * 840, w: 40 + rnd(i + 40) * 140 }); }
+const ball = mk('<div class="ball"></div>');
+const landing = mk('<div style="width:600px;height:600px;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,255,255,.95) 0%,rgba(180,200,255,.6) 12%,rgba(122,162,255,.2) 35%,transparent 65%)"></div>'); at(landing, 2900, 1500);
+
+/* ---------- R3: the world where work does itself ---------- */
+const WC = [2900, 1500];
+const wcards = [
+  { dx: -250, dy: -150, k: 'Invoice #1042', v: 'Reminder sent', s: 'Paid · R 48 200.00' },
+  { dx: 250, dy: -150, k: 'Supplier bill', v: '46 / 46 captured', s: 'Matched to PO' },
+  { dx: -250, dy: 150, k: 'Lead · 21:43', v: 'Replied in 6s', s: 'Quote attached' },
+  { dx: 250, dy: 150, k: 'New starter', v: 'Access granted', s: 'Ready for day one' }
+].map(c => { c.el = mk(`<div class="card"><div class="k">${c.k}</div><div class="v">${c.v}</div><div class="s">${c.s}</div><div class="bar"><i></i></div></div>`); return c; });
+const orbs = [0, 1, 2, 3].map(i => mk('<div class="orb"></div>'));
+const orbX = [-340, -113, 113, 340];
+const roles = ['Collections', 'Bills', 'Leads', 'Onboarding'].map(r => mk(`<div class="chip">${r} agent</div>`));
+const drops = [0, 1, 2, 3].map(() => mk('<div class="vline"></div>'));
+const jobs = ['Invoice', 'Bill', 'Lead', 'Starter'].map(j => mk(`<div class="card" style="width:190px;padding:16px 18px"><div class="k" style="margin:0">${j}</div></div>`));
+const ringP = mk('<svg width="400" height="400" viewBox="-200 -200 400 400" style="transform:translate(-50%,-50%);overflow:visible"><circle r="150" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.2"/><circle r="110" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1"/><path d="M-190 0H-120M120 0H190M0 -190V-120M0 120V190" stroke="rgba(255,255,255,.55)" stroke-width="1.2"/></svg>');
+
+/* ---------- R5: read / check / act ---------- */
+const doc = mk(`<div class="doc"><h4>Tax Invoice</h4><div class="m">INV-1042 · 30 SEP 2026</div>
+  <div class="row">Client<b>Mabena Logistics</b><em>✓</em></div><div class="row">VAT number<b>4120 •••• 55</b><em>✓</em></div>
+  <div class="row">Amount due<b>R 48 200.00</b><em>✓</em></div><div class="row">Due date<b>31 Aug 2026</b><em>✓</em></div>
+  <div class="row">Status<b>30 days overdue</b><em>✓</em></div><div class="row">Reminder<b>Drafted</b><em>✓</em></div></div>`); at(doc, 2560, 700);
+const docTicks = [...doc.querySelectorAll('em')];
+const scanl = mk('<div id="scanl" style="width:520px"></div>');
+const sendBtn = mk('<div class="btn" style="font-size:18px;padding:14px 28px">Send reminder →</div>'); at(sendBtn, 2560, 1040);
+const timer = mk('<div class="nlabel" style="font-size:22px;color:var(--ink2)">00:04s</div>'); at(timer, 2980, 700);
+
+/* ---------- R6/R7: nothing slips, nothing leaves without you ---------- */
+const line2 = mk('<div class="hline"></div>'); at(line2, 3150, 700);
+const edge = mk('<div style="width:2px;height:60px;background:rgba(255,255,255,.35);transform:translate(-50%,-50%)"></div>'); at(edge, 3950, 700);
+const you = mk('<div class="card" style="width:300px;text-align:center"><div class="k">Needs you</div><div class="v" style="font-size:22px">Send reminder?</div><div class="btn" style="position:relative;left:50%;top:0;transform:translateX(-50%);margin-top:10px;font-size:17px;padding:12px 30px;display:inline-block">Approve</div></div>'); at(you, 4450, 560);
+const tapR = mk('<div style="width:60px;height:60px;border-radius:50%;border:2px solid #fff;transform:translate(-50%,-50%)"></div>');
+
+/* ---------- R8: one loop ---------- */
+const LC = [4600, 700], LR = 330;
+const loopSVG = mk(`<svg width="900" height="900" viewBox="-450 -450 900 900" style="transform:translate(-50%,-50%);overflow:visible">
+  <circle id="lp" r="${LR}" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="2" pathLength="1" stroke-dasharray="1 1" transform="rotate(-90)"/>
+  <circle id="lp2" r="${LR}" fill="none" stroke="url(#g)" stroke-width="3" pathLength="1" stroke-dasharray="0 1" transform="rotate(-90)"/>
+  <defs><linearGradient id="g"><stop offset="0" stop-color="#7AA2FF"/><stop offset=".5" stop-color="#B48BFF"/><stop offset="1" stop-color="#6FE3D2"/></linearGradient></defs></svg>`); at(loopSVG, ...LC);
+const lp = loopSVG.querySelector('#lp'), lp2 = loopSVG.querySelector('#lp2');
+const nodeAng = [-90, 30, 150], nodeTxt = ['Agent prepares', 'You approve', 'Done'], nodeT = ['prepares', 'approve', 'done'];
+const nodes = nodeAng.map(a => { const n = mk('<div class="node"></div>'); at(n, LC[0] + LR * Math.cos(a * Math.PI / 180), LC[1] + LR * Math.sin(a * Math.PI / 180)); return n; });
+const nlabels = nodeAng.map((a, i) => { const n = mk(`<div class="nlabel">${nodeTxt[i]}</div>`); const r = LR + 80; at(n, LC[0] + r * Math.cos(a * Math.PI / 180) + (i === 0 ? 0 : i === 1 ? 60 : -60), LC[1] + r * Math.sin(a * Math.PI / 180)); return n; });
+const loopCore = mk('<div class="nlabel" style="font-size:20px;color:var(--ink2)">One loop</div>'); at(loopCore, ...LC);
+const logs = [['07:58:02', 'Invoice read'], ['07:58:03', '6 fields verified'], ['07:58:04', 'Reminder drafted'], ['08:14:31', 'Approved by you'], ['08:14:32', 'Sent · logged']]
+  .map(([a, b], i) => { const l = mk(`<div class="log"><span>${a}</span>${b}</div>`); at(l, 5010, 560 + i * 52); return l; });
+
+/* ---------- R10: choose the agents you need ---------- */
+const tileNames = ['Collections', 'Bills capture', 'Lead reply', 'Onboarding', 'Payroll prep', 'Quotes', 'Reconciliation', 'Reporting', 'Supplier queries', 'Document intake', 'Scheduling', 'Compliance checks'];
+const tiles = tileNames.map((n, i) => { const t = mk(`<div class="tile"><div class="n">${n}</div><div class="tg"><i></i></div></div>`); const c = i % 4, r = Math.floor(i / 4); t.dataset.x = 4700 + (c - 1.5) * 270; t.dataset.y = 700 + (r - 1) * 170; return t; });
+const extra = [];
+for (let r = 0; r < 5; r++) for (let c = 0; c < 8; c++) { if (c >= 2 && c <= 5 && r >= 1 && r <= 3) continue; const t = mk('<div class="tile" style="opacity:0"><div class="n" style="opacity:.5">Agent</div><div class="tg"><i></i></div></div>'); t.dataset.x = 4700 + (c - 3.5) * 270; t.dataset.y = 700 + (r - 2) * 170; extra.push(t); }
+
+/* ---------- screen-space: words, logo ---------- */
+const almostW = mk('<div class="word" style="top:880px;font-size:40px;opacity:0;letter-spacing:.3em;text-transform:uppercase;font-weight:200">Almost.</div>', screen);
+const logo = mk('<div id="logo"><b>ADC</b> Innovations</div>', screen);
+const desc = mk('<div id="desc">PRECISION, AT WORK</div>', screen);
+const cta = mk('<div id="cta" class="btn">Book your 15-minute demo</div>', screen);
+const endBall = mk('<div class="ball" style="position:absolute"></div>', screen);
+
+function render(t) {
+  /* camera */
+  const [cx, cy, z, r] = track(CAM, t);
+  const freeze = win(t, W.almost - .05, W.almost + .05, W.almost + .95, W.almost + 1.2);   // "Almost." hold
+  S(world, { transform: `translate(960px,540px) scale(${z}) rotate(${r}deg) translate(${-cx}px,${-cy}px)` });
+  const worldOut = E(t, W.adc - .6, W.adc + .3);
+  world.style.opacity = 1 - worldOut;
+  world.style.filter = `saturate(${1 - .8 * freeze}) brightness(${1 - .25 * freeze})`;
+
+  /* background particles drift with camera (parallax) */
+  bgp.forEach(p => { let x = (p.x - cx * .08 * p.d) % 1920, y = (p.y - cy * .08 * p.d + t * 6 * p.d) % 1080; if (x < 0) x += 1920; if (y < 0) y += 1080; S(p.el, { transform: `translate(${x}px,${y}px)`, opacity: p.a * (.4 + .6 * E(t, 0, 2)) }); });
+  const au = win(t, W.world - .1, W.world + 1.2, W.adc - .8, W.adc + .5) * (1 - .6 * freeze) + .5 * E(t, W.adc, W.adc + 2);
+  S(document.getElementById('aurora'), { opacity: au * .9, transform: `rotate(${t * 3}deg) scale(${1 + .05 * Math.sin(t * .5)})` });
+
+  /* R1 */
+  const r1 = 1 - E(t, W.step + .3, W.step + .6);
+  S(line1, { width: (3700 * E(t, .2, 3.2)) + 'px', opacity: .6 * r1 });
+  ghost.forEach((g, i) => { const a = win(t, .2 + i * .03, 1 + i * .03, W.invoices - .6, W.invoices + .4) * .7; S(g.el, { left: g.x + 'px', top: (g.y - t * 8) + 'px', width: g.w + 'px', opacity: a }); });
+  tasks.forEach(c => {
+    const t0 = W[c.t] - .15, a = E(t, t0, t0 + .7, out) * r1, sink = E(t, W.slips1, W.slips1 + 1.2);
+    S(c.el, { left: c.x + 'px', top: (-190 + 40 * (1 - a) - 80 * sink) + 'px', opacity: a * (1 - .6 * sink), transform: `translate(-50%,-50%) scale(${mix(.94, 1, a)})` });
+  });
+  // ball path: rolls along the line, slips off the edge, falls, lands in light
+  let bx, by;
+  if (t < W.slips1) { [bx] = track([[0, 0], [3.5, 60], [4.3, 420], [6.1, 1020], [7.9, 1620], [9.6, 2220], [11.2, 2560], [W.slips1, 2800]], t); by = -13; }
+  else { const p = clamp((t - W.slips1) / (W.step - .05 - W.slips1)); bx = 2800 + 100 * p; by = -13 + 1513 * inn(p) ; }
+  const ballA = E(t, 1.0, 2.0) * (1 - E(t, W.step, W.step + .5));
+  S(ball, { left: bx + 'px', top: by + 'px', opacity: ballA, transform: `translate(-50%,-50%) scale(${1 + .15 * Math.sin(t * 3)})` });
+  S(landing, { opacity: win(t, W.step - .4, W.step + .1, W.world - .1, W.world + .4), transform: `translate(-50%,-50%) scale(${mix(.2, 1.4, E(t, W.step - .4, W.world))})` });
+  document.getElementById('flash').style.opacity = win(t, W.step + .35, W.world + .02, W.world + .03, W.world + .38) * .9;
+
+  /* R3: world */
+  const r3 = win(t, W.world, W.world + .5, W.meet - .2, W.meet + .3);
+  wcards.forEach((c, i) => {
+    const a = E(t, W.world + .2 + i * .12, W.world + .9 + i * .12, out) * r3;
+    const run = E(t, W.itself - .3 + i * .2, W.itself + 1.0 + i * .2);
+    const runF = t > W.almost ? Math.min(run, E(W.almost, W.itself - .3 + i * .2, W.itself + 1.0 + i * .2)) : run;   // freezes on "Almost."
+    S(c.el, { left: (WC[0] + c.dx * mix(1.6, 1, a)) + 'px', top: (WC[1] + c.dy * mix(1.6, 1, a)) + 'px', opacity: a });
+    c.el.querySelector('i').style.width = (runF * 100) + '%';
+  });
+  S(almostW, { opacity: win(t, W.almost, W.almost + .25, W.almost + 1.0, W.almost + 1.2) });
+
+  // orbs: one appears, splits into four, each takes a role, drops to its job
+  const o1 = E(t, W.meet - .2, W.meet + .5, out), split = E(t, W.agents - .1, W.agents + .9);
+  const oOut = 1 - E(t, W.read - .2, W.read + .6);
+  orbs.forEach((o, i) => {
+    const x = WC[0] + orbX[i] * split, y = WC[1] - 60;
+    const precise = i === 1 ? 0 : E(t, W.eachone, W.precise) * .7;
+    S(o, { left: x + 'px', top: y + 'px', opacity: o1 * (i === 0 || split > .01 ? 1 : 0) * oOut * (1 - precise), transform: `translate(-50%,-50%) scale(${mix(.4, 1, o1) * (1 + .04 * Math.sin(t * 2 + i))})` });
+    S(roles[i], { left: x + 'px', top: (y + 70) + 'px', opacity: E(t, W.digital + i * .15, W.digital + .5 + i * .15) * oOut * (1 - precise) });
+    const dp = E(t, W.job - .1 + i * .12, W.job + .8 + i * .12);
+    S(drops[i], { left: x + 'px', top: (y + 115) + 'px', height: (420 * dp) + 'px', opacity: oOut * (1 - precise) });
+    S(jobs[i], { left: x + 'px', top: (y + 560) + 'px', opacity: E(t, W.job + .5 + i * .12, W.job + 1 + i * .12) * oOut * (1 - precise) });
+  });
+  // precise: crosshair ring snaps onto one orb
+  const pr = win(t, W.eachone, W.precise + .2, W.read - .3, W.read + .2);
+  S(ringP, { left: (WC[0] + orbX[1] * split) + 'px', top: (WC[1] - 60) + 'px', opacity: pr, transform: `translate(-50%,-50%) scale(${mix(1.8, .55, E(t, W.eachone, W.precise + .15, out))}) rotate(${45 * (1 - E(t, W.eachone, W.precise + .15))}deg)` });
+
+  /* R5: read / check / act */
+  const dA = win(t, W.read - .3, W.read + .5, W.act + .4, W.act + 1.0);
+  const fly = E(t, W.act + .1, W.act + .9, inn);
+  S(doc, { opacity: dA + (fly > 0 ? 0 : 0), transform: `translate(-50%,-50%) translateX(${fly * 1400}px) rotate(${fly * 8}deg)` });
+  const sc = E(t, W.document - .5, W.check);
+  S(scanl, { left: 2560 + fly * 1400 + 'px', top: mix(430, 970, sc) + 'px', opacity: win(t, W.document - .6, W.document - .3, W.check - .1, W.check + .2) });
+  docTicks.forEach((e, i) => { const k = E(t, W.check + i * .22, W.check + .25 + i * .22); S(e, { opacity: k, transform: `scale(${mix(.4, 1, k)})` }); });
+  S(sendBtn, { opacity: win(t, W.detail + .3, W.detail + .7, W.act + .2, W.act + .5), transform: `translate(-50%,-50%) scale(${1 - .06 * win(t, W.act - .05, W.act + .05, W.act + .1, W.act + .25)})` });
+  S(timer, { opacity: win(t, W.seconds - .2, W.seconds + .2, W.nothing1 - .2, W.nothing1 + .3) });
+
+  /* R6: nothing slips (the ball holds the line this time) */
+  const r6 = win(t, W.act + .6, W.nothing1, W.oneloop, W.oneloop + .6);
+  S(line2, { width: (1300 * E(t, W.act + .5, W.nothing1 + .6)) + 'px', opacity: .6 * r6 });
+  S(edge, { opacity: .8 * r6 });
+  const b2x = track([[W.act + .6, 3150], [W.slips2, 3900], [W.fingers + .3, 3985], [W.without, 4400], [W.oneloop, 4450]], t)[0];
+  const wob = (t > W.slips2 && t < W.fingers + .6) ? Math.sin((t - W.slips2) * 18) * 10 * (1 - E(t, W.slips2, W.fingers + .6)) : 0;
+  const ball2 = t < W.oneloop ? { x: b2x, y: 687 + wob } : null;
+  S(you, { opacity: win(t, W.leaves - .3, W.leaves + .4, W.oneloop - .2, W.oneloop + .5), transform: `translate(-50%,-50%) translateY(${20 * (1 - E(t, W.leaves - .3, W.leaves + .5))}px)` });
+  const tap = E(t, W.without + .4, W.without + 1.0);
+  S(tapR, { left: '4450px', top: '612px', opacity: tap > 0 && tap < 1 ? 1 - tap : 0, transform: `translate(-50%,-50%) scale(${.4 + tap * 1.6})` });
+
+  /* R8: one loop */
+  const lA = win(t, W.oneloop - .3, W.oneloop + .3, W.choose - .4, W.choose + .3);
+  lp.style.strokeDashoffset = 1 - E(t, W.oneloop - .2, W.oneloop + 1.0);
+  const lap = E(t, W.prepares - .2, W.done + .3, p => p);   // the ball runs the loop once, prepare -> approve -> done
+  lp2.style.strokeDasharray = `${lap} 1`;
+  loopSVG.style.opacity = lA;
+  const ang = (-90 + 360 * lap) * Math.PI / 180;
+  const ball3 = (t >= W.oneloop) ? { x: t < W.prepares - .2 ? mix(4450, LC[0], E(t, W.oneloop, W.prepares - .2)) : LC[0] + LR * Math.cos(ang), y: t < W.prepares - .2 ? mix(700, LC[1] - LR, E(t, W.oneloop, W.prepares - .2)) : LC[1] + LR * Math.sin(ang) } : null;
+  nodes.forEach((n, i) => { const on = E(t, W[nodeT[i]] - .1, W[nodeT[i]] + .3); S(n, { opacity: lA, background: on > .5 ? '#fff' : 'var(--bg)', boxShadow: `0 0 ${24 * on}px ${6 * on}px rgba(122,162,255,.6)`, transform: `translate(-50%,-50%) scale(${1 + .5 * win(t, W[nodeT[i]] - .1, W[nodeT[i]] + .1, W[nodeT[i]] + .2, W[nodeT[i]] + .6)})` }); });
+  nlabels.forEach((n, i) => S(n, { opacity: lA * (.25 + .75 * E(t, W[nodeT[i]] - .1, W[nodeT[i]] + .4)) }));
+  loopCore.style.opacity = lA * E(t, W.oneloop, W.oneloop + .6);
+  logs.forEach((l, i) => { const s = W.action - .2 + i * .35; S(l, { opacity: win(t, s, s + .3, W.choose - .4, W.choose + .2), transform: `translateY(${16 * (1 - E(t, s, s + .4))}px)` }); });
+
+  // shared ball for R6-R8
+  const b = ball3 || ball2;
+  if (!ball._2) { ball._2 = mk('<div class="ball"></div>'); }
+  S(ball._2, { left: (b ? b.x : 0) + 'px', top: (b ? b.y : 0) + 'px', opacity: (b ? 1 : 0) * E(t, W.act + .6, W.nothing1) * (1 - E(t, W.choose - .4, W.choose + .2)) });
+
+  /* R10: choose the agents you need */
+  tiles.forEach((tl, i) => {
+    const s = W.choose + (i < 8 ? i * .12 : 1.2 + (i - 8) * .1), a = E(t, s - .2, s + .4, out);
+    const on = E(t, W.need - .4 + i * .12, W.need - .1 + i * .12);   // toggles flip on around "you need"
+    S(tl, { left: tl.dataset.x + 'px', top: tl.dataset.y + 'px', opacity: a * (i < 8 ? 1 : E(t, W.addmore - .2, W.addmore + .4)), transform: `translate(-50%,-50%) scale(${mix(.85, 1, a)})` });
+    const g = tl.querySelector('.tg'), k = tl.querySelector('.tg i');
+    S(g, { background: on > .5 ? 'linear-gradient(90deg,#7AA2FF,#B48BFF)' : 'rgba(255,255,255,.12)' }); k.style.transform = `translateX(${on * 20}px)`;
+  });
+  extra.forEach((e, i) => { const s = W.grow - .3 + i * .05; S(e, { left: e.dataset.x + 'px', top: e.dataset.y + 'px', opacity: E(t, s, s + .4) * .55, transform: `translate(-50%,-50%) scale(${mix(.8, 1, E(t, s, s + .4))})` }); });
+
+  /* end card */
+  const eb = win(t, W.adc - .7, W.adc - .2, W.adc + .1, W.adc + .5);
+  S(endBall, { left: '960px', top: '520px', opacity: eb, transform: `translate(-50%,-50%) scale(${1 + 6 * E(t, W.adc - .2, W.adc + .5)})` });
+  const lg = E(t, W.adc, W.adc + 1.1);
+  S(logo, { opacity: lg, filter: `blur(${(1 - lg) * 16}px)`, letterSpacing: mix(.12, -.01, lg) + 'em' });
+  const ds = E(t, W.precision - .1, W.atwork + .6);
+  S(desc, { opacity: ds, letterSpacing: mix(.5, .14, ds) + 'em' });
+  const ct = E(t, W.book - .1, W.book + .6, out);
+  S(cta, { opacity: ct, transform: `translate(-50%,-50%) translateY(${24 * (1 - ct)}px)` });
+  document.getElementById('stage').style.filter = `brightness(${1 - E(t, DUR - .6, DUR)})`;
+}
+window.render = render; window.DUR = DUR; window.W = W;
+document.fonts.ready.then(() => { render(+(new URLSearchParams(location.search).get('t') || 0)); window.READY = true; });
+</script>
+</body>
+</html>
