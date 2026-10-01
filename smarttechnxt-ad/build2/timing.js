@@ -1,13 +1,13 @@
-/* Cue times (seconds). ESTIMATED until the Oliver take arrives; then regenerated from word alignment. */
+/* Cue times (seconds), aligned to Oliver's take (AUDIO-2026-10-01, 55.0 s) with pocketsphinx word timings. */
 window.W = {
-  every: 0.3, crossroads: 2.2, systems: 3.8, speak: 5.0, data: 6.8, again: 8.6,
-  invoices: 10.0, onboarding: 10.9, monthend: 12.0, messages: 13.5, chasing: 14.6,
-  signal: 16.4, lost: 17.6, noise: 18.9, stnxt: 20.8, bridge: 22.6,
-  robots: 23.8, alongside: 25.6, people: 26.8, connect: 28.2, systemsHave: 29.6,
-  read: 31.0, document: 31.8, move: 33.0, detail: 33.9, exactly: 34.8, belongs: 35.9,
-  step: 37.0, recorded: 38.2, decision: 39.3, traceable: 40.6,
-  guesswork: 42.0, precision: 43.9, target: 45.9,
-  signal2: 47.2, clearer: 48.4, picture: 49.5, sharper: 50.6,
-  logo: 52.0, simpler: 53.6, smarter: 54.4, automation: 55.2, visit: 57.0, com: 58.4
+  every: 0.03, crossroads: 1.73, systems: 3.15, speak: 4.19, data: 5.66, again: 8.08,
+  invoices: 9.40, onboarding: 10.27, monthend: 11.15, messages: 12.35, chasing: 13.94,
+  signal: 16.19, lost: 17.37, noise: 17.95, stnxt: 19.38, bridge: 21.54,
+  robots: 22.72, alongside: 25.03, people: 25.85, connect: 27.00, systemsHave: 27.48,
+  read: 29.45, document: 30.27, move: 31.21, detail: 32.19, exactly: 32.87, belongs: 33.94,
+  step: 35.15, recorded: 36.08, decision: 37.14, traceable: 38.40,
+  guesswork: 39.64, precision: 41.21, target: 42.71,
+  signal2: 43.76, clearer: 44.85, picture: 45.92, sharper: 46.94,
+  logo: 48.15, simpler: 49.93, smarter: 50.80, automation: 51.60, visit: 52.69, com: 54.57
 };
-window.DUR = 60.6;
+window.DUR = 57.0;
