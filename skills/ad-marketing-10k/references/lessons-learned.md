@@ -63,3 +63,27 @@ Each item below cost at least one round of rework on a real client job. They are
     the user's point (Reels/TikTok reach) was also right. → Always state the platform and metric a statistic applies to.
 26. **Pricing**: the user's R20k instinct was right for SA market (freelance R5–20k, mid studio R30–80k per 60 s).
     → Anchor at value, discount visibly for a first client, push retainers.
+
+## From the Debi build (Remotion, laptop) — merged from the original playbook
+27. **"Can I not even see half a clip?"** — long silent work made the client anxious. → Storyboard sheet early,
+    a 5–10 s preview **with sound** before the full render, status lines every few minutes.
+28. **Brief times were wrong** ("click Approve at 20.3" was mid-"until"; the word was 20.9). → Sync to the stressed
+    syllable from the loudness contour; tell the client which times moved.
+29. **The same transition whoosh on every cut** was the original complaint. → Music carries transitions; UI sounds
+    are chord notes; ≤ 3 different air moves per film. (The HTML films' `sound_design.py` still over-uses whooshes —
+    re-cue it.)
+30. **Old cut looked cheap**: tiny UI, empty frames between scenes, floating bubbles, flat green wash, same pop on
+    everything, generic font. → See SKILL.md §2 table.
+31. **Data contradiction in the brief** (60 days overdue vs 14 for the same invoice). → Make fictional data identical everywhere.
+32. **A heavy grey "problem" veil looked muddy.** → Keep it ~0.2, cool, and lift the light at the turn.
+33. **Crossfading light tint → deep green went through grey.** → Route via a vivid midpoint.
+34. **Rolling-digit odometer smeared ("59/60") at 30 fps.** → Whole-number counters with a settle nudge.
+35. **Shared-element handover jumped** because the source sat inside a scaled container. → Start the flying copy at
+    the same scale + transform-origin; hide the source on that exact frame.
+36. **`-tune film` with grain made a 228 MB master** (20 MB without). → CRF 18, no tune.
+37. **A single long render shut the laptop down.** → `--gl=angle`, chunked resumable renders, keep-awake.
+38. **Windows paths with spaces / URL-encoded `import.meta.url`** created wrong output paths/junk folders. → Relative
+    forward-slash paths; `fileURLToPath`.
+39. **`npx create-video` in a non-empty folder hangs** on an interactive prompt. → Scaffold by hand.
+40. **No tick glyph in most fonts; emoji icons look cheap.** → Draw icons as SVG.
+41. **Untagged HD files shift greens between players.** → Render/encode with BT.709 tags.

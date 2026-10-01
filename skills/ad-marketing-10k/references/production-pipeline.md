@@ -17,7 +17,8 @@
 4. **Sound**: `python3 scripts/sound_design.py` (reads `timing.js`, `vo.wav`) → `sfx.wav music.wav mix.wav`.
 5. **Render**: `node scripts/engine/render.mjs --fps 60 --blur --audio mix.wav --out ../film-16x9.mp4`
    (≈ 20 min for 60 s at 60 fps on a cloud box; run in background).
-6. **Share encode**: `ffmpeg -i master.mp4 -c:v libx264 -crf 21 -preset slow -c:a aac -b:a 192k -movflags +faststart share.mp4` (< 30 MB).
+6. **Finish**: `scripts/finish.sh film.mp4 out/name 13.8` → graded + grained master (CRF 18) and a two-pass web file under
+   the budget, both at −16 LUFS / TP −1.5, verified. (Quick alternative: CRF 21 re-encode for < 30 MB chat uploads.)
 7. Commit sources + stems + renders; push.
 
 ## Inserting pauses after recording (the "Almost." beat)

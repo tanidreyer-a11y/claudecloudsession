@@ -1,5 +1,13 @@
 # Motion language
 
+## Curves & springs (Debi theme.ts)
+- OUT `bezier(0.16,1,0.3,1)` entrances · IN `bezier(0.7,0,0.84,0)` exits · CAMERA `bezier(0.65,0,0.35,1)` camera/morphs/
+  counters · SWEEP `bezier(0.22,1,0.36,1)` line draws & highlights.
+- Springs: pop {damping 13, stiffness 190, mass .8} (small pop-ups, ~4 % overshoot) · settle {200,120} (cards, no
+  overshoot) · soft {26,80} · snap {18,260,.6}.
+- No linear interpolation; clamp everything; never `scale(0)`; stagger 3–6 frames; exits faster than entrances.
+- Slow camera push-in on long shots (≤ ~4.5 %); elements on screen > 2 s breathe (±4 px sin bob).
+
 ## Camera
 - World = one big absolutely-positioned layer; camera = `translate(960,540) scale(z) rotate(r) translate(-cx,-cy)`.
 - Keyframes `[t, cx, cy, ln(z), rotDeg]`, interpolated with a **monotone cubic spline** (`spline()` in the engine):
