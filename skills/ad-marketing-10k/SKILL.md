@@ -9,7 +9,9 @@ description: >
   animation, or to turn a website / brand bible into a video — and whenever an existing video looks cheap,
   flat, slow, boring or templated, has bad transitions, wrong colours or repetitive sound. Covers intake
   questions, concept, script pacing, brand extraction, voice sync, composition, motion, transitions, sound,
-  rendering, finishing, delivery and pricing, plus 40+ documented mistakes so they never repeat.
+  rendering, finishing, delivery and pricing, plus 40+ documented mistakes so they never repeat. Always open
+  with the creative-brief questionnaire (business, vibe, look, pace, story, voice, music, platform, frame,
+  deliverables) and build from the designer's answers.
 ---
 
 # AD Marketing 10k — premium SaaS marketing films in code
@@ -22,33 +24,52 @@ a client called "phenomenal". Rules are ranked by evidence: what got approved be
 
 ---
 
-## 0. Working with the client
+## 0. First response — the creative brief (always, before any work)
 
-- Assume they are not a motion designer: plain language, short sentences, define any jargon in one line.
-- **Silence makes clients anxious.** Status line every few minutes, honest time estimates, and **something watchable
-  early**: storyboard sheet → draft (even before the voice exists) → preview with sound → final.
-- Ask the intake (§1) in **one** message with defaults. If they say "just start", take the defaults and list them.
+Your **first reply** to any video request is the brief below, in one message. Do not write code, scripts or plans
+before the designer answers. The designer leads; you recommend. Under every question give your recommended default
+in brackets so they can answer "default" or skip. If they paste a full brief, only ask what's missing.
+
+**A. The business**
+1. Company, website, and what the product actually does in one sentence.
+2. Brand assets: brand bible PDF, vector logo, palette, fonts? (Never redraw a logo.)
+3. Who is the audience (role, industry, company size) and what is the ONE pain this film should hit?
+4. What should the viewer do after watching (CTA / offer)? Which claims, numbers, integrations, certifications are true?
+
+**B. The feel**
+5. Vibe: calm & premium · bold & energetic · warm & human · technical & precise · playful? [calm, premium, precise]
+6. Look: dark (ElevenLabs Agents / navy glass) · light (Apple / Stripe / Linear) · let the brand decide? [brand decides]
+7. Pace: slow cinematic (beat every 2–3 s) · upbeat (beat every 1–1.5 s, music-driven) · mixed? [cinematic]
+8. Story angle: problem→solution · one real customer case · logo-meaning story · product demo walkthrough? [recommend one after research]
+9. Reference videos or brands they love, and what exactly they like in each (motion, transitions, type, sound)?
+10. Anything to avoid (styles, words, colours, competitor look-alikes)?
+
+**C. The voice & sound**
+11. Voiceover? Who records it — ElevenLabs (which voice/settings) or a human? Script written by us or supplied?
+    [ElevenLabs deep calm narrator; we write it]
+12. Voice first or video first? [Voice first: we write the script, they record, the film is cut to the real words.
+    Optionally a draft film on estimated timing while they record.]
+13. Music mood: ambient pad · cinematic swell · modern electronic pulse · none? [ambient pad + soft pulse]
+
+**D. The output**
+14. Where it will run: website hero · LinkedIn · Instagram/TikTok Reels · YouTube ad · sales deck? [website + LinkedIn]
+15. Frame: 16:9 · 9:16 · 1:1 · 4:5 — one or several? Length: 15 · 30 · 45–60 · 90 s? [16:9, 45–60 s; 9:16 cutdown later]
+16. Build environment: their laptop (Remotion) or a cloud session (HTML engine)? [detect automatically]
+17. Deliverables: one final mix (voice+SFX+music) · plus stems · plus cutdowns? File-size limit for sharing? [final mix + web copy < 30 MB]
+18. Deadline and budget range (for scoping)?
+
+After the answers: restate the brief in 5 lines ("Reading this as …"), list the defaults you assumed, and move on.
+Only if the designer explicitly says "just start" may you skip the brief — then state every default you picked.
+
+## 1. Working with the client / designer
+
+- Plain language, short sentences, define jargon in one line. They are directing; you are the crew.
+- **Silence makes people anxious.** Status line every few minutes, honest time estimates, and something watchable
+  early: storyboard sheet → draft (even before the voice exists) → preview with sound → final.
 - Plans change mid-project (new brand, new voice, back to an older cut). Switch immediately; keep every version.
-- Default deliverable: **one final file with voice + SFX + music**, plus a web copy under the upload limit.
-- Respect the client's wording: when pace is off, reformat before cutting; cut only with permission.
-- Challenge weak ideas with reasons, mark claims [Certain]/[Likely]/[Guessing], give options, let the client choose.
-
----
-
-## 1. Intake — ask before starting
-
-1. **Brand & assets**: company, website, **brand bible PDF / vector logo / palette / fonts**. (Never redraw a logo.)
-2. **Goal, platform, length, format**: website hero / LinkedIn / Reels / sales deck; 16:9 / 9:16; 30–60 s.
-   Default: 16:9, 45–60 s, later a 15–20 s 9:16 cutdown.
-3. **Audience & the one pain**: who buys and what hurts — or choose between two niches you propose.
-4. **Voice**: provider / voice / settings, or "script first". Default in §4.
-5. **References**: 2–4 clips (screen recordings fine, phone sideways, controls hidden) + what they like in each.
-6. **CTA & true claims**: the real offer; which numbers, integrations and certifications are true.
-7. **Old version?** If yes, diagnose it (§2).
-
-Then check the environment: is the website reachable (`curl`)? Laptop (→ Remotion) or cloud session (→ HTML engine)?
-
----
+- Respect their wording: when pace is off, reformat before cutting; cut only with permission.
+- Challenge weak ideas with reasons, mark claims [Certain]/[Likely]/[Guessing], give options, let them choose.
+- Check the environment early: is the website reachable (`curl`)? If blocked, use web search + ask for the brand bible.
 
 ## 2. Diagnose an existing video
 
@@ -207,7 +228,7 @@ Details: `references/finishing-delivery.md`.
 
 ## 12. Workflow
 
-1. Intake (§1) → lessons-learned → probe assets, check network.
+1. Creative brief (§0) → wait for answers → lessons-learned → probe assets, check network.
 2. Brand extraction (`scripts/extract_brand_pdf.py`) · diagnose old cut · analyse references.
 3. Direction line → 2–3 concepts → client picks.
 4. Script + voice settings → client records. Meanwhile: storyboard sheet + draft on estimated timing → send.
