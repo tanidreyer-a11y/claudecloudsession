@@ -8,10 +8,8 @@ description: >
   brand film, launch film, explainer, promo, ad, reel, demo video, an ElevenLabs voiceover script, a logo
   animation, or to turn a website / brand bible into a video — and whenever an existing video looks cheap,
   flat, slow, boring or templated, has bad transitions, wrong colours or repetitive sound. Covers intake
-  questions, concept, script pacing, brand extraction, voice sync, composition, motion, transitions, sound,
-  rendering, finishing, delivery and pricing, plus 40+ documented mistakes so they never repeat. Always open
-  with the creative-brief questionnaire (business, vibe, look, pace, story, voice, music, platform, frame,
-  deliverables) and build from the designer's answers.
+  questions, concept, script pacing, brand extraction, voice sync, motion, sound, rendering, finishing and
+  pricing. Always opens with a creative-brief questionnaire (vibe, look, pace, voice, music, frame, platform).
 ---
 
 # AD Marketing 10k — premium SaaS marketing films in code
