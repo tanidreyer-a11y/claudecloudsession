@@ -1,0 +1,164 @@
+{
+ "client": "Mokoena Attorneys (law firm)",
+ "brand": "mokoena-attorneys",
+ "axes": {
+  "energy": 2,
+  "warmth": 2,
+  "density": 2,
+  "realism": 3,
+  "polish": 5
+ },
+ "recipes": [
+  {
+   "recipe": {
+    "structure": "metric-repair-loop",
+    "pacing": "cinematic-2-3",
+    "camera": "lateral-hairline",
+    "transitions": [
+     "line-led",
+     "circle-match",
+     "fog-wash"
+    ],
+    "typography": "tiny-precise",
+    "colour": "paper-sage",
+    "ui_treatment": "hairline-cards",
+    "motion_feel": "soft-no-overshoot",
+    "sound": "light-pulse-clicks",
+    "hook": "broken-metric"
+   },
+   "lineage": [
+    "Paper Lab",
+    "Midnight Signal",
+    "Lavender Desk"
+   ],
+   "nearest_card": "Midnight Signal",
+   "needs": [],
+   "names": {
+    "structure": "Broken metric \u2192 diagnose \u2192 control \u2192 repaired metric (loops to start)",
+    "pacing": "Cinematic \u2014 new beat every 2\u20133 s, 0\u20132 hard cuts",
+    "camera": "Lateral drift following a drawn hairline",
+    "transitions": [
+     "Line draws and branches; camera follows the tip",
+     "Circle match iris (avatar circle becomes a chart ring)",
+     "Background wash changes colour/family between chapters"
+    ],
+    "typography": "Tiny precise labels \u2014 the diagrams are the headline",
+    "colour": "Paper white + cool grey + sage fog + iridescent orbs",
+    "ui_treatment": "White hairline cards, pill toggles, thin vector charts",
+    "motion_feel": "Soft, high damping, long ease-in-out \u2014 nothing snaps",
+    "sound": "Light pulse ~120\u2013130 bpm, clicky UI ticks, no big hits",
+    "hook": "One metric visibly breaking"
+   },
+   "fonts": [
+    "Inter (OFL)",
+    "IBM Plex Sans (OFL)"
+   ],
+   "base": "Paper Lab",
+   "base_id": "paper-lab",
+   "donor": "Midnight Signal",
+   "donor_id": "midnight-signal",
+   "wildcard_slot": "hook"
+  },
+  {
+   "recipe": {
+    "structure": "pain-turn-proof",
+    "pacing": "measured-1.5-2",
+    "camera": "vertical-travel",
+    "transitions": [
+     "object-becomes-object",
+     "lens-reveal",
+     "giant-word-pass"
+    ],
+    "typography": "geometric-light",
+    "colour": "midnight",
+    "ui_treatment": "floating-chat",
+    "motion_feel": "smooth-parallax",
+    "sound": "ambient-electronic",
+    "hook": "particle-rain"
+   },
+   "lineage": [
+    "Midnight Signal",
+    "Deep Glass",
+    "Cobalt Campaign",
+    "Desert Glass"
+   ],
+   "nearest_card": "Midnight Signal",
+   "needs": [],
+   "names": {
+    "structure": "Pain \u2192 Turn \u2192 Proof \u2192 Trust \u2192 CTA",
+    "pacing": "Measured \u2014 new beat every 1.5\u20132 s, in-camera scene changes",
+    "camera": "Vertical travel \u2014 falls, drops and rises following one object",
+    "transitions": [
+     "Object becomes object (chips \u2192 ball, line \u2192 logo bar)",
+     "Glass lens / rack-focus reveal",
+     "Camera passes through a giant word"
+    ],
+    "typography": "Light geometric grotesk, text drifts through focus",
+    "colour": "Near-black + cool steel + one soft glow per role",
+    "ui_treatment": "Stylised chat bubbles and glass tiles in space, no device frames",
+    "motion_feel": "Smooth ease-out with layered parallax",
+    "sound": "Ambient electronic bed ~100\u2013110 bpm, soft ticks, airy swells",
+    "hook": "Abstract particles that become the stage"
+   },
+   "fonts": [
+    "Inter (OFL)",
+    "Manrope (OFL)"
+   ],
+   "base": "Midnight Signal",
+   "base_id": "midnight-signal",
+   "donor": "Deep Glass",
+   "donor_id": "deep-glass",
+   "wildcard_slot": "pacing"
+  },
+  {
+   "recipe": {
+    "structure": "logo-anatomy",
+    "pacing": "one-take",
+    "camera": "orbit-carousel",
+    "transitions": [
+     "giant-word-pass",
+     "card-flip",
+     "zoom-through"
+    ],
+    "typography": "giant-glass-word",
+    "colour": "navy-glass",
+    "ui_treatment": "frosted-glass",
+    "motion_feel": "crisp-ui",
+    "sound": "ambient-electronic",
+    "hook": "giant-promise-word"
+   },
+   "lineage": [
+    "Deep Glass",
+    "Midnight Signal",
+    "Cobalt Campaign"
+   ],
+   "nearest_card": "Midnight Signal",
+   "needs": [],
+   "names": {
+    "structure": "Logo anatomy \u2014 the logo's parts are the cast, assembled at the end",
+    "pacing": "One take \u2014 zero hard cuts, one continuous camera journey",
+    "camera": "Curved 3D carousel orbit",
+    "transitions": [
+     "Camera passes through a giant word",
+     "Card flip reveal",
+     "Zoom-through iris (hidden cut)"
+    ],
+    "typography": "One giant extra-bold word behind glass",
+    "colour": "Deep navy + royal blue glass + ice edges",
+    "ui_treatment": "Frosted glass panels, inner highlight, 1 px light edge",
+    "motion_feel": "Crisp 200\u2013300 ms ease-out, human typing cadence",
+    "sound": "Ambient electronic bed ~100\u2013110 bpm, soft ticks, airy swells",
+    "hook": "One giant promise word"
+   },
+   "fonts": [
+    "Plus Jakarta Sans (OFL)",
+    "Inter Display (OFL)"
+   ],
+   "base": "Deep Glass",
+   "base_id": "deep-glass",
+   "donor": "Midnight Signal",
+   "donor_id": "midnight-signal",
+   "wildcard_slot": "motion_feel"
+  }
+ ]
+}

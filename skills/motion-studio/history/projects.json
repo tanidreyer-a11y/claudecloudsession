@@ -1,0 +1,14 @@
+[
+ {"id": 1, "date": "2026-09-20", "client": "ADC Innovations", "brand": "adc-innovations", "base": "midnight-signal",
+  "recipe": {"structure": "pain-turn-proof", "pacing": "cinematic-2-3", "camera": "spline-zoom-through",
+   "transitions": ["zoom-through", "object-becomes-object", "freeze-hook"], "typography": "geometric-light",
+   "colour": "paper-sage", "ui_treatment": "geometry-only", "motion_feel": "soft-no-overshoot",
+   "sound": "ambient-electronic", "hook": "concrete-pain"},
+  "lineage": ["Midnight Signal", "Paper Lab"], "note": "retro-fitted: Oliver x Starlight film"},
+ {"id": 2, "date": "2026-09-27", "client": "SmartTechNXT", "brand": "smarttechnxt", "base": "deep-glass",
+  "recipe": {"structure": "pain-turn-proof", "pacing": "upbeat-1-1.5", "camera": "spline-zoom-through",
+   "transitions": ["zoom-through", "object-becomes-object", "line-led"], "typography": "brand-font",
+   "colour": "brand-tokens", "ui_treatment": "geometry-only", "motion_feel": "smooth-parallax",
+   "sound": "ambient-electronic", "hook": "concrete-pain"},
+  "lineage": ["Midnight Signal", "Deep Glass"], "note": "retro-fitted: Crossroads film"}
+]

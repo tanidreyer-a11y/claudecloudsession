@@ -1,0 +1,173 @@
+{
+ "client": "Kestrel Estates (luxury property agent)",
+ "brand": "kestrel-estates",
+ "axes": {
+  "energy": 2,
+  "warmth": 4,
+  "density": 2,
+  "realism": 5,
+  "polish": 5
+ },
+ "recipes": [
+  {
+   "recipe": {
+    "structure": "verb-spine",
+    "pacing": "measured-1.5-2",
+    "camera": "locked-type",
+    "transitions": [
+     "fog-wash",
+     "tilt-swap",
+     "photo-cross-dissolve"
+    ],
+    "typography": "serif-greeting",
+    "colour": "pastel-wash",
+    "ui_treatment": "no-ui",
+    "motion_feel": "soft-no-overshoot",
+    "sound": "light-pulse-clicks",
+    "hook": "place-reveal"
+   },
+   "lineage": [
+    "Lavender Desk",
+    "Desert Glass",
+    "Cobalt Campaign"
+   ],
+   "nearest_card": "Desert Glass",
+   "needs": [
+    "imagery"
+   ],
+   "names": {
+    "structure": "Verb spine (Analyze \u00b7 Research \u00b7 Review \u00b7 Deliver) \u2014 one chapter per verb",
+    "pacing": "Measured \u2014 new beat every 1.5\u20132 s, in-camera scene changes",
+    "camera": "Locked frame \u2014 motion lives in type and elements",
+    "transitions": [
+     "Background wash changes colour/family between chapters",
+     "Tilt away / tilt in of planes",
+     "Light-matched photographic cross-dissolve"
+    ],
+    "typography": "Serif display (gradient) + clean grotesk UI",
+    "colour": "Lavender / mint / cream washes per chapter + one violet accent",
+    "ui_treatment": "No UI \u2014 product, place and people only (non-software businesses)",
+    "motion_feel": "Soft, high damping, long ease-in-out \u2014 nothing snaps",
+    "sound": "Light pulse ~120\u2013130 bpm, clicky UI ticks, no big hits",
+    "hook": "The place through a lens"
+   },
+   "fonts": [
+    "Fraunces (OFL)",
+    "Newsreader (OFL)",
+    "Inter (OFL)"
+   ],
+   "base": "Lavender Desk",
+   "base_id": "lavender-desk",
+   "donor": "Desert Glass",
+   "donor_id": "desert-glass",
+   "wildcard_slot": "motion_feel"
+  },
+  {
+   "recipe": {
+    "structure": "day-in-the-life",
+    "pacing": "cinematic-2-3",
+    "camera": "tilted-planes",
+    "transitions": [
+     "lens-reveal",
+     "photo-cross-dissolve",
+     "tilt-swap"
+    ],
+    "typography": "editorial-serif",
+    "colour": "golden-dusk",
+    "ui_treatment": "frosted-glass",
+    "motion_feel": "soft-no-overshoot",
+    "sound": "warm-cinematic",
+    "hook": "place-reveal"
+   },
+   "lineage": [
+    "Desert Glass",
+    "Paper Lab",
+    "Midnight Signal"
+   ],
+   "nearest_card": "Desert Glass",
+   "needs": [
+    "imagery"
+   ],
+   "names": {
+    "structure": "A day in the life \u2014 morning problem \u2192 midday turn \u2192 evening calm",
+    "pacing": "Cinematic \u2014 new beat every 2\u20133 s, 0\u20132 hard cuts",
+    "camera": "Tilted 3D planes (15\u201325\u00b0 Y), push to prompt, pull back to grids",
+    "transitions": [
+     "Glass lens / rack-focus reveal",
+     "Light-matched photographic cross-dissolve",
+     "Tilt away / tilt in of planes"
+    ],
+    "typography": "Editorial serif headlines, wide tracking caps labels",
+    "colour": "Golden hour \u2192 dusk: rose, sand, coral, rust, dusk blue",
+    "ui_treatment": "Frosted glass panels, inner highlight, 1 px light edge",
+    "motion_feel": "Soft, high damping, long ease-in-out \u2014 nothing snaps",
+    "sound": "Warm cinematic bed, light percussion, very few SFX",
+    "hook": "The place through a lens"
+   },
+   "fonts": [
+    "Playfair Display (OFL)",
+    "Cormorant (OFL)",
+    "Bodoni Moda (OFL)"
+   ],
+   "base": "Desert Glass",
+   "base_id": "desert-glass",
+   "donor": "Paper Lab",
+   "donor_id": "paper-lab",
+   "wildcard_slot": "ui_treatment"
+  },
+  {
+   "recipe": {
+    "structure": "craft-reveal",
+    "pacing": "one-take",
+    "camera": "vertical-travel",
+    "transitions": [
+     "line-led",
+     "ui-to-brand",
+     "card-flip"
+    ],
+    "typography": "editorial-serif",
+    "colour": "cream-terracotta",
+    "ui_treatment": "flow-nodes",
+    "motion_feel": "smooth-parallax",
+    "sound": "warm-cinematic",
+    "hook": "before-after"
+   },
+   "lineage": [
+    "Cream Cascade",
+    "Desert Glass",
+    "Midnight Signal",
+    "Cobalt Campaign"
+   ],
+   "nearest_card": "Desert Glass",
+   "needs": [
+    "imagery"
+   ],
+   "names": {
+    "structure": "Craft reveal \u2014 raw material \u2192 process \u2192 finished product \u2192 people enjoying it",
+    "pacing": "One take \u2014 zero hard cuts, one continuous camera journey",
+    "camera": "Vertical travel \u2014 falls, drops and rises following one object",
+    "transitions": [
+     "Line draws and branches; camera follows the tip",
+     "UI strips away into the logo",
+     "Card flip reveal"
+    ],
+    "typography": "Editorial serif headlines, wide tracking caps labels",
+    "colour": "Cream + espresso + peach + terracotta",
+    "ui_treatment": "Nodes and gradient tiles joined by elbow lines",
+    "motion_feel": "Smooth ease-out with layered parallax",
+    "sound": "Warm cinematic bed, light percussion, very few SFX",
+    "hook": "Before/after split or slider"
+   },
+   "fonts": [
+    "Playfair Display (OFL)",
+    "Cormorant (OFL)",
+    "Bodoni Moda (OFL)"
+   ],
+   "base": "Cream Cascade",
+   "base_id": "cream-cascade",
+   "donor": "Desert Glass",
+   "donor_id": "desert-glass",
+   "wildcard_slot": "motion_feel"
+  }
+ ]
+}

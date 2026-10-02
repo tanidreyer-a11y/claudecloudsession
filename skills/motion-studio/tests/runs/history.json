@@ -1,0 +1,203 @@
+[
+ {
+  "id": 1,
+  "date": "2026-09-20",
+  "client": "ADC Innovations",
+  "brand": "adc-innovations",
+  "base": "midnight-signal",
+  "recipe": {
+   "structure": "pain-turn-proof",
+   "pacing": "cinematic-2-3",
+   "camera": "spline-zoom-through",
+   "transitions": [
+    "zoom-through",
+    "object-becomes-object",
+    "freeze-hook"
+   ],
+   "typography": "geometric-light",
+   "colour": "paper-sage",
+   "ui_treatment": "geometry-only",
+   "motion_feel": "soft-no-overshoot",
+   "sound": "ambient-electronic",
+   "hook": "concrete-pain"
+  },
+  "lineage": [
+   "Midnight Signal",
+   "Paper Lab"
+  ],
+  "note": "retro-fitted: Oliver x Starlight film"
+ },
+ {
+  "id": 2,
+  "date": "2026-09-27",
+  "client": "SmartTechNXT",
+  "brand": "smarttechnxt",
+  "base": "deep-glass",
+  "recipe": {
+   "structure": "pain-turn-proof",
+   "pacing": "upbeat-1-1.5",
+   "camera": "spline-zoom-through",
+   "transitions": [
+    "zoom-through",
+    "object-becomes-object",
+    "line-led"
+   ],
+   "typography": "brand-font",
+   "colour": "brand-tokens",
+   "ui_treatment": "geometry-only",
+   "motion_feel": "smooth-parallax",
+   "sound": "ambient-electronic",
+   "hook": "concrete-pain"
+  },
+  "lineage": [
+   "Midnight Signal",
+   "Deep Glass"
+  ],
+  "note": "retro-fitted: Crossroads film"
+ },
+ {
+  "id": 3,
+  "date": "2026-10-02",
+  "client": "Crumb & Co (bakery, Johannesburg)",
+  "brand": "crumb-and-co",
+  "base": "desert-glass",
+  "donor": "cream-cascade",
+  "recipe": {
+   "structure": "day-in-the-life",
+   "pacing": "measured-1.5-2",
+   "camera": "parallax-landscape",
+   "transitions": [
+    "tilt-swap",
+    "photo-cross-dissolve",
+    "lens-reveal"
+   ],
+   "typography": "editorial-serif",
+   "colour": "golden-dusk",
+   "ui_treatment": "frosted-glass",
+   "motion_feel": "settle-stack",
+   "sound": "warm-cinematic",
+   "hook": "place-reveal"
+  },
+  "lineage": [
+   "Desert Glass",
+   "Cream Cascade",
+   "Cobalt Campaign"
+  ]
+ },
+ {
+  "id": 4,
+  "date": "2026-10-02",
+  "client": "Mokoena Attorneys (law firm)",
+  "brand": "mokoena-attorneys",
+  "base": "paper-lab",
+  "donor": "midnight-signal",
+  "recipe": {
+   "structure": "metric-repair-loop",
+   "pacing": "cinematic-2-3",
+   "camera": "lateral-hairline",
+   "transitions": [
+    "line-led",
+    "circle-match",
+    "fog-wash"
+   ],
+   "typography": "tiny-precise",
+   "colour": "paper-sage",
+   "ui_treatment": "hairline-cards",
+   "motion_feel": "soft-no-overshoot",
+   "sound": "light-pulse-clicks",
+   "hook": "broken-metric"
+  },
+  "lineage": [
+   "Paper Lab",
+   "Midnight Signal",
+   "Lavender Desk"
+  ]
+ },
+ {
+  "id": 5,
+  "date": "2026-10-02",
+  "client": "Tally AI (AI SaaS startup)",
+  "brand": "tally-ai",
+  "base": "sunset-prompt",
+  "donor": "kinetic-pop",
+  "recipe": {
+   "structure": "launch-teaser",
+   "pacing": "short-punch",
+   "camera": "locked-type",
+   "transitions": [
+    "beat-cut",
+    "word-roll",
+    "send-is-the-cut"
+   ],
+   "typography": "word-swap-colour",
+   "colour": "mono-flip-gradient",
+   "ui_treatment": "prompt-bar-results",
+   "motion_feel": "crisp-ui",
+   "sound": "sparse-minimal",
+   "hook": "typed-promise"
+  },
+  "lineage": [
+   "Sunset Prompt",
+   "Kinetic Pop",
+   "Lavender Desk"
+  ]
+ },
+ {
+  "id": 6,
+  "date": "2026-10-02",
+  "client": "Iron Hour (gym)",
+  "brand": "iron-hour",
+  "base": "cream-cascade",
+  "donor": "cobalt-campaign",
+  "recipe": {
+   "structure": "craft-reveal",
+   "pacing": "short-punch",
+   "camera": "vertical-travel",
+   "transitions": [
+    "duplicate-cascade",
+    "line-led",
+    "freeze-hook"
+   ],
+   "typography": "editorial-serif",
+   "colour": "cream-terracotta",
+   "ui_treatment": "photo-cards",
+   "motion_feel": "settle-stack",
+   "sound": "warm-cinematic",
+   "hook": "sensory-macro"
+  },
+  "lineage": [
+   "Cream Cascade",
+   "Cobalt Campaign",
+   "Midnight Signal"
+  ]
+ },
+ {
+  "id": 7,
+  "date": "2026-10-02",
+  "client": "Kestrel Estates (luxury property agent)",
+  "brand": "kestrel-estates",
+  "base": "lavender-desk",
+  "donor": "desert-glass",
+  "recipe": {
+   "structure": "verb-spine",
+   "pacing": "measured-1.5-2",
+   "camera": "locked-type",
+   "transitions": [
+    "fog-wash",
+    "tilt-swap",
+    "photo-cross-dissolve"
+   ],
+   "typography": "serif-greeting",
+   "colour": "pastel-wash",
+   "ui_treatment": "no-ui",
+   "motion_feel": "soft-no-overshoot",
+   "sound": "light-pulse-clicks",
+   "hook": "place-reveal"
+  },
+  "lineage": [
+   "Lavender Desk",
+   "Desert Glass",
+   "Cobalt Campaign"
+  ]
+ }
+]
