@@ -1,0 +1,27 @@
+{
+  "name": "saas-film",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Premium SaaS marketing film built with Remotion",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "audio": "node scripts/cues.mjs && python audio/build_audio.py",
+    "render": "node scripts/render.mjs",
+    "finish": "node scripts/finish.mjs",
+    "build": "npm run audio && npm run render && npm run finish",
+    "still": "node scripts/stills.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.529",
+    "@remotion/google-fonts": "4.0.529",
+    "@remotion/media": "4.0.529",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remotion": "4.0.529"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.2",
+    "typescript": "5.9.3"
+  }
+}
