@@ -1,0 +1,5 @@
+node_modules
+public/seq
+out/raw60.mp4
+out/*.log
+out/st_*.jpg
