@@ -70,12 +70,12 @@ const TemplateSite: React.FC<{ scroll?: number; pulse?: number }> = ({ scroll = 
 );
 
 /** Placeholder for a client's generated hero image until it arrives (imagery.md). Swap `src` for the real file. */
-const HeroImage: React.FC<{ file: string; s: number; t0: number; tint: string }> = ({ file, s, t0, tint }) => {
+const HeroImage: React.FC<{ file: string; s: number; t0: number; tint: string; side?: "left" | "right" }> = ({ file, s, t0, side = "left" }) => {
   const k = prog(s, t0, t0 + 3.5, EASE.inOut);
   return (
     <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
-      <div style={{ position: "absolute", inset: -40, scale: String(1.04 + 0.05 * k), background: `radial-gradient(60% 70% at 70% 45%, ${tint}55, transparent 70%), radial-gradient(40% 50% at 85% 70%, ${SIG}33, transparent 70%), linear-gradient(120deg, #0a070c, #140d18 60%, #0a070c)` }} />
-      <div style={{ position: "absolute", right: 22, bottom: 18, fontFamily: MONO, fontSize: 13, letterSpacing: "0.12em", color: "rgba(238,233,241,.35)" }}>IMAGE · {file}</div>
+      <Img src={staticFile(`img/${file}`)} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", scale: String(1.03 + 0.06 * k), translate: `${-1.2 * k}% 0` }} />
+      <div style={{ position: "absolute", inset: 0, background: `linear-gradient(${side === "left" ? 90 : 270}deg, rgba(2,1,2,.88) 0%, rgba(2,1,2,.55) 38%, transparent 70%), linear-gradient(0deg, rgba(2,1,2,.7), transparent 45%)` }} />
     </div>
   );
 };
@@ -168,7 +168,8 @@ export const Film: React.FC = () => {
   const togs = [16.2, 16.8, 17.4, 18.0].map((c) => prog(s, c, c + 0.25, EASE.out));
   const typedUrl = "yourbusiness.co.za".slice(0, Math.max(0, Math.floor((s - 17.0) * 16)));
   // ===== S5: three heroes on tilted planes =====
-  const h1 = win(s, 19.1, 19.6, 22.7, 23.3), h2 = win(s, 22.7, 23.3, 26.3, 26.9), h3 = win(s, 26.3, 26.9, 31.6, 32.1);
+  const h1 = win(s, 19.1, 19.6, 22.7, 23.3), h2 = win(s, 22.7, 23.3, 26.3, 26.9), h3 = win(s, 26.3, 26.9, 30.9, 31.4);
+  const wall = win(s, 30.9, 31.5, 32.7, 33.3);
   const tiltIn = (a: number) => lerp(-24, -9, prog(s, a, a + 1.4, EASE.out));
   const lapK = prog(s, 27.1, 29.2, EASE.inOut) * 0.42 - 0.14 * prog(s, 29.3, 29.9, EASE.inOut) + 0.22 * prog(s, 30.0, 31.2, EASE.inOut); // stays before the burst
   // ===== giant word between S5 and S6 =====
@@ -254,8 +255,8 @@ export const Film: React.FC = () => {
 
         {/* ---------- S5: three heroes, tilted planes ---------- */}
         {[
-          { o: h1, t0: 19.4, brand: "LINDEN HOUSE", nav: ["Rooms", "Stay", "Book"], head: "Stay somewhere that remembers you.", cta: "Book your stay", file: "hero_guesthouse.jpg", tint: "#7A3B2E", press: win(s, 21.58, 21.62, 21.7, 22.0), a: 19.2 },
-          { o: h2, t0: 23.0, brand: "HARROW & VALE", nav: ["Services", "Team", "Contact"], head: "Numbers you can stand behind.", cta: "Book a consultation", file: "hero_practice.jpg", tint: "#5A4630", press: win(s, 25.28, 25.32, 25.4, 25.7), a: 22.8 },
+          { o: h1, t0: 19.4, brand: "LINDEN HOUSE", nav: ["Rooms", "Stay", "Book"], head: "Stay somewhere that remembers you.", cta: "Book your stay", file: "hero_guesthouse.jpg", tint: "#7A3B2E", side: "left" as const, press: win(s, 21.58, 21.62, 21.7, 22.0), a: 19.2 },
+          { o: h2, t0: 23.0, brand: "HARROW & VALE", nav: ["Services", "Team", "Contact"], head: "Numbers you can stand behind.", cta: "Book a consultation", file: "hero_practice.jpg", tint: "#5A4630", side: "left" as const, press: win(s, 25.28, 25.32, 25.4, 25.7), a: 22.8 },
         ].map((h, i) => h.o > 0.01 && (
           <div key={i} style={{ position: "absolute", left: 960 - 680, top: 540 - 400, width: 1360, height: 800, opacity: h.o, transform: `perspective(2400px) rotateY(${tiltIn(h.a) * (i ? -1 : 1)}deg) rotateX(4deg) translateX(${(1 - h.o) * (i ? 120 : -120)}px)` }}>
             <Browser w={1360} h={800} url={i ? "harrowvale.co.za" : "lindenhouse.co.za"} glow={0.6}>
@@ -279,11 +280,39 @@ export const Film: React.FC = () => {
           </div>
         )}
 
+
+        {/* ---------- the wall: five builds, tilted (NIVO), the giant word flies through ---------- */}
+        {wall > 0.01 && (
+          <div style={{ position: "absolute", left: 0, top: 0, width: 1920, height: 1080, opacity: wall, transform: `perspective(2400px) rotateY(-16deg) rotateX(8deg) scale(${lerp(1.05, 0.95, prog(s, 30.9, 33.2, EASE.inOut))})` }}>
+            {[
+              { f: "hero_guesthouse.jpg", b: "LINDEN HOUSE", h: "Stay somewhere that remembers you.", x: 110, y: 190 },
+              { f: "hero_practice.jpg", b: "HARROW & VALE", h: "Numbers you can stand behind.", x: 690, y: 150 },
+              { f: "hero_venue.jpg", b: "THE LONG TABLE", h: "Evenings people talk about.", x: 1270, y: 110 },
+              { f: "hero_product.jpg", b: "NOCTURNE", h: "Sound, taken apart.", x: 400, y: 590 },
+              { f: "hero_restaurant.jpg", b: "EMBER", h: "Book the table by the fire.", x: 980, y: 550 },
+            ].map((c, i) => {
+              const k = prog(s, 31.0 + i * 0.09, 31.5 + i * 0.09, EASE.out);
+              return (
+                <div key={c.f} style={{ position: "absolute", left: c.x, top: c.y + (1 - k) * 60, opacity: k }}>
+                  <Browser w={540} h={340} url={c.b.toLowerCase().replace(/[^a-z]/g, "") + ".co.za"} glow={0.4}>
+                    <Img src={staticFile(`img/${c.f}`)} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+                    <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(2,1,2,.85), transparent 70%)" }} />
+                    <div style={{ position: "absolute", left: 22, top: 16, fontFamily: SANS, fontWeight: 700, fontSize: 13, letterSpacing: "0.2em", color: P.ink }}>{c.b}</div>
+                    <div style={{ position: "absolute", left: 22, bottom: 26, width: 300, fontFamily: SANS, fontWeight: 600, fontSize: 30, lineHeight: 1.05, letterSpacing: "-0.02em", color: P.ink }}>{c.h}</div>
+                  </Browser>
+                </div>
+              );
+            })}
+          </div>
+        )}
         {/* giant word the camera flies through */}
         {gw > 0 && gw < 1 && (
           <div style={{ position: "absolute", left: 960, top: 540, translate: "-50% -50%", scale: String(0.7 + 7 * gw * gw), opacity: Math.sin(Math.PI * gw), fontFamily: SANS, fontWeight: 200, fontSize: 210, letterSpacing: "-0.04em", whiteSpace: "nowrap", background: `linear-gradient(90deg, #fff, ${SIG} 60%, ${DEEP})`, WebkitBackgroundClip: "text", color: "transparent", filter: `drop-shadow(0 0 30px ${SIG}66) blur(${gw * 3}px)` }}>Every frame.</div>
         )}
 
+        {win(s, 19.3, 19.8, 32.8, 33.3) > 0.01 && (
+          <div style={{ position: "absolute", left: 60, bottom: 50, opacity: 0.7 * win(s, 19.3, 19.8, 32.8, 33.3), fontFamily: MONO, fontSize: 16, letterSpacing: "0.18em", color: P.muted }}>CONCEPT DESIGNS</div>
+        )}
         {/* ---------- S6/S7: OBSIDIAN's own site → phone ---------- */}
         {s6 > 0.01 && (() => {
           const w = lerp(1480, 470, toPhone), h = lerp(860, 900, toPhone), r = lerp(18, 60, toPhone);
