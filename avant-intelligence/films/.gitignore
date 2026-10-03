@@ -1,0 +1,4 @@
+node_modules
+out/*60.mp4
+out/render_*.log
+out/st_*.jpg

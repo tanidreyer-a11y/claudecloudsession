@@ -1,14 +1,118 @@
 [
- {"id": 1, "date": "2026-09-20", "client": "ADC Innovations", "brand": "adc-innovations", "base": "midnight-signal",
-  "recipe": {"structure": "pain-turn-proof", "pacing": "cinematic-2-3", "camera": "spline-zoom-through",
-   "transitions": ["zoom-through", "object-becomes-object", "freeze-hook"], "typography": "geometric-light",
-   "colour": "paper-sage", "ui_treatment": "geometry-only", "motion_feel": "soft-no-overshoot",
-   "sound": "ambient-electronic", "hook": "concrete-pain"},
-  "lineage": ["Midnight Signal", "Paper Lab"], "note": "retro-fitted: Oliver x Starlight film"},
- {"id": 2, "date": "2026-09-27", "client": "SmartTechNXT", "brand": "smarttechnxt", "base": "deep-glass",
-  "recipe": {"structure": "pain-turn-proof", "pacing": "upbeat-1-1.5", "camera": "spline-zoom-through",
-   "transitions": ["zoom-through", "object-becomes-object", "line-led"], "typography": "brand-font",
-   "colour": "brand-tokens", "ui_treatment": "geometry-only", "motion_feel": "smooth-parallax",
-   "sound": "ambient-electronic", "hook": "concrete-pain"},
-  "lineage": ["Midnight Signal", "Deep Glass"], "note": "retro-fitted: Crossroads film"}
+ {
+  "id": 1,
+  "date": "2026-09-20",
+  "client": "ADC Innovations",
+  "brand": "adc-innovations",
+  "base": "midnight-signal",
+  "recipe": {
+   "structure": "pain-turn-proof",
+   "pacing": "cinematic-2-3",
+   "camera": "spline-zoom-through",
+   "transitions": [
+    "zoom-through",
+    "object-becomes-object",
+    "freeze-hook"
+   ],
+   "typography": "geometric-light",
+   "colour": "paper-sage",
+   "ui_treatment": "geometry-only",
+   "motion_feel": "soft-no-overshoot",
+   "sound": "ambient-electronic",
+   "hook": "concrete-pain"
+  },
+  "lineage": [
+   "Midnight Signal",
+   "Paper Lab"
+  ],
+  "note": "retro-fitted: Oliver x Starlight film"
+ },
+ {
+  "id": 2,
+  "date": "2026-09-27",
+  "client": "SmartTechNXT",
+  "brand": "smarttechnxt",
+  "base": "deep-glass",
+  "recipe": {
+   "structure": "pain-turn-proof",
+   "pacing": "upbeat-1-1.5",
+   "camera": "spline-zoom-through",
+   "transitions": [
+    "zoom-through",
+    "object-becomes-object",
+    "line-led"
+   ],
+   "typography": "brand-font",
+   "colour": "brand-tokens",
+   "ui_treatment": "geometry-only",
+   "motion_feel": "smooth-parallax",
+   "sound": "ambient-electronic",
+   "hook": "concrete-pain"
+  },
+  "lineage": [
+   "Midnight Signal",
+   "Deep Glass"
+  ],
+  "note": "retro-fitted: Crossroads film"
+ },
+ {
+  "id": 3,
+  "date": "2026-10-03",
+  "client": "Avant Intelligence \u2014 Video 1 (16:9)",
+  "brand": "avant-intelligence",
+  "base": "midnight-signal",
+  "donor": "deep-glass",
+  "recipe": {
+   "structure": "logo-anatomy",
+   "pacing": "one-take",
+   "camera": "spline-zoom-through",
+   "transitions": [
+    "object-becomes-object",
+    "giant-word-pass",
+    "lens-reveal"
+   ],
+   "typography": "giant-glass-word",
+   "colour": "midnight",
+   "ui_treatment": "floating-chat",
+   "motion_feel": "crisp-ui",
+   "sound": "ambient-electronic",
+   "hook": "particle-rain"
+  },
+  "lineage": [
+   "Midnight Signal",
+   "Deep Glass",
+   "Paper Lab"
+  ],
+  "note": "client-requested ElevenLabs base; colour swapped to midnight (from recipe A); giant-word-pass not used"
+ },
+ {
+  "id": 4,
+  "date": "2026-10-03",
+  "client": "Avant Intelligence \u2014 Video 2 (9:16)",
+  "brand": "avant-intelligence",
+  "base": "midnight-signal",
+  "donor": "paper-lab",
+  "recipe": {
+   "structure": "pain-turn-proof",
+   "pacing": "cinematic-2-3",
+   "camera": "vertical-travel",
+   "transitions": [
+    "line-led",
+    "lens-reveal",
+    "fog-wash"
+   ],
+   "typography": "geometric-light",
+   "colour": "midnight",
+   "ui_treatment": "floating-chat",
+   "motion_feel": "soft-no-overshoot",
+   "sound": "ambient-electronic",
+   "hook": "broken-metric"
+  },
+  "lineage": [
+   "Midnight Signal",
+   "Paper Lab",
+   "Cream Cascade"
+  ],
+  "note": "9:16 reel; recipe A as proposed"
+ }
 ]

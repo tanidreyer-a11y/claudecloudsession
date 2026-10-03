@@ -80,7 +80,7 @@ def card_rank(cards, target, imagery):
     return sorted(cards, key=d), d
 
 
-def propose(lib, clashes, aff, cards, target, ui, imagery, brand, n=3, seed=0, hist=None):
+def propose(lib, clashes, aff, cards, target, ui, imagery, brand, n=3, seed=0, hist=None, force_base=None):
     """Each recipe = a BASE card (closest to the brief, not used by this set or recently) + a DONOR card
     (compatible, different) + house techniques, with one free wildcard slot. Clash rules always apply."""
     rng = random.Random(seed)
@@ -95,13 +95,15 @@ def propose(lib, clashes, aff, cards, target, ui, imagery, brand, n=3, seed=0, h
     out, used, bases, donors_used = [], collections.Counter(), [], []
     for k in range(n):
         free = [c for c in ranked if c not in bases]
-        if k < 2:   # A and B: the best-fitting bases
+        if force_base:  # the client named a style: every recipe keeps it as base, donors vary
+            base = force_base
+        elif k < 2:   # A and B: the best-fitting bases
             base = min(free, key=lambda c: dist(c) + 2.5 * recent_base[c])
         else:       # C onwards: exploratory — a seeded pick among the next-best fits
             pool = sorted(free, key=lambda c: dist(c) + 2.5 * recent_base[c])[:4]
             base = rng.choice(pool)
         bases.append(base)
-        donors = [c for c in ranked if c != base and cards[c]['name'] not in cards[base]['clashes_with']
+        donors = [c for c in ranked if c != base and c not in donors_used and cards[c]['name'] not in cards[base]['clashes_with']
                   and cards[base]['name'] not in cards[c]['clashes_with']]
         donor = min(donors, key=lambda c: dist(c) + 2.0 * recent_donor[c] + 3.0 * (c in donors_used + bases)
                     + rng.random()) if donors else base
@@ -224,6 +226,7 @@ def main():
     ap.add_argument('--brand', default='_template'); ap.add_argument('--client', default='')
     ap.add_argument('--n', type=int, default=3); ap.add_argument('--seed', type=int, default=0)
     ap.add_argument('--json'); ap.add_argument('--report', action='store_true')
+    ap.add_argument('--base', help='card id the client explicitly asked for (e.g. midnight-signal); donors still vary')
     ap.add_argument('--record'); ap.add_argument('--pick', type=int)
     ap.add_argument('--no-history', action='store_true', help='ignore history (for tests)')
     a = ap.parse_args()
@@ -241,7 +244,7 @@ def main():
         return print(f'recorded project {len(h)} in {HIST}')
     target = {k: int(v) for k, v in (x.split('=') for x in a.axes.split(','))}
     props = propose(lib, clashes, aff, cards, target, a.ui == 'yes', a.imagery == 'yes', a.brand, a.n, a.seed,
-                    [] if a.no_history else history())
+                    [] if a.no_history else history(), a.base)
     print(markdown(props))
     if a.json:
         json.dump(dict(client=a.client, brand=a.brand, axes=target, recipes=props), open(a.json, 'w'), indent=1)
