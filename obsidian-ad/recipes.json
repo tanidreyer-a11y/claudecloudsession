@@ -1,0 +1,165 @@
+{
+ "client": "OBSIDIAN web studio",
+ "brand": "obsidian",
+ "axes": {
+  "energy": 3,
+  "warmth": 2,
+  "density": 3,
+  "realism": 4,
+  "polish": 5
+ },
+ "recipes": [
+  {
+   "recipe": {
+    "structure": "prompt-result-loops",
+    "pacing": "measured-1.5-2",
+    "camera": "tilted-planes",
+    "transitions": [
+     "send-is-the-cut",
+     "fog-wash",
+     "tilt-swap"
+    ],
+    "typography": "typewriter-doc",
+    "colour": "mono-flip-gradient",
+    "ui_treatment": "prompt-bar-results",
+    "motion_feel": "smooth-parallax",
+    "sound": "halftime-cinematic",
+    "hook": "giant-promise-word"
+   },
+   "lineage": [
+    "Cobalt Campaign",
+    "Lavender Desk",
+    "Desert Glass"
+   ],
+   "nearest_card": "Deep Glass",
+   "needs": [
+    "ui"
+   ],
+   "names": {
+    "structure": "Promise \u2192 three prompt\u2192result loops \u2192 system \u2192 brand",
+    "pacing": "Measured \u2014 new beat every 1.5\u20132 s, in-camera scene changes",
+    "camera": "Tilted 3D planes (15\u201325\u00b0 Y), push to prompt, pull back to grids",
+    "transitions": [
+     "Prompt \"send\" button is the cut to the result",
+     "Background wash changes colour/family between chapters",
+     "Tilt away / tilt in of planes"
+    ],
+    "typography": "Typed prompts and document typewriter reveal",
+    "colour": "Paper \u2194 charcoal flips + one loud gradient for hero frames",
+    "ui_treatment": "Glass prompt bar + result cards, tables, trend chips, file chips",
+    "motion_feel": "Smooth ease-out with layered parallax",
+    "sound": "Cinematic half-time pulse (~75/150 bpm) with a swell per result",
+    "hook": "One giant promise word"
+   },
+   "fonts": [],
+   "base": "Cobalt Campaign",
+   "base_id": "cobalt-campaign",
+   "donor": "Lavender Desk",
+   "donor_id": "lavender-desk",
+   "wildcard_slot": "colour"
+  },
+  {
+   "recipe": {
+    "structure": "craft-reveal",
+    "pacing": "short-punch",
+    "camera": "isometric",
+    "transitions": [
+     "giant-word-pass",
+     "beat-cut",
+     "fog-wash"
+    ],
+    "typography": "verb-list",
+    "colour": "cobalt-light-dark",
+    "ui_treatment": "photo-cards",
+    "motion_feel": "smooth-parallax",
+    "sound": "punchy-electronic",
+    "hook": "giant-promise-word"
+   },
+   "lineage": [
+    "Cobalt Campaign",
+    "Deep Glass",
+    "Cream Cascade"
+   ],
+   "nearest_card": "Deep Glass",
+   "needs": [
+    "imagery"
+   ],
+   "names": {
+    "structure": "Craft reveal \u2014 raw material \u2192 process \u2192 finished product \u2192 people enjoying it",
+    "pacing": "Short punch \u2014 10\u201320 s, 0.4 cuts/s, sparse sound",
+    "camera": "Isometric system view (slabs, docks, trees)",
+    "transitions": [
+     "Camera passes through a giant word",
+     "Hard cut on the downbeat",
+     "Background wash changes colour/family between chapters"
+    ],
+    "typography": "Vertical list with active-item emphasis",
+    "colour": "Cobalt/indigo darks alternating with ice-blue lights; photos keep their warmth",
+    "ui_treatment": "Photographic creatives on cards (ads, products, listings, dishes)",
+    "motion_feel": "Smooth ease-out with layered parallax",
+    "sound": "Punchy electronic with risers into downbeats",
+    "hook": "One giant promise word"
+   },
+   "fonts": [],
+   "base": "Cobalt Campaign",
+   "base_id": "cobalt-campaign",
+   "donor": "Deep Glass",
+   "donor_id": "deep-glass",
+   "wildcard_slot": "typography"
+  },
+  {
+   "recipe": {
+    "structure": "craft-reveal",
+    "pacing": "one-take",
+    "camera": "vertical-travel",
+    "transitions": [
+     "giant-word-pass",
+     "send-is-the-cut",
+     "tilt-swap"
+    ],
+    "typography": "serif-greeting",
+    "colour": "cobalt-light-dark",
+    "ui_treatment": "photo-cards",
+    "motion_feel": "settle-stack",
+    "sound": "halftime-cinematic",
+    "hook": "sensory-macro"
+   },
+   "lineage": [
+    "Cobalt Campaign",
+    "Cream Cascade",
+    "Midnight Signal"
+   ],
+   "nearest_card": "Deep Glass",
+   "needs": [
+    "imagery",
+    "ui"
+   ],
+   "names": {
+    "structure": "Craft reveal \u2014 raw material \u2192 process \u2192 finished product \u2192 people enjoying it",
+    "pacing": "One take \u2014 zero hard cuts, one continuous camera journey",
+    "camera": "Vertical travel \u2014 falls, drops and rises following one object",
+    "transitions": [
+     "Camera passes through a giant word",
+     "Prompt \"send\" button is the cut to the result",
+     "Tilt away / tilt in of planes"
+    ],
+    "typography": "Serif display (gradient) + clean grotesk UI",
+    "colour": "Cobalt/indigo darks alternating with ice-blue lights; photos keep their warmth",
+    "ui_treatment": "Photographic creatives on cards (ads, products, listings, dishes)",
+    "motion_feel": "Soft drops that settle into stacks, 100\u2013150 ms staggers",
+    "sound": "Cinematic half-time pulse (~75/150 bpm) with a swell per result",
+    "hook": "Sensory macro shot (crust cracking, perfume mist, chalk dust)"
+   },
+   "fonts": [
+    "Fraunces (OFL)",
+    "Newsreader (OFL)",
+    "Inter (OFL)"
+   ],
+   "base": "Cobalt Campaign",
+   "base_id": "cobalt-campaign",
+   "donor": "Cream Cascade",
+   "donor_id": "cream-cascade",
+   "wildcard_slot": "typography"
+  }
+ ]
+}
