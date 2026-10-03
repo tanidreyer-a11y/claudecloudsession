@@ -83,7 +83,9 @@
    "Deep Glass",
    "Paper Lab"
   ],
-  "note": "client-requested ElevenLabs base; colour swapped to midnight (from recipe A); giant-word-pass not used"
+  "note": "client-requested ElevenLabs base; colour swapped to midnight (from recipe A); giant-word-pass not used",
+  "feedback": "\"perfect but bland, no focus and storytelling\" \u2014 client preferred the earlier ADC voice-led films",
+  "rejected": true
  },
  {
   "id": 4,
@@ -113,6 +115,8 @@
    "Paper Lab",
    "Cream Cascade"
   ],
-  "note": "9:16 reel; recipe A as proposed"
+  "note": "9:16 reel; recipe A as proposed",
+  "feedback": "\"perfect but bland, no focus and storytelling\" \u2014 client preferred the earlier ADC voice-led films",
+  "rejected": true
  }
 ]

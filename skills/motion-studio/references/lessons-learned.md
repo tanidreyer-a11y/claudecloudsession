@@ -86,3 +86,15 @@ Each item below cost at least one round of rework on a real client job. They are
 39. **`npx create-video` in a non-empty folder hangs** on an interactive prompt. → Scaffold by hand.
 40. **No tick glyph in most fonts; emoji icons look cheap.** → Draw icons as SVG.
 41. **Untagged HD files shift greens between players.** → Render/encode with BT.709 tags.
+
+## From the Avant Intelligence round (2026-10-03)
+42. **Two new 27–40 s films built without a script were called "perfect but bland: no focus, no storytelling".**
+    The client preferred the earlier 60 s voice-led films (one spark followed through the whole story, a narrated
+    problem → agents → document → loop → grid → logo). → Never build a brand film without a story spine. If the
+    script isn't ready, use the client's last approved script as a scratch voice, or write a beat sheet with a
+    narrative, not just abstract motion. Keep ONE focal object from the first frame to the logo.
+43. **The client's own approved designs beat a fresh recipe for the same client.** For a rebrand of the same
+    business, re-skin the approved film (palette, logo, agent shades, ending) before inventing a new one, and treat
+    the recipe engine as the source of *additions*, not replacements.
+44. **When a name changes, mute the old name in the voiceover** (find the word from the loudness contour and mute
+    with 40 ms fades). Fill the gap with the logo moment and a musical sting instead of leaving dead air.

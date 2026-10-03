@@ -21,3 +21,6 @@ locked: true         # the client asked for the ElevenLabs look with a neon-blue
 
 ## History
 - 2026-10-03: Video 1 (16:9 logo anatomy) and Video 2 (9:16 chat-to-Λ) built on estimated timing, before the voiceover.
+- 2026-10-03: client verdict on those two: "perfect but bland, no focus and storytelling". Rebuilt the two approved
+  ADC films (Oliver × Starlight, and the "Almost." cut) as Avant, using Oliver's take with "ADC Innovations" muted. The
+  spark is the focal object throughout and draws the blue Λ at the end. Files: avant-intelligence/films-v2/.
