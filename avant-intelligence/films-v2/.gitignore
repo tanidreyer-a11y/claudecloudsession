@@ -1,3 +1,6 @@
 node_modules
 out/*-raw.mp4
 out/log_*.txt
+out/*-raw.mp4
+out/log_*.txt
+out/finish_*.log
