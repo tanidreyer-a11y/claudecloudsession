@@ -4,7 +4,7 @@
 # Each option:
 #   id        stable id (used in history/projects.json; never rename, add new ids instead)
 #   name      human label shown to the client
-#   from      where it was observed or proven: style card ids, approved films ("film:adc", "film:smarttech"),
+#   from      where it was observed or proven: style card ids, approved films ("film:adc", "film:smarttech, crossroads"),
 #             or shot cards ("shot:<folder>/<name>" -> library/shots/<folder>/<name>.md, Apache-2.0)
 #   axes      allowed range per vibe axis [min,max] (1–5). Missing axis = any.
 #   needs     optional: imagery (photos/footage needed -> imagery.md), voice, ui (product screens needed)
@@ -17,7 +17,7 @@
 structure:
   - id: pain-turn-proof
     name: "Pain → Turn → Proof → Trust → CTA"
-    from: [film:adc, film:smarttech, midnight-signal]
+    from: [film:adc, film:smarttech, crossroads, midnight-signal]
     how: "0–30 % pain with concrete artefacts, turn at 30–40 %, proof to 75 %, trust, one CTA. The proven default for B2B."
   - id: metric-repair-loop
     name: "Broken metric → diagnose → control → repaired metric (loops to start)"
@@ -59,7 +59,7 @@ structure:
     how: "Time of day carries the arc (light and colour shift); good for local businesses and services."
   - id: logo-anatomy
     name: "Logo anatomy — the logo's parts are the cast, assembled at the end"
-    from: [film:smarttech]
+    from: [film:smarttech, crossroads]
     how: "Read the brand bible's logo story; each part plays a role; the logo assembles from them as the payoff."
   - id: craft-reveal
     name: "Craft reveal — raw material → process → finished product → people enjoying it"
@@ -79,7 +79,7 @@ pacing:
     axes: {energy: [2, 4]}
   - id: upbeat-1-1.5
     name: "Upbeat — beat every 1–1.5 s, cuts on the downbeat"
-    from: [kinetic-pop, film:smarttech]
+    from: [kinetic-pop, film:smarttech, crossroads]
     axes: {energy: [3, 5]}
   - id: short-punch
     name: "Short punch — 10–20 s, 0.4 cuts/s, sparse sound"
@@ -93,7 +93,7 @@ pacing:
 camera:
   - id: spline-zoom-through
     name: "Spline camera with zoom-throughs (dive into a dot, emerge in the next scene)"
-    from: [film:adc, film:smarttech, midnight-signal, shot:transition/transition-hidden-cut]
+    from: [film:adc, film:smarttech, crossroads, midnight-signal, shot:transition/transition-hidden-cut]
     how: "Monotone cubic spline, log-space zoom, 60→30 fps blend. The house signature — limit to brands that want it."
   - id: vertical-travel
     name: "Vertical travel — falls, drops and rises following one object"
@@ -136,10 +136,10 @@ camera:
 transitions:   # a recipe takes 3–4, one "signature" + 2–3 supporting
   - id: zoom-through
     name: "Zoom-through iris (hidden cut)"
-    from: [film:adc, film:smarttech, shot:transition/transition-hidden-cut]
+    from: [film:adc, film:smarttech, crossroads, shot:transition/transition-hidden-cut]
   - id: object-becomes-object
     name: "Object becomes object (chips → ball, line → logo bar)"
-    from: [film:adc, film:smarttech, midnight-signal]
+    from: [film:adc, film:smarttech, crossroads, midnight-signal]
   - id: line-led
     name: "Line draws and branches; camera follows the tip"
     from: [paper-lab, midnight-signal, cream-cascade, shot:transition/line-carry-transition]
@@ -243,7 +243,7 @@ typography:    # fonts are OFL / free unless the brand supplies its own licensed
     needs: [ui]
   - id: brand-font
     name: "The brand's own font (from the brand bible) with its web fallback"
-    from: [film:smarttech]
+    from: [film:smarttech, crossroads]
     how: "Only when the client supplies or licenses it; otherwise pick an OFL match."
 
 colour:        # palette FAMILIES; the brand's tokens are mapped onto the family's roles
@@ -253,7 +253,7 @@ colour:        # palette FAMILIES; the brand's tokens are mapped onto the family
     axes: {warmth: [1, 3]}
   - id: navy-glass
     name: "Deep navy + royal blue glass + ice edges"
-    from: [deep-glass, film:smarttech]
+    from: [deep-glass, film:smarttech, crossroads]
     axes: {warmth: [1, 2]}
   - id: cobalt-light-dark
     name: "Cobalt/indigo darks alternating with ice-blue lights; photos keep their warmth"
@@ -283,7 +283,7 @@ colour:        # palette FAMILIES; the brand's tokens are mapped onto the family
     axes: {energy: [3, 5]}
   - id: brand-tokens
     name: "Strictly the brand bible's palette (accent ≤ 5 % of frame)"
-    from: [film:smarttech, film:adc]
+    from: [film:smarttech, crossroads, film:adc]
 
 ui_treatment:
   - id: floating-chat
@@ -321,7 +321,7 @@ ui_treatment:
     needs: [imagery]
   - id: geometry-only
     name: "Pure geometry — lines, dots, rings, grids (no UI, no photos)"
-    from: [film:adc, film:smarttech, paper-lab]
+    from: [film:adc, film:smarttech, crossroads, paper-lab]
 
 motion_feel:
   - id: soft-no-overshoot
@@ -373,7 +373,7 @@ sound:
 hook:
   - id: concrete-pain
     name: "Concrete pain artefact (the 21:43 lead, the missing invoice)"
-    from: [film:adc, film:smarttech]
+    from: [film:adc, film:smarttech, crossroads]
   - id: broken-metric
     name: "One metric visibly breaking"
     from: [paper-lab]

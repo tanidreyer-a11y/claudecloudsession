@@ -3,7 +3,7 @@ name: motion-studio
 description: >
   Motion Studio: makes high-end marketing, promo and brand videos for ANY business (SaaS, agencies,
   law firms, bakeries, gyms, property, perfume, retail) in code (Remotion or an HTML/Playwright engine), with
-  word-synced motion, musical sound design and pro finishing. It never makes the same video twice: 9 Style Cards
+  word-synced motion, musical sound design and pro finishing. It never makes the same video twice: 10 Style Cards
   from reference ads are broken into ~100 cross-referenced parts and recombined into 3 distinct recipes per brief,
   with anti-repetition history and brand profiles. It handles images (client photos, connected generators like
   Firefly/Canva/Higgsfield/Flow, or ready-to-paste prompts). Use it for any product video, ad, reel, launch film,
@@ -220,7 +220,7 @@ Commit and push everything to the user's repo (videos included) unless they say 
 | `production.md` | Building: theme, motion rules, formats, paid add-ons |
 | `qa-checklist.md` | Before delivery |
 | `maintenance.md` | add-reference · add-brand · feedback · library-report |
-| `brands/` | Client profiles (`_template.md`, adc-innovations — incomplete, smarttechnxt) |
+| `brands/` | Client profiles + their asset folders (logos, textures, approved scripts): smarttechnxt (Crossroads style), avant-intelligence, adc-innovations, `_template.md` |
 | `history/projects.json` | Every recipe used |
 | `references/lessons-learned.md` | Always, first |
 | `references/old-vs-new-review.md` | Why each inherited rule is here |

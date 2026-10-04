@@ -10,7 +10,7 @@ locked: true         # the client asked for the ElevenLabs look with a neon-blue
 - verified claims: none. Agent roles in the films are placeholders taken from the earlier ADC scripts.
 
 ## Assets
-- logo: avant-intelligence/brand/avant_wordmark.svg (traced from the supplied JPG; ask for the original vector).
+- logo: brands/avant-intelligence-assets/avant_wordmark.svg (repo: avant-intelligence/brand/avant_wordmark.svg) (traced from the supplied JPG; ask for the original vector).
   The blue Λ (an A without a crossbar) is the anatomy hero.
 - palette: black #030708 · white #FFFFFF · neon blue #3BC1EC (hero). Agent shades: ice #7FE3FF · electric #2F7BFF ·
   violet #8C6BFF · mint #3EE0B5. Together they resolve to #3BC1EC.

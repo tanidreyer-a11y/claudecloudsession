@@ -1,6 +1,6 @@
 # Library
 
-- `styles/`: 9 Style Cards, one per reference film (exact schema; studied for style only). Cards are the *source*,
+- `styles/`: 10 Style Cards, one per reference film (exact schema; studied for style only). Cards are the *source*,
   not templates.
 - `slots.yaml`: the cross-reference. Every card is broken into parts per slot. Each part lists every card, approved
   film and shot card it appears in, its vibe range, what it needs (ui / imagery), and its clash and affinity pairs.
@@ -19,6 +19,7 @@
 | Sunset Prompt | ref07 model-launch Short | 4·4·2·2·4 | UI |
 | Lavender Desk | ref08 Ester Intelligence | 2·3·3·4·4 | UI |
 | Desert Glass | ref09 nexl | 2·5·3·5·5 | imagery |
+| Crossroads | OUR approved SmartTech film (technique only; colours stay with the brand) | 3·2·3·2·5 | — |
 
 Cross-reference at a glance: `python3 scripts/recipe.py --report` (parts per card, usage, never-used parts,
 clash-free combinations ≈ 125 billion today).
