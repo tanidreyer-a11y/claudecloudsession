@@ -1,0 +1,38 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:B;src:url(bricolage-grotesque-latin-wght-normal.woff2);font-weight:200 800}
+@font-face{font-family:M;src:url(red-hat-mono-latin-wght-normal.woff2)}
+body{margin:0;background:#050407;width:1800px;font-family:B;color:#F3EEF8}
+.g{display:grid;grid-template-columns:repeat(3,600px)}
+.t{height:520px;position:relative;border:1px solid #16121c;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;
+background:radial-gradient(circle at 50% 42%,#1a0f24 0,#050407 60%)}
+.t svg.big{width:190px;height:190px}
+.w{font-weight:800;font-size:44px;letter-spacing:.14em;display:flex;align-items:center;gap:18px}
+.w svg{width:40px;height:40px}
+.n{position:absolute;left:22px;top:18px;font-family:M;font-size:15px;letter-spacing:.2em;color:#9b8fb0}
+.s{position:absolute;right:22px;bottom:18px;display:flex;gap:12px;align-items:center}
+.s svg{width:22px;height:22px}.s .lt{background:#F3EEF8;padding:6px;border-radius:6px}
+</style></head><body><div class="g" id="g"></div>
+<script>
+const grad=`<defs><linearGradient id="P" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E84DEB"/><stop offset=".55" stop-color="#8607B3"/><stop offset="1" stop-color="#2A0840"/></linearGradient>
+<linearGradient id="F" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>`;
+const C=[
+ ['01 · THE BRICK','one monolith, one cut of light',
+  f=>`<rect x="34" y="8" width="32" height="84" rx="3" fill="${f}"/><path d="M34 30 L66 22" stroke="#050407" stroke-width="3"/>`],
+ ['02 · TWIN SLABS','two bricks, one leaning — "built, not templated"',
+  f=>`<rect x="22" y="12" width="20" height="76" rx="3" fill="${f}"/><rect x="56" y="12" width="20" height="76" rx="3" fill="${f}" transform="rotate(8 66 88)"/>`],
+ ['03 · THE SHARD','volcanic glass — a raw facet',
+  f=>`<path d="M50 4 L82 32 L70 96 L30 96 L18 32 Z" fill="${f}"/><path d="M50 4 L44 52 L30 96 M44 52 L82 32" stroke="#050407" stroke-width="2.6" fill="none"/>`],
+ ['04 · THE KEYHOLE O','an O with a brick standing inside',
+  f=>`<path fill-rule="evenodd" d="M50 4a46 46 0 1 1 0 92a46 46 0 1 1 0-92z M42 26h16v48h-16z" fill="${f}"/>`],
+ ['05 · THE WEIGHT','three stacked slabs — "the weight of your reputation"',
+  f=>`<rect x="14" y="62" width="72" height="22" rx="3" fill="${f}"/><rect x="24" y="36" width="52" height="20" rx="3" fill="${f}" opacity=".8"/><rect x="36" y="12" width="28" height="18" rx="3" fill="${f}" opacity=".6"/>`],
+ ['06 · THE FACET','a cut gem seen from above',
+  f=>`<path d="M50 6 L94 50 L50 94 L6 50 Z" fill="${f}"/><path d="M50 6 L50 94 M6 50 L50 30 L94 50" stroke="#050407" stroke-width="2.6" fill="none"/>`],
+];
+const g=document.getElementById('g');
+C.forEach(([n,sub,fn])=>{g.insertAdjacentHTML('beforeend',`<div class="t"><div class="n">${n}</div>
+<svg class="big" viewBox="0 0 100 100">${grad}${fn('url(#P)')}</svg>
+<div class="w"><svg viewBox="0 0 100 100">${fn('#F3EEF8')}</svg>OBSIDIAN</div>
+<div class="n" style="top:auto;bottom:18px;font-size:12px;letter-spacing:.12em">${sub}</div>
+<div class="s"><svg viewBox="0 0 100 100">${fn('#F3EEF8')}</svg><span class="lt"><svg viewBox="0 0 100 100">${fn('#050407').replace(/#050407" stroke/g,'#F3EEF8" stroke')}</svg></span></div></div>`)});
+</script></body></html>
