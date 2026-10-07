@@ -341,14 +341,14 @@ export const Ahead: React.FC = () => {
     <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 85%, #1c1d22 0%, #0b0c0f 55%, #060709 100%)", overflow: "hidden" }}>
       {s < 16.1 && (
         <AbsoluteFill style={{ transform: `scale(${zoom})`, transformOrigin: `${L.cx}px ${apexScreenY}px` }}>
-          <Beat s={s} a={1.0} b={3.3} text="Every invoice." y={wide ? 150 : 420} />
-          <Beat s={s} a={3.5} b={5.8} text="Every lead." y={wide ? 150 : 420} />
           {/* the slice */}
           {s > 5.9 && s < 7.2 && (() => {
             const k = prog(s, 5.95, 6.35, E.out), o = 1 - prog(s, 6.5, 7.1);
             return <div style={{ position: "absolute", left: -100, top: H - 520, width: (W + 200) * k, height: 4, background: `linear-gradient(90deg, transparent, ${C.avant}, #fff)`, transform: "rotate(-9deg)", transformOrigin: "0 50%", boxShadow: `0 0 30px ${C.avant}, 0 0 80px ${C.avant}`, opacity: o }} />;
           })()}
           <Pile s={s} L={L} lam={lam} camY={camY} />
+          <Beat s={s} a={1.0} b={3.3} text="Every invoice." y={wide ? 150 : 420} />
+          <Beat s={s} a={3.5} b={5.8} text="Every lead." y={wide ? 150 : 420} />
           <Climb s={s} L={L} lam={lam} camY={camY} apex={apex} />
         </AbsoluteFill>
       )}

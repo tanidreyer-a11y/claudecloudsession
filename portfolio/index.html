@@ -29,6 +29,9 @@ h1 em { font-style: italic; color: var(--glow); }
 .intro p { margin: 0; max-width: 46ch; color: #c9c7c1; font-size: 17px; }
 .intro .facts { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 22px; }
 
+.viewing { margin-top: 28px; padding: 18px 20px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: start; color: #b9b7b1; font-size: 14px; line-height: 1.55; }
+.viewing strong { font-weight: 500; color: var(--text); }
+.viewing .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--glow); margin-top: 8px; box-shadow: 0 0 12px var(--glow); }
 /* sections */
 section { padding-top: clamp(48px, 7vw, 88px); }
 .sec-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
@@ -84,11 +87,16 @@ footer { margin-top: clamp(56px, 8vw, 96px); padding-top: 26px; border-top: 1px 
       <p>3D, scroll-driven websites and short brand films for businesses whose online presence should match the quality of their work. This is an early-stage studio, so some pieces are concept builds. Every website below is fully built and live.</p>
       <div class="facts">
         <span class="label">9 live websites</span>
-        <span class="label">3 brand films</span>
+        <span class="label">6 brand films</span>
         <span class="label">Design · Code · Motion · Sound</span>
       </div>
     </div>
   </header>
+
+  <aside class="viewing" aria-label="Viewing tips">
+    <span class="dot" aria-hidden="true"></span>
+    <div><strong>Best viewed on an iPhone or a laptop, with sound on.</strong> The films and websites rely on motion. If something looks still or a video won't animate, check that Reduce Motion is off: on iPhone go to Settings › Accessibility › Motion; on a Mac go to System Settings › Accessibility › Display.</div>
+  </aside>
 
   <section id="films" aria-labelledby="films-title">
     <div class="sec-head">
@@ -123,6 +131,30 @@ footer { margin-top: clamp(56px, 8vw, 96px); padding-top: 26px; border-top: 1px 
     <div class="next">
       <div><div class="label">In production</div><strong>Klick Kulture demo film</strong></div>
       <span class="label" style="align-self:center">Starts as soon as the brand bible is in</span>
+    </div>
+  </section>
+
+  <section id="signature" aria-labelledby="sig-title">
+    <div class="sec-head">
+      <h2 id="sig-title">Signature series · Avant</h2>
+      <span class="label">Three films, one brand, three different ideas</span>
+    </div>
+    <div class="films">
+      <article class="film lead">
+        <div class="frame"><video controls playsinline preload="metadata" poster="img/poster-ahead.jpg" src="video/ahead.mp4"></video></div>
+        <div class="meta"><h3>Ahead</h3><span class="label">Signature film · 38 s</span></div>
+        <p>A day's pile of invoices and leads is sliced into order, then a light climbs the brand's own Λ to the moment that matters: approved by you. Through the peak, into a reply that only sends once it's approved, and out at dawn.</p>
+      </article>
+      <article class="film">
+        <div class="frame"><video controls playsinline preload="metadata" poster="img/poster-oneline.jpg" src="video/oneline.mp4"></video></div>
+        <div class="meta"><h3>One Line</h3><span class="label">Signature film · 25 s</span></div>
+        <p>Everything rides on a single line: the day piles up on it, the frame flips to white paper for the before-and-after, then four agent lanes converge into one light.</p>
+      </article>
+      <article class="film">
+        <div class="frame"><video controls playsinline preload="metadata" poster="img/poster-city.jpg" src="video/city.mp4"></video></div>
+        <div class="meta"><h3>Every City</h3><span class="label">Signature film · 25 s</span></div>
+        <p>A globe of dots turns to South Africa, messages arc from Knysna to Cape Town, Johannesburg and Durban, and the camera dives into the city where it all runs.</p>
+      </article>
     </div>
   </section>
 
