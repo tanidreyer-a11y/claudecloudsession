@@ -248,7 +248,7 @@ export const Film: React.FC = () => {
           </div>
           <div style={{ marginTop: 34, opacity: tagK, translate: `0 ${(1 - tagK) * 14}px`, fontFamily: SANS, fontWeight: 300, fontSize: 40, color: "#EEE9F1" }}>Websites with the weight of your reputation.</div>
           <div style={{ marginTop: 46, opacity: waK, translate: `0 ${(1 - waK) * 14}px`, display: "inline-flex", alignItems: "center", gap: 14, padding: "18px 34px", borderRadius: 999, background: "#0a060c", boxShadow: `inset 0 0 0 1.5px ${P.accent}cc, 0 0 36px -6px ${P.accent}`, fontFamily: MONO, fontSize: 19, letterSpacing: "0.14em", color: "#EEE9F1" }}>
-            MESSAGE US ON WHATSAPP · 079 244 9706
+            MESSAGE US ON WHATSAPP · 079 244 9607
           </div>
         </AbsoluteFill>
       )}

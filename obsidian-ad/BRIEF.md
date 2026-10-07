@@ -5,7 +5,7 @@
   (source: cinematic-obsidian repo, README + src/lib/site.ts).
 - Viewer: owners of guesthouses, practices (accounting/legal), venues, makers, product brands.
 - The ONE pain: *"Your website doesn't show the quality of the work you do."* Buyers judge your workmanship by your site.
-- CTA: WhatsApp 079 244 9706 ✱ (the site lists adcinnovations.co.za as the parent URL; ADC is your father's name now,
+- CTA: WhatsApp 079 244 9607 ✱ (the site lists adcinnovations.co.za as the parent URL; ADC is your father's name now,
   so which URL/brand goes on the end card: OBSIDIAN alone, "by Avant Intelligence", or no parent?)
 - Truth: no stats. The site's three testimonials ("Owner, boutique guesthouse"...) are NOT used unless they are real clients ✱.
 
