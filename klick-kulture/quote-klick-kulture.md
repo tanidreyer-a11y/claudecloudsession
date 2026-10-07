@@ -11,11 +11,9 @@
 | Package | Videos per month | Price per video | Monthly total |
 |---|---|---|---|
 | **Essential** | 6–7 | R1,500 | R9,000 – R10,500 |
-| **Growth** (recommended) | 14–15 | R1,200 · swap up to 3 for Signature at +R800 each | R16,800 – R18,000 (max R20,400 with 3 Signature) |
+| **Growth** | 14–15 | R1,200 · swap up to 3 for Signature at +R800 each | R16,800 – R18,000 (max R20,400 with 3 Signature) |
 | **Signature** | 6–7 | R2,500 | R15,000 – R17,500 |
 | **Single project** | 1 | Essential R3,500 · Signature R5,000 | — |
-
-**Why Growth:** two Essential packages (14 videos) cost R21,000. Growth gives you 15 videos, including up to 3 Signature films, for R20,400 at most. It suits an agency with several clients who each need two or three videos a month.
 
 **Five key points**
 1. Monthly packages run for a minimum of **5 months**, paid upfront each month.
