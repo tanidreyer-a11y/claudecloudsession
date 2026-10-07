@@ -10,9 +10,9 @@
 
 | | Monthly agreement | Single project |
 |---|---|---|
-| Price per video | **R1,999** | **R4,999** |
+| Price per video | **R1,499** | **R4,999** |
 | Videos | 6–7 per month | 1 |
-| Monthly total | R11,994 (6) – R13,993 (7) | — |
+| Monthly total | R8,994 (6) – R10,493 (7) | — |
 | Term | 4–6 months | once-off |
 
 ## Every video includes
@@ -25,7 +25,6 @@
 ## Included in the monthly agreement (not in single projects)
 - A **30-minute planning call** at the start of each month to plan the videos with you
 - A **reserved production slot**: your videos are scheduled first each month
-- **One free 15-second cut-down** per month from any video in that month's batch
 
 ## How each month works
 1. **Brief by the 25th** of the previous month, using the brief form below. Videos without a brief move to the next month.
