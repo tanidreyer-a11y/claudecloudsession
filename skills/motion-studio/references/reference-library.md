@@ -47,3 +47,33 @@ Source in `examples/`. Watch these moments when re-creating the style:
   four orbs rise on curved lines; precision ring on one orb; dive through orb into tilted invoice; decision card
   wobbles then holds; approve tap; loop with Prepare/Approve/Done; 20 actions stream on the loop; agent grid
   expands; logo/CTA.
+
+## R5–R9 — see their Style Cards (Kinetic Pop, Cobalt Campaign, Sunset Prompt, Lavender Desk, Desert Glass)
+Re-checked frame by frame on 2026-10-07; the cards' beat lists are accurate. Extra notes from the re-watch:
+- **R5 Kinetic Pop:** the rolling word slot ("Your ✓ Product / App / Agency / Story") is a vertical list whose centre
+  row is the hero; gradient blue→red full-bleed for "Show what matters"; the chart arrow overshoots the frame; the CTA
+  is *clicked by a visible cursor* — the click is the last beat.
+- **R6 Cobalt Campaign (NIVO):** light → dark → light is the act structure (chapters flip the ground); the isometric
+  'Data' slab assembles from 5 tiles; the agent tree is a bracket with 4 rows that tick one by one.
+- **R7 Sunset Prompt:** a phone-first launch; the giant headline is set vertically ("Think deeper / faster") because
+  the recording is portrait — a vertical film can rotate type 90° for scale.
+- **R8 Lavender Desk:** the verb list (Analyze · Research · Review · Deliver) stays on the left and highlights per
+  chapter while the right side changes ground colour (lavender → white → mint).
+- **R9 Desert Glass:** photographic landscape as the ground the whole time; frosted UI windows ride over it; the film
+  ends on the same landscape at dusk with the logo — time of day = progress.
+
+## R10 — duplicate of R1 (same ElevenAgents ad recorded inside a social app). Use R1.
+
+## R11 — ElevenLabs security (light) → Style Card `frost-trust`
+Frosted icy-blue panels → slice into a streaming strip → frosted padlock + HIPAA / GDPR / SOC 2 words → flip to black
+with blurred code → one dot → a field of dots → flip to light → "II" → logo + descriptor (logo holds ≈ 8 s).
+
+## R12 — ElevenLabs enterprise (dark/light) → Style Card `enterprise-grid`
+"II" in a bracket square on a black dot grid → more bracket squares with icons slide along grid lines → white
+waveform bars compress into the "II" → logo → the bars grow into two black doors (cut) → a blue light line with
+words riding it ("Text to · Speech") → benchmark light rail 93.5 % vs grey bars → a dotted globe rises with
+language pairs swapping above it.
+
+## Our approved films added 2026-10-07 → Style Card `signature-vivid`
+- **Avant "Agents"** (study of R1, NOT for public use — too close to the original).
+- **Avant "Ahead"**, **"One Line"**, **"Every City"** — our own; see the card for the devices.

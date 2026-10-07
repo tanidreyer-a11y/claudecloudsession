@@ -32,6 +32,8 @@ Built from real client films: brand films a founder approved on first viewing, a
   profiles, never the default for anyone else. The neutral template and the recipe engine set the look.
 - **Quality first.** If a paid add-on is the best option, offer it with its cost and let the client decide
   (production.md §5). Never quietly downgrade.
+- **Signature look = `signature-vivid`** (our Avant films): vivid hues on black, one gradient world, a hold after
+  every move, devices taken from the client's own mark. Locked rules live in `history/locked.md`.
 - **Quality floor = SmartTech NXT "Crossroads"** (approved by the client and the owner as the best film so far):
   build `smarttechnxt-ad/build2/`, script `brands/smarttechnxt-assets/script-v9-crossroads.md`, style card
   `crossroads`. What makes it work: one idea taken from the brand itself carried start to finish; one line per idea
@@ -196,14 +198,17 @@ Deliver one final mix (voice + SFX + music) unless asked otherwise, plus a share
 Commit and push everything to the user's repo (videos included) unless they say otherwise.
 
 ## 12. Workflow
-1. Brief (§0) → wait → lessons-learned → probe assets, check network and connectors.
+1. Brief (§0) → wait → **`history/locked.md`** → lessons-learned → probe assets, check network and connectors
+   (vercel.app / lovable.app are blocked here: ask for screenshots or a laptop screen recording).
 2. Brand profile (+ extraction) · diagnose an old cut · tear down any new references (maintenance: add-reference).
 3. Recipe engine → 3 recipes → client picks → record.
 4. Script/beat sheet + voice settings → client records. Meanwhile: imagery plan, storyboard sheet, draft → send.
 5. Align → re-time → stills audit → audio (LUFS) → preview with sound → send.
 6. Full render → finish → QA checklist → deliver → commit + push.
 7. Final message: files + sizes, recipe, deviations, motion inventory, claims to confirm, image sources.
-8. Log feedback (maintenance: feedback). Quote if asked (`references/pricing-and-delivery.md`).
+8. **Learning loop (always):** ask the debrief questions, save the answers, make the changes, ask "lock this in?",
+   update `history/locked.md` + lessons, commit + push (`references/learning-loop.md`). Quote if asked
+   (`references/pricing-and-delivery.md`).
 
 ## 13. Definition of done
 - Duration = voice/beat sheet; every animation on its word or syllable (±0.1 s).
@@ -228,6 +233,11 @@ Commit and push everything to the user's repo (videos included) unless they say 
 | `maintenance.md` | add-reference · add-brand · feedback · library-report |
 | `brands/` | Client profiles + their asset folders (logos, textures, approved scripts): smarttechnxt (Crossroads style), avant-intelligence, adc-innovations, `_template.md` |
 | `history/projects.json` | Every recipe used |
+| `history/locked.md` | Owner-locked rules — read FIRST, override everything except Non-negotiables |
+| `history/debriefs/` | The owner's answers after each film (the record to revert to) |
+| `references/learning-loop.md` | Debrief questions + how the skill learns without getting worse |
+| `references/design-brief-tiers.md` · `combinations.md` | What premium means per tier · new cross-referenced recipes |
+| `references/workflow-and-errors.md` | The real build workflow and the errors it prevents |
 | `references/lessons-learned.md` | Always, first |
 | `references/old-vs-new-review.md` | Why each inherited rule is here |
 | `references/story-and-concept.md` · `script-voice-pacing.md` | Concept, script, voice |

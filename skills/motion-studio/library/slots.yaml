@@ -67,6 +67,19 @@ structure:
     needs: [imagery]
     axes: {realism: [3, 5]}
     how: "For makers (bakery, perfume, fashion, furniture). Macro details first, wide reveal last."
+  - id: pile-slice-climb
+    name: "Pile-up → one line slices it into order → climb the brand mark to the decision → dive through → proof → resolve"
+    from: [signature-vivid, film:avant-ahead]
+    how: "The mess is shown as real artefacts (invoices, leads) raining into a heap; the turn is ONE line from the brand colour; the climb uses the logo's own geometry; the peak is the client's promise in 3 words."
+  - id: world-to-city
+    name: "World → country → city: a globe of dots turns to the client's region, messages arc between real towns, dive into one"
+    from: [signature-vivid, enterprise-grid, film:avant-every-city]
+    how: "Local proof for SA businesses. Real place names only; the numbers on screen must be the client's or marked illustrative."
+  - id: single-line-day
+    name: "One line carries the whole film: words ride it, a flip to paper shows before/after, it splits into lanes and reconverges"
+    from: [signature-vivid, enterprise-grid, film:avant-one-line]
+    axes: {density: [1, 3]}
+    how: "25 s. Line → words swap on it (4 beats) → slit-flip to white bracket chart → flip back → 4 lanes → one light → logo."
 
 pacing:
   - id: cinematic-2-3
@@ -132,6 +145,10 @@ camera:
     from: [shot:opening/crane-rise-reveal]
     needs: [imagery]
     axes: {realism: [3, 5]}
+  - id: climb-the-mark
+    name: "Climb the brand mark — the camera rises with a light along the logo's own strokes"
+    from: [signature-vivid, film:avant-ahead]
+    how: "Build the logo huge in world space (e.g. a Λ 2500 px tall), let a light climb one stroke lighting agents/steps, peak = the promise, descend the other stroke with results."
 
 transitions:   # a recipe takes 3–4, one "signature" + 2–3 supporting
   - id: zoom-through
@@ -195,6 +212,22 @@ transitions:   # a recipe takes 3–4, one "signature" + 2–3 supporting
     from: [desert-glass]
     needs: [imagery]
     axes: {energy: [1, 3]}
+  - id: shape-aperture-dive
+    name: "Aperture dive — the next world opens through a shape taken from the logo (triangle, ring, bar), not a generic circle"
+    from: [signature-vivid, midnight-signal, film:avant-ahead]
+    how: "Zoom ×14 around the shape's apex while a clipPath of that shape grows from it. The single most 'ours' transition."
+  - id: slit-flip
+    name: "Slit flip — the frame opens from a single line into the opposite world (dark ↔ paper)"
+    from: [enterprise-grid, signature-vivid, film:avant-one-line]
+    how: "inset() clip from the line's y outward over 0.9 s, and back the same way. Works best when the line has been the hero."
+  - id: lanes-converge
+    name: "Lanes converge — parallel coloured lanes bend into one point of light"
+    from: [signature-vivid, film:avant-one-line]
+    how: "Each lane = one agent/service with a live counter; the bend is a cubic; the merged light becomes the logo."
+  - id: slice-to-strip
+    name: "Slice to strip — wide panels slice into narrow strips that stream across like progress"
+    from: [frost-trust]
+    how: "3 panels → 24 strips (stagger 20 ms) → a moving band; use for 'processing / at scale'."
 
 typography:    # fonts are OFL / free unless the brand supplies its own licensed font
   - id: geometric-light
@@ -245,6 +278,10 @@ typography:    # fonts are OFL / free unless the brand supplies its own licensed
     name: "The brand's own font (from the brand bible) with its web fallback"
     from: [film:smarttech, crossroads]
     how: "Only when the client supplies or licenses it; otherwise pick an OFL match."
+  - id: line-riding-swap
+    name: "Words ride a hairline — each word slides up out of the line mask and out again"
+    from: [enterprise-grid, signature-vivid]
+    how: "Mask = 140 px band above the line; 1.2 s per word; the last word holds. One word or short phrase at a time."
 
 colour:        # palette FAMILIES; the brand's tokens are mapped onto the family's roles
   - id: midnight
@@ -284,6 +321,10 @@ colour:        # palette FAMILIES; the brand's tokens are mapped onto the family
   - id: brand-tokens
     name: "Strictly the brand bible's palette (accent ≤ 5 % of frame)"
     from: [film:smarttech, crossroads, film:adc]
+  - id: vivid-on-black
+    name: "Vivid on black — lilac #B9A6FF, pink #FF9FCB, cyan #5FD6FF, blue #5B83FF, orange #FF8A3C, violet #A274FF, green #3FE6A6 on #07080B, plus ONE full-bleed lilac/cyan/pink/navy gradient world"
+    from: [signature-vivid, midnight-signal]
+    how: "The client's accent replaces one hue; never mid-grey. The gradient world appears once (the 'inside')."
 
 ui_treatment:
   - id: floating-chat
@@ -322,6 +363,18 @@ ui_treatment:
   - id: geometry-only
     name: "Pure geometry — lines, dots, rings, grids (no UI, no photos)"
     from: [film:adc, film:smarttech, crossroads, paper-lab]
+  - id: approve-draft
+    name: "Draft → Approve — an AI reply waits as a dashed draft with an Approve button; a thumb taps; it sends"
+    from: [signature-vivid, film:avant-ahead]
+    how: "For any product where a human signs off. Status line DRAFT · WAITING FOR APPROVAL → SENT · 08:02."
+  - id: bracket-chart
+    name: "Bracket chart — dotted grid, four bracket corners, two bars (before / after) counting up"
+    from: [enterprise-grid, paper-lab, signature-vivid]
+    how: "Only honest numbers. Paper (#F3F4F7) world, ink #12151C, the 'after' bar in the brand accent with glow."
+  - id: frosted-padlock
+    name: "Frosted padlock with compliance words beside it (words, not badges)"
+    from: [frost-trust]
+    how: "ONLY certifications the client actually holds. Otherwise use 'POPIA-minded'."
 
 motion_feel:
   - id: soft-no-overshoot
@@ -369,6 +422,10 @@ sound:
     from: [new]
     axes: {warmth: [4, 5]}
     how: "For bakeries, cafés, gyms with a community feel. Self-generated synths can't do this well → offer a licensed track (paid add-on)."
+  - id: chord-per-world
+    name: "A chord per world — every scene/colour world has its own chord; all SFX are notes of it; max 3 air moves"
+    from: [signature-vivid, film:avant-ahead, film:avant-one-line, film:avant-every-city]
+    how: "Dark pile-up = minor 7; order = major 9; the peak = the V chord bloom; home = the tonic with the logo boom."
 
 hook:
   - id: concrete-pain
@@ -408,6 +465,14 @@ hook:
     from: [shot:data/before-after-slider-scrub]
 
 # Cross-reference rules (checked in both directions by scripts/recipe.py)
+  - id: pile-up
+    name: "The pile-up — the viewer's real workload rains down into a messy heap under one short line of type"
+    from: [signature-vivid, film:avant-ahead]
+    how: "Cards carry real-looking artefacts (INV-1042 · R8,450 overdue). Two typographic beats max."
+  - id: one-dot-to-field
+    name: "One dot → a field of dots (one customer becomes thousands)"
+    from: [frost-trust, enterprise-grid]
+    how: "Start on a single dot held 1 s; multiply outward on a Poisson layout over 3 s. Only when the client has the scale to claim it."
 clashes:
   - [colour:midnight, colour:sunset-gradient]
   - [colour:navy-glass, colour:paper-sage]

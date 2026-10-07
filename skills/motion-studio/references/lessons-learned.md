@@ -98,3 +98,25 @@ Each item below cost at least one round of rework on a real client job. They are
     the recipe engine as the source of *additions*, not replacements.
 44. **When a name changes, mute the old name in the voiceover** (find the word from the loudness contour and mute
     with 40 ms fades). Fill the gap with the logo moment and a musical sting instead of leaving dead air.
+
+## From the Avant signature round and portfolio (2026-10-07)
+45. **Study a reference at full resolution, frame by frame, before building.** The first Avant films missed because
+    they were built from impressions; the Agents study hit because every beat was measured from frames.
+46. **A replica is a study, never a deliverable.** Keep the palette, camera language and holds; replace every
+    signature device with one taken from the client's own logo, name or promise (Λ climb, aperture dive through the
+    apex, approve-draft). The replica stays out of portfolios.
+47. **Colours: vivid on black, one gradient world.** "Dull and childish" came from mid-grey and pastel-on-grey; the
+    fix was saturated hues on #07080B and one full-bleed lilac/cyan/pink/navy world (see `signature-vivid`).
+48. **Hold after every move.** 0.4–0.8 s of stillness after each move is what made the films read as premium.
+49. **Text over moving objects goes on top in the layer order** (the falling card covered "Every invoice.").
+50. **vercel.app, lovable.app and Lovable asset URLs are blocked here.** Ask for screenshots / a laptop screen
+    recording; never ship a static screenshot where the client expects their scroll animation.
+51. **Artifact pages: embed images and video in the page.** Relative files showed as "?" on the user's phone. The
+    16 MB page limit means ~11 MB of video total: 720p, CRF 25–28, AAC 80k. Tell the user the portfolio copy is
+    compressed and send full-quality files separately.
+52. **Don't fix voice pace with the speed slider** (see script-voice-pacing §4).
+53. **A verbal price is a promise.** Writing a higher number than the one agreed in a meeting needs the added value
+    spelled out next to it, or a conversation first.
+54. **Round prices read premium; charm prices (R1,999) read as value.** Tell the user which signal they're sending.
+55. **Check "In use" before showing a third-party name**: ADC Innovations is a placeholder — say so wherever it
+    appears (portfolio note).

@@ -12,12 +12,15 @@ Read this before every film. It sits under the quality floor in SKILL.md (SmartT
 | Voice | Required; one idea per line | Optional; the cut breathes on its own beats (a hold after every move) |
 | Length | 45–60 s | 30–35 s (vertical first), 16:9 adaptation after |
 
-## Voice script rules (fixes "too fast" / "too slow")
-- **Word budget:** 130–150 words per 60 s of narration. Count before recording. Under 110 sounds slow and empty; over 160 sounds rushed.
-- **One idea per line**, short lines, written to be heard. Hook → problem → the brand arrives → what it does → name → line → CTA.
-- **Pauses:** on Multilingual v2 use `<break time="0.8s" />` (short) and `<break time="1.4s" />` (scene change) instead of blank lines and "..."; ElevenLabs documents break tags as the consistent method, ellipses as inconsistent. Max ~8 breaks per take (too many make the model unstable).
-- **Speed:** start at 0.92–0.95 with breaks doing the slowing. Never go below 0.85 to "add space"; that stretches the words instead of the gaps.
-- **Test read:** generate the first two lines only, time them, then the full take.
+## Voice script rules (see script-voice-pacing.md §4 for the full system)
+- **Default = the proven calm read:** 95–110 words per 60 s, Oliver, Multilingual v2, **Speed 0.87** (SmartTech
+  Crossroads, approved). The 130–150 words/min figure from explainer-video research is for *standard explainers*,
+  not our premium films.
+- **Never fix pace with the speed slider.** Speed 0.80 made it drag; cutting the pauses out made it rush. Pace is set
+  by the word budget and the pauses; speed stays 0.87.
+- **Pauses:** one idea per line, blank line between lines; on Multilingual v2 a `<break time="1.0s" />` is the most
+  consistent way to force a longer hold (max ~6 per take). "..." only for weight inside a line.
+- **Test read:** generate the first four lines, time them against the formula, then the full take.
 - Picture is cut to the voice, never the voice stretched to the picture.
 
 ## Sound rules

@@ -150,3 +150,28 @@ Simpler. Smarter. Automation.
 
 Visit smarttechnxt dot com.
 ```
+
+## 4. The voice-script system (locked 2026-10-07 after the Avant voice problems)
+What went wrong: the approved SmartTech take (≈100 words, Oliver, Speed 0.87, blank lines) was perfect. Later takes
+failed two ways: **too fast** when the held pauses around a word ("Almost.") were cut out of an existing take, and
+**too slow** when the speed slider was dropped to 0.80 to "add space". Both were pace problems solved with the wrong
+tool. The rule set below exists so it doesn't happen again.
+
+**Before writing**
+1. Pick the mode (calm / upbeat / cutdown) from §2 and the length. Word budget = length × the mode's words/s
+   (calm 60 s → 95–110 words; 30 s → 45–55; 15 s → 20–28).
+2. Write the spine first (pain → turn → proof → name → line → CTA), one idea per line, 4–12 words per line.
+3. Mark the 2–3 lines that need a long hold with `<break time="1.0s" />` (v2) — everything else uses the blank line.
+
+**Before sending to the user**
+4. Count words, count lines, run the formula (`seconds ≈ words / 1.8 + 0.5 × paragraphs + holds`). If it's over,
+   cut words — never ask for a faster read.
+5. Add a one-line tone note above the script ("calm, assured, like explaining to a valued client").
+6. Give the exact settings block (voice, model, speed 0.87, stability 30, similarity 80, style 48) and the platform
+   mapping (ElevenLabs sliders 0–100 = OpenArt 0–1).
+
+**When the take comes back**
+7. Measure it (silence detection) against the beat sheet. Fix pace by re-generating lines, or by moving the picture.
+   Never time-stretch the voice; never change the speed setting between takes of one film.
+8. Never cut a held pause out of a take without re-timing the line around it; a cut pause = a rushed film.
+9. If the user says "too fast"/"too slow", ask which line — then fix that line's words or break, not the global speed.
