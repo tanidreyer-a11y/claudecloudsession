@@ -32,6 +32,12 @@ Built from real client films: brand films a founder approved on first viewing, a
   profiles, never the default for anyone else. The neutral template and the recipe engine set the look.
 - **Quality first.** If a paid add-on is the best option, offer it with its cost and let the client decide
   (production.md §5). Never quietly downgrade.
+- **Quality floor = SmartTech NXT "Crossroads"** (approved by the client and the owner as the best film so far):
+  build `smarttechnxt-ad/build2/`, script `brands/smarttechnxt-assets/script-v9-crossroads.md`, style card
+  `crossroads`. What makes it work: one idea taken from the brand itself carried start to finish; one line per idea
+  with real breathing pauses in the VO; few elements on screen, each with a job; sound that follows the story
+  beats. Every new film, at any price tier, is watched side by side with it before delivery. If it reads cheaper,
+  less focused or more rushed, it does not ship. Copy its *method*, never its brand look (colours, logo, fonts).
 - **Third-party code:** knowledge only. Vet repos before use (references/third-party-skills.md). Never install hooks
   or MCP configs, never run unknown scripts, and check any script before reusing it.
 

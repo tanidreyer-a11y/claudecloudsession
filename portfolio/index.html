@@ -1,0 +1,188 @@
+<title>Selected Work 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Geist:wght@300;400;500&family=Geist+Mono:wght@400&display=swap">
+<style>
+/* Layout: one quiet column; films first (large, then two up), websites as an even 3-up gallery that drops to one column on phones. */
+:root {
+  --ink: #0b0b0d;          /* page ground */
+  --panel: #131317;        /* media frames */
+  --line: #24242b;         /* hairlines */
+  --text: #ecebe6;         /* primary text, warm ivory */
+  --muted: #8f8d88;        /* secondary text */
+  --glow: #c9b38a;         /* single accent: soft champagne */
+  --display: "Bodoni Moda", "Didot", "Times New Roman", serif;
+  --body: "Geist", "Helvetica Neue", Arial, sans-serif;
+  --mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--ink); color: var(--text); font-family: var(--body); font-weight: 300; font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 48px); padding-block: clamp(40px, 7vw, 96px) 64px; }
+a { color: inherit; }
+.label { font-family: var(--mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+
+/* intro */
+header.intro { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(24px, 5vw, 80px); align-items: end; padding-bottom: clamp(40px, 6vw, 72px); border-bottom: 1px solid var(--line); }
+h1 { font-family: var(--display); font-weight: 400; font-size: clamp(44px, 7.4vw, 104px); line-height: .98; letter-spacing: -.01em; margin: 14px 0 0; text-wrap: balance; }
+h1 em { font-style: italic; color: var(--glow); }
+.intro p { margin: 0; max-width: 46ch; color: #c9c7c1; font-size: 17px; }
+.intro .facts { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 22px; }
+
+/* sections */
+section { padding-top: clamp(48px, 7vw, 88px); }
+.sec-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
+h2 { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 3.6vw, 46px); margin: 0; line-height: 1.05; }
+
+/* films */
+.films { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 3vw, 36px); }
+.film { min-width: 0; display: grid; gap: 14px; }
+.film.lead { grid-column: 1 / -1; }
+.frame { position: relative; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; aspect-ratio: 16 / 9; max-width: 100%; }
+.frame video { display: block; width: 100%; height: 100%; object-fit: cover; background: #000; }
+.meta { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.meta h3 { font-family: var(--display); font-weight: 400; font-size: 24px; margin: 0; }
+.film.lead .meta h3 { font-size: clamp(26px, 2.6vw, 34px); }
+.film p { margin: 0; color: var(--muted); max-width: 62ch; font-size: 15px; }
+.note { margin-top: 30px; padding: 18px 20px; border: 1px solid var(--line); border-radius: 6px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: start; color: #b9b7b1; font-size: 14px; }
+.note .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--glow); margin-top: 8px; box-shadow: 0 0 12px var(--glow); }
+.next { margin-top: 14px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; padding: 18px 20px; border-radius: 6px; background: var(--panel); border: 1px solid var(--line); }
+.next strong { font-weight: 400; font-family: var(--display); font-size: 20px; }
+.next .label { color: var(--glow); }
+
+/* websites */
+.sites { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 2.6vw, 32px); }
+.site { min-width: 0; display: grid; gap: 14px; text-decoration: none; border-radius: 6px; }
+.site .shot { aspect-ratio: 16 / 9; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); background: var(--panel); max-width: 100%; }
+.site img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .7s cubic-bezier(.2,.7,.2,1), filter .7s; filter: saturate(.92); }
+.site:hover img, .site:focus-visible img { transform: scale(1.035); filter: saturate(1.05); }
+.site:focus-visible { outline: 1px solid var(--glow); outline-offset: 6px; }
+.site h3 { font-family: var(--display); font-weight: 400; font-size: 22px; margin: 0; }
+.site p { margin: 2px 0 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
+.site .url { font-family: var(--mono); font-size: 12px; color: #b9b7b1; display: inline-flex; gap: 8px; align-items: center; }
+.site .url span { color: var(--glow); transition: transform .3s; }
+.site:hover .url span { transform: translateX(3px); }
+.site .row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+
+footer { margin-top: clamp(56px, 8vw, 96px); padding-top: 26px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+@media (max-width: 900px) {
+  header.intro { grid-template-columns: 1fr; }
+  .films { grid-template-columns: 1fr; }
+  .sites { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { .site img, .site .url span { transition: none; } }
+</style>
+
+<div class="wrap">
+  <header class="intro">
+    <div>
+      <div class="label">Selected work · 2026</div>
+      <h1>Websites and films with the <em>weight</em> of your reputation.</h1>
+    </div>
+    <div>
+      <p>3D, scroll-driven websites and short brand films for businesses whose online presence should match the quality of their work. This is an early-stage studio, so some pieces are concept builds. Every website below is fully built and live.</p>
+      <div class="facts">
+        <span class="label">9 live websites</span>
+        <span class="label">3 brand films</span>
+        <span class="label">Design · Code · Motion · Sound</span>
+      </div>
+    </div>
+  </header>
+
+  <section id="films" aria-labelledby="films-title">
+    <div class="sec-head">
+      <h2 id="films-title">Brand films</h2>
+      <span class="label">16:9 · each also delivered vertical and square</span>
+    </div>
+
+    <div class="films">
+      <article class="film lead">
+        <div class="frame"><video controls playsinline preload="metadata" poster="img/poster-smarttech.jpg" src="video/smarttech-crossroads.mp4"></video></div>
+        <div class="meta"><h3>SmartTech NXT · Crossroads</h3><span class="label">Brand film · 57 s</span></div>
+        <p>A story built from the client's own logo: the double T as the crossroads every business reaches, and the bridge out of it. Script, voiceover, motion design and sound.</p>
+      </article>
+
+      <article class="film">
+        <div class="frame"><video controls playsinline preload="metadata" poster="img/poster-starlight.jpg" src="video/starlight.mp4"></video></div>
+        <div class="meta"><h3>Starlight</h3><span class="label">Product film · 61 s</span></div>
+        <p>Four AI agents rising from a single spark. A slow, cinematic product film for an AI-agents platform, in the style of top-tier software launches.</p>
+      </article>
+
+      <article class="film">
+        <div class="frame"><video controls playsinline preload="metadata" poster="img/poster-debi.jpg" src="video/debi.mp4"></video></div>
+        <div class="meta"><h3>Debi</h3><span class="label">Product film · 47 s</span></div>
+        <p>An overdue invoice that handles itself. A bright, UI-led product film showing a collections assistant at work, message by message.</p>
+      </article>
+    </div>
+
+    <div class="note">
+      <span class="dot" aria-hidden="true"></span>
+      <div><strong style="font-weight:500;color:var(--text)">About the name ADC Innovations.</strong> It appears in some films and one website as a placeholder brand. It is not a verified company; those pieces are concept work built to demonstrate the format.</div>
+    </div>
+    <div class="next">
+      <div><div class="label">In production</div><strong>Klick Kulture demo film</strong></div>
+      <span class="label" style="align-self:center">Starts as soon as the brand bible is in</span>
+    </div>
+  </section>
+
+  <section id="websites" aria-labelledby="sites-title">
+    <div class="sec-head">
+      <h2 id="sites-title">Websites</h2>
+      <span class="label">Tap any project to open the live site</span>
+    </div>
+
+    <div class="sites">
+      <a class="site" href="https://cinematic-obsidian.vercel.app" target="_blank" rel="noopener">
+        <div class="shot"><img src="img/obsidian.jpg" alt="Obsidian website hero: the word OBSIDIAN with a 3D brain bursting through in purple powder" loading="lazy"></div>
+        <div><div class="row"><h3>Obsidian</h3><span class="label">Web studio</span></div><p>3D hero, hold-to-play scroll film and a ghost cursor that follows you.</p></div>
+        <span class="url">cinematic-obsidian.vercel.app <span>→</span></span>
+      </a>
+      <a class="site" href="https://arctic-scroll-lights.vercel.app" target="_blank" rel="noopener">
+        <div class="shot"><img src="img/arctic.jpg" alt="Arctic Scroll Lights hero: aurora over a pine forest with the line You can drive nine hours and see nothing" loading="lazy"></div>
+        <div><div class="row"><h3>Arctic Scroll Lights</h3><span class="label">Story site</span></div><p>Scroll to move the night: an aurora story told entirely through scrolling.</p></div>
+        <span class="url">arctic-scroll-lights.vercel.app <span>→</span></span>
+      </a>
+      <a class="site" href="https://northlights-ashy.vercel.app" target="_blank" rel="noopener">
+        <div class="shot"><img src="img/northlight.jpg" alt="Northlight hero: underwater light rays with the line The work happens beneath the surface" loading="lazy"></div>
+        <div><div class="row"><h3>Northlight</h3><span class="label">Therapy practice</span></div><p>A calm, scroll-driven journey from beneath the surface into the light.</p></div>
+        <span class="url">northlights-ashy.vercel.app <span>→</span></span>
+      </a>
+      <a class="site" href="https://arch-haven-gallery.vercel.app" target="_blank" rel="noopener">
+        <div class="shot"><img src="img/aurelis.jpg" alt="Aurelis hero: sunlit living room with a date and guest booking bar" loading="lazy"></div>
+        <div><div class="row"><h3>Aurelis</h3><span class="label">Stays · Cape Town</span></div><p>Six architectural residences with booking up front and rooms that open as you scroll.</p></div>
+        <span class="url">arch-haven-gallery.vercel.app <span>→</span></span>
+      </a>
+      <a class="site" href="https://obsidian-real-estate.vercel.app" target="_blank" rel="noopener">
+        <div class="shot"><img src="img/estates.jpg" alt="Obsidian real estate hero: a dark modern house at dusk with lit interiors" loading="lazy"></div>
+        <div><div class="row"><h3>Obsidian Estates</h3><span class="label">Real estate</span></div><p>Private homes presented as a cinematic walk-through, room by room.</p></div>
+        <span class="url">obsidian-real-estate.vercel.app <span>→</span></span>
+      </a>
+      <a class="site" href="https://capeatlanticcigars.vercel.app" target="_blank" rel="noopener">
+        <div class="shot"><img src="img/cape-atlantic.jpg" alt="Cape Atlantic hero: a lit cigar with currency and language switchers" loading="lazy"></div>
+        <div><div class="row"><h3>Cape Atlantic</h3><span class="label">Cigar house</span></div><p>A slow-burning storefront in three currencies and three languages.</p></div>
+        <span class="url">capeatlanticcigars.vercel.app <span>→</span></span>
+      </a>
+      <a class="site" href="https://mokorp.vercel.app" target="_blank" rel="noopener">
+        <div class="shot"><img src="img/mokorp.jpg" alt="Mokorp Advisory hero: gold headline A Real Partner over a city at dusk" loading="lazy"></div>
+        <div><div class="row"><h3>Mokorp</h3><span class="label">Advisory group</span></div><p>One site, two sides: switch between the advisory and the wider group.</p></div>
+        <span class="url">mokorp.vercel.app <span>→</span></span>
+      </a>
+      <a class="site" href="https://3-d-demo-web-dev-surgery.vercel.app" target="_blank" rel="noopener">
+        <div class="shot"><img src="img/clinic.jpg" alt="Aesthetic clinic hero: glass head on a marble plinth with the line Every result starts as a plan" loading="lazy"></div>
+        <div><div class="row"><h3>Aesthetic clinic</h3><span class="label">Concept · placeholder name</span></div><p>A precision theme with a 3D reveal, built for a high-end surgical practice.</p></div>
+        <span class="url">3-d-demo-web-dev-surgery.vercel.app <span>→</span></span>
+      </a>
+      <div class="site" tabindex="0">
+        <div class="shot"><img src="img/avant.jpg" alt="Avant hero: Always one step ahead, with a glass 3D shape behind vertical bars" loading="lazy"></div>
+        <div><div class="row"><h3>Avant</h3><span class="label">AI agents platform</span></div><p>AI agents that chase payments and route leads, with a 3D glass hero.</p></div>
+        <span class="url">Live link on request</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="label">Every project designed, written and coded in-house</span>
+    <span class="label">Updated October 2026</span>
+  </footer>
+</div>
