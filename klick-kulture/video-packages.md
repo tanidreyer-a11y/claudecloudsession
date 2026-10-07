@@ -17,9 +17,9 @@
 | | **Essential** | **Growth** | **Signature** |
 |---|---|---|---|
 | Videos per month | 6–7 | 14–15 | 4 |
-| Price per video | R1,500 | R1,200 | R2,500 |
-| Monthly total | R9,000 – R10,500 | R16,800 – R18,000 | R10,000 |
-| Style | Clean, branded motion design | Clean, branded motion design | Story-led brand film with custom transitions (SmartTech NXT level) |
+| Price per video | R1,500 | R1,200 | R5,000 |
+| Monthly total | R9,000 – R10,500 | R16,800 – R18,000 | R20,000 |
+| Style | Clean, branded motion design | Clean, branded motion design | Flagship cinematic film: interactive UI, 3D visuals and one focus point carrying the story (my top-level work) |
 | Revisions per video | 2 rounds | 1 round | 2 rounds |
 | Delivery | All videos by the 15th | Two batches: 15th and 30th | All videos by the 15th |
 | Minimum term | 4 months | 6 months | 4 months |
