@@ -1,8 +1,8 @@
 # Quote: Monthly Video Production
 **Prepared for:** Klick Kulture · Maritca
-**From:** [Your business name] · [contact number] · [email]
-**Quote no.:** KK-002 · **Date:** [date] · **Valid for:** 14 days
-**Portfolio:** https://claude.ai/artifact/U68sJgXttYz4TXj5CcQKMH
+**From:** Obsidian · Nathaniel Dreyer · WhatsApp 079 244 9706
+**Quote no.:** KK-002 · **Date:** Wednesday, 7 October 2026 · **Valid for:** 14 days (until 21 October 2026)
+**Portfolio:** https://claude.ai/artifact/U68sJgXttYz4TXj5CcQKMH (website links are preview deployments)
 
 ---
 
@@ -63,4 +63,6 @@ Videos featuring a physical product (food, packaging, retail) need **high-resolu
 | 7 | | | | | | | |
 
 ---
+**Prepared by:** Nathaniel Dreyer, Obsidian
+
 **Accepted by:** ____________________ **Date:** ____________
