@@ -2,7 +2,7 @@
 **Prepared for:** Klick Kulture · Maritca
 **From:** Obsidian · Nathaniel Dreyer · WhatsApp 079 244 9706
 **Quote no.:** KK-002 · **Date:** Wednesday, 7 October 2026 · **Valid for:** 14 days (until 21 October 2026)
-**Portfolio:** https://claude.ai/artifact/U68sJgXttYz4TXj5CcQKMH (website links are preview deployments)
+**Portfolio:** attached separately (Obsidian-Portfolio.html; website links are preview deployments)
 
 ---
 
