@@ -3,3 +3,5 @@ out/raw60.mp4
 out/raw.mov
 out/render.log
 out/st_*.jpg
+out/*_raw60.mp4
+out/render_*.log
