@@ -1,6 +1,6 @@
 # Quote: Monthly Video Production
 **Prepared for:** Klick Kulture · Maritca
-**From:** Obsidian · Nathaniel Dreyer · WhatsApp 079 244 9706
+**From:** Obsidian · Nathaniel Dreyer · WhatsApp 079 244 9607
 **Quote no.:** KK-002 · **Date:** Wednesday, 7 October 2026 · **Valid for:** 14 days (until 21 October 2026)
 **Portfolio:** attached separately (Obsidian-Portfolio.html; website links are preview deployments)
 
