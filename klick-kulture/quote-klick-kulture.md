@@ -8,20 +8,26 @@
 
 ## Pricing
 
-| | **Standard** | **Signature** |
-|---|---|---|
-| Style | Clean, branded motion design with script, voiceover and sound | Cinematic, story-led film with custom transitions, vivid colour and full sound design (see the Signature series in the portfolio) |
-| Monthly agreement, per video | **R1,499** | **R2,000** |
-| Monthly total (6–7 videos) | R8,994 – R10,493 | R12,000 – R14,000 |
-| Single project | **R3,499** | **R5,000** |
-| Minimum term (monthly agreement) | 4–6 months | 4–6 months |
+**The two styles**
+- **Standard:** clean, branded motion design with script, voiceover and sound.
+- **Signature:** cinematic, story-led film with custom transitions, vivid colour and full sound design (see the Signature series in the portfolio).
+
+**Monthly packages**
+
+| Package | Videos per month | Per video | Monthly total | Changes per video | Delivery | Minimum term |
+|---|---|---|---|---|---|---|
+| **Standard** | 6–7 | R1,499 | R8,994 – R10,493 | 2 rounds | by the 15th | 4–6 months |
+| **Growth** | 14–15 | R1,200 (Standard) · R2,000 for any Signature video in the mix | from R16,800 – R18,000 | 1 round | two batches: by the 15th and by the last day of the month | 6 months |
+| **Signature** | 6–7 | R2,000 | R12,000 – R14,000 | 2 rounds | by the 15th | 4–6 months |
+
+**Single projects:** Standard **R3,499** · Signature **R5,000**
 
 ## Every video includes
 - A video of up to 60 seconds, designed for the client's brand (no templates)
 - Script written for the video
 - Professional voiceover (where the video uses one), music and sound design
 - **3 specs:** landscape (16:9), vertical (9:16) and square (1:1), same script
-- 2 rounds of changes
+- Rounds of changes as per the package (2 rounds for single projects)
 
 ## Included in the monthly agreement
 - A **30-minute planning call** at the start of each month to plan the videos together
@@ -34,14 +40,16 @@
 4. **Feedback (days 11–15):** all changes sent together in one list, within 5 working days. After that, the videos are treated as approved.
 5. **Delivery by the 15th:** all videos in 3 specs, named and in one shared folder, ready to schedule.
 
+**Growth package:** the month runs as two batches of 7–8 videos. Batch 1 follows the steps above; batch 2 is produced days 16–25 with feedback by day 28 and delivery by the last day of the month.
+
 ## For product-based clients
 Videos featuring a physical product (food, packaging, retail) need **high-resolution product photos** supplied by the client, ideally on a plain background. Scenes and motion are designed around these. Product photography can be arranged and quoted separately.
 
 ## Terms
 - **Payment:** monthly fees are payable upfront, before production starts. Single projects: 50% to start, 50% on delivery.
-- **Volume:** the monthly agreement covers up to 7 videos per month. Extra videos are quoted at the single-project rate, subject to availability.
+- **Volume:** each package covers its monthly volume (up to 7 for Standard and Signature, up to 15 for Growth). Extra videos are quoted at the single-project rate, subject to availability.
 - **Unused videos** don't roll over to the next month.
-- **Changes:** 2 rounds per video. Extra rounds: R350 per video. A new direction after the pilot is approved counts as a new video.
+- **Changes:** rounds per video as per the package. Extra rounds: R350 per video. A new direction after the pilot is approved counts as a new video.
 - **Scripts:** one script per video (shared by all 3 specs). A separate script per spec is quoted separately.
 - **Rush delivery** (under 5 working days) is quoted separately.
 - **Communication:** messages are answered within 1 working day, Monday to Friday.
@@ -62,6 +70,7 @@ Videos featuring a physical product (food, packaging, retail) need **high-resolu
 | 5 | | | | | | | | |
 | 6 | | | | | | | | |
 | 7 | | | | | | | | |
+| … | (Growth: up to 15 rows) | | | | | | | |
 
 ---
 **Prepared by:** Nathaniel Dreyer, Obsidian
