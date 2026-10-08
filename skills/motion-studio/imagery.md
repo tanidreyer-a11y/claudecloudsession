@@ -43,6 +43,28 @@ Cream Cascade, Desert Glass and the `photo-cards`, `no-ui`, `macro-to-wide`, `se
   swap, relight, expand). Never invent what the product looks like.
 - Write image sources (client / tool + prompt / stock licence) into the project README.
 
+## Realism (owner rule, Oct 2026: "natural, not fake")
+- Real people → real photos or footage only (client, shoot, licensed stock). Never present AI people as real.
+- AI generation is for places, backgrounds, skies, textures and mood. Avoid faces and hands close up, and avoid
+  glossy "AI skin": prompt for film grain, natural light, imperfect detail, real lenses (35/50/85 mm).
+- Natural/real and stylised 3D (game-like CGI) are two different looks. Pick one per ad (intake 8c).
+
+## Cutouts and compositing (person or object into the ad)
+- **Stills:** remove the background (Adobe `image_remove_background`, Canva `remove-background`, or a local
+  segmentation model if installed), then composite in Remotion: separate layers for background / subject / foreground,
+  parallax on camera moves, a soft contact shadow, a colour grade matched to the background, a light wrap or edge blur
+  so the cutout doesn't look pasted on.
+- **Video of a moving person:** frame-by-frame matting is possible but edges flicker on hair and fast motion. Ask for
+  footage on a plain/green background, steady light, high shutter speed. Owner checks edges before delivery.
+- Check every cutout at 100 % on hair, fingers and edges.
+
+## 3D and 360° motion
+- **2.5D (works now):** flat layers (cards, phone screens, photos, cutouts) placed in CSS 3D space
+  (`perspective`, `rotateY`, `translateZ`): orbits, side tracking, cards turning 360°, a phone rotating to show its screen.
+- **Real 3D:** Three.js inside Remotion (`@remotion/three`, install it first). Simple objects (logos, devices, globes,
+  abstract shapes) are built in code; detailed objects (buildings, people, vehicles) need a GLB/GLTF model file from the
+  client, a model store (check the licence) or a 3D generator if one is connected. Camera orbits and dives are then free.
+
 ## Prompt sheet format (what we send the user)
 ```
 SHOT 03 — hero_croissant_macro.jpg   (tool: Google Flow / Imagen; also works in Higgsfield, Midjourney)

@@ -15,6 +15,15 @@ what's already known and confirm only what may have changed.
 2. Who is the viewer (role / type of customer) and the ONE problem or desire this video should hit?
 3. What should they do after watching? (book, buy, visit, call, sign up, follow)
 4. Which facts can we show? (numbers, awards, certifications, prices, opening hours) — only true, confirmed ones go on screen.
+4b. **Your location** (city / area / address), only if you're happy to share it. We use it for map, street and city
+    scenes. [skip = no real location shown]
+4c. **Do you have an app or web app?** Send the link (website, web app, App Store / Play Store page).
+    - Web app or website: we open it ourselves and click through. If the key screens are behind a login, send a
+      **test/demo account** (never a real customer's account).
+    - Phone app: we can't install apps, so send **screen recordings or screenshots** of the screens that matter
+      (iPhone: Settings › Control Centre › Screen Recording).
+    - Which 2–3 screens or actions show what your product does best? (e.g. "book a ride", "pay an invoice")
+    [we pick the strongest moments; the ad uses pieces of the UI, rebuilt and animated, not a full screen recording]
 
 **B. Brand assets**
 5. Brand bible / logo (vector: SVG, AI, PDF) / colours / fonts? Attach what you have. [we extract from the PDF; we never redraw a logo]
@@ -30,6 +39,11 @@ what's already known and confirm only what may have changed.
    - e. **No photos** — keep it graphic (type, shapes, UI)
    [a for real products/people; b or c for mood, places and concepts]
 8. Should real people appear? (your team / customers with consent / AI-generated people / none) [none, unless you supply them]
+   For a natural, real look, people come from **real photos or footage** (yours, a shoot, or licensed stock). AI is used
+   for places, backgrounds and mood, not for faces or hands close up.
+8b. Want a person or product **cut out and placed into the ad** (e.g. standing in front of a city)? Photos work well.
+    For video, film against a **plain or green background**, steady light, no motion blur. [photos]
+8c. Look: **natural/real** (photos, footage) or **stylised 3D** (game-like, CGI)? Pick one per ad; they don't mix well. [natural]
 
 **D. The feel** — pick from the library or describe in your own words
 9. Vibe — rate 1–5, or pick words: energy (calm ↔ hype) · warmth (cool/technical ↔ warm/human) · density (minimal ↔ packed) ·
@@ -40,6 +54,8 @@ what's already known and confirm only what may have changed.
    Cobalt Campaign (cobalt + real photos as AI output — image-led) · Sunset Prompt (sunset gradients, word swaps, Shorts) ·
    Lavender Desk (pastel professional, verb chapters) · Desert Glass (landscape photo behind glass UI) ·
    Kinetic Pop (bold type on the beat). Mixing is normal: we cross-breed them. [we'll propose 3]
+10b. Camera: flat (moves left/right/up/down) · **2.5D** (layers, cards, phone screens turning in 3D space) · **real 3D**
+    (camera circles a 3D object or logo, 360°; detailed objects like buildings or people need a 3D model file). [2.5D]
 11. Pace: slow cinematic · measured · upbeat on the beat · short punch (10–20 s). [measured]
 12. Story: problem → solution · a day in the life · how it's made · one input → many results · launch teaser ·
     customer story · logo story. [we'll propose]

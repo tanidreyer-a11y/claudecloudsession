@@ -35,6 +35,19 @@ Read this before every film. It sits under the quality floor in SKILL.md (SmartT
 - Colours: saturated hues on near-black, or one bright full-bleed gradient. Never mid-grey "dull" palettes.
 - Every scene hands over to the next through an object (light, orb, circle wipe, ring), not a cut to black.
 
+## App and website ads (the Uber-style method)
+- Get the real product first (intake 4c): web apps we open and capture ourselves (Playwright screenshots/recordings,
+  test account if needed); phone apps come as client screen recordings or screenshots.
+- Pick 2–3 moments that show how it works (request → match → arrive; draft → approve → paid).
+- Rebuild those pieces as clean vector UI in code (map, card, button, status) so they are sharp and can move on their
+  own. Don't play a full-screen recording; lift elements out of the screen and let them travel through the scene.
+- Location (with consent) drives map and city scenes; never show a real customer's data.
+
+## Text on screen (owner feedback, Oct 2026)
+- Text must belong to the scene: printed on an object, moving with the camera, partly behind things, or built from the
+  scene's own material. Plain centred white text faded in on top reads as "just put there".
+- Each film gets its own type treatment; never reuse one caption style across a series.
+
 ## Physical-product ads (not yet proven: test before selling)
 - Always the client's **real product photo** (packshot, evenly lit, clean silhouette). Never let AI redraw a real label or pack.
 - Build around it: generated scene behind, slow camera move, a light sweep across the pack, text and voice doing the selling.
