@@ -120,3 +120,12 @@ Each item below cost at least one round of rework on a real client job. They are
 54. **Round prices read premium; charm prices (R1,999) read as value.** Tell the user which signal they're sending.
 55. **Check "In use" before showing a third-party name**: ADC Innovations is a placeholder — say so wherever it
     appears (portfolio note).
+56. **Brand-board native beats brand-coloured.** SmartTech used the brand bible's colours; Klick Kulture used the brand
+    board's *devices* (their cutout collages, like-icons, chevrons, X marks, label chips, own copy) as the film's
+    vocabulary. The owner called the second one "unique to them". Inventory the board's devices before designing.
+57. **Never use people from the client's team** (director portraits in a services guide) unless the client asks.
+58. **Don't trust self-review on meaning-carrying transitions.** The cursor → network → check-box chain looked "messy"
+    in stills but was the owner's favourite in motion. Judge transitions in motion, not from contact sheets.
+59. **A still photo can snap.** Split the moving part (fingertips) into its own layer with an overlap band, rotate it
+    about the knuckle (press +4°, flick −12°, damped settle) with 2–3 blur ghosts; the base keeps the knuckle so no gap
+    opens. Reads as a snap at speed; a fully physical snap needs real footage.
