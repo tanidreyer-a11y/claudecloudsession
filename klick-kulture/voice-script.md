@@ -1,4 +1,69 @@
-# v2 — in Klick Kulture's own brand language (~48–50 s, 77 words)
+# v3 — "Makes you click" (RECOMMENDED · ~47 s · 68 words)
+
+Tone: starts quiet and intimate, lifts with excitement from "Makes you... click", proud and warm on "roar".
+Elegant, smiling, never salesy. Voice carries the emotion; the screen carries the services (printed in the scene).
+
+```
+Every brand... has a story.
+
+Most... are scrolled past.
+
+<break time="1.0s" />
+
+But the right one...
+
+makes you stop.
+
+Makes you feel something.
+
+Makes you... click.
+
+Welcome to our digital playground.
+
+Where strategy... meets story.
+
+Where content... sparks conversation.
+
+And every click...
+
+becomes a connection.
+
+We don't tick boxes.
+
+We craft experiences.
+
+Because in a world full of chatter...
+
+your brand deserves... to roar.
+
+Klick Kulture.
+
+Ready to klick with us?
+```
+
+| Line | Picture (one shot per line) |
+|---|---|
+| Every brand has a story | soft light on a single grey post in an endless feed |
+| Most are scrolled past | the feed rushes sideways, everything grey and blurred |
+| (hold) | the feed slows; silence; her black-and-white hand rises from the yellow floor |
+| But the right one / makes you stop | the hand freezes the feed mid-scroll |
+| Makes you feel something | a heart pops from the fingertips (her finger-heart image) |
+| Makes you... click | THE SNAP: frame bursts into her colours |
+| digital playground | camera dives through her chevrons into a colour world; phone spins 360° |
+| strategy meets story / content sparks conversation | services land as posts: Strategy · Social · Content · SEO · Google Ads |
+| every click becomes a connection | likes and hearts link into a network of lines |
+| We don't tick boxes / We craft experiences | a tick-box grid breaks apart into shapes |
+| world full of chatter / deserves to roar | TV-head person walks out of the phone, likes burst |
+| Klick Kulture | chevrons fold into the K logo |
+| Ready to klick with us? | end card, klickkulture.co.za, "Crafting experiences, not just services." |
+
+Brand-language sources: digital playground · not about ticking boxes · crafting experiences · resonate with your brand's
+unique story · fueling meaningful conversations · clicks into meaningful conversions · social chatter / deserves to roar ·
+Ready to klick with us?
+
+---
+
+# v2 (superseded) — in Klick Kulture's own brand language (~48–50 s, 77 words)
 
 Every line is lifted or adapted from their Services Guide (source in brackets, not read aloud).
 
