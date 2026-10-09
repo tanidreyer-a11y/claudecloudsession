@@ -16,6 +16,7 @@ stills.mjs            contact sheets: node stills.mjs KK916 out/sheet.jpg 1,2,3
 ## Adapting it to a new brand (in this order)
 1. Extract the board: palette, fonts, logo (never redraw), and an inventory of its DEVICES (icons, frames, chips,
    textures, cutouts). The devices are the film's vocabulary — that is what made KK "unique to them".
+   If the owner supplies new pieces (his own or generated), add them to the inventory (locked L8).
 2. Pick the board's GESTURE image (KK: the snapping hand) → it stops the feed and makes the "click".
 3. Write an emotion-led script (voice = feeling, screen = information). Get the take, run silence detection
    (`ffmpeg -af silencedetect=noise=-40dB:d=0.18`), fill the T table.

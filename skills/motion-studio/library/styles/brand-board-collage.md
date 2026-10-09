@@ -10,7 +10,7 @@ vibe_axes:
   density: 3  # one hero object per beat; clutter only where the story needs noise (feed, chatter)
   realism: 3  # the client's REAL cutout photos inside a graphic world
   polish: 5
-structure: the brand board is the cast. 1 grey endless feed (the problem: being scrolled past) → one post stops it →
+structure: the brand board is the cast (by default — pieces the owner supplies or generates join the cast, L8). 1 grey endless feed (the problem: being scrolled past) → one post stops it →
   the brand's own gesture image (KK: a hand rising from a yellow floor) → the gesture (snap) bursts the grey into the
   brand's colours → pull back: the hero is a floating slab in a colour "playground" of the brand's collage cards →
   the brand's own headline in its own layout → a phone spins in; services land as posts, comments pop out → a cursor
