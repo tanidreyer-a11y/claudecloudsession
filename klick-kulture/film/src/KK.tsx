@@ -168,6 +168,15 @@ const PostSkeleton: React.FC<{ w: number; hh: number; seed: number; children?: R
 
 // ---------------------------------------------------------------- 2 · the hand stage (stage coords 1080x1920)
 const ST = { floorX: -546.6, floorY: 1276, handX: 281.4, handY: 422.2, holeX: 540, holeY: 1500, holeRX: 237, holeRY: 34, fx: 665, fy: 555, slabBottom: 1880 };
+// the snap (degrees, CSS clockwise): press +4 -> flick to -12 -> damped settle back to 0
+const snapAng = (s: number) => {
+  const c = T.click;
+  if (s < c - 0.45) return 0;
+  if (s < c - 0.03) return 4 * prog(s, c - 0.45, c - 0.03, E.soft);
+  if (s < c + 0.035) return lerp(4, -12, prog(s, c - 0.03, c + 0.035, Easing.bezier(0.5, 0, 0.6, 1)));
+  const u = s - c - 0.035;
+  return -12 * Math.exp(-8 * u) * Math.cos(2 * Math.PI * 2.6 * u);
+};
 const handRise = (s: number) => prog(s, 6.1, T.stopHit, Easing.bezier(0.2, 1.18, 0.45, 1));
 const HandStage: React.FC<{ s: number; vw: number; vh: number; z: number; fy: number; ox?: number; oy?: number }> = ({ s, vw, vh, z, fy, ox = 0, oy = 0 }) => {
   const hr = handRise(s);
@@ -188,7 +197,14 @@ const HandStage: React.FC<{ s: number; vw: number; vh: number; z: number; fy: nu
       <div style={{ position: "absolute", left: ST.holeX - ST.holeRX, top: ST.holeY - ST.holeRY, width: ST.holeRX * 2, height: ST.holeRY * 2, borderRadius: "50%", background: "radial-gradient(ellipse at 50% 35%, #2b2b2b 0%, #0c0c0c 70%)" }} />
       <Img src={img("floor.png")} style={{ position: "absolute", left: ST.floorX, top: ST.floorY, width: 2318, height: 332 }} />
       <Img src={img("floor_shadow.png")} style={{ position: "absolute", left: ST.floorX, top: ST.floorY, width: 2318, height: 332, opacity: hr * hr }} />
-      <Img src={img("hand.png")} style={{ position: "absolute", left: ST.handX, top: ST.handY, width: 792, height: 1128, transformOrigin: "340px 1050px", transform: handT }} />
+      <div style={{ position: "absolute", left: ST.handX, top: ST.handY, width: 792, height: 1128, transformOrigin: "340px 1050px", transform: handT }}>
+        <Img src={img("hand_base.png")} style={{ position: "absolute", left: 0, top: 0, width: 792, height: 1128 }} />
+        {/* the snap: the finger-heart tips press, flick and settle (motion-blur ghosts during the flick) */}
+        {s > T.click - 0.05 && s < T.click + 0.12 && [3, 2, 1].map((g) => (
+          <Img key={g} src={img("hand_tip.png")} style={{ position: "absolute", left: 0, top: 0, width: 792, height: 1128, transformOrigin: "500px 282px", transform: `rotate(${snapAng(s - g * 0.011)}deg)`, opacity: 0.26 }} />
+        ))}
+        <Img src={img("hand_tip.png")} style={{ position: "absolute", left: 0, top: 0, width: 792, height: 1128, transformOrigin: "500px 282px", transform: `rotate(${snapAng(s)}deg)` }} />
+      </div>
       <Img src={img("floor_front.png")} style={{ position: "absolute", left: ST.floorX, top: ST.floorY, width: 2318, height: 332 }} />
       <div style={{ position: "absolute", left: ST.floorX, top: 1600, width: 2318, height: ST.slabBottom - 1600, background: K.floor }} />
       <div style={{ position: "absolute", left: ST.floorX, top: ST.slabBottom, width: 2318, height: 54, background: "linear-gradient(#E2B800, #C99F00)", borderRadius: "0 0 10px 10px" }} />

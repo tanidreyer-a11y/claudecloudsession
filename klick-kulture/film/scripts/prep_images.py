@@ -51,3 +51,17 @@ save(Image.open(f'{B}/bb_img1.png').convert('RGBA'), 'logo_h_black.png', 1800)
 st = Image.open(f'{B}/bb_img0.png').convert('RGBA'); a = np.array(st.getchannel('A'))
 cols = np.where(a.max(0) > 30)[0]; rows = np.where(a.max(1) > 30)[0]
 print('stacked bbox', cols.min(), cols.max(), rows.min(), rows.max())
+
+# ---------- the snap: split the finger-heart tips into their own layer ----------
+from PIL import ImageDraw
+hand = Image.open(f'{O}/hand.png').convert('RGBA')
+CUT = [(150, 0), (640, 0), (640, 232), (566, 292), (472, 279), (402, 262), (330, 246), (150, 236)]
+OVER = 22   # the tip layer reaches this far below the cut, so rotation never opens a gap
+ERASE = [(150, 0), (640, 0), (640, 170), (548, 236), (472, 270), (402, 256), (330, 242), (150, 232)]  # base keeps the knuckle
+cut_mask = Image.new('L', hand.size, 0); ImageDraw.Draw(cut_mask).polygon(ERASE, fill=255)
+tip_poly = [(x, y + (OVER if y > 0 else 0)) for x, y in CUT]
+tip_mask = Image.new('L', hand.size, 0); ImageDraw.Draw(tip_mask).polygon(tip_poly, fill=255)
+tip_mask = tip_mask.filter(ImageFilter.GaussianBlur(3))
+base = hand.copy(); a = np.array(base.getchannel('A')).astype(float); a *= 1 - np.array(cut_mask) / 255; base.putalpha(Image.fromarray(a.astype(np.uint8)))
+tip = hand.copy(); a = np.array(tip.getchannel('A')).astype(float); a *= np.array(tip_mask) / 255; tip.putalpha(Image.fromarray(a.astype(np.uint8)))
+base.save(f'{O}/hand_base.png'); tip.save(f'{O}/hand_tip.png'); print('hand_base / hand_tip', hand.size, 'pivot (500, 282)')
