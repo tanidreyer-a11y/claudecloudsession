@@ -58,7 +58,7 @@
  {
   "id": 3,
   "date": "2026-10-03",
-  "client": "Avant Intelligence \u2014 Video 1 (16:9)",
+  "client": "Avant Intelligence — Video 1 (16:9)",
   "brand": "avant-intelligence",
   "base": "midnight-signal",
   "donor": "deep-glass",
@@ -84,13 +84,13 @@
    "Paper Lab"
   ],
   "note": "client-requested ElevenLabs base; colour swapped to midnight (from recipe A); giant-word-pass not used",
-  "feedback": "\"perfect but bland, no focus and storytelling\" \u2014 client preferred the earlier ADC voice-led films",
+  "feedback": "\"perfect but bland, no focus and storytelling\" — client preferred the earlier ADC voice-led films",
   "rejected": true
  },
  {
   "id": 4,
   "date": "2026-10-03",
-  "client": "Avant Intelligence \u2014 Video 2 (9:16)",
+  "client": "Avant Intelligence — Video 2 (9:16)",
   "brand": "avant-intelligence",
   "base": "midnight-signal",
   "donor": "paper-lab",
@@ -116,7 +116,40 @@
    "Cream Cascade"
   ],
   "note": "9:16 reel; recipe A as proposed",
-  "feedback": "\"perfect but bland, no focus and storytelling\" \u2014 client preferred the earlier ADC voice-led films",
+  "feedback": "\"perfect but bland, no focus and storytelling\" — client preferred the earlier ADC voice-led films",
   "rejected": true
+ },
+ {
+  "id": 5,
+  "date": "2026-10-09",
+  "client": "Klick Kulture — 'Makes you click' (9:16, 42 s, demo)",
+  "brand": "klick-kulture",
+  "base": "brand-board-collage",
+  "donor": "signature-vivid",
+  "recipe": {
+   "structure": "scroll-stop-click",
+   "pacing": "measured-1.5-2",
+   "camera": "feed-plane-25d",
+   "transitions": [
+    "clicks-network-checkboxes",
+    "card-becomes-stage",
+    "colour-ring-burst",
+    "disc-swallow-logo"
+   ],
+   "typography": "brand-label-chips",
+   "colour": "brand-board-pop",
+   "ui_treatment": "social-post-native",
+   "motion_feel": "still-photo-puppet",
+   "sound": "gesture-snap-hit",
+   "hook": "grey-feed-scroll"
+  },
+  "lineage": [
+   "Brand Board Collage",
+   "Signature Vivid",
+   "Crossroads"
+  ],
+  "note": "built from KK's one-page brand board + services guide; woman's ElevenLabs voice; v2 adds the fingertip snap",
+  "feedback": "\"phenomenal… unique to their specific style… your skills file is working\"; favourites: opening scroll, clicks → network → check boxes; optional: a more physical snap",
+  "rejected": false
  }
 ]

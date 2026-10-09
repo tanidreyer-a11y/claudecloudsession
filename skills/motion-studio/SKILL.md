@@ -50,7 +50,7 @@ Send `intake.md` in one message, with defaults in brackets. It always asks:
 - for the business, the pain and the CTA;
 - for brand assets (attach);
 - **for images: "Do you have photos or video you'd like to use? Attach them"**, plus how to get any missing images;
-- for the feel (vibe axes plus the 9 looks as options);
+- for the feel (vibe axes plus the 10 looks as options, incl. Brand Board Collage);
 - for voice and sound, and for formats, deadline, budget and whether paid add-ons are OK.
 No code, script or plan before the answers. "Just start" means take the defaults and list them.
 Then create or update `brands/<slug>.md` from `brands/_template.md`.
@@ -184,7 +184,7 @@ Full guide and the approved scripts: `references/script-voice-pacing.md`.
 
 | | HTML engine (cloud / any machine) | Remotion (laptop, live preview) |
 |---|---|---|
-| Start | `scripts/engine/film_template.html/js` + `examples/` | `templates/remotion/` (neutral theme-driven components) |
+| Start | `scripts/engine/film_template.html/js` + `examples/` | `templates/remotion/` (neutral theme-driven components) · `templates/brand-collage-film/` (the approved Klick Kulture film, full source — copy and re-brand) |
 | Timeline | `timing.js` (`W`, `DUR`) | `src/timeline.ts` |
 | Motion | pure `render(t)`, spline camera, DOM/SVG | `useCurrentFrame()`, interpolate/spring, `useCamera` |
 | Render | Playwright → ffmpeg; 60 fps + `tmix` → 30 fps blur | `--gl=angle`, chunked resumable renders |
@@ -206,8 +206,9 @@ Commit and push everything to the user's repo (videos included) unless they say 
 5. Align → re-time → stills audit → audio (LUFS) → preview with sound → send.
 6. Full render → finish → QA checklist → deliver → commit + push.
 7. Final message: files + sizes, recipe, deviations, motion inventory, claims to confirm, image sources.
-8. **Learning loop (always):** ask the debrief questions, save the answers, make the changes, ask "lock this in?",
-   update `history/locked.md` + lessons, commit + push (`references/learning-loop.md`). Quote if asked
+8. **Learning loop (always, locked L7):** feedback is by exception — no questionnaire. Record the owner's words
+   (praise and dislikes), make the changes he names, add approved looks to the skill (style card, template, brand
+   file, slot parts, lessons), commit + push (`references/learning-loop.md`). Quote if asked
    (`references/pricing-and-delivery.md`).
 
 ## 13. Definition of done
@@ -231,7 +232,7 @@ Commit and push everything to the user's repo (videos included) unless they say 
 | `production.md` | Building: theme, motion rules, formats, paid add-ons |
 | `qa-checklist.md` | Before delivery |
 | `maintenance.md` | add-reference · add-brand · feedback · library-report |
-| `brands/` | Client profiles + their asset folders (logos, textures, approved scripts): smarttechnxt (Crossroads style), avant-intelligence, adc-innovations, `_template.md` |
+| `brands/` | Client profiles + their asset folders (logos, textures, approved scripts): smarttechnxt (Crossroads style), avant-intelligence, adc-innovations, klick-kulture (Brand Board Collage style, layered cutouts), `_template.md` |
 | `history/projects.json` | Every recipe used |
 | `history/locked.md` | Owner-locked rules — read FIRST, override everything except Non-negotiables |
 | `history/debriefs/` | The owner's answers after each film (the record to revert to) |

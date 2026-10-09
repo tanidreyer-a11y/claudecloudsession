@@ -53,7 +53,8 @@ what's already known and confirm only what may have changed.
    Deep Glass (navy frosted glass, giant word) · Cream Cascade (cream paper, one thing multiplies) ·
    Cobalt Campaign (cobalt + real photos as AI output — image-led) · Sunset Prompt (sunset gradients, word swaps, Shorts) ·
    Lavender Desk (pastel professional, verb chapters) · Desert Glass (landscape photo behind glass UI) ·
-   Kinetic Pop (bold type on the beat). Mixing is normal: we cross-breed them. [we'll propose 3]
+   Kinetic Pop (bold type on the beat) · Brand Board Collage (your brand board's own cutouts, icons and colours come
+   to life — our Klick Kulture film). Mixing is normal: we cross-breed them. [we'll propose 3]
 10b. Camera: flat (moves left/right/up/down) · **2.5D** (layers, cards, phone screens turning in 3D space) · **real 3D**
     (camera circles a 3D object or logo, 360°; detailed objects like buildings or people need a 3D model file). [2.5D]
 11. Pace: slow cinematic · measured · upbeat on the beat · short punch (10–20 s). [measured]

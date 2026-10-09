@@ -7,15 +7,19 @@ Three files do the remembering:
   (except the Non-negotiables in SKILL.md). Only the owner can unlock one.
 - `references/lessons-learned.md` — the numbered lessons Claude writes from the debriefs.
 
-## After every delivered film (always — part of "done")
-1. Ask the owner the debrief questions below in ONE message (they can answer in voice notes / one line each).
-2. Save the answers verbatim to a new debrief file, with the film path, recipe and versions.
+## After every delivered film (always — part of "done") — feedback by exception (locked L7)
+The owner tells Claude what he does NOT like. Approval or silence = the skill is working; keep everything.
+Do NOT send the debrief questionnaire. At most, name your own one weakest moment honestly (so he can veto it).
+1. Save the owner's words verbatim to a new debrief file, with the film path, recipe and versions — including praise
+   (what he names as favourite becomes the brand file's "loved" list and the style card's signature moves).
+2. When he approves a film, add what it proved to the skill: a style card / template if it is a new look, the brand
+   file, new slot parts, and lessons.
 3. For each answer that names a change: make it (in the film or the skill), then ask **"Lock this in?"**
    - Yes → add it to `history/locked.md` (date, rule, why, the film it came from) and to the relevant card/reference.
    - No → record it only as a lesson ("tried, owner unsure").
 4. Commit + push, so the record exists outside this session.
 
-## Debrief questions (copy this block)
+## Debrief questions (ONLY if the owner asks for a structured review — not by default, see L7)
 ```
 1. Score 1–10, and the one moment you'd show a client first?
 2. The one moment you'd cut or change?

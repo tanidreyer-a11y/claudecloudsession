@@ -80,6 +80,12 @@ structure:
     from: [signature-vivid, enterprise-grid, film:avant-one-line]
     axes: {density: [1, 3]}
     how: "25 s. Line → words swap on it (4 beats) → slit-flip to white bracket chart → flip back → 4 lanes → one light → logo."
+  - id: scroll-stop-click
+    name: "Grey feed → one post stops the scroll → the brand's gesture bursts it into colour → playground → services as posts → clicks connect → 'the usual' crossed out → crafted collage → chatter buried → roar → logo"
+    from: [brand-board-collage, film:klick-kulture]
+    needs: [imagery, voice]
+    axes: {energy: [3, 5], warmth: [3, 5]}
+    how: "40–45 s VO-led. The brand board is the cast: its gesture image stops the feed and 'clicks'; every later beat is built from its own devices and copy."
 
 pacing:
   - id: cinematic-2-3
@@ -149,6 +155,19 @@ camera:
     name: "Climb the brand mark — the camera rises with a light along the logo's own strokes"
     from: [signature-vivid, film:avant-ahead]
     how: "Build the logo huge in world space (e.g. a Λ 2500 px tall), let a light climb one stroke lighting agents/steps, peak = the promise, descend the other stroke with results."
+  - id: feed-plane-25d
+    name: "Tilted feed plane — an endless 2.5D wall of posts that scrolls, rushes (directional blur) and stops dead"
+    from: [brand-board-collage, film:klick-kulture]
+    how: "rotateX 24° rotateZ −11°, a precomputed scroll table rescaled so the hero post lands centre at the stop, damped 26 px bounce; SVG feGaussianBlur 0×N on the plane while fast."
+  - id: slab-pullback-truck
+    name: "Pull back from a full-screen stage to a floating slab, then truck sideways past depth-layered floaters"
+    from: [brand-board-collage, film:klick-kulture]
+    how: "Stage camera z 1.2 → 0.34 in 1.1 s; world camX eases right; floaters x' = 540 + (x − camX − 540)·d with depth d 0.7–1.25 and gentle bob."
+  - id: phone-spin-360
+    name: "Phone flies in spinning on Y (540° → 0) with a real back face, lands facing camera"
+    from: [brand-board-collage, film:klick-kulture]
+    needs: [ui]
+    how: "preserve-3d, two faces with backface-visibility hidden; ease-out 0.8 s; slight scale-up 0.62 → 1."
 
 transitions:   # a recipe takes 3–4, one "signature" + 2–3 supporting
   - id: zoom-through
@@ -228,6 +247,30 @@ transitions:   # a recipe takes 3–4, one "signature" + 2–3 supporting
     name: "Slice to strip — wide panels slice into narrow strips that stream across like progress"
     from: [frost-trust]
     how: "3 panels → 24 strips (stagger 20 ms) → a moving band; use for 'processing / at scale'."
+  - id: clicks-network-checkboxes
+    name: "Cursor clicks → chips appear → the clicks connect into a network → nodes fly into check boxes (owner favourite)"
+    from: [brand-board-collage, film:klick-kulture]
+    how: "Clicks 0.3 s apart with ring ripples; lines draw 0.12 s apart; nodes sit UNDER the chips; at the turn they fly to box positions as the next card arrives and morph circle → outlined square."
+  - id: card-becomes-stage
+    name: "Push into one post until its contents are the scene (matched-framing swap, no cut)"
+    from: [brand-board-collage, film:klick-kulture]
+    how: "Render the scene inside the card at z = cardW/1080; push the plane ×(4.8/1.55) while un-tilting; swap to the full-screen scene at z = 4.8·cardW/1080, same focus."
+  - id: colour-ring-burst
+    name: "Concentric brand-colour rings burst from the gesture point; the last ring is the gradient world"
+    from: [brand-board-collage, film:klick-kulture]
+    how: "Full-screen layers with clip-path circle(r at x y), 75 ms apart, 0.62 s each; the last uses the screen-space gradient so the world behind matches exactly."
+  - id: screen-to-card
+    name: "A phone's white screen grows into the next card"
+    from: [brand-board-collage, film:klick-kulture]
+    how: "White rounded rect appears over the screen (0.18 s), morphs to the card rect (0.7 s) while the bezel fades and the background crosses to paper."
+  - id: shockwave-blowaway
+    name: "Shock rings from the hero blow the clutter away radially; colour floods from the same point"
+    from: [brand-board-collage, film:klick-kulture]
+    how: "3 stroked rings 0.1 s apart; clutter moves along (pos − hero)/|·| × 1500 px with rotation; circle clip of the hero colour 0.45 s."
+  - id: disc-swallow-logo
+    name: "A dark disc grows from an object to fill the frame, then shrinks into the logo mark; its parts slide in; the wordmark wipes out"
+    from: [brand-board-collage, film:klick-kulture]
+    how: "Grow 0.53 s ease-in, shrink 0.52 s ease-out to a big centred mark, draw the mark's parts (bar, chevrons) 80 ms apart, move to the lockup, crossfade to the real logo PNG, inset() wipe the wordmark."
 
 typography:    # fonts are OFL / free unless the brand supplies its own licensed font
   - id: geometric-light
@@ -282,6 +325,10 @@ typography:    # fonts are OFL / free unless the brand supplies its own licensed
     name: "Words ride a hairline — each word slides up out of the line mask and out again"
     from: [enterprise-grid, signature-vivid]
     how: "Mask = 140 px band above the line; 1.2 s per word; the last word holds. One word or short phrase at a time."
+  - id: brand-label-chips
+    name: "The brand's own label chips + highlight chips + heading-with-side-bar; text printed in the scene; one giant extended word behind the subject"
+    from: [brand-board-collage, film:klick-kulture]
+    how: "Black box/white uppercase for labels, yellow box/black uppercase for the tagline, captions typed into posts in sync with the VO, checklist rows as a form; never subtitle captions."
 
 colour:        # palette FAMILIES; the brand's tokens are mapped onto the family's roles
   - id: midnight
@@ -325,6 +372,10 @@ colour:        # palette FAMILIES; the brand's tokens are mapped onto the family
     name: "Vivid on black — lilac #B9A6FF, pink #FF9FCB, cyan #5FD6FF, blue #5B83FF, orange #FF8A3C, violet #A274FF, green #3FE6A6 on #07080B, plus ONE full-bleed lilac/cyan/pink/navy gradient world"
     from: [signature-vivid, midnight-signal]
     how: "The client's accent replaces one hue; never mid-grey. The gradient world appears once (the 'inside')."
+  - id: brand-board-pop
+    name: "The brand board used literally: off-white base, near-black ink, one hero colour as a physical surface, pastels as rings and one two-pastel gradient world; grey = not yet seen"
+    from: [brand-board-collage, film:klick-kulture]
+    how: "Grey #ECECEA until the click; then the brand's colours; the hero colour (KK yellow) is a floor/slab, never a flat background wash."
 
 ui_treatment:
   - id: floating-chat
@@ -375,6 +426,11 @@ ui_treatment:
     name: "Frosted padlock with compliance words beside it (words, not badges)"
     from: [frost-trust]
     how: "ONLY certifications the client actually holds. Otherwise use 'POPIA-minded'."
+  - id: social-post-native
+    name: "Social-native UI — skeleton feed posts, a branded post (avatar = logo mark, carousel, like/comment/share, typed caption), white comment bubbles"
+    from: [brand-board-collage, film:klick-kulture]
+    needs: [ui]
+    how: "Post 564 px wide inside a 600×1230 phone; caption Poppins 31 px typed in sync; bubbles 32 px with coloured avatar dots pop out of the phone into the space around it."
 
 motion_feel:
   - id: soft-no-overshoot
@@ -394,6 +450,11 @@ motion_feel:
   - id: settle-stack
     name: "Soft drops that settle into stacks, 100–150 ms staggers"
     from: [cream-cascade]
+  - id: still-photo-puppet
+    name: "The client's still cutouts puppeted in layers (a hand rising out of a hole with a front lip; a fingertip layer that snaps)"
+    from: [brand-board-collage, film:klick-kulture]
+    needs: [imagery]
+    how: "Split by colour/saturation masks into back surface / object / front lip / shadow; for a snap, a tip layer with a 22 px overlap band rotates about the knuckle (+4° press, −12° flick in 65 ms, damped settle) with 3 blur ghosts."
 
 sound:
   - id: ambient-electronic
@@ -426,6 +487,10 @@ sound:
     name: "A chord per world — every scene/colour world has its own chord; all SFX are notes of it; max 3 air moves"
     from: [signature-vivid, film:avant-ahead, film:avant-one-line, film:avant-every-city]
     how: "Dark pile-up = minor 7; order = major 9; the peak = the V chord bloom; home = the tonic with the logo boom."
+  - id: gesture-snap-hit
+    name: "The gesture is the hit: synthesised snap + boom + one bell per colour ring; dry metronome for 'the usual'; murmur for chatter"
+    from: [brand-board-collage, film:klick-kulture]
+    how: "Pad cut dead at the feed stop; key change on the snap; 112 bpm playful pulse only in the colour world; crowd murmur = 9 band-passed noise voices at syllable rate."
 
 hook:
   - id: concrete-pain
@@ -473,6 +538,10 @@ hook:
     name: "One dot → a field of dots (one customer becomes thousands)"
     from: [frost-trust, enterprise-grid]
     how: "Start on a single dot held 1 s; multiply outward on a Poisson layout over 3 s. Only when the client has the scale to claim it."
+  - id: grey-feed-scroll
+    name: "Open on a grey endless feed; one post types the hook line; then the rush"
+    from: [brand-board-collage, film:klick-kulture]
+    how: "Close on the hero post (plane ×1.9) for the hook, pull back as the scroll accelerates — the owner's favourite opening."
 clashes:
   - [colour:midnight, colour:sunset-gradient]
   - [colour:navy-glass, colour:paper-sage]
@@ -510,3 +579,6 @@ affinities:
   - [ui_treatment:photo-cards, camera:tilted-planes]
   - [hook:sensory-macro, camera:macro-to-wide]
   - [structure:craft-reveal, hook:sensory-macro]
+  - [structure:scroll-stop-click, transitions:clicks-network-checkboxes]
+  - [hook:grey-feed-scroll, camera:feed-plane-25d]
+  - [colour:brand-board-pop, typography:brand-label-chips]

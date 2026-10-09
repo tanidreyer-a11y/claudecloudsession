@@ -8,3 +8,4 @@
 
 To run one: copy into a build folder with `node_modules/@fontsource/*` fonts, a `timing.js` (or inline `W`), then
 `node ../scripts/engine/stills.mjs …` / `render.mjs`. Paths to brand textures and fonts may need adjusting.
+- Klick Kulture "Makes you click" (approved 2026-10-09): full Remotion source in `templates/brand-collage-film/` (src/KK.tsx), video `klick-kulture/KlickKulture-MakesYouClick-v2.mp4`.
