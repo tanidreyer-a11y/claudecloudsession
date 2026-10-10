@@ -157,14 +157,26 @@ def h(i, k=0):
 
 Bb2, Bb3, Bb4 = 46, 58, 70
 BPM = 110
+import subprocess
+FFB = '/usr/local/lib/python3.11/dist-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2'
+_S = {}
+def smp(name):
+    """a recorded UI sound from audio/sfx (Kenney Interface Sounds, CC0), mono at SR, peak 1."""
+    if name not in _S:
+        raw = subprocess.run([FFB, '-v', 'error', '-i', os.path.join(HD, 'sfx', name + '.ogg'), '-ac', '1', '-ar', str(SR), '-f', 'f32le', '-'], capture_output=True).stdout
+        y = np.frombuffer(raw, np.float32).astype(np.float64); _S[name] = y / (np.abs(y).max() + 1e-9)
+    return _S[name]
+TYPE = ['tick_001', 'tick_002', 'tick_004', 'click_005']
 def keys(a, b, n, g=0.06):
     for i in range(n):
-        t = a + (b - a) * i / max(1, n - 1)
-        put(sfx, tick(g * (0.7 + 0.6 * h(i, 9)), 2400 + 900 * h(i, 3)), t, (h(i, 4) - 0.5) * 0.4)
+        t = a + (b - a) * i / max(1, n - 1) + (h(i, 7) - 0.5) * 0.02
+        put(sfx, smp(TYPE[int(h(i, 3) * 4) % 4]), t, (h(i, 4) - 0.5) * 0.4, g * 0.9 * (0.7 + 0.6 * h(i, 9)))
 def click(t, n_=A5, g=1.0):
-    put(sfx, tick(0.22 * g, 2600), t, 0.3); put(sfx, pluck(n_, 0.4, 0.09), t + 0.01, 0.3, 0.06 * g)
+    put(sfx, smp('click_002'), t, 0.3, 0.32 * g); put(sfx, pluck(n_, 0.4, 0.09), t + 0.01, 0.3, 0.035 * g)
 def pop(t, n_, pan=0.0, g=1.0):
-    put(sfx, glass(n_, 1), t, pan, 0.05 * g); put(sfx, tick(0.06 * g, 3000), t, pan)
+    put(sfx, smp(['select_001', 'select_002', 'select_004', 'select_006'][int(h(n_, int(t * 7)) * 4) % 4]), t, pan, 0.16 * g); put(sfx, glass(n_, 1), t, pan, 0.025 * g)
+def ui(t, name, g=0.2, pan=0.0):
+    put(sfx, smp(name), t, pan, g)
 def word(t, n_, g=1.0):
     put(sfx, bell(n_, 2.0, 0.8, 0.3), t, 0, 0.055 * g)
 
@@ -278,6 +290,19 @@ put(sfx, air(0.8, False), 48.45, 0, 0.07)
 put(sfx, boom(0.3, 36), 49.2, 0, 1.0)
 for i, n_ in enumerate([F4, C5, A5, E6, G5 + 12]): put(sfx, bell(n_, 3.6, 1.6), 49.22 + i * 0.05, -0.3 + i * 0.15, 0.1)
 put(sfx, glide(C5, F5, 0.4, 0.025), 49.7, 0); put(sfx, glass(C6 + 12, 1), 50.07, 0.3, 0.05)
+
+# recorded UI layer (Kenney Interface Sounds, CC0): the bar opens, panels land, lists scroll, layouts switch
+ui(0.45, 'open_001', 0.14)
+for i in range(3): ui(1.95 + i * 0.09, 'drop_001' if i % 2 else 'drop_002', 0.1, 0.4 - i * 0.3)
+ui(3.62, 'maximize_003', 0.12); ui(5.15, 'maximize_006', 0.1); ui(6.75, 'maximize_003', 0.1)
+ui(12.02, 'confirmation_001', 0.16)
+ui(17.15, 'open_001', 0.12); ui(19.1, 'switch_002', 0.22); ui(19.32, 'switch_005', 0.18); ui(19.55, 'toggle_002', 0.18)
+ui(20.95, 'minimize_003', 0.16)
+for k, t_ in enumerate([21.95, 22.7, 23.45, 24.35]): ui(t_, ['scroll_001', 'scroll_002', 'scroll_003', 'scroll_004'][k], 0.2, 0.2)
+ui(28.42, 'maximize_006', 0.14)
+ui(34.72, 'select_004', 0.12); ui(36.35, 'maximize_003', 0.12)
+ui(38.95, 'maximize_006', 0.12); ui(40.15, 'confirmation_002', 0.2)
+ui(46.7, 'minimize_006', 0.14)
 
 fade = np.ones(N); fl = int(1.4 * SR); fade[-fl:] = np.linspace(1, 0, fl) ** 2
 mix = (mus * 0.8 + sfx * 0.9) * fade[:, None]

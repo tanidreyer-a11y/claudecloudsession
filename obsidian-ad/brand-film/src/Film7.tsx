@@ -276,7 +276,7 @@ export const Film7: React.FC = () => {
     const press = win(s, 18.85, 18.9, 18.97, 19.05);
     const ck = prog(s, 17.62, 18.15, E.io);
     const script = prog(s, 19.6, 20.6, Easing.bezier(0.35, 0, 0.55, 1));
-    const flick1 = win(s, 19.1, 19.22, 19.3, 19.42), flick2 = win(s, 19.3, 19.42, 19.52, 19.78);
+    const flick1 = prog(s, 19.06, 19.24, E.io) * (1 - prog(s, 19.3, 19.46, E.io)), flick2 = prog(s, 19.28, 19.5, E.io) * (1 - prog(s, 19.53, 19.82, E.io));
     const sparkle = win(s, 19.52, 19.72, 19.9, 20.45);
     const sc = lerp(1, LT.w / W, shrink), tx = lerp(0, LT.x + LT.w / 2 - CX, shrink), ty = 0;
     const rise = prog(s, 16.0, 16.55, E.out);
@@ -320,8 +320,8 @@ export const Film7: React.FC = () => {
         {s > 17.1 && s < 19.3 && (() => { const kk = prog(s, 17.12, 17.5, E.out), out = prog(s, 19.08, 19.28); return <div style={{ position: "absolute", left: CX - 260, top: 512, opacity: kk * (1 - out), filter: `blur(${(1 - kk) * 18 + out * 8}px)` }}><Bar w={520} text={typed("Change the layout", s, 17.55, 17.95)} caret={s > 17.5 && s < 18.3 && Math.floor(s * 2.4) % 2 === 0} send={press} ink scale={1.65 * lerp(0.7, 1, kk) * (1 - press * 0.02)} /></div>; })()}
         {s > 17.58 && s < 19.2 && <Hand x={lerp(1580, 1342, ck) + Math.sin(s * 3) * 3 * prog(s, 18.15, 18.4)} y={lerp(1010, 556, ck)} press={press} op={prog(s, 17.58, 17.7) * (1 - prog(s, 19.05, 19.2))} />}
         {/* the layout flicks through washes before it lands dark (lovio: peach → violet → blue) */}
-        {flick1 > 0 && <AbsoluteFill style={{ background: "#F2F1EE", opacity: flick1 * 0.62 }} />}
-        {flick2 > 0 && <AbsoluteFill style={{ background: "linear-gradient(180deg, #5E616A, #DADCE1)", opacity: flick2 * 0.92 }} />}
+        {flick1 > 0 && <AbsoluteFill style={{ background: "#F2F1EE", opacity: flick1 * 0.5 }} />}
+        {flick2 > 0 && <AbsoluteFill style={{ background: "linear-gradient(180deg, #2A2C32, #9C9FA8 60%, #DADCE1)", opacity: flick2 * 0.94 }} />}
       </div>
     </AbsoluteFill>);
   }
@@ -490,7 +490,7 @@ export const Film7: React.FC = () => {
   // ===== 44.7–47.05 · "no longer start" → "with templates" + the pile of heroes =====
   if (s > 44.7 && s < 47.02) {
     const PILE = ["h03_solt.jpg", "h07_mindful.jpg", "h11_villa.jpg", "h04_orsbite.jpg", "h09_fern.jpg", "h12_aigreen.jpg", "h10_irona.jpg", "h06_silence.jpg"];
-    const swap = prog(s, 45.92, 46.25, E.io);
+    const swap = prog(s, 45.85, 46.4, E.io);
     const exitK = prog(s, 46.7, 47.0, E.in);
     add(<AbsoluteFill key="pile" style={{ background: BG.white }}>
       {PILE.map((p, i) => { const a = 44.95 + i * 0.11, k = prog(s, a, a + 0.55, Easing.bezier(0.2, 0.8, 0.3, 1)); const tx = lerp(560, 40, swap) + (h(i, 1) - 0.4) * 520, ty = lerp(560, 470, swap) + (h(i, 2) - 0.5) * 320 + Math.sin(s * 0.8 + i) * 6, rot = (h(i, 3) - 0.5) * 30; return k > 0 ? <div key={i} style={{ position: "absolute", left: lerp(-700, tx, k) - exitK * (1300 + i * 60), top: lerp(1300, ty, k) - exitK * (800 + i * 40), transform: `rotate(${lerp(rot - 40, rot, k) - exitK * 25}deg)`, filter: exitK > 0 ? `blur(${exitK * 10}px)` : undefined }}><Photo src={img(p)} w={600} hh={378} r={18} /></div> : null; })}
@@ -501,8 +501,8 @@ export const Film7: React.FC = () => {
     </AbsoluteFill>);
   }
   // ===== 47.0–49.25 · the 3D emblem (lovio's flower bloom) =====
-  if (s > 47.0 && s < 49.4) {
-    const grow = prog(s, 47.0, 48.3, Easing.bezier(0.2, 0.7, 0.2, 1)), back = prog(s, 48.45, 49.25, E.io);
+  if (s > 47.0 && s < 49.65) {
+    const grow = prog(s, 47.0, 48.3, Easing.bezier(0.2, 0.7, 0.2, 1)), back = prog(s, 48.35, 49.1, E.io);
     const sc = lerp(0.4, 3.9, grow) * lerp(1, 150 / 245 / 3.9, back);
     const ry = lerp(75, -18, grow) + back * 18, rx = 12 * (1 - back);
     const LAY = 14;
@@ -514,7 +514,7 @@ export const Film7: React.FC = () => {
   }
   // ===== 49.2–52 · OBSIDIAN on the horizon =====
   if (s > 49.15) {
-    add(<AbsoluteFill key="end" style={{ background: BG.horizon, opacity: prog(s, 49.15, 49.35) }}>
+    add(<AbsoluteFill key="end" style={{ background: BG.horizon, opacity: prog(s, 49.1, 49.6, E.io) }}>
       {s < 50.05 && (() => { const sl = prog(s, 49.7, 50.05, E.io), sz = lerp(150, 245 * LockLS, sl); return <div style={{ position: "absolute", left: lerp(CX - 61, CX - LockLW / 2, sl), top: lerp(CY - 75, CY - 122 * LockLS, sl) }}><EmblemSVG size={sz} /></div>; })()}
       {s >= 50.05 && <Lockup s={s} t0={50.05} x={CX} y={CY} />}
     </AbsoluteFill>);
