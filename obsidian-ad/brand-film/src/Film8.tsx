@@ -106,8 +106,8 @@ export const Film8: React.FC = () => {
     const blocks: [number, number, number, number, number, number][] = [[60, 32, 1450, 42, 21, 2.86], [445, 236, 680, 62, 12, 2.94], [575, 322, 420, 62, 12, 2.98], [720, 560, 130, 40, 20, 3.06], [450, 640, 680, 325, 14, 3.1]];
     const headDx = lerp(46, 0, drag);
     add(<AbsoluteFill key="iro">
-      <Img src={img("h10_irona.jpg")} style={{ position: "absolute", inset: -60, width: W + 120, height: H + 120, objectFit: "cover", filter: "blur(40px) brightness(.8)", opacity: prog(s, 3.7, 4.1) }} />
-      <div style={{ position: "absolute", left: BOX.x, top: BOX.y, width: BOX.w, height: BOX.hh, borderRadius: frameR, overflow: "hidden", border: "1.5px solid rgba(255,255,255,.85)", background: `rgba(14,14,17,${0.55 * (1 - imgK)})`, boxShadow: imgK > 0 ? `0 30px 90px rgba(0,0,0,${0.3 * imgK})` : undefined }}>
+      <Img src={img("h10_irona.jpg")} style={{ position: "absolute", inset: -60, width: W + 120, height: H + 120, objectFit: "cover", filter: "blur(40px) brightness(.8)", opacity: prog(s, 3.6, 4.25, E.io) }} />
+      <div style={{ position: "absolute", left: BOX.x, top: BOX.y, width: BOX.w, height: BOX.hh, borderRadius: frameR, overflow: "hidden", border: "1.5px solid rgba(255,255,255,.85)", background: `rgba(14,14,17,${0.55 * (1 - imgK) * prog(s, 2.74, 3.05, E.io)})`, boxShadow: imgK > 0 ? `0 30px 90px rgba(0,0,0,${0.3 * imgK})` : undefined }}>
         <Img src={img("h10_irona.jpg")} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: imgK, filter: `blur(${(1 - imgK) * 24}px)`, transform: `scale(${lerp(1.04, 1, imgK)})`, WebkitMaskImage: `linear-gradient(90deg, #000 ${imgK * 140 - 40}%, transparent ${imgK * 140}%)`, maskImage: `linear-gradient(90deg, #000 ${imgK * 140 - 40}%, transparent ${imgK * 140}%)` }} />
       </div>
       {/* 12-column grid, drawn top-down */}
@@ -186,7 +186,7 @@ export const Film8: React.FC = () => {
     const ann = (a: number) => prog(s, a, a + 0.35, E.out);
     const seg = prog(s, 11.85, 12.2, E.out);
     const ck = prog(s, 12.15, 12.7, E.io), press = win(s, 12.85, 12.9, 12.97, 13.06);
-    const flick1 = prog(s, 12.98, 13.1, E.io) * (1 - prog(s, 13.12, 13.28, E.io)), flick2 = prog(s, 13.08, 13.2, E.io) * (1 - prog(s, 13.24, 13.55, E.io));
+    const flick1 = prog(s, 12.95, 13.1, E.io) * (1 - prog(s, 13.12, 13.28, E.io)), flick2 = prog(s, 13.0, 13.2, E.io) * (1 - prog(s, 13.24, 13.58, E.io));
     const script = prog(s, 13.35, 14.1, Easing.bezier(0.35, 0, 0.55, 1));
     const sparkle = prog(s, 13.2, 13.4, E.io) * (1 - prog(s, 13.6, 14.1, E.io));
     const spin = prog(s, 14.1, 14.65, E.in);
@@ -218,7 +218,7 @@ export const Film8: React.FC = () => {
         <div style={{ position: "relative", width: 170, textAlign: "center", color: on >= 0.5 ? "#111" : "rgba(255,255,255,.8)" }}>Dark</div>
       </div>; })()}
       {s > 12.1 && s < 13.4 && <Hand x={lerp(1560, CX + 119, ck)} y={lerp(1060, 970, ck)} press={press} op={prog(s, 12.1, 12.2) * (1 - prog(s, 13.15, 13.35))} />}
-      {flick1 > 0 && <AbsoluteFill style={{ background: "#F2F1EE", opacity: flick1 * 0.5 }} />}
+      {flick1 > 0 && <AbsoluteFill style={{ background: "#F2F1EE", opacity: flick1 * 0.4 }} />}
       {flick2 > 0 && <AbsoluteFill style={{ background: "linear-gradient(180deg, #2A2C32, #9C9FA8 60%, #DADCE1)", opacity: flick2 * 0.94 }} />}
       {/* render counter, bottom left */}
       <div style={{ position: "absolute", left: 110, top: 960, fontFamily: MONO, fontSize: 18, letterSpacing: "0.1em", color: dark ? "rgba(14,15,18,.7)" : "rgba(255,255,255,.8)", opacity: prog(s, 10.2, 10.5) * (1 - spin) }}>RENDER {String(Math.round(lerp(0, 100, prog(s, 10.2, 13.0, lin)))).padStart(3, "0")}%</div>
@@ -283,11 +283,11 @@ export const Film8: React.FC = () => {
     const R = mix(mix(mix(mix(R0, R1, k1), R2, k2), R3, k3), R4, k4);
     const rad = lerp(lerp(0, 28, k1), 46, k4);
     const dim = prog(s, 15.9, 16.3) * (1 - k4);
-    const inner = 1 - prog(s, 20.1, 20.55);
+    const inner = 1 - prog(s, 20.05, 20.6, E.io);
     const ui = (a: number, b: number) => prog(s, a, a + 0.25) * (1 - prog(s, b, b + 0.2));
     const clip = s > 19.85 ? `inset(${R.y}px ${W - R.x - R.w}px ${H - R.y - R.hh}px ${R.x}px round ${rad}px)` : undefined;
     add(<AbsoluteFill key="ten" style={{ clipPath: clip, opacity: inner }}>
-      <AbsoluteFill style={{ background: BG.sky, filter: wash > 0 ? `brightness(${1 + wash * 0.8}) contrast(${1 - wash * 0.4}) blur(${wash * 7}px)` : undefined, opacity: prog(s, 14.4, 14.55) }}>
+      <AbsoluteFill style={{ background: BG.sky, filter: wash > 0 ? `brightness(${1 + wash * 0.55}) contrast(${1 - wash * 0.35}) blur(${wash * 9}px)` : undefined, opacity: prog(s, 14.36, 14.62, E.io) }}>
         <div style={{ position: "absolute", inset: 0, transform: `scale(${lerp(1.16, 1.24, prog(s, 14.4, 20.7, lin))})`, transformOrigin: "50% 100%" }}>
           <Sequence from={F(14.4)} durationInFrames={F(6.4)} layout="none"><OffthreadVideo src={ft("v3_key.webm")} transparent startFrom={F(1.9)} playbackRate={0.85} muted style={{ width: W, height: H }} /></Sequence>
         </div>
@@ -374,8 +374,9 @@ export const Film8: React.FC = () => {
     const grow = prog(s, 33.5, 34.8, Easing.bezier(0.2, 0.7, 0.2, 1)), back = prog(s, 34.95, 35.75, E.io);
     const sc = lerp(0.4, 3.9, grow) * lerp(1, 150 / 245 / 3.9, back);
     const ry = lerp(75, -18, grow) + back * 18, rx = 12 * (1 - back);
-    add(<AbsoluteFill key="emb" style={{ background: BG.deep, perspective: 1600 }}>
-      <div style={{ position: "absolute", left: CX - 100, top: CY - 122, width: 200, height: 245, transformStyle: "preserve-3d", transform: `scale(${sc}) rotateY(${ry}deg) rotateX(${rx}deg)` }}>
+    add(<AbsoluteFill key="emb" style={{ perspective: 1600 }}>
+      <AbsoluteFill style={{ background: BG.deep, opacity: prog(s, 33.45, 33.7, E.io) }} />
+      <div style={{ position: "absolute", left: CX - 100, top: CY - 122, width: 200, height: 245, opacity: prog(s, 33.45, 33.75, E.io), filter: s < 33.75 ? `blur(${(1 - prog(s, 33.45, 33.75)) * 12}px)` : undefined, transformStyle: "preserve-3d", transform: `scale(${sc}) rotateY(${ry}deg) rotateX(${rx}deg)` }}>
         {Array.from({ length: 14 }, (_, i) => <div key={i} style={{ position: "absolute", inset: 0, transform: `translateZ(${-i * 2.6}px)` }}><EmblemSVG size={245} fill={i === 0 ? "url(#bar7)" : `rgb(${150 - i * 7},${150 - i * 7},${156 - i * 7})`} /></div>)}
       </div>
     </AbsoluteFill>);
