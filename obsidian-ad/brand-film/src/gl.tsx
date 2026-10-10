@@ -221,3 +221,131 @@ export const Balls: React.FC<{ time: number; balls: Ball[]; k?: number; glow?: n
     }} />
   );
 };
+
+// ================================================================ SOFT (ElevenLabs-style) — owner 2026-10-10:
+// "plain cloud-like colour mix with blur and a translucent gradient; take away the liquid structure".
+const SOFT_WORLD = `
+precision highp float;
+uniform vec2 u_res; uniform float u_time; uniform vec2 u_off; uniform float u_zoom;
+uniform vec3 u_pa[5]; uniform vec3 u_pb[5]; uniform float u_mix; uniform vec3 u_wipe; uniform float u_rot;
+${NOISE}
+vec3 paint(vec3 c0, vec3 c1, vec3 c2, vec3 c3, vec3 c4, float a, float b, float c){
+  vec3 col = c0;
+  col = mix(col, c1, smoothstep(0.36, 0.74, a));
+  col = mix(col, c2, smoothstep(0.42, 0.8, b) * 0.85);
+  col = mix(col, c3, smoothstep(0.5, 0.84, c) * 0.75);
+  col = mix(col, c4, smoothstep(0.62, 0.92, a * b * 1.9) * 0.6);
+  return col;
+}
+void main(){
+  vec2 frag = vec2(gl_FragCoord.x, u_res.y - gl_FragCoord.y);
+  vec2 p0 = (gl_FragCoord.xy - 0.5 * u_res) / u_res.y * u_zoom;
+  float cr = cos(u_rot), sr = sin(u_rot);
+  vec2 p = mat2(cr, -sr, sr, cr) * p0 + u_off;
+  float t = u_time;
+  vec2 w = vec2(fbm3(p * 0.6 + t * vec2(0.035, 0.02)), fbm3(p * 0.6 + vec2(5.2, 1.3) - t * vec2(0.02, 0.03)));
+  vec2 q = p + 0.9 * (w - 0.5);
+  float a = fbm3(q * 0.75 + vec2(0.0, t * 0.045));
+  float b = fbm3(q * 0.75 + vec2(7.1, 2.3) - t * 0.04);
+  float c = fbm3(q * 1.1 + vec2(3.3, 9.9) + t * 0.055);
+  vec3 A = paint(u_pa[0], u_pa[1], u_pa[2], u_pa[3], u_pa[4], a, b, c);
+  vec3 B = paint(u_pb[0], u_pb[1], u_pb[2], u_pb[3], u_pb[4], a, b, c);
+  float k = u_mix;
+  if (u_wipe.z > 0.0) {
+    float d = length(frag - u_wipe.xy) + (a - 0.5) * 380.0 + (b - 0.5) * 240.0;
+    k = max(k, 1.0 - smoothstep(u_wipe.z - 160.0, u_wipe.z + 160.0, d));
+  }
+  vec3 col = mix(A, B, k);
+  vec2 uv = frag / u_res - 0.5;
+  col *= 1.0 - 0.22 * dot(uv * vec2(0.9, 1.1), uv * vec2(0.9, 1.1));
+  gl_FragColor = vec4(col, 1.0);
+}`;
+
+const SOFT_BALLS = `
+precision highp float;
+uniform vec2 u_res; uniform float u_time; uniform float u_px;
+uniform int u_n; uniform vec4 u_b[7]; uniform vec3 u_c0[7]; uniform vec3 u_c1[7]; uniform vec3 u_c2[7]; uniform vec2 u_x[7];
+uniform float u_k; uniform float u_glow;
+${NOISE}
+float smin(float a, float b, float k){ float h = clamp(0.5 + 0.5 * (b - a) / k, 0.0, 1.0); return mix(b, a, h) - k * h * (1.0 - h); }
+float field(vec2 p){
+  float d = 1e5;
+  for (int i = 0; i < 7; i++){ if (i >= u_n) break; d = smin(d, length(p - u_b[i].xy) - u_b[i].z, u_k); }
+  return d;
+}
+void main(){
+  vec2 p = vec2(gl_FragCoord.x, u_res.y - gl_FragCoord.y) * u_px;
+  float d = field(p);
+  float ws = 0.0; float R = 0.0; vec3 C0 = vec3(0.0), C1 = vec3(0.0), C2 = vec3(0.0); float op = 0.0; vec2 ctr = vec2(0.0); float seed = 0.0;
+  for (int i = 0; i < 7; i++){
+    if (i >= u_n) break;
+    float di = length(p - u_b[i].xy) - u_b[i].z;
+    float w = exp(-clamp(di, -60.0, 600.0) / 26.0) + 1e-6;
+    ws += w; R += w * u_b[i].z; C0 += w * u_c0[i]; C1 += w * u_c1[i]; C2 += w * u_c2[i];
+    op += w * u_b[i].w; ctr += w * u_b[i].xy; seed += w * u_x[i].y;
+  }
+  R /= ws; C0 /= ws; C1 /= ws; C2 /= ws; op /= ws; ctr /= ws; seed /= ws;
+  float glowR = R * 0.7 + 12.0;
+  if (d > glowR * 4.0) { gl_FragColor = vec4(0.0); return; }
+  float e = 1.5;
+  vec2 g = vec2(field(p + vec2(e, 0.0)) - field(p - vec2(e, 0.0)), field(p + vec2(0.0, e)) - field(p - vec2(0.0, e)));
+  g = g / max(length(g), 1e-5);
+  float depth = clamp(-d, 0.0, R);
+  float nz = sqrt(clamp(depth * (2.0 * R - depth), 0.0, R * R)) / R;
+  vec2 nxy = g * sqrt(max(0.0, 1.0 - nz * nz));
+  vec3 n = normalize(vec3(nxy, nz + 1e-4));
+  // soft cloud colour inside: three blurred colour pools drifting, a gentle cloudiness
+  vec2 rel = (p - ctr) / R;
+  float t = u_time * 0.55 + seed * 6.0;
+  vec2 b1 = 0.45 * vec2(cos(t), sin(t * 1.3));
+  vec2 b2 = 0.45 * vec2(cos(t * 0.8 + 2.1), sin(t * 0.9 + 2.1));
+  vec2 b3 = 0.38 * vec2(cos(t * 1.1 + 4.2), sin(t * 0.7 + 4.2));
+  float g1 = exp(-dot(rel - b1, rel - b1) * 1.7), g2 = exp(-dot(rel - b2, rel - b2) * 1.7), g3 = exp(-dot(rel - b3, rel - b3) * 2.4);
+  float cl = fbm3(rel * 1.1 + seed * 3.0 + vec2(t * 0.2, -t * 0.16));
+  vec3 col = C0;
+  col = mix(col, C1, clamp(g1 * 1.25, 0.0, 1.0) * (0.75 + 0.35 * cl));
+  col = mix(col, C2, clamp(g2 * 1.25, 0.0, 1.0) * (0.75 + 0.35 * cl));
+  col = mix(col, mix(C1, C2, 0.5), g3 * 0.5);
+  // a soft diffuse light pool (no hard specular): cloud, not pearl
+  vec2 lp = rel - vec2(-0.32, -0.38);
+  col = mix(col, vec3(1.0), exp(-dot(lp, lp) * 5.0) * 0.42);
+  vec3 L = normalize(vec3(-0.45, -0.6, 0.66));
+  float dif = clamp(dot(n, L), 0.0, 1.0);
+  col *= 0.93 + 0.1 * dif;
+  col *= 1.0 - 0.08 * smoothstep(0.1, 1.0, dot(nxy, vec2(0.55, 0.65)));
+  float fr = pow(1.0 - nz, 2.2);
+  col = mix(col, mix(C1, vec3(1.0), 0.5), fr * 0.22);
+  float aIn = 1.0 - smoothstep(-3.0 * u_px, 2.0 * u_px, d);
+  float a = aIn * (0.84 + 0.16 * fr) * op;
+  float gl = exp(-max(d, 0.0) / glowR) * u_glow * (1.0 - aIn) * op;
+  vec3 gc = mix(C1, C2, 0.5);
+  gl_FragColor = vec4(col * a + gc * gl * 0.55, a + gl * 0.4);
+}`;
+
+export const SoftWorld: React.FC<{ time: number; a: Pal; b: Pal; mix: number; wipe?: [number, number, number]; off?: [number, number]; zoom?: number; rot?: number; w?: number; h?: number; res?: number }> = ({ time, a, b, mix, wipe = [0, 0, 0], off = [0, 0], zoom = 1.1, rot = 0, w: W0 = 1920, h: H0 = 1080, res = 0.5 }) => {
+  const w = Math.round(W0 * res), h = Math.round(H0 * res);
+  return (
+    <Shader frag={SOFT_WORLD} w={w} h={h} u={{
+      u_res: { t: "2f", v: [w, h] }, u_time: { t: "1f", v: time }, u_off: { t: "2f", v: off }, u_zoom: { t: "1f", v: zoom },
+      "u_pa[0]": { t: "3fv", v: flat(a) }, "u_pb[0]": { t: "3fv", v: flat(b) }, u_mix: { t: "1f", v: mix },
+      u_wipe: { t: "3f", v: [wipe[0] * res, wipe[1] * res, wipe[2] * res] }, u_rot: { t: "1f", v: rot },
+    }} />
+  );
+};
+// a soft ball: b.tr is reused as OPACITY here (1 = solid)
+export const SoftBalls: React.FC<{ time: number; balls: Ball[]; k?: number; glow?: number; w?: number; h?: number; res?: number; style?: React.CSSProperties }> = ({ time, balls, k = 40, glow = 0.8, w: W0 = 1920, h: H0 = 1080, res = 1, style }) => {
+  const w = Math.round(W0 * res), h = Math.round(H0 * res);
+  const B = balls.filter((b) => b.r > 0.5 && (b.tr ?? 1) > 0.002).slice(0, 7);
+  const at = <T,>(f: (b: Ball, i: number) => T[], fill: T[]) => Array.from({ length: 7 }, (_, i) => (B[i] ? f(B[i], i) : fill)).flat() as unknown as number[];
+  return (
+    <Shader frag={SOFT_BALLS} w={w} h={h} style={style} u={{
+      u_res: { t: "2f", v: [w, h] }, u_time: { t: "1f", v: time }, u_px: { t: "1f", v: 1 / res }, u_n: { t: "1i", v: B.length },
+      "u_b[0]": { t: "4fv", v: at((b) => [b.x, b.y, b.r, b.tr ?? 1], [0, 0, 0.01, 0]) },
+      "u_c0[0]": { t: "3fv", v: at((b) => rgb(b.c[0]), [0, 0, 0]) },
+      "u_c1[0]": { t: "3fv", v: at((b) => rgb(b.c[1]), [0, 0, 0]) },
+      "u_c2[0]": { t: "3fv", v: at((b) => rgb(b.c[2]), [0, 0, 0]) },
+      "u_x[0]": { t: "2fv", v: at((b, i) => [0, b.seed ?? i * 0.37], [0, 0]) },
+      u_k: { t: "1f", v: k }, u_glow: { t: "1f", v: glow },
+    }} />
+  );
+};
