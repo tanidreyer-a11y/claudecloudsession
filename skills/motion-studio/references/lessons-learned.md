@@ -197,3 +197,11 @@ Each item below cost at least one round of rework on a real client job. They are
     size/position identical across a cut, and let an incoming card grow over the current scene, not over a blank.
     Check with a frame-difference scan (out/…: mean |Δ| per frame, flag > 2.6× local) against the reference's own cut
     list — every spike the reference doesn't have is a glitch to fix.
+76. **Turn a study into a style, not a replica** (owner, 2026-10-10: "make it our own — different but same style and
+    vibe"). After a frame-for-frame study, write the MECHANISMS into a style card (library/styles/obsidian-precision.md:
+    transition, duration, curve, anchor, sound per action) and add each proven move to library/slots.yaml so the recipe
+    engine can recombine it. Then storyboard from the brand's own motifs (Obsidian: the caret that types becomes the
+    hairline that opens the frame; the grid; the container; the emblem bars) and its real offers (websites, ads, agents)
+    — never the reference's beat order, word pairs, props or layouts. Copy that read as forced in the study ("Where the
+    quiet begins" → "This isn't") is replaced by lines that state the offer plainly ("Even at 02:14, / your brand
+    answers.", "One shoot. / Every format.", "Built from scratch. Every time.").

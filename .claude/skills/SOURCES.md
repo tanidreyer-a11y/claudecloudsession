@@ -13,3 +13,5 @@ Every session opened on this repository loads them.
 Not copied: Creative Claw (music, sound effects, voice, video generation). It is a hosted service that needs the
 owner's own sign-in, so it can only be added from the plugin card on claude.ai.
 To update a skill: re-clone its source repo and copy the folder over.
+
+`obsidian-ad-style` is ours (not copied): the router to the Obsidian house style in skills/motion-studio.

@@ -272,6 +272,48 @@ transitions:   # a recipe takes 3–4, one "signature" + 2–3 supporting
     from: [brand-board-collage, film:klick-kulture]
     how: "Grow 0.53 s ease-in, shrink 0.52 s ease-out to a big centred mark, draw the mark's parts (bar, chevrons) 80 ms apart, move to the lockup, crossfade to the real logo PNG, inset() wipe the wordmark."
 
+  - id: caret-opens-frame
+    name: "The typing caret stretches into a hairline that splits into the frame's edges"
+    from: [obsidian-precision, film:obsidian-scratch]
+    axes: {energy: [1, 4]}
+    how: "Caret height → full frame (0.3 s, move curve), then two verticals slide out to the container edges while the top/bottom edges grow (0.55 s)."
+  - id: wireframe-resolves
+    name: "Grid + wireframe blocks resolve into the real screen"
+    from: [obsidian-precision, film:obsidian-scratch]
+    needs: [ui]
+    how: "12-col hairline grid draws top-down; blocks back-ease in; one block is dragged and snaps to a centre guide; the real image fills left→right through a soft mask, blur 24→0."
+  - id: click-opens-next
+    name: "A click on the screen's own CTA opens the next screen from the click point"
+    from: [obsidian-precision, film:obsidian-scratch, deep-glass]
+    needs: [ui]
+    how: "Ellipse mask from the click point (0.45 s), new image over-bright (brightness 1.75 → 1) with a faint halo on the opening edge; ripple ring at the click."
+  - id: blob-dissolve
+    name: "Soft-blob dissolve: the next scene arrives blurred in 4 blobs and sharpens"
+    from: [obsidian-precision, film:obsidian-scratch, deep-glass]
+    how: "4 elliptical mask blobs staggered 0.07 s, 0.5 s each; the incoming layer blur 22 → 0 over 0.55 s. Never a white flash."
+  - id: material-dive
+    name: "Camera dives into a surface of the current shot and comes out in the next world"
+    from: [obsidian-precision, film:obsidian-scratch]
+    how: "Scale ×9 ease-in about a light patch (chrome, sky, paper) with blur 0 → 26; cross-fade the next world in over the last 0.25 s."
+  - id: crop-reframe
+    name: "Crop marks reframe one shot into every ad format (9:16 → 1:1 → 16:9)"
+    from: [obsidian-precision, film:obsidian-scratch]
+    needs: [imagery]
+    how: "Dim outside a rect (box-shadow), L-shaped corner marks, mono format label; rect morphs 0.5 s on the move curve; real ad UI inside each format."
+  - id: shape-match-cut
+    name: "A rounded rect morphs onto the next shot's own rounded shape (banner → train window)"
+    from: [obsidian-precision, film:obsidian-scratch]
+    needs: [imagery]
+    how: "Track the target shape in the footage every 0.25 s; morph the rect onto the live position; fade the old content inside it; the dim lifts to reveal the new surroundings."
+  - id: shrink-to-list
+    name: "The whole scene shrinks into a list thumbnail and keeps playing there"
+    from: [obsidian-precision, film:obsidian-scratch, deep-glass]
+    how: "scale → thumb.w / 1920 and translate to the slot centre (0.4 s, move curve); radius 0 → 40; the list's rows fade in around it."
+  - id: wall-pullback
+    name: "The last screen grows back into the frame, then the camera pulls back over a wall of all screens"
+    from: [obsidian-precision, film:obsidian-scratch]
+    needs: [ui]
+    how: "4×3 wall; log-interpolated scale about a moving focus point (1 → fit) on (.55, 0, .15, 1); a scrim for the closing line."
 typography:    # fonts are OFL / free unless the brand supplies its own licensed font
   - id: geometric-light
     name: "Light geometric grotesk, text drifts through focus"
@@ -330,6 +372,10 @@ typography:    # fonts are OFL / free unless the brand supplies its own licensed
     from: [brand-board-collage, film:klick-kulture]
     how: "Black box/white uppercase for labels, yellow box/black uppercase for the tagline, captions typed into posts in sync with the VO, checklist rows as a form; never subtitle captions."
 
+  - id: precision-type
+    name: "Inter display + one Archivo Expanded giant word + mono case tags; one italic serif word per film"
+    from: [obsidian-precision, film:obsidian-scratch]
+    how: "Inter 500 (-0.04em) for lines; ArchivoW stretch 125% 800–900 for the giant word; JetBrains Mono 15–19 px tracked 0.14em for tags/labels; Instrument Serif Italic once. All OFL."
 colour:        # palette FAMILIES; the brand's tokens are mapped onto the family's roles
   - id: midnight
     name: "Near-black + cool steel + one soft glow per role"
@@ -377,6 +423,10 @@ colour:        # palette FAMILIES; the brand's tokens are mapped onto the family
     from: [brand-board-collage, film:klick-kulture]
     how: "Grey #ECECEA until the click; then the brand's colours; the hero colour (KK yellow) is a floor/slab, never a flat background wash."
 
+  - id: mono-silver
+    name: "Monochrome: near-black → graphite → silver → white; colour only inside the client's work"
+    from: [obsidian-precision, film:obsidian-scratch]
+    how: "Light worlds #9A9CA5→#E3E4E8; dark worlds #060608→#5E616A→#DCDEE2; white emblem; grey ink gradients for second lines; no brand hues anywhere but the hero images and footage."
 ui_treatment:
   - id: floating-chat
     name: "Stylised chat bubbles and glass tiles in space, no device frames"
@@ -432,6 +482,16 @@ ui_treatment:
     needs: [ui]
     how: "Post 564 px wide inside a 600×1230 phone; caption Poppins 31 px typed in sync; bubbles 32 px with coloured avatar dots pop out of the phone into the space around it."
 
+  - id: design-tool-annotations
+    name: "Design-tool detail: 12-col grid, selection handles, label chips, snap guides, leader-line annotations"
+    from: [obsidian-precision, film:obsidian-scratch]
+    axes: {warmth: [1, 3]}
+    how: "JetBrains Mono 15–19 px chips on white; leader lines draw from a dot on the subject; labels say something true about the craft (curve, fps, 'templates used: 0')."
+  - id: fixed-container-heroes
+    name: "One fixed container; every hero arrives inside it over a blurred copy of itself; mono case tag above"
+    from: [obsidian-precision, film:obsidian-scratch, deep-glass]
+    needs: [ui]
+    how: "Container 1570×965 at (175,45) on 1080p, radius 30; tag '01 — CLIENT · SECTOR' left, studio URL right."
 motion_feel:
   - id: soft-no-overshoot
     name: "Soft, high damping, long ease-in-out — nothing snaps"
@@ -542,6 +602,10 @@ hook:
     name: "Open on a grey endless feed; one post types the hook line; then the rush"
     from: [brand-board-collage, film:klick-kulture]
     how: "Close on the hero post (plane ×1.9) for the hook, pull back as the scroll accelerates — the owner's favourite opening."
+  - id: typed-caret-word
+    name: "A caret types one big word, then the line under it"
+    from: [obsidian-precision, film:obsidian-scratch]
+    how: "Inter 500 230 px + 150 px grey-gradient second line, left-aligned; caret solid while typing, blinks when idle; no search bar or prompt UI."
 clashes:
   - [colour:midnight, colour:sunset-gradient]
   - [colour:navy-glass, colour:paper-sage]

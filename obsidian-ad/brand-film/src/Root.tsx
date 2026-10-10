@@ -8,6 +8,7 @@ import { Film4, DUR4, FPS4 } from "./Film4";
 import { Film5, DUR5, FPS5 } from "./Film5";
 import { Film6, DUR6, FPS6 } from "./Film6";
 import { Film7, DUR7, FPS7 } from "./Film7";
+import { Film8, DUR8, FPS8 } from "./Film8";
 export const Root: React.FC = () => (
   <>
     {(["A", "B", "C"] as const).map((v) => (
@@ -19,6 +20,7 @@ export const Root: React.FC = () => (
     <Composition id="OBS-48" component={Film5} durationInFrames={Math.round(DUR5 * FPS5)} fps={FPS5} width={1920} height={1080} />
     <Composition id="OBS-40" component={Film6} durationInFrames={Math.round(DUR6 * FPS6)} fps={FPS6} width={1920} height={1080} />
     <Composition id="OBS-LOVIO" component={Film7} durationInFrames={Math.round(DUR7 * FPS7)} fps={FPS7} width={1920} height={1080} />
+    <Composition id="OBS-SCRATCH" component={Film8} durationInFrames={Math.round(DUR8 * FPS8)} fps={FPS8} width={1920} height={1080} />
     <Composition id="GLTEST" component={GLTest} durationInFrames={120} fps={60} width={1080} height={1920} />
   </>
 );

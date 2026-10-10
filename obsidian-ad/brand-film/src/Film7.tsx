@@ -28,7 +28,7 @@ const ft = (n: string) => staticFile("footage/" + n);
 const F = (sec: number) => Math.round(sec * FPS7);
 
 // ---------------------------------------------------------------- monochrome versions of lovio's gradients
-const BG = {
+export const BG = {
   open: "radial-gradient(120% 95% at 50% 125%, #F1F1F4 0%, #A9AAB3 30%, #34353C 64%, #0A0A0C 100%)",
   deep: "radial-gradient(85% 95% at 88% 82%, #D3D5DC 0%, #7C7F8A 26%, #22232A 60%, #08080A 100%)",
   white: "radial-gradient(120% 120% at 50% 0%, #FFFFFF 0%, #F3F3F5 58%, #E6E7EC 100%)",
@@ -37,18 +37,18 @@ const BG = {
   horizon: "radial-gradient(140% 75% at 50% 118%, #F4F4F7 0%, #BEBFC7 26%, #3C3D44 58%, #0A0A0C 100%)",
 };
 const GHOST = "linear-gradient(90deg, rgba(255,255,255,.95), rgba(255,255,255,.35))";
-const INKG = "linear-gradient(90deg, #1A1A1E, #8C8E96)";
+export const INKG = "linear-gradient(90deg, #1A1A1E, #8C8E96)";
 
 // ---------------------------------------------------------------- UI parts
-const Hand: React.FC<{ x: number; y: number; press?: number; op?: number }> = ({ x, y, press = 0, op = 1 }) => (
+export const Hand: React.FC<{ x: number; y: number; press?: number; op?: number }> = ({ x, y, press = 0, op = 1 }) => (
   <svg width={52} height={52} viewBox="0 0 24 24" style={{ position: "absolute", left: x - 19.5, top: y - 3.9, opacity: op, transform: `scale(${1 - press * 0.14})`, transformOrigin: "19.5px 3.9px", filter: "drop-shadow(0 5px 8px rgba(0,0,0,.35))", overflow: "visible" }}>
     <path d="M9 1.8c-1 0-1.8.8-1.8 1.8v8.6L5.6 10.8c-.8-.7-2-.6-2.6.2-.6.7-.6 1.7 0 2.4l4.8 5.6c1 1.2 2.5 1.9 4.1 1.9h3.4c2.9 0 5.2-2.3 5.2-5.2v-4.6c0-1-.8-1.8-1.8-1.8s-1.8.8-1.8 1.8v-.8c0-1-.8-1.8-1.8-1.8s-1.8.8-1.8 1.8V9c0-1-.8-1.8-1.8-1.8s-1.8.8-1.8 1.8V3.6C10.8 2.6 10 1.8 9 1.8z" fill="#fff" stroke="#111" strokeWidth={1.1} strokeLinejoin="round" />
   </svg>
 );
-const Blur: React.FC<{ k: number; children: React.ReactNode; style?: React.CSSProperties }> = ({ k, children, style }) => (
+export const Blur: React.FC<{ k: number; children: React.ReactNode; style?: React.CSSProperties }> = ({ k, children, style }) => (
   <span style={{ display: "inline-block", opacity: cl01(k), filter: `blur(${(1 - cl01(k)) * 14}px)`, ...style }}>{children}</span>
 );
-const GradText: React.FC<{ g: string; children: React.ReactNode }> = ({ g, children }) => <span style={{ background: g, WebkitBackgroundClip: "text", color: "transparent" }}>{children}</span>;
+export const GradText: React.FC<{ g: string; children: React.ReactNode }> = ({ g, children }) => <span style={{ background: g, WebkitBackgroundClip: "text", color: "transparent" }}>{children}</span>;
 // the glass prompt bar (lovio's anchor)
 const Bar: React.FC<{ w: number; text: string; caret: boolean; send?: number; dark?: boolean; ink?: boolean; scale?: number }> = ({ w, text, caret, send = 0, dark = false, ink = false, scale = 1 }) => (
   <div style={{ width: w, height: 66, borderRadius: 33, transform: `scale(${scale})`, background: ink ? "rgba(255,255,255,.5)" : dark ? "rgba(18,18,22,.42)" : "rgba(255,255,255,.16)", border: "1.5px solid rgba(255,255,255,.42)", boxShadow: ink ? "0 18px 50px rgba(30,32,40,.14), inset 0 1px 0 rgba(255,255,255,.7)" : "0 18px 50px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.35)", backdropFilter: "blur(18px)", display: "flex", alignItems: "center", padding: "0 10px 0 28px", fontFamily: SANS, fontSize: 21, fontWeight: 400, color: ink ? "#1A1B20" : "rgba(255,255,255,.92)", gap: 10 }}>
@@ -59,28 +59,28 @@ const Bar: React.FC<{ w: number; text: string; caret: boolean; send?: number; da
     </div>
   </div>
 );
-const Card: React.FC<{ w: number; hh: number; children?: React.ReactNode; dark?: boolean; style?: React.CSSProperties }> = ({ w, hh, children, dark = false, style }) => (
+export const Card: React.FC<{ w: number; hh: number; children?: React.ReactNode; dark?: boolean; style?: React.CSSProperties }> = ({ w, hh, children, dark = false, style }) => (
   <div style={{ width: w, height: hh, borderRadius: 18, padding: "16px 20px", background: dark ? "rgba(16,16,20,.72)" : "rgba(255,255,255,.82)", border: `1px solid ${dark ? "rgba(255,255,255,.14)" : "rgba(255,255,255,.95)"}`, boxShadow: "0 18px 50px rgba(0,0,0,.18)", backdropFilter: "blur(14px)", fontFamily: SANS, color: dark ? "#fff" : "#16161A", boxSizing: "border-box", ...style }}>{children}</div>
 );
-const Photo: React.FC<{ src: string; w: number; hh: number; pos?: string; r?: number; style?: React.CSSProperties }> = ({ src, w, hh, pos = "50% 50%", r = 14, style }) => (
+export const Photo: React.FC<{ src: string; w: number; hh: number; pos?: string; r?: number; style?: React.CSSProperties }> = ({ src, w, hh, pos = "50% 50%", r = 14, style }) => (
   <div style={{ width: w, height: hh, borderRadius: r, overflow: "hidden", boxShadow: "0 16px 40px rgba(0,0,0,.25)", border: "3px solid #fff", ...style }}><Img src={src} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: pos }} /></div>
 );
-const BOX = { x: 175, y: 45, w: 1570, hh: 965 };
+export const BOX = { x: 175, y: 45, w: 1570, hh: 965 };
 // the rolling list's thumbnail slot (the Reshape page shrinks into it)
-const LT = { x: 182, w: 440, hh: 248 };
-const count = (s: number, a: number, b: number, v0: number, v1: number, dec = 0) => (lerp(v0, v1, prog(s, a, b, Easing.bezier(0.3, 0, 0.2, 1)))).toFixed(dec);
+export const LT = { x: 182, w: 440, hh: 248 };
+export const count = (s: number, a: number, b: number, v0: number, v1: number, dec = 0) => (lerp(v0, v1, prog(s, a, b, Easing.bezier(0.3, 0, 0.2, 1)))).toFixed(dec);
 
 // the emblem — white (owner: black or white only)
 const BARS = [[[171, 21], [171, 66], [22, 170], [22, 128]], [[171, 88], [171, 136], [46, 222], [46, 176]]];
-const EmblemSVG: React.FC<{ size: number; fill?: string; style?: React.CSSProperties }> = ({ size, fill = "url(#bar7)", style }) => (
+export const EmblemSVG: React.FC<{ size: number; fill?: string; style?: React.CSSProperties }> = ({ size, fill = "url(#bar7)", style }) => (
   <svg width={size * 200 / 245} height={size} viewBox="0 0 200 245" style={{ overflow: "visible", ...style }}>
     <defs><linearGradient id="bar7" x1="171" y1="21" x2="40" y2="215" gradientUnits="userSpaceOnUse"><stop offset="0" stopColor="#FFFFFF" /><stop offset="1" stopColor="#C8C8CC" /></linearGradient></defs>
     {BARS.map((b, i) => <polygon key={i} points={b.map((p) => p.join(",")).join(" ")} fill={fill} />)}
   </svg>
 );
 // emblem + wordmark: our SVG emblem stands where the lockup's emblem is; the real wordmark (white) wipes in beside it
-const LockLW = 860, LockLS = LockLW / 1030;
-const Lockup: React.FC<{ s: number; t0: number; x: number; y: number; slide?: number }> = ({ s, t0, x, y }) => {
+export const LockLW = 860, LockLS = LockLW / 1030;
+export const Lockup: React.FC<{ s: number; t0: number; x: number; y: number; slide?: number }> = ({ s, t0, x, y }) => {
   const word = prog(s, t0, t0 + 0.55, E.out);
   return (
     <div style={{ position: "absolute", left: x - LockLW / 2, top: y - 122 * LockLS, width: LockLW, height: 245 * LockLS }}>
@@ -91,8 +91,8 @@ const Lockup: React.FC<{ s: number; t0: number; x: number; y: number; slide?: nu
 };
 
 // ---------------------------------------------------------------- the train window (tracked from V1, every 0.25 s)
-const TR: number[][] = [[0, 670, 1277, 285, 698], [1, 641, 1310, 263, 715], [2, 598, 1347, 247, 749], [3, 547, 1390, 227, 792], [3.5, 518, 1418, 224, 823], [4, 481, 1449, 214, 856], [4.5, 440, 1487, 194, 887], [5, 400, 1531, 177, 925], [5.5, 367, 1563, 155, 949], [6, 318, 1607, 129, 986], [6.5, 263, 1661, 100, 1028], [7, 204, 1715, 57, 1062], [7.5, 130, 1776, 7, 1110], [8, 60, 1850, -40, 1160]];
-const winRect = (ts: number) => {
+export const TR: number[][] = [[0, 670, 1277, 285, 698], [1, 641, 1310, 263, 715], [2, 598, 1347, 247, 749], [3, 547, 1390, 227, 792], [3.5, 518, 1418, 224, 823], [4, 481, 1449, 214, 856], [4.5, 440, 1487, 194, 887], [5, 400, 1531, 177, 925], [5.5, 367, 1563, 155, 949], [6, 318, 1607, 129, 986], [6.5, 263, 1661, 100, 1028], [7, 204, 1715, 57, 1062], [7.5, 130, 1776, 7, 1110], [8, 60, 1850, -40, 1160]];
+export const winRect = (ts: number) => {
   let i = 0; while (i < TR.length - 2 && TR[i + 1][0] < ts) i++;
   const a = TR[i], b = TR[i + 1], k = cl01((ts - a[0]) / (b[0] - a[0]));
   return { x0: lerp(a[1], b[1], k), x1: lerp(a[2], b[2], k), y0: lerp(a[3], b[3], k), y1: lerp(a[4], b[4], k) };

@@ -16,6 +16,11 @@ locked: true                # MONOCHROME (owner 2026-10-10: "get rid of the whol
 - owner: Nathaniel Dreyer · WhatsApp 079 244 9607 · domain: not registered yet (suggested obsidian.co.za)
 
 ## Look
+- HOUSE STYLE (owner, 2026-10-10 — supersedes the "logic only, no screenshots" rule below for ads): **Obsidian
+  Precision** (library/styles/obsidian-precision.md). Real hero sections and footage inside a monochrome UI world;
+  one fixed container; the caret/hairline motif; cursor clicks cause the next beat; blur-to-sharp arrivals; recorded
+  UI sounds. Owner: "I love the branding of our emblem and our colour palette now." Build every new Obsidian creative
+  from this card + references/frame-analysis.md; take mechanisms from references, never their beats, words or props.
 - PALETTE CHANGE (owner, 2026-10-10): NO PURPLE. Monochrome — black, white, greys, a pearl/silver cloud ball; colour only
   comes from the hero sections themselves (their worlds). Emblem + wordmark in plain WHITE on dark or BLACK on light
   (render the lockup PNG with grayscale + brightness; never the violet Λ again).
@@ -82,3 +87,12 @@ locked: true                # MONOCHROME (owner 2026-10-10: "get rid of the whol
   public/footage, gitignored; tennis + typing keyed to VP9 alpha) and his hero images. Brand swaps: lovio → OBSIDIAN
   (white emblem + real lockup), "a prompt" → "a brief", blue worlds → monochrome. It copies another studio's ad
   structure beat for beat — test only, not for publishing as-is.
+- 40 s 16:9 "BUILT FROM SCRATCH" (obsidian-ad/brand-film/src/Film8.tsx, OBS-SCRATCH, 2026-10-10) — the first ORIGINAL
+  film in the house style. Owner brief: same style and vibe as the replica, not the replica; keep the typed opening
+  without search bars, the hero display, the tennis player, the mountain, the grey shape; surprise me. Beats: caret
+  types "Build / from scratch." → caret opens the frame → grid + wireframe snap → Irona → click opens Solt → blob
+  dissolve to CRAFT → dive into the chrome → PRECISION + chrome spiral + annotations, Light/Dark click → tennis "ONE
+  SHOOT." reframed 9:16 · 1:1 · 16:9 "EVERY FORMAT." → the banner becomes the train window → the agent answers a 02:14
+  enquiry ("Even at 02:14, / your brand answers.") → services list → pull back over the wall of sites "Built from
+  scratch. Every time." → 3D emblem → lockup + "Digital precision that builds reputation." with the caret.
+  Hero images are still the owner's REFERENCE images (other studios' work) — replace with Obsidian's own before publishing.
