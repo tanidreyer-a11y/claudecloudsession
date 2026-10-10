@@ -10,25 +10,25 @@ import "./fonts";
 export const FPS2 = 60;
 export const DUR2 = 30;
 
-const E = {
+export const E = {
   out: Easing.bezier(0.16, 1, 0.3, 1), in: Easing.bezier(0.7, 0, 0.84, 0), io: Easing.bezier(0.65, 0, 0.35, 1),
   back: Easing.bezier(0.34, 1.35, 0.64, 1), soft: Easing.bezier(0.33, 0, 0.2, 1), drop: Easing.bezier(0.5, 0, 0.2, 1),
 };
-const prog = (s: number, a: number, b: number, ease = E.out) => interpolate(s, [a, b], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease });
-const lerp = (a: number, b: number, k: number) => a + (b - a) * k;
-const win = (s: number, a: number, b: number, c: number, d: number) => prog(s, a, b) * (1 - prog(s, c, d, E.in));
-const h = (i: number, k = 0) => { const x = Math.sin(i * 127.1 + k * 311.7) * 43758.5453; return x - Math.floor(x); };
-const site = (p: string) => staticFile("site/" + p);
-const seq = (dir: string, i: number) => site(`${dir}/${String(Math.max(1, Math.round(i))).padStart(3, "0")}.jpg`);
+export const prog = (s: number, a: number, b: number, ease = E.out) => interpolate(s, [a, b], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease });
+export const lerp = (a: number, b: number, k: number) => a + (b - a) * k;
+export const win = (s: number, a: number, b: number, c: number, d: number) => prog(s, a, b) * (1 - prog(s, c, d, E.in));
+export const h = (i: number, k = 0) => { const x = Math.sin(i * 127.1 + k * 311.7) * 43758.5453; return x - Math.floor(x); };
+export const site = (p: string) => staticFile("site/" + p);
+export const seq = (dir: string, i: number) => site(`${dir}/${String(Math.max(1, Math.round(i))).padStart(3, "0")}.jpg`);
 
-const C = { bg: "#050407", plum: "#12091A", ink: "#F6F1F8", mute: "#A79DB3", line: "rgba(255,255,255,.14)" };
-const LIQ = ["#FFFFFF", "#F9A8D4", "#E879F9", "#DDD6FE", "#A78BFA", "#F472B6", "#FDF2F8", "#7C3AED"];
-const SANS = "Inter, Helvetica, Arial, sans-serif";
-const MONO = "JBMono, ui-monospace, monospace";
-const LABEL: React.CSSProperties = { fontFamily: SANS, fontWeight: 500, fontSize: 22, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(246,241,248,.72)" };
+export const C = { bg: "#050407", plum: "#12091A", ink: "#F6F1F8", mute: "#A79DB3", line: "rgba(255,255,255,.14)" };
+export const LIQ = ["#FFFFFF", "#F9A8D4", "#E879F9", "#DDD6FE", "#A78BFA", "#F472B6", "#FDF2F8", "#7C3AED"];
+export const SANS = "Inter, Helvetica, Arial, sans-serif";
+export const MONO = "JBMono, ui-monospace, monospace";
+export const LABEL: React.CSSProperties = { fontFamily: SANS, fontWeight: 500, fontSize: 22, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(246,241,248,.72)" };
 
 // ---------------------------------------------------------------- liquid: an orb with moving liquid inside
-const LiquidOrb: React.FC<{ x: number; y: number; d: number; s: number; seed?: number; op?: number; rim?: number }> = ({ x, y, d, s, seed = 0, op = 1, rim = 1 }) => {
+export const LiquidOrb: React.FC<{ x: number; y: number; d: number; s: number; seed?: number; op?: number; rim?: number }> = ({ x, y, d, s, seed = 0, op = 1, rim = 1 }) => {
   const blobs = Array.from({ length: 9 }, (_, i) => {
     const a = s * (0.35 + h(i, seed) * 0.5) * (i % 2 ? 1 : -1) + h(i, seed + 3) * 6.28;
     const r = d * (0.16 + h(i, seed + 5) * 0.22);
@@ -52,7 +52,7 @@ const LiquidOrb: React.FC<{ x: number; y: number; d: number; s: number; seed?: n
   );
 };
 // full-bleed liquid world (deep plum with soft pink/white/lilac liquid drifting)
-const LiquidWorld: React.FC<{ s: number; op?: number; light?: number }> = ({ s, op = 1, light = 0.6 }) => (
+export const LiquidWorld: React.FC<{ s: number; op?: number; light?: number }> = ({ s, op = 1, light = 0.6 }) => (
   <AbsoluteFill style={{ opacity: op, background: `radial-gradient(ellipse 110% 80% at 50% 38%, #1E0B2C 0%, ${C.plum} 50%, ${C.bg} 100%)` }}>
     <AbsoluteFill style={{ filter: "blur(70px) saturate(1.2)" }}>
       {Array.from({ length: 7 }, (_, i) => {
@@ -64,7 +64,7 @@ const LiquidWorld: React.FC<{ s: number; op?: number; light?: number }> = ({ s, 
   </AbsoluteFill>
 );
 // 3D orbit ring (360°)
-const OrbitRing: React.FC<{ x: number; y: number; r: number; tilt: number; spin: number; k?: number; op?: number; dots?: number }> = ({ x, y, r, tilt, spin, k = 1, op = 1, dots = 3 }) => (
+export const OrbitRing: React.FC<{ x: number; y: number; r: number; tilt: number; spin: number; k?: number; op?: number; dots?: number }> = ({ x, y, r, tilt, spin, k = 1, op = 1, dots = 3 }) => (
   <div style={{ position: "absolute", left: x - r, top: y - r, width: r * 2, height: r * 2, transform: `perspective(1600px) rotateX(${tilt}deg) rotateZ(${spin}deg)`, opacity: op }}>
     <svg width={r * 2} height={r * 2} style={{ overflow: "visible" }}>
       <circle cx={r} cy={r} r={r} stroke="rgba(255,255,255,.55)" strokeWidth={1.6} fill="none" pathLength={1} strokeDasharray={1} strokeDashoffset={1 - k} />
@@ -73,7 +73,7 @@ const OrbitRing: React.FC<{ x: number; y: number; r: number; tilt: number; spin:
   </div>
 );
 
-const Browser: React.FC<{ w: number; src: string; url?: string; children?: React.ReactNode; glow?: number }> = ({ w, src, url = "obsidian build", children, glow = 1 }) => (
+export const Browser: React.FC<{ w: number; src: string; url?: string; children?: React.ReactNode; glow?: number }> = ({ w, src, url = "obsidian build", children, glow = 1 }) => (
   <div style={{ width: w, borderRadius: w * 0.022, overflow: "hidden", background: "rgba(22,14,30,.9)", border: "1px solid rgba(255,255,255,.16)", boxShadow: `0 ${w * 0.05}px ${w * 0.12}px rgba(0,0,0,.55), 0 0 ${w * 0.1}px rgba(245,163,208,${0.18 * glow})` }}>
     <div style={{ height: w * 0.05, display: "flex", alignItems: "center", gap: w * 0.01, padding: `0 ${w * 0.02}px` }}>
       {[0, 1, 2].map((i) => <div key={i} style={{ width: w * 0.012, height: w * 0.012, borderRadius: "50%", background: "rgba(255,255,255,.25)" }} />)}
@@ -87,8 +87,8 @@ const Browser: React.FC<{ w: number; src: string; url?: string; children?: React
 );
 
 // ---------------------------------------------------------------- code (the logic behind the design)
-type Tok = [string, string];
-const KW = "#F0ABFC", TY = "#E9D5FF", ST = "#FBCFE8", TX = C.ink, CM = "rgba(246,241,248,.42)";
+export type Tok = [string, string];
+export const KW = "#F0ABFC", TY = "#E9D5FF", ST = "#FBCFE8", TX = C.ink, CM = "rgba(246,241,248,.42)";
 const CODE: Tok[][] = [
   [["// the logic behind the look", CM]],
   [["export ", KW], ["function ", KW], ["Presence", TY], ["() {", TX]],
@@ -102,12 +102,13 @@ const CODE: Tok[][] = [
   [["}", TX]],
 ];
 const CODE_LEN = CODE.reduce((m, l) => m + l.reduce((a, t) => a + t[0].length, 0) + 1, 0);
-const Code: React.FC<{ s: number; t0: number; t1: number; w: number; fs: number }> = ({ s, t0, t1, w, fs }) => {
-  let budget = Math.floor(CODE_LEN * prog(s, t0, t1, (x: number) => x));
+export const Code: React.FC<{ s: number; t0: number; t1: number; w: number; fs: number; code?: Tok[][] }> = ({ s, t0, t1, w, fs, code = CODE }) => {
+  const LEN = code.reduce((m, l) => m + l.reduce((a, t) => a + t[0].length, 0) + 1, 0);
+  let budget = Math.floor(LEN * prog(s, t0, t1, (x: number) => x));
   let caretDone = false;
   return (
     <div style={{ width: w, padding: `${fs * 1.1}px ${fs * 1.2}px`, fontFamily: MONO, fontSize: fs, lineHeight: 1.6 }}>
-      {CODE.map((line, li) => {
+      {code.map((line, li) => {
         const parts: React.ReactNode[] = [];
         line.forEach(([t, col], ti) => { if (budget <= 0) return; parts.push(<span key={ti} style={{ color: col }}>{t.slice(0, budget)}</span>); budget -= t.length; });
         const here = budget <= 0 && !caretDone; if (here) caretDone = true; budget -= 1;

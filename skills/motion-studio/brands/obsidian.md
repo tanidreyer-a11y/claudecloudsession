@@ -1,5 +1,5 @@
 # Brand profile — Obsidian (the owner's own studio)
-status: incomplete          # final logo + domain still open
+status: incomplete          # domain still open
 last_updated: 2026-10-10
 locked: true                # black-dominant, purple/pink accent on every Obsidian film
 
@@ -20,7 +20,12 @@ locked: true                # black-dominant, purple/pink accent on every Obsidi
   oklch(0.69 0.255 327)). One accent, used as light, not paint.
 - motion: ElevenLabs-grade premium (refs 01, 02, 10, 11, 12, 13) rebuilt with Obsidian's own devices (black glass shard,
   purple-pink rim light); 360° orbits, fast object-to-object transitions, one focus point (L6).
-- logo: concepts in obsidian-ad/logo/ (concept 05 to refine) — FINAL NOT CHOSEN.
+- logo (FINAL, owner 2026-10-10): emblem = two parallel slanted bars (parallelograms, rising to the right) in a
+  metallic white → lavender → violet gradient; wordmark OBSIDIAN in thin, wide-spaced geometric caps, white, with the A
+  as a violet Λ (no crossbar). Files: brands/obsidian-assets/ (obsidian_logo_src.png on black; obsidian_lockup.png and
+  obsidian_emblem.png crops — use with mix-blend screen on dark). Bar geometry (crop coords, 200×245 box):
+  [[171,21],[171,66],[22,170],[22,128]] and [[171,88],[171,136],[46,222],[46,176]]. Never redraw for the final frame —
+  animate the bars as SVG, then cross to the real lockup.
 - brand film style (owner, 2026-10-10): back-end LOGIC only, like the ElevenLabs agent ads — code, flows, nodes,
   tokens, curves; NO photos, NO site screenshots, NO client films or testimonials. The film's own polish is the proof.
 - villain: templates (generic, grey) vs custom code — never present Obsidian as template work.
