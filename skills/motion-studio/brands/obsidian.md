@@ -21,9 +21,8 @@ locked: true                # black-dominant, purple/pink accent on every Obsidi
 - motion: ElevenLabs-grade premium (refs 01, 02, 10, 11, 12, 13) rebuilt with Obsidian's own devices (black glass shard,
   purple-pink rim light); 360° orbits, fast object-to-object transitions, one focus point (L6).
 - logo: concepts in obsidian-ad/logo/ (concept 05 to refine) — FINAL NOT CHOSEN.
-- proof assets (owner's picks, 2026-10-10): Obsidian site — ONLY the press-and-hold explosion/assemble; real-estate demo —
-  half of the scroll-driven animation + the bottom of the site; Cape Atlantic — ONLY the burning cigar → smoke → leaf.
-  Needs laptop screen recordings (vercel/lovable are blocked from the sandbox).
+- brand film style (owner, 2026-10-10): back-end LOGIC only, like the ElevenLabs agent ads — code, flows, nodes,
+  tokens, curves; NO photos, NO site screenshots, NO client films or testimonials. The film's own polish is the proof.
 - villain: templates (generic, grey) vs custom code — never present Obsidian as template work.
 
 ## Voice & tone
