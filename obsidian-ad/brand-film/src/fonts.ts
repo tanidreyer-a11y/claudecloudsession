@@ -5,6 +5,8 @@ const L = [
   new FontFace("Bricolage", `url(${staticFile("fonts/bricolage-grotesque-latin-wght-normal.woff2")}) format("woff2")`, { weight: "200 800" }),
   new FontFace("RedHatMono", `url(${staticFile("fonts/red-hat-mono-latin-wght-normal.woff2")}) format("woff2")`, { weight: "300 700" }),
   ...[400, 500].map((w) => new FontFace("JBMono", `url(${staticFile(`fonts/jetbrains-mono-latin-${w}-normal.woff2`)}) format("woff2")`, { weight: String(w) })),
+  new FontFace("ArchivoW", `url(${staticFile("fonts/archivo-latin-wdth-normal.woff2")}) format("woff2")`, { weight: "100 900", stretch: "62% 125%" }),
+  new FontFace("InstSerif", `url(${staticFile("fonts/instrument-serif-italic.ttf")}) format("truetype")`, { style: "italic", weight: "400" }),
   ...[300, 400, 500, 600].map((w) => new FontFace("Inter", `url(${staticFile(`fonts/inter-latin-${w}-normal.woff2`)}) format("woff2")`, { weight: String(w) })),
 ];
 Promise.all(L.map((f) => f.load())).then((fs) => { fs.forEach((f) => (document.fonts as unknown as { add: (x: FontFace) => void }).add(f)); continueRender(handle); })

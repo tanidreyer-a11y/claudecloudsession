@@ -76,3 +76,9 @@ locked: true                # MONOCHROME (owner 2026-10-10: "get rid of the whol
   → push into the screen → white emblem bars → white OBSIDIAN lockup.
   Hero images = the owner's REFERENCE images (other studios' designs; public/heroes2, gitignored) — test only; replace
   with Obsidian's own work before publishing.
+- 52 s 16:9 lovio REPLICA (obsidian-ad/brand-film/src/Film7.tsx, OBS-LOVIO; owner request 2026-10-10: "duplicate frame
+  for frame the Zelios ad, swapping the creative images and videos with mine"). A capability test of lovio's timing,
+  transitions and cursor clicks with the owner's 6 generated clips (train, lake + horses, tennis, typing, valley, car;
+  public/footage, gitignored; tennis + typing keyed to VP9 alpha) and his hero images. Brand swaps: lovio → OBSIDIAN
+  (white emblem + real lockup), "a prompt" → "a brief", blue worlds → monochrome. It copies another studio's ad
+  structure beat for beat — test only, not for publishing as-is.

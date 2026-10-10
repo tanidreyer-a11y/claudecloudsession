@@ -173,3 +173,18 @@ Each item below cost at least one round of rework on a real client job. They are
     component, extreme points), map a 1600 × 960 div onto it with a homography (CSS matrix3d), morph the last pane's
     rectangle into that quad, and push the camera in by scaling photo AND quad about the same point (otherwise the
     photo's original screen shows at the edges).
+72. **Frame-for-frame replicas: measure, don't eyeball** (OBS-LOVIO, 2026-10-10). Build a side-by-side sheet (reference
+    frame over ours at the same timestamp, 4–5 timestamps per sheet) and convert every element's position and size from
+    the reference tile into 1920 × 1080 before writing code. First passes were consistently ~50 % too small: lovio's
+    "It's live" pill is ≈ 1120 × 430 (not 540), its list type 134 px with 440 × 250 thumbnails, its prompt card bleeds
+    off the frame at ≈ 1600 × 820 with 92 px type, its "Faster ___" titles are 124 px. Read the reference at 4–10 fps
+    tiles for each beat's timing (letters dropping, hover-then-click, flicks) before timing ours.
+73. **Products in front of type need a real cutout.** A multiply-blended rectangle crop leaks the source site's nav and
+    copy. Cut the object out (gradient-magnitude + backdrop-difference mask, closing, hole fill, largest component,
+    feathered; u2netp via onnxruntime missed most of a chrome spiral) and fade any edge where the source crop cuts the
+    object. A keyed person never floats over an aerial plate: let the frame bottom hide the desk base (she works on the
+    near ridge) or use a ground-level plate.
+74. **lovio's "Change the layout" beat**: the cursor arrives early and hovers ~0.7 s, clicks, the bar fades, the layout
+    flicks through 2–3 washes in 0.4 s, lands on the new layout with a dot-matrix sparkle over the top band, the type
+    switches face (regular → wide extended) and the second word writes on in an italic script in front of the product.
+    Monochrome version: light grey layout → black-to-silver gradient, Instrument Serif Italic for the script.
