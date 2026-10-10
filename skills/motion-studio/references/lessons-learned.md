@@ -164,3 +164,12 @@ Each item below cost at least one round of rework on a real client job. They are
 68. **Story beats the owner asked for** (Obsidian): add your own story between the owner's ideas — the drop passes
     through the problems (grey template site → skipped ad → unanswered enquiries) and the film answers them in the
     same order (websites → ads → agents) before merging them into one brand.
+69. **Obsidian is monochrome now** (owner, 2026-10-10): "get rid of the whole purple idea; the emblem just black or
+    white". Colour lives only inside the hero sections and the worlds they create; the ball is a pearl/silver cloud.
+70. **Hero sections on glass**: in the colour-world travel each hero sits on a reflective glass pane that nearly fills
+    the frame (≈ 1350 × 900 on 1920 × 1080) with just enough margin for the moving cloud world; add a sheen sweep and a
+    faded mirror reflection. Low-res reference images (400 × 300) only work small (grids, tables) — panes need ≥ 1200 px.
+71. **Put the film's content INTO the owner's own product photo**: detect the screen quad in the photo (light-pixel
+    component, extreme points), map a 1600 × 960 div onto it with a homography (CSS matrix3d), morph the last pane's
+    rectangle into that quad, and push the camera in by scaling photo AND quad about the same point (otherwise the
+    photo's original screen shows at the edges).

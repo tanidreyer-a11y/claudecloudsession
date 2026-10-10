@@ -1,7 +1,7 @@
 # Brand profile — Obsidian (the owner's own studio)
 status: incomplete          # domain still open
 last_updated: 2026-10-10
-locked: true                # black-dominant, purple/pink accent on every Obsidian film
+locked: true                # MONOCHROME (owner 2026-10-10: "get rid of the whole purple idea"); emblem black or white
 
 ## Business
 - one-line (owner, 2026-10-10): "a creative studio that combines front-end design and ads marketing for premium brands."
@@ -16,7 +16,10 @@ locked: true                # black-dominant, purple/pink accent on every Obsidi
 - owner: Nathaniel Dreyer · WhatsApp 079 244 9607 · domain: not registered yet (suggested obsidian.co.za)
 
 ## Look
-- palette: black dominant (≈ #08070B), white for type, accent purple → pink (≈ #A855F7 → #D946EF; earlier brief:
+- PALETTE CHANGE (owner, 2026-10-10): NO PURPLE. Monochrome — black, white, greys, a pearl/silver cloud ball; colour only
+  comes from the hero sections themselves (their worlds). Emblem + wordmark in plain WHITE on dark or BLACK on light
+  (render the lockup PNG with grayscale + brightness; never the violet Λ again).
+- palette (SUPERSEDED, kept for history): black dominant (≈ #08070B), white for type, accent purple → pink (≈ #A855F7 → #D946EF; earlier brief:
   oklch(0.69 0.255 327)). One accent, used as light, not paint.
 - motion: ElevenLabs-grade premium (refs 01, 02, 10, 11, 12, 13) rebuilt with Obsidian's own devices (black glass shard,
   purple-pink rim light); 360° orbits, fast object-to-object transitions, one focus point (L6).
@@ -63,3 +66,13 @@ locked: true                # black-dominant, purple/pink accent on every Obsidi
   notes, "Built for Estates / Clinics / Hospitality / Premium brands", powered by Avant Intelligence) → pile of hero
   cards "Built from scratch. Every time." → Websites · Ads · AI agents balls merge → bars → lockup.
   Uses the owner's REAL site captures full-frame (permission per client still to be confirmed by the owner).
+- 40 s 16:9 MONOCHROME (obsidian-ad/brand-film/src/Film6.tsx, OBS-40; owner storyboard 2026-10-10): a glass bar types
+  "Years of reputation", its circle button turns 90° (→ to ↓) and becomes the pearl cloud ball → the ball runs down a
+  line past year marks (Year 01 First client · 05 Word of mouth · 10 A name · 20 A reputation) → lands → dive → white →
+  a flat table of hero sections glides past, one stands out (others grey out) → zoom + it flips 90° upright → 3 × 3 →
+  ElevenLabs hairline flows out of the right column, the camera tight on the fast middle ball → merge → the v1 travel
+  past heroes on reflective glass panes that nearly fill the frame (worlds: silver · ocean · 360° loop · fern) → the
+  last pane morphs (homography) onto the monitor in the owner's studio image → "BUILT FOR — Branding / Marketing / Ads"
+  → push into the screen → white emblem bars → white OBSIDIAN lockup.
+  Hero images = the owner's REFERENCE images (other studios' designs; public/heroes2, gitignored) — test only; replace
+  with Obsidian's own work before publishing.
