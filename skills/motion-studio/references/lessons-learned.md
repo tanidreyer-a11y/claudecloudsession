@@ -141,3 +141,13 @@ Each item below cost at least one round of rework on a real client job. They are
     layer → different templates pop out and move right → the last template becomes a phone.
 63. **Obsidian type:** Bricolage wide-tracked caps + Red Hat Mono were rejected; use Inter, tight tracking (the approved
     signature type) and JetBrains Mono only inside code. The low-poly "obsidian shard" was rejected — don't reuse it.
+64. **Liquid that moves like clouds = a WebGL shader, not CSS blobs** (owner, 2026-10-10: "make the liquids move like
+    clouds and liquids"). obsidian-ad/brand-film/src/gl.tsx: (a) World — domain-warped fbm (simplex, 3-octave warps,
+    warp ×1.7–1.9, zoom ≈1.25) painted with a 5-colour palette, rendered at half res, with an ink-wipe from a point so a
+    new colour world spreads out of the ball; (b) Balls — metaballs (smooth-min, k ≈ 40–60 px) so drops merge and split
+    like real liquid, sphere normal from the field, swirling fbm inside at ≈ rel×0.38 (higher = crinkly foil, rejected
+    in testing), rim + specular, optional transparency and a purple core. Render with --gl=angle (chromiumOptions
+    { gl: "angle" } for stills). Cost: ~1 s/frame at 1080×1920 with 4 tabs.
+65. **Colour worlds** (owner storyboard, Obsidian 30 s): the background becomes each hero section's world as the ball
+    passes it (white hero → white world, black+green hero → black+green world); the ball takes the world's colours but
+    keeps a purple core so the brand never disappears; it turns fully purple again on the owner's own site.

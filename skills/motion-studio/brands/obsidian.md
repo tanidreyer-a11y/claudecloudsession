@@ -45,3 +45,10 @@ locked: true                # black-dominant, purple/pink accent on every Obsidi
 ## History
 - OBSIDIAN ad v3 (obsidian-ad/film-v3) delivered; renders show an old phone number — re-render needed.
 - 2026-10-10: brand film "Digital precision that builds reputation" planned (ref13 + earlier ElevenLabs refs).
+- 30 s "Colour worlds" (obsidian-ad/brand-film/src/Film4.tsx, OBS-30; owner storyboard 2026-10-10): drop runs down a
+  line → dive → white world, glass plane slides off a hero → pull back to a 3 × 3 grid → scroll past hundreds of heroes →
+  3 glass containers (top/middle/bottom) → lines from their right sides (top + bottom curvy, middle straight) join →
+  balls in each hero's colours merge into one purple-white ball → it travels past 4 heroes, the world changing to each
+  (black & white → black & green → 360° loop → forest → the real Obsidian hero) → the line runs around START A PROJECT →
+  zoom → thumb swipes the ball across the button, camera moves with the swipe → emblem bars → lockup. Hero sections are
+  PLACEHOLDERS (owner will design the real ones; swap the Hero components for images).

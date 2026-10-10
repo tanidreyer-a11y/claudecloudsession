@@ -7,11 +7,11 @@ const [comp, out, list] = process.argv.slice(2);
 const secs = list.split(",").map(Number);
 const serveUrl = await bundle({ entryPoint: path.resolve("src/index.ts") });
 const browserExecutable = process.env.BROWSER || null;
-const composition = await selectComposition({ serveUrl, id: comp, browserExecutable });
+const composition = await selectComposition({ serveUrl, id: comp, browserExecutable, chromiumOptions: { gl: "angle" } });
 const files = [];
 for (const s of secs) {
   const f = `out/st_${comp}_${s}.jpg`;
-  await renderStill({ serveUrl, composition, output: f, frame: Math.min(composition.durationInFrames - 1, Math.round(s * composition.fps)), imageFormat: "jpeg", browserExecutable });
+  await renderStill({ serveUrl, composition, output: f, frame: Math.min(composition.durationInFrames - 1, Math.round(s * composition.fps)), imageFormat: "jpeg", browserExecutable, chromiumOptions: { gl: "angle" } });
   files.push(f);
 }
 const FF = process.env.FFMPEG || "ffmpeg";
