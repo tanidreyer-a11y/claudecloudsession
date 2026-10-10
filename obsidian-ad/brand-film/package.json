@@ -1,0 +1,2 @@
+{ "name": "obsidian-brand-film", "version": "1.0.0", "private": true,
+  "dependencies": { "@remotion/cli": "4.0.529", "remotion": "4.0.529", "react": "19.2.0", "react-dom": "19.2.0" } }
