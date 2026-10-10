@@ -10,7 +10,7 @@ locked: true                # black-dominant, purple/pink accent on every Obsidi
   ("not cheap skates"). Never pitch on price.
 - services: branding · advertising (premium ad films) · high-end 3D front-end websites · add-ons: AI agents that make
   the presence WORK (lead qualifier, outbound caller, FAQ receptionist, content & social, chat) — in correspondence with
-  Avant Intelligence (how to credit Avant: ask the owner).
+  Avant Intelligence — credit on screen and in VO as "powered by Avant Intelligence" (owner, 2026-10-10).
 - the psychology (owner): two competitors, same service, same price — the market assumes the one with the premium
   brand, site and marketing brings more value. Perception is the product.
 - owner: Nathaniel Dreyer · WhatsApp 079 244 9607 · domain: not registered yet (suggested obsidian.co.za)
@@ -21,9 +21,13 @@ locked: true                # black-dominant, purple/pink accent on every Obsidi
 - motion: ElevenLabs-grade premium (refs 01, 02, 10, 11, 12, 13) rebuilt with Obsidian's own devices (black glass shard,
   purple-pink rim light); 360° orbits, fast object-to-object transitions, one focus point (L6).
 - logo: concepts in obsidian-ad/logo/ (concept 05 to refine) — FINAL NOT CHOSEN.
-- proof assets: his real sites (portfolio/img/*.jpg screenshots; laptop scroll recordings preferred).
+- proof assets (owner's picks, 2026-10-10): Obsidian site — ONLY the press-and-hold explosion/assemble; real-estate demo —
+  half of the scroll-driven animation + the bottom of the site; Cape Atlantic — ONLY the burning cigar → smoke → leaf.
+  Needs laptop screen recordings (vercel/lovable are blocked from the sandbox).
+- villain: templates (generic, grey) vs custom code — never present Obsidian as template work.
 
 ## Voice & tone
+- VO: conversational premium male modelled on ElevenLabs (locked L4 amended 2026-10-10); script in obsidian-ad/brand-film/voice-script.md
 - quiet confidence, exclusive, few words; never hype, never "affordable"; speak to the gap between reputation and
   online presence, not to "being premium".
 
