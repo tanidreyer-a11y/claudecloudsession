@@ -129,3 +129,15 @@ Each item below cost at least one round of rework on a real client job. They are
 59. **A still photo can snap.** Split the moving part (fingertips) into its own layer with an overlap band, rotate it
     about the knuckle (press +4°, flick −12°, damped settle) with 2–3 blur ghosts; the base keeps the knuckle so no gap
     opens. Reads as a snap at speed; a fully physical snap needs real footage.
+60. **Never a flat glow dot or a flat CSS sphere as the focus point.** The owner called the purple dot "dog shit…
+    no depth… childish and flat". The focus object is an ElevenLabs-style LIQUID ORB: a glass sphere with marbled
+    pastel liquid moving inside (9 blurred blobs, some multiply for dark pockets, a light ribbon, sphere shading,
+    a soft highlight, rim light) — for Obsidian: white / soft pink / lilac / magenta on plum-black.
+61. **Camera language is part of the brief, not a bonus.** A film where the camera only trucked right was rejected
+    ("you didn't use the 360° or moving-down movements"). Every film needs: a vertical fall or drop, a dive THROUGH
+    an object into the next world, and at least one 360° orbit (rings, a spinning phone, an orbiting stack).
+62. **Obsidian favourites (owner, 2026-10-10):** the flat template laid at an angle whose grid layers pop out of it
+    (exploded view) and the site containers moving to the right. Owner's chain: the website frame lands on the TOP
+    layer → different templates pop out and move right → the last template becomes a phone.
+63. **Obsidian type:** Bricolage wide-tracked caps + Red Hat Mono were rejected; use Inter, tight tracking (the approved
+    signature type) and JetBrains Mono only inside code. The low-poly "obsidian shard" was rejected — don't reuse it.

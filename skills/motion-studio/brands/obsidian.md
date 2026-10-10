@@ -25,6 +25,13 @@ locked: true                # black-dominant, purple/pink accent on every Obsidi
   tokens, curves; NO photos, NO site screenshots, NO client films or testimonials. The film's own polish is the proof.
 - villain: templates (generic, grey) vs custom code — never present Obsidian as template work.
 
+## Owner feedback on the direction tests (2026-10-10)
+- Liked ONLY: the exploded flat template (grid layers popping out at an angle) and containers moving right.
+- Rejected: flat purple dot, the obsidian shard, Bricolage/Red Hat Mono, lateral-only camera, colours without depth.
+- Wanted: ElevenLabs liquid soft pink/white colour inside orbs, vertical moves, 360° motion, fast object transitions.
+- v2 (obsidian-ad/brand-film/src/Film2.tsx) rebuilt on that: liquid orbs, drop → dive → stack → frame lands on top
+  layer → templates move right → phone spins 360° → back = code → agents → fall → Obsidian.
+
 ## Voice & tone
 - VO: conversational premium male modelled on ElevenLabs (locked L4 amended 2026-10-10); script in obsidian-ad/brand-film/voice-script.md
 - quiet confidence, exclusive, few words; never hype, never "affordable"; speak to the gap between reputation and
