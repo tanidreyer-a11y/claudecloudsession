@@ -188,3 +188,12 @@ Each item below cost at least one round of rework on a real client job. They are
     flicks through 2–3 washes in 0.4 s, lands on the new layout with a dot-matrix sparkle over the top band, the type
     switches face (regular → wide extended) and the second word writes on in an italic script in front of the product.
     Monochrome version: light grey layout → black-to-silver gradient, Instrument Serif Italic for the script.
+75. **No white flashes between hero sections** (owner on OBS-LOVIO v1: "crashing, unaligned, like a glitch — take time
+    transitioning to the hero sections"). A full-frame white bloom reads as a glitch. lovio never flashes: ONE container
+    stays put and each hero arrives inside it — panels that become the dashboard's cards (content counts up in place),
+    a centre-out ellipse reveal with an over-bright image that settles (~0.45 s), soft-blob mask dissolves with the new
+    hero blurred then sharpening (~0.6 s), a slow push on the container then a cut to a blurred, dimmed shot that settles
+    (~0.5 s). Carry the anchor UI (the prompt bar) THROUGH the cut instead of swapping in a second copy, keep headline
+    size/position identical across a cut, and let an incoming card grow over the current scene, not over a blank.
+    Check with a frame-difference scan (out/…: mean |Δ| per frame, flag > 2.6× local) against the reference's own cut
+    list — every spike the reference doesn't have is a glitch to fix.

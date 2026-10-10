@@ -203,20 +203,23 @@ pulse(37.45, 43.7, bpm=BPM, g=0.3, hats=True, claps=True)
 bassline(37.45, 43.7, [D2, D2, D2, Bb2 - 12, Bb2 - 12, Bb2 - 12, Bb2 - 12, F2, F2, F2, C2 + 12, C2 + 12], bpm=BPM, g=0.11)
 
 # 0–7 · Build typed, the bar, its brief, the send click, three blooms
-keys(0.0, 0.3, 5, 0.07); put(sfx, glass(A5, 1), 0.42, 0, 0.06); keys(0.5, 0.95, 12, 0.06)
+keys(0.0, 0.3, 5, 0.07); put(sfx, glass(A5, 1), 0.45, 0, 0.06); keys(0.64, 1.0, 11, 0.06)
 click(1.6, A5)
 for i, (t_, n_) in enumerate([(1.8, D5), (1.95, F5), (2.1, A5), (2.25, C6)]): pop(t_, n_, -0.5 + i * 0.3, 0.8)
-for t_, n_ in [(1.92, D5), (3.86, F5), (5.3, A5), (7.0, D6)]:
+for t_, n_ in [(1.92, D5), (3.7, F5), (5.2, A5), (7.05, D6)]:
     put(sfx, swell(n_ - 24, 0.45, 0.08), t_ - 0.45, 0); put(sfx, bell(n_, 2.2, 1.0, 0.35), t_, 0, 0.07)
-keys(3.85, 4.05, 6, 0.04); keys(4.07, 4.45, 9, 0.05); keys(5.35, 5.55, 6, 0.04); keys(5.57, 5.95, 10, 0.05)
-for i in range(10): put(sfx, tick(0.035, 1800 + 200 * i), 2.7 + i * 0.12, 0.4)
-pop(4.5, F5, 0.4); pop(6.1, A5, 0.3)
+keys(3.85, 4.03, 6, 0.04); keys(4.05, 4.4, 9, 0.05); keys(5.4, 5.58, 6, 0.04); keys(5.6, 5.95, 10, 0.05)
+keys(7.08, 7.26, 6, 0.04); keys(7.28, 7.63, 9, 0.05); keys(5.95, 6.4, 9, 0.04); pop(6.25, D6, 0.5, 0.8)
+for i in range(3): pop(2.32 + i * 0.08, [F5, A5, D6][i], [0.6, 0.6, -0.6][i], 0.6)
+put(sfx, air(0.5, True), 3.45, 0, 0.06); put(sfx, air(0.5, True), 5.0, 0, 0.06)
+for i in range(10): put(sfx, tick(0.03, 1800 + 200 * i), 2.4 + i * 0.14, 0.4)
+pop(4.5, F5, 0.4)
 # 7–12.2 · the train, the site in the window, the lake, This isn't / a prototype
 put(sfx, boom(0.3, 40), 6.98, 0, 1.0); keys(7.85, 8.5, 14, 0.05)
 put(sfx, air(0.9, True), 8.4, 0, 0.08); put(sfx, swish(1.0), 9.2, 0, 0.06)
 word(9.5, A5); word(9.75, C6); word(10.75, E5); word(10.85, A5)
 # 12.2–13.55 · It's live; the push
-put(sfx, glass(C6, 1), 12.24, 0, 0.08); put(sfx, bell(G5, 2.4, 1.0, 0.4), 12.26, 0, 0.07)
+put(sfx, glass(C6, 1), 12.05, 0, 0.08); put(sfx, bell(G5, 2.4, 1.0, 0.4), 12.07, 0, 0.07)
 put(sfx, air(0.5, True), 13.05, 0, 0.12); put(sfx, swell(G4, 0.45, 0.1), 13.1, 0)
 # 13.5–16 · tennis: flash, letters fly in, spread
 put(sfx, boom(0.42, 38), 13.5, 0, 1.0); put(sfx, snap(0.5), 13.5, 0, 0.5)
@@ -272,9 +275,9 @@ put(sfx, glass(D6, 1), 45.95, 0.3, 0.06); word(46.0, A5)
 put(sfx, air(0.4, True), 46.6, 0, 0.08); put(sfx, boom(0.5, 34), 47.0, 0, 1.0)
 put(sfx, swell(F3, 1.3, 0.1), 47.0, 0); put(sfx, glide(C5, F5, 1.3, 0.025), 47.0, 0)
 put(sfx, air(0.8, False), 48.45, 0, 0.07)
-put(sfx, boom(0.4, 36), 49.2, 0, 1.0)
+put(sfx, boom(0.3, 36), 49.2, 0, 1.0)
 for i, n_ in enumerate([F4, C5, A5, E6, G5 + 12]): put(sfx, bell(n_, 3.6, 1.6), 49.22 + i * 0.05, -0.3 + i * 0.15, 0.1)
-put(sfx, glass(C6 + 12, 1), 49.95, 0.3, 0.05)
+put(sfx, glide(C5, F5, 0.4, 0.025), 49.7, 0); put(sfx, glass(C6 + 12, 1), 50.07, 0.3, 0.05)
 
 fade = np.ones(N); fl = int(1.4 * SR); fade[-fl:] = np.linspace(1, 0, fl) ** 2
 mix = (mus * 0.8 + sfx * 0.9) * fade[:, None]

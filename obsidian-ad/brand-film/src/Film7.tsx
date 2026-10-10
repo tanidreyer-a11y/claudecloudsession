@@ -65,10 +65,6 @@ const Card: React.FC<{ w: number; hh: number; children?: React.ReactNode; dark?:
 const Photo: React.FC<{ src: string; w: number; hh: number; pos?: string; r?: number; style?: React.CSSProperties }> = ({ src, w, hh, pos = "50% 50%", r = 14, style }) => (
   <div style={{ width: w, height: hh, borderRadius: r, overflow: "hidden", boxShadow: "0 16px 40px rgba(0,0,0,.25)", border: "3px solid #fff", ...style }}><Img src={src} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: pos }} /></div>
 );
-const Bloom: React.FC<{ s: number; at: number; color?: string; dur?: number }> = ({ s, at, color = "255,255,255", dur = 0.5 }) => {
-  const k = win(s, at - dur * 0.45, at, at + 0.02, at + dur * 0.8);
-  return k > 0 ? <AbsoluteFill style={{ background: `radial-gradient(ellipse 70% 70% at 50% 50%, rgba(${color},${0.95 * k}), rgba(${color},${0.6 * k}) 60%, rgba(${color},${0.3 * k}))` }} /> : null;
-};
 const BOX = { x: 175, y: 45, w: 1570, hh: 965 };
 // the rolling list's thumbnail slot (the Reshape page shrinks into it)
 const LT = { x: 182, w: 440, hh: 248 };
@@ -111,92 +107,96 @@ export const Film7: React.FC = () => {
   const L: React.ReactNode[] = [];
   const add = (n: React.ReactNode) => L.push(n);
 
-  // ===== 0–2.75 · "Build" → the bar → click → panels =====
-  if (s < 2.9) {
+  // ===== 0–0.66 · "Build" typed big, then it shrinks into the bar's text slot =====
+  const shiftBG = prog(s, 1.72, 2.45, E.io);
+  if (s < 4.15) add(<AbsoluteFill key="bg0" style={{ background: BG.open }} />);
+  // lovio: after the click the backdrop turns into a soft multi-tone field with a fine dither (no flash)
+  if (shiftBG > 0 && s < 4.15) add(<AbsoluteFill key="bg1" style={{ opacity: shiftBG, background: "radial-gradient(80% 90% at 78% 18%, #EDEEF1 0%, #A9ACB5 32%, #4A4C55 66%, #121216 100%)" }}><AbsoluteFill style={{ backgroundImage: "radial-gradient(rgba(255,255,255,.5) 1px, transparent 1.4px)", backgroundSize: "7px 7px", opacity: 0.22, WebkitMaskImage: "linear-gradient(120deg, #000 0%, transparent 55%)", maskImage: "linear-gradient(120deg, #000 0%, transparent 55%)" }} /></AbsoluteFill>);
+  if (s < 0.7) {
     const big = "Build".slice(0, Math.min(5, Math.floor(prog(s, 0.0, 0.3, lin) * 5.99)));
-    const bigOut = prog(s, 0.36, 0.62, E.in);
-    add(<AbsoluteFill key="bg0" style={{ background: BG.open }} />);
-    add(<div key="big" style={{ position: "absolute", left: 0, width: W, top: CY - 150, textAlign: "center", fontFamily: SANS, fontWeight: 500, fontSize: 250, letterSpacing: "-0.045em", color: "rgba(255,255,255,.62)", opacity: 1 - bigOut, filter: `blur(${bigOut * 22}px)`, transform: `scale(${lerp(1, 0.86, bigOut)})` }}>{big}<span style={{ display: "inline-block", width: 6, height: 210, marginLeft: 8, verticalAlign: "-28px", background: "rgba(255,255,255,.8)" }} /></div>);
+    const m = prog(s, 0.38, 0.62, Easing.bezier(0.6, 0, 0.2, 1));
+    add(<div key="big" style={{ position: "absolute", left: lerp(685, 462, m), top: lerp(CY - 140, CY - 19, m), transform: `scale(${lerp(1, 0.14, m)})`, transformOrigin: "0 0", fontFamily: SANS, fontWeight: 500, fontSize: 250, lineHeight: 1, letterSpacing: "-0.045em", color: `rgba(255,255,255,${lerp(0.62, 0.92, m)})`, whiteSpace: "nowrap", opacity: 1 - prog(s, 0.6, 0.68) }}>{big}<span style={{ display: "inline-block", width: 6, height: 210, marginLeft: 8, verticalAlign: "-28px", background: "rgba(255,255,255,.8)", opacity: 1 - m }} /></div>);
   }
-  // panels (dithered gradients) assemble around the bar
-  if (s > 1.8 && s < 2.95) {
-    const P = [[80, 120, 560, 330], [700, 90, 520, 200], [1280, 80, 560, 420], [120, 520, 440, 420], [1290, 560, 520, 400], [640, 700, 640, 300]];
-    const out = prog(s, 2.55, 2.85);
-    add(<AbsoluteFill key="pan">{P.map(([x, y, w, hh], i) => { const k = prog(s, 1.86 + i * 0.05, 2.25 + i * 0.05, E.out); return <div key={i} style={{ position: "absolute", left: x, top: y, width: w, height: hh, borderRadius: 18, opacity: k * (1 - out), transform: `scale(${lerp(0.82, 1, k)})`, background: `linear-gradient(${120 + i * 30}deg, rgba(235,236,240,.95), rgba(150,152,160,.85) 55%, rgba(60,62,70,.8))`, overflow: "hidden", boxShadow: "0 20px 50px rgba(0,0,0,.25)" }}><div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(rgba(255,255,255,.55) 1.5px, transparent 1.8px)", backgroundSize: "8px 8px", mixBlendMode: "overlay" }} /></div>; })}</AbsoluteFill>);
-  }
-  // ===== 2.55–3.95 · the dashboard hero (Irona) =====
-  if (s > 2.5 && s < 4.0) {
-    const k = prog(s, 2.55, 2.95, E.out);
-    add(<AbsoluteFill key="iro" style={{ opacity: k, filter: `blur(${(1 - k) * 18}px)` }}>
-      <Img src={img("h10_irona.jpg")} style={{ position: "absolute", inset: -60, width: W + 120, height: H + 120, objectFit: "cover", filter: "blur(40px) brightness(.85)" }} />
-      <div style={{ position: "absolute", left: BOX.x, top: BOX.y, width: BOX.w, height: BOX.hh, borderRadius: 30, overflow: "hidden", boxShadow: "0 30px 90px rgba(0,0,0,.3)", border: "1px solid rgba(255,255,255,.5)" }}><Img src={img("h10_irona.jpg")} style={{ width: "100%", height: "100%", objectFit: "cover" }} /></div>
-    </AbsoluteFill>);
-    const cards = [{ x: 1250, y: 140, t: "Occupancy", a: 21, b: 83, u: "%" }, { x: 1250, y: 300, t: "Bookings this month", a: 1.3, b: 8.8, u: "k", d: 1 }, { x: 240, y: 780, t: "Enquiries", a: 12, b: 64, u: "" }];
-    cards.forEach((c, i) => { const kk = prog(s, 2.7 + i * 0.08, 3.05 + i * 0.08, E.back); add(<div key={`ic${i}`} style={{ position: "absolute", left: c.x, top: c.y, transform: `scale(${kk})`, opacity: kk }}><Card w={430} hh={130}><div style={{ fontSize: 17, opacity: 0.6 }}>{c.t}</div><div style={{ fontSize: 48, fontWeight: 600, letterSpacing: "-0.03em", marginTop: 4 }}>{count(s, 2.75, 3.9, c.a, c.b, c.d ?? 0)}{c.u}</div></Card></div>); });
-  }
-  // ===== 3.75–5.3 · the portrait hero builds (lovio VISION) =====
-  if (s > 3.7 && s < 5.45) {
-    const base = prog(s, 3.78, 3.98);
-    const reveal = (a: number) => prog(s, a, a + 0.28, E.out);
-    const bands = [{ c: [0, 0, 0, 86], a: 4.02 }, { c: [58, 56, 0, 4], a: 4.12 }, { c: [69, 56, 0, 4], a: 4.24 }, { c: [80, 56, 0, 4], a: 4.36 }, { c: [70, 0, 10, 62], a: 4.5 }, { c: [86, 0, 2, 80], a: 4.6 }];
-    const all = prog(s, 4.6, 4.85);
-    add(<AbsoluteFill key="solt">
-      <Img src={img("h03_solt.jpg")} style={{ position: "absolute", inset: -60, width: W + 120, height: H + 120, objectFit: "cover", opacity: base, filter: "blur(40px) brightness(.62)" }} />
-      <div style={{ position: "absolute", left: BOX.x, top: BOX.y, width: BOX.w, height: BOX.hh, borderRadius: 30, overflow: "hidden", boxShadow: "0 30px 90px rgba(0,0,0,.45)", border: "1px solid rgba(255,255,255,.18)" }}>
-      <Img src={img("h03_solt.jpg")} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: base, filter: "blur(14px) brightness(1.12)" }} />
-      {bands.map((b, i) => <Img key={i} src={img("h03_solt.jpg")} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", clipPath: `inset(${b.c[0]}% ${b.c[1]}% ${b.c[2]}% ${b.c[3]}%)`, opacity: reveal(b.a), filter: `blur(${(1 - reveal(b.a)) * 10}px)` }} />)}
-      <Img src={img("h03_solt.jpg")} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: all }} />
+  // ===== 1.85–3.95 · the dashboard hero (Irona): the panels ARE its cards; the image fills the container =====
+  const DASH = [{ x: 1352, y: 150, w: 370, hh: 130, t: "Occupancy", b: 83, u: "%" }, { x: 1352, y: 302, w: 370, hh: 130, t: "Bookings this month", b: 8.8, u: "k", d: 1 }, { x: 236, y: 800, w: 400, hh: 130, t: "Enquiries", b: 64, u: "" }];
+  const DECO = [[300, 150, 520, 290], [720, 96, 470, 180], [700, 770, 560, 210]];
+  const SOLT_IN = prog(s, 3.58, 4.0, Easing.bezier(0.4, 0, 0.2, 1));
+  if (s > 1.85 && s < 4.05) {
+    const frame = prog(s, 2.25, 2.6, E.out);
+    const img0 = prog(s, 2.5, 3.0, Easing.bezier(0.3, 0, 0.2, 1));
+    const deco = 1 - prog(s, 2.6, 2.9);
+    const cardOut = prog(s, 3.5, 3.72);
+    add(<AbsoluteFill key="iro">
+      <Img src={img("h10_irona.jpg")} style={{ position: "absolute", inset: -60, width: W + 120, height: H + 120, objectFit: "cover", filter: "blur(40px) brightness(.85)", opacity: prog(s, 2.6, 3.0) }} />
+      <div style={{ position: "absolute", left: BOX.x, top: BOX.y, width: BOX.w, height: BOX.hh, borderRadius: 30, overflow: "hidden", opacity: frame, transform: `scale(${lerp(0.97, 1, frame)})`, background: "linear-gradient(135deg, rgba(30,31,36,.55), rgba(120,122,130,.35))", boxShadow: "0 30px 90px rgba(0,0,0,.3)", border: "1px solid rgba(255,255,255,.45)" }}>
+        <Img src={img("h10_irona.jpg")} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: img0, filter: `blur(${(1 - img0) * 26}px)`, transform: `scale(${lerp(1.05, 1, img0)})`, WebkitMaskImage: `linear-gradient(90deg, #000 ${img0 * 140 - 40}%, transparent ${img0 * 140}%)`, maskImage: `linear-gradient(90deg, #000 ${img0 * 140 - 40}%, transparent ${img0 * 140}%)` }} />
       </div>
-      {(() => { const kk = prog(s, 4.28, 4.6, E.back); return <div style={{ position: "absolute", left: 1460, top: 250, transform: `scale(${kk}) rotate(${(1 - kk) * -6}deg)`, opacity: kk }}><Photo src={img("h03_solt.jpg")} w={300} hh={190} pos="60% 28%" /></div>; })()}
+      {DECO.map(([x, y, w, hh], i) => { const k = prog(s, 1.9 + i * 0.09, 2.35 + i * 0.09, E.out); return <div key={i} style={{ position: "absolute", left: x + (1 - k) * 90, top: y, width: w, height: hh, borderRadius: 18, opacity: k * deco, transform: `scale(${lerp(0.9, 1, k)})`, background: `linear-gradient(${120 + i * 40}deg, rgba(236,237,241,.9), rgba(150,152,160,.75) 55%, rgba(60,62,70,.7))`, overflow: "hidden", boxShadow: "0 20px 50px rgba(0,0,0,.22)" }}><div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(rgba(255,255,255,.55) 1.4px, transparent 1.7px)", backgroundSize: "8px 8px", mixBlendMode: "overlay" }} /></div>; })}
+      {DASH.map((c, i) => { const k = prog(s, 1.95 + i * 0.11, 2.4 + i * 0.11, E.out), fill = prog(s, 2.3 + i * 0.08, 2.6 + i * 0.08); return <div key={`d${i}`} style={{ position: "absolute", left: c.x + (1 - k) * 90, top: c.y, width: c.w, height: c.hh, transform: `scale(${lerp(0.9, 1, k)})`, opacity: k * (1 - cardOut), filter: `blur(${cardOut * 10}px)` }}>
+        <div style={{ position: "absolute", inset: 0, borderRadius: 18, overflow: "hidden", background: "linear-gradient(135deg, rgba(236,237,241,.9), rgba(140,142,150,.75) 60%, rgba(60,62,70,.7))", opacity: 1 - fill }}><div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(rgba(255,255,255,.55) 1.4px, transparent 1.7px)", backgroundSize: "8px 8px", mixBlendMode: "overlay" }} /></div>
+        <div style={{ position: "absolute", inset: 0, opacity: fill }}><Card w={c.w} hh={c.hh}><div style={{ fontSize: 16, opacity: 0.6 }}>{c.t}</div><div style={{ fontSize: 46, fontWeight: 600, letterSpacing: "-0.03em", marginTop: 4 }}>{count(s, 2.3, 3.9, 0, c.b, c.d ?? 0)}{c.u}</div></Card></div>
+      </div>; })}
     </AbsoluteFill>);
   }
-  // ===== 5.2–7.0 · CRAFT: the chrome wave in front of the letters (lovio NATURE) =====
-  if (s > 5.15 && s < 7.2) {
-    const k = prog(s, 5.28, 5.6, E.out);
+  // ===== 3.58–5.6 · Solt (lovio VISION): revealed from the centre of the same container, over-bright, then it settles =====
+  if (s > 3.55 && s < 5.9) {
+    const settle = prog(s, 3.75, 4.15, Easing.bezier(0.3, 0, 0.2, 1));
+    const reveal = (a: number) => prog(s, a, a + 0.28, E.out);
+    const bands = [{ c: [0, 0, 0, 86], a: 4.12 }, { c: [58, 56, 0, 4], a: 4.2 }, { c: [69, 56, 0, 4], a: 4.3 }, { c: [80, 56, 0, 4], a: 4.4 }, { c: [70, 0, 10, 62], a: 4.52 }, { c: [86, 0, 2, 80], a: 4.62 }];
+    const all = prog(s, 4.65, 4.95);
+    const r = SOLT_IN * 92 + 0.1;
+    const mask = SOLT_IN < 1 ? `radial-gradient(ellipse ${r}% ${r}% at 50% 46%, #000 62%, transparent 100%)` : "none";
+    add(<AbsoluteFill key="solt" style={{ WebkitMaskImage: mask, maskImage: mask }}>
+      <Img src={img("h03_solt.jpg")} style={{ position: "absolute", inset: -60, width: W + 120, height: H + 120, objectFit: "cover", filter: "blur(40px) brightness(.62)" }} />
+      <div style={{ position: "absolute", left: BOX.x, top: BOX.y, width: BOX.w, height: BOX.hh, borderRadius: 30, overflow: "hidden", background: "#0B0B0D", boxShadow: "0 30px 90px rgba(0,0,0,.45)", border: "1px solid rgba(255,255,255,.18)", filter: `brightness(${lerp(1.75, 1, settle)})` }}>
+        <Img src={img("h03_solt.jpg")} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", filter: `blur(${lerp(14, 8, settle)}px) brightness(1.1)` }} />
+        {bands.map((b, i) => <Img key={i} src={img("h03_solt.jpg")} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", clipPath: `inset(${b.c[0]}% ${b.c[1]}% ${b.c[2]}% ${b.c[3]}%)`, opacity: reveal(b.a), filter: `blur(${(1 - reveal(b.a)) * 10}px)` }} />)}
+        <Img src={img("h03_solt.jpg")} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: all }} />
+      </div>
+      {(() => { const kk = prog(s, 4.38, 4.7, E.back); return <div style={{ position: "absolute", left: 1400, top: 240, transform: `scale(${kk}) rotate(${(1 - kk) * -6}deg)`, opacity: kk }}><Photo src={img("h03_solt.jpg")} w={300} hh={190} pos="60% 28%" /></div>; })()}
+    </AbsoluteFill>);
+    // the leading edge of the reveal glows softly (lovio's halo), only while it opens
+    if (SOLT_IN > 0 && SOLT_IN < 1) add(<AbsoluteFill key="soltglow" style={{ background: `radial-gradient(ellipse ${r + 6}% ${r + 6}% at 50% 46%, rgba(255,255,255,0) 55%, rgba(236,238,244,${0.35 * Math.sin(Math.PI * SOLT_IN)}) 80%, rgba(255,255,255,0) 100%)` }} />);
+  }
+  // ===== 5.15–7.05 · CRAFT (lovio NATURE): soft blobs dissolve the next hero in, blurred, then it sharpens =====
+  if (s > 5.12 && s < 7.06) {
+    const blob = (cx: number, cy: number, a: number) => { const rr = prog(s, a, a + 0.5, Easing.bezier(0.4, 0, 0.3, 1)) * 105; return `radial-gradient(ellipse ${rr + 0.1}% ${rr * 1.5 + 0.1}% at ${cx}% ${cy}%, #000 55%, transparent 100%)`; };
+    const done = s > 5.85;
+    const mask = done ? "none" : [blob(76, 80, 5.15), blob(28, 68, 5.22), blob(58, 24, 5.29), blob(10, 18, 5.35)].join(", ");
+    const sharp = prog(s, 5.3, 5.85, Easing.bezier(0.3, 0, 0.2, 1));
+    const grow = prog(s, 6.7, 7.05, E.in);
     const IS = BOX.w / (2560 * 0.66), IW = 2560 * IS, IH = 1664 * IS, IL = -0.34 * 2560 * IS, IT = -0.2 * 1664 * IS;
     const letters = "CRAFT".split("");
-    add(<AbsoluteFill key="craftbg" style={{ opacity: k }}><Img src={img("h07_mindful.jpg")} style={{ position: "absolute", inset: -60, width: W + 120, height: H + 120, objectFit: "cover", filter: "blur(40px) brightness(.7)" }} /></AbsoluteFill>);
-    add(<div key="craft" style={{ position: "absolute", left: BOX.x, top: BOX.y, width: BOX.w, height: BOX.hh, borderRadius: 30, overflow: "hidden", background: "#050506", opacity: k, boxShadow: "0 30px 90px rgba(0,0,0,.5)", border: "1px solid rgba(255,255,255,.14)" }}>
-      <Img src={img("h07_mindful.jpg")} style={{ position: "absolute", left: IL, top: IT, width: IW, height: IH }} />
-      <div style={{ position: "absolute", left: 0, top: 0, width: 1000, height: 760, background: "radial-gradient(120% 100% at 0% 0%, #050506 62%, rgba(5,5,6,0) 100%)" }} />
-      <div style={{ position: "absolute", left: 0, width: BOX.w, top: 120, textAlign: "center", fontFamily: WIDE, fontWeight: 900, fontStretch: "125%", fontSize: 280, lineHeight: 1, letterSpacing: "-0.02em" }}>
-        {letters.map((c, i) => { const kk = prog(s, 5.45 + i * 0.07, 5.85 + i * 0.07, E.out); return <span key={i} style={{ display: "inline-block", opacity: kk, transform: `translateY(${(1 - kk) * 60}px)`, filter: `blur(${(1 - kk) * 12}px)`, background: "linear-gradient(180deg, #FFFFFF, #8D9099)", WebkitBackgroundClip: "text", color: "transparent" }}>{c}</span>; })}
+    add(<AbsoluteFill key="craft" style={{ WebkitMaskImage: mask, maskImage: mask, transform: `scale(${lerp(1, 1.07, grow)})` }}>
+      <Img src={img("h07_mindful.jpg")} style={{ position: "absolute", inset: -60, width: W + 120, height: H + 120, objectFit: "cover", filter: "blur(40px) brightness(.55)" }} />
+      <div style={{ position: "absolute", left: BOX.x, top: BOX.y, width: BOX.w, height: BOX.hh, borderRadius: 30, overflow: "hidden", background: "#050506", boxShadow: "0 30px 90px rgba(0,0,0,.5)", border: "1px solid rgba(255,255,255,.14)", filter: `blur(${(1 - sharp) * 22}px)` }}>
+        <Img src={img("h07_mindful.jpg")} style={{ position: "absolute", left: IL, top: IT, width: IW, height: IH }} />
+        <div style={{ position: "absolute", left: 0, top: 0, width: 1100, height: BOX.hh, background: "linear-gradient(90deg, #050506 0%, #050506 22%, rgba(5,5,6,0) 52%)" }} />
+        <div style={{ position: "absolute", left: 0, top: 0, width: 1000, height: 760, background: "radial-gradient(120% 100% at 0% 0%, #050506 62%, rgba(5,5,6,0) 100%)" }} />
+        <div style={{ position: "absolute", left: 0, width: BOX.w, top: 120, textAlign: "center", fontFamily: WIDE, fontWeight: 900, fontStretch: "125%", fontSize: 280, lineHeight: 1, letterSpacing: "-0.02em" }}>
+          {letters.map((c, i) => { const kk = prog(s, 5.62 + i * 0.06, 6.0 + i * 0.06, E.out); return <span key={i} style={{ display: "inline-block", opacity: kk, transform: `translateY(${(1 - kk) * 50}px)`, filter: `blur(${(1 - kk) * 12}px)`, background: "linear-gradient(180deg, #FFFFFF, #8D9099)", WebkitBackgroundClip: "text", color: "transparent" }}>{c}</span>; })}
+        </div>
+        <Img src={img("chrome_cut.png")} style={{ position: "absolute", left: IL, top: IT, width: IW, height: IH }} />
+        <div style={{ position: "absolute", left: 0, bottom: 0, width: 760, height: 420, background: "radial-gradient(90% 100% at 0% 100%, rgba(5,5,6,.82) 0%, rgba(5,5,6,.55) 45%, rgba(5,5,6,0) 100%)" }} />
+        <div style={{ position: "absolute", left: 70, top: 36, display: "flex", gap: 38, alignItems: "center", fontFamily: SANS, fontSize: 18, color: "rgba(255,255,255,.75)", opacity: prog(s, 5.85, 6.1) }}><b style={{ fontWeight: 600, letterSpacing: "0.2em", color: "#fff" }}>ATELIER</b><span>Work</span><span>Process</span><span>Studio</span></div>
+        <div style={{ position: "absolute", left: 70, bottom: 80, fontFamily: SANS, fontWeight: 500, fontSize: 54, lineHeight: 1.05, letterSpacing: "-0.03em", color: "#fff", textShadow: "0 4px 24px rgba(0,0,0,.5)" }}>{typed("Explore", s, 5.95, 6.15)}<br />{typed("the craft", s, 6.15, 6.4)}</div>
+        {(() => { const kk = prog(s, 6.2, 6.5, E.back); return <div style={{ position: "absolute", right: 80, bottom: 80, transform: `scale(${kk})`, opacity: kk }}><Card w={300} hh={120} dark><div style={{ fontSize: 15, opacity: 0.6 }}>Since 2016</div><div style={{ fontSize: 26, fontWeight: 600, marginTop: 6 }}>Built from scratch</div></Card></div>; })()}
       </div>
-      <Img src={img("chrome_cut.png")} style={{ position: "absolute", left: IL, top: IT, width: IW, height: IH }} />
-      <div style={{ position: "absolute", left: 70, top: 36, display: "flex", gap: 38, alignItems: "center", fontFamily: SANS, fontSize: 18, color: "rgba(255,255,255,.75)", opacity: prog(s, 5.6, 5.9) }}><b style={{ fontWeight: 600, letterSpacing: "0.2em", color: "#fff" }}>ATELIER</b><span>Work</span><span>Process</span><span>Studio</span></div>
-      <div style={{ position: "absolute", left: 70, bottom: 80, fontFamily: SANS, fontWeight: 500, fontSize: 54, lineHeight: 1.05, letterSpacing: "-0.03em", color: "#fff", opacity: prog(s, 5.7, 6.0) }}>Explore<br />the craft</div>
-      {(() => { const kk = prog(s, 5.8, 6.1, E.back); return <div style={{ position: "absolute", right: 80, bottom: 80, transform: `scale(${kk})`, opacity: kk }}><Card w={300} hh={120} dark><div style={{ fontSize: 15, opacity: 0.6 }}>Since 2016</div><div style={{ fontSize: 26, fontWeight: 600, marginTop: 6 }}>Built from scratch</div></Card></div>; })()}
-    </div>);
+    </AbsoluteFill>);
   }
-  // the anchor prompt bar (lovio): stays centred over the first three heroes; its brief retypes per hero
-  if (s > 0.4 && s < 7.05) {
-    const inK = prog(s, 0.42, 0.72, E.out), out = prog(s, 6.8, 7.0);
-    let text = typed("Build me a brand site", s, 0.5, 0.95);
-    const retype = (prev: string, next: string, a: number) => { const er = prog(s, a, a + 0.2, lin), ty = prog(s, a + 0.22, a + 0.6, lin); return er < 1 ? prev.slice(0, Math.round(prev.length * (1 - er))) : next.slice(0, Math.round(next.length * ty)); };
-    if (s > 3.85) text = retype("Build me a brand site", "Build me a brand portfolio", 3.85);
-    if (s > 5.35) text = retype("Build me a brand portfolio", "Build me a premium product page", 5.35);
-    const press = win(s, 1.55, 1.6, 1.66, 1.74);
-    add(<div key="bar" style={{ position: "absolute", left: CX - 330, top: CY - 33, opacity: inK * (1 - out), filter: `blur(${(1 - inK) * 14}px)`, transform: `scale(${1.65 * lerp(1.08, 1, inK)})` }}><Bar w={660} text={text} caret={Math.floor(s * 3) % 2 === 0} send={press} dark={s > 2.5} /></div>);
-    const ck = prog(s, 0.9, 1.52, E.io);
-    if (s > 0.85 && s < 2.1) add(<Hand key="h0" x={lerp(1500, CX + 330 * 1.65 - 52, ck)} y={lerp(960, CY + 10, ck)} press={press} op={1 - prog(s, 1.8, 2.05)} />);
-  }
-  add(<Bloom key="b1" s={s} at={1.92} />);
-  add(<Bloom key="b2" s={s} at={3.86} />);
-  add(<Bloom key="b3" s={s} at={5.3} color="236,232,226" />);
-  add(<Bloom key="b4" s={s} at={7.0} color="240,236,230" />);
-
   // ===== 6.95–9.42 · the train: the site lives in the window; push through =====
-  if (s > TRAIN.t0 - 0.05 && s < TRAIN.t1 + 0.1) {
+  if (s >= 7.05 && s < TRAIN.t1 + 0.1) {
     const ts = TRAIN.src + (s - TRAIN.t0) * TRAIN.rate;
+    const settle = prog(s, 7.05, 7.6, Easing.bezier(0.3, 0, 0.2, 1));
     const push = prog(s, 9.0, TRAIN.t1, Easing.bezier(0.6, 0, 0.9, 0.5));
     const zs = lerp(1, 1.45, push);
     void winRect(ts);
     const head1 = typed("Where the quiet", s, 7.85, 8.25), head2 = typed("begins.", s, 8.25, 8.5);
-    add(<AbsoluteFill key="train" style={{ transform: `scale(${zs})`, opacity: 1 - prog(s, 9.3, TRAIN.t1) }}>
+    add(<AbsoluteFill key="train" style={{ transform: `scale(${zs * lerp(1.04, 1, settle)})`, opacity: 1 - prog(s, 9.3, TRAIN.t1), filter: settle < 1 ? `blur(${(1 - settle) * 16}px) brightness(${lerp(0.82, 1, settle)}) saturate(${lerp(0.55, 1, settle)})` : undefined }}>
       <Sequence from={F(TRAIN.t0)} durationInFrames={F(TRAIN.t1 - TRAIN.t0) + 6} layout="none"><OffthreadVideo src={ft("v1_train.mp4")} startFrom={F(TRAIN.src)} playbackRate={TRAIN.rate} muted style={{ width: W, height: H }} /></Sequence>
     </AbsoluteFill>);
     // the website: the train interior IS its hero image — nav across the frame, headline + bar centred in the window
-    const so = prog(s, 7.05, 7.3) * (1 - prog(s, 9.28, 9.42));
+    const so = prog(s, 7.3, 7.6) * (1 - prog(s, 9.28, 9.42));
     add(<div key="site" style={{ position: "absolute", inset: 0, opacity: so, transform: `scale(${zs})` }}>
       <div style={{ position: "absolute", left: 60, right: 60, top: 26, display: "flex", alignItems: "center", justifyContent: "space-between", fontFamily: SANS, fontSize: 18, color: "rgba(255,255,255,.9)" }}>
         <b style={{ fontWeight: 600, letterSpacing: "0.16em" }}>STILLWATER</b>
@@ -204,35 +204,51 @@ export const Film7: React.FC = () => {
         <span style={{ padding: "7px 18px", borderRadius: 20, border: "1px solid rgba(255,255,255,.7)" }}>Book a stay</span>
       </div>
       <div style={{ position: "absolute", left: 0, width: W, top: 330, textAlign: "center", fontFamily: SANS, fontWeight: 500, fontSize: 104, lineHeight: 1.04, letterSpacing: "-0.035em", color: "#fff", textShadow: "0 6px 40px rgba(0,0,0,.25)" }}>{head1}<br />{head2}</div>
-      <div style={{ position: "absolute", left: CX - 330, top: CY - 33, transform: "scale(1.27)", opacity: 1 - prog(s, 7.7, 7.95) }}><Bar w={660} text="Build me a retreat page" caret={false} dark /></div>
       <div style={{ position: "absolute", left: 0, width: W, bottom: 34, textAlign: "center", fontFamily: SANS, fontSize: 17, color: "rgba(255,255,255,.8)" }}>Explore more ↓</div>
     </div>);
   }
+  // the anchor prompt bar (lovio): one bar through every hero and into the train window; its brief retypes per hero
+  if (s > 0.4 && s < 7.95) {
+    const inK = prog(s, 0.42, 0.7, E.out), out = prog(s, 7.7, 7.95);
+    let text = s < 0.6 ? "" : "Build" + typed(" me a brand site", s, 0.64, 1.0);
+    const retype = (prev: string, next: string, a: number) => { const er = prog(s, a, a + 0.18, lin), ty = prog(s, a + 0.2, a + 0.55, lin); return er < 1 ? prev.slice(0, Math.round(prev.length * (1 - er))) : next.slice(0, Math.round(next.length * ty)); };
+    if (s > 3.85) text = retype("Build me a brand site", "Build me a brand portfolio", 3.85);
+    if (s > 5.4) text = retype("Build me a brand portfolio", "Build me a premium product page", 5.4);
+    if (s > 7.08) text = retype("Build me a premium product page", "Build me a retreat page", 7.08);
+    const press = win(s, 1.55, 1.6, 1.66, 1.74);
+    const grow = prog(s, 6.7, 7.05, E.in), shrink = prog(s, 7.1, 7.5, E.io);
+    const sc = 1.65 * lerp(1.08, 1, inK) * lerp(1, 1.07, grow) * lerp(1, 1.27 / (1.65 * 1.07), shrink);
+    add(<div key="bar" style={{ position: "absolute", left: CX - 330, top: CY - 33, opacity: inK * (1 - out), filter: `blur(${(1 - inK) * 14}px)`, transform: `scale(${sc})` }}><Bar w={660} text={text} caret={Math.floor(s * 3) % 2 === 0} send={press} dark={s > 2.4} /></div>);
+    const ck = prog(s, 0.9, 1.52, E.io);
+    if (s > 0.85 && s < 2.1) add(<Hand key="h0" x={lerp(1500, CX + 330 * 1.65 - 52, ck)} y={lerp(960, CY + 10, ck)} press={press} op={1 - prog(s, 1.8, 2.05)} />);
+  }
+
   // ===== 9.3–10.75 · the lake; "This isn't" =====
   if (s > 9.25 && s < 10.8) {
     add(<AbsoluteFill key="lake" style={{ opacity: prog(s, 9.25, 9.42) }}><Sequence from={F(9.25)} durationInFrames={F(1.6)} layout="none"><OffthreadVideo src={ft("v2_lake.mp4")} startFrom={F(0.3)} muted style={{ width: W, height: H, objectFit: "cover" }} /></Sequence></AbsoluteFill>);
     const hk = 1 - prog(s, 9.42, 9.75);
-    if (hk > 0) add(<div key="lh" style={{ position: "absolute", left: 0, width: W, top: 235, textAlign: "center", fontFamily: SANS, fontWeight: 500, fontSize: 150, lineHeight: 1.05, letterSpacing: "-0.03em", color: "#fff", opacity: hk, filter: `blur(${(1 - hk) * 12}px)` }}>Where the quiet<br />begins.</div>);
+    const zh = lerp(1, 1.45, prog(s, 9.0, TRAIN.t1, Easing.bezier(0.6, 0, 0.9, 0.5))) * lerp(1, 1.08, prog(s, 9.42, 9.8, E.out));
+    if (hk > 0) add(<div key="lh" style={{ position: "absolute", inset: 0, transform: `scale(${zh})`, opacity: hk * prog(s, 9.28, 9.4), filter: `blur(${(1 - hk) * 12}px)` }}><div style={{ position: "absolute", left: 0, width: W, top: 330, textAlign: "center", fontFamily: SANS, fontWeight: 500, fontSize: 104, lineHeight: 1.04, letterSpacing: "-0.035em", color: "#fff", textShadow: "0 6px 40px rgba(0,0,0,.25)" }}>Where the quiet<br />begins.</div></div>);
     add(<div key="isnt" style={{ position: "absolute", left: 0, width: W, top: 150, textAlign: "center", fontFamily: SANS, fontWeight: 500, fontSize: 120, letterSpacing: "-0.035em", color: "#16161A" }}><Blur k={prog(s, 9.78, 10.1)}>This isn't</Blur></div>);
   }
   // ===== 10.7–12.2 · "a prototype" =====
   if (s > 10.68 && s < 12.25) {
     const z = lerp(1.06, 1, prog(s, 10.7, 12.2, lin));
-    add(<AbsoluteFill key="proto" style={{ background: BG.white }}><div style={{ position: "absolute", left: 0, width: W, top: CY - 70, textAlign: "center", fontFamily: SANS, fontWeight: 500, fontSize: 120, letterSpacing: "-0.035em", color: "#16161A", transform: `scale(${z})` }}><Blur k={prog(s, 10.72, 10.9)}>a</Blur>{" "}<Blur k={prog(s, 10.8, 11.15)}><GradText g={INKG}>prototype</GradText></Blur></div></AbsoluteFill>);
+    add(<AbsoluteFill key="proto" style={{ background: BG.white }}><div style={{ position: "absolute", left: 0, width: W, top: CY - 70, textAlign: "center", fontFamily: SANS, fontWeight: 500, fontSize: 120, letterSpacing: "-0.035em", color: "#16161A", transform: `scale(${z})`, opacity: 1 - prog(s, 11.94, 12.08), filter: `blur(${prog(s, 11.94, 12.08) * 10}px)` }}><Blur k={prog(s, 10.72, 10.9)}>a</Blur>{" "}<Blur k={prog(s, 10.8, 11.15)}><GradText g={INKG}>prototype</GradText></Blur></div></AbsoluteFill>);
   }
   // ===== 12.2–13.55 · "It's live" — lovio's big pill (≈1170×450) with a glowing rim; the camera pushes into it =====
-  if (s > 12.18 && s < 13.75) {
-    const k = prog(s, 12.22, 12.55, E.out), push = prog(s, 13.12, 13.55, Easing.bezier(0.7, 0, 0.9, 0.5));
+  if (s > 11.98 && s < 13.75) {
+    const k = prog(s, 12.0, 12.36, E.out), push = prog(s, 13.12, 13.55, Easing.bezier(0.7, 0, 0.9, 0.5));
     const sc = lerp(0.9, 1, k) * Math.pow(14, push);
     const rot = (s - 12.2) * 80, PW = 1120, PH = 430;
-    add(<AbsoluteFill key="live" style={{ background: BG.white }}>
+    add(<AbsoluteFill key="live" style={{ background: s > 12.2 ? BG.white : undefined }}>
       <div style={{ position: "absolute", left: CX - PW / 2 - 50, top: CY - PH / 2 - 26, width: PW + 80, height: PH + 70, borderRadius: (PH + 70) / 2, background: `conic-gradient(from ${rot}deg at 40% 60%, rgba(122,136,162,.95), rgba(196,204,220,.8), rgba(92,102,124,.9), rgba(226,230,238,.7), rgba(122,136,162,.95))`, filter: "blur(26px)", opacity: k * (1 - push), transform: `scale(${sc})` }} />
       <div style={{ position: "absolute", left: CX - PW / 2, top: CY - PH / 2, width: PW, height: PH, borderRadius: PH / 2, background: "linear-gradient(180deg, #FFFFFF 0%, #F6F6F8 100%)", boxShadow: "inset 0 -14px 34px rgba(110,116,132,.14), 0 0 0 2px rgba(255,255,255,.95)", transform: `scale(${sc})`, opacity: k, filter: `blur(${(1 - k) * 12}px)`, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: SANS, fontWeight: 400, fontSize: 172, letterSpacing: "-0.04em" }}><GradText g="linear-gradient(90deg, #111115 0%, #34363E 48%, #8E919B 100%)">It's live</GradText></div>
     </AbsoluteFill>);
   }
   // ===== 13.5–16.1 · the tennis hero: OWN THE COURT (lovio FIND YOUR FAST) =====
-  if (s > 13.48 && s < 16.25) {
-    const flash = win(s, 13.48, 13.56, 13.62, 13.78);
+  if (s > 13.42 && s < 16.25) {
+    const wash = 1 - prog(s, 13.45, 13.88, Easing.bezier(0.3, 0, 0.2, 1));
     const spread = prog(s, 15.6, 16.1, E.in);
     const line1 = "OWN THE".split(""), line2 = "COURT".split("");
     const fly = (i: number, n: number, a: number, sz: number, txt: string, key: string) => {
@@ -241,7 +257,7 @@ export const Film7: React.FC = () => {
       const sx = (i - (txt.length - 1) / 2) * 260 * spread;
       return <span key={key} style={{ display: "inline-block", transform: `translate(${(1 - kk) * dx + sx}px, ${(1 - kk) * dy}px) rotate(${(1 - kk) * rot}deg)`, opacity: kk * (1 - spread), filter: `blur(${(1 - kk) * 10}px)`, fontSize: sz }}>{txt[i] === " " ? " " : txt[i]}</span>;
     };
-    add(<AbsoluteFill key="ten" style={{ background: BG.sky, opacity: prog(s, 13.5, 13.6) }}>
+    add(<AbsoluteFill key="ten" style={{ background: BG.sky, opacity: prog(s, 13.42, 13.56), filter: wash > 0 ? `brightness(${1 + wash * 0.8}) contrast(${1 - wash * 0.4}) blur(${wash * 7}px)` : undefined }}>
       <div style={{ position: "absolute", left: 120, top: 250, fontFamily: WIDE, fontWeight: 900, fontStretch: "125%", lineHeight: 1, letterSpacing: "-0.01em", color: "#FFFFFF" }}>{line1.map((_, i) => fly(i, 1, 13.7, 92, "OWN THE", `a${i}`))}</div>
       <div style={{ position: "absolute", left: 0, width: W, top: 360, textAlign: "center", fontFamily: WIDE, fontWeight: 900, fontStretch: "125%", lineHeight: 1, letterSpacing: "-0.02em", color: "#FFFFFF" }}>{line2.map((_, i) => fly(i, 7, 13.85, 330, "COURT", `b${i}`))}</div>
       <div style={{ position: "absolute", inset: 0, transform: `scale(${lerp(1.18, 1.25, prog(s, 13.5, 16, lin)) * (1 + spread * 0.4)})`, transformOrigin: "50% 100%", opacity: 1 - spread }}>
@@ -250,7 +266,6 @@ export const Film7: React.FC = () => {
       <div style={{ position: "absolute", left: 90, right: 90, top: 40, display: "flex", justifyContent: "space-between", fontFamily: SANS, fontSize: 18, color: "#fff", opacity: prog(s, 14.4, 14.7) * (1 - spread) }}><b style={{ letterSpacing: "0.18em", fontWeight: 600 }}>COURTLINE</b><span style={{ display: "flex", gap: 36 }}><span>Club</span><span>Coaching</span><span>Events</span></span><span style={{ padding: "6px 16px", borderRadius: 18, background: "#fff", color: "#111" }}>Join</span></div>
       {[{ x: 150, y: 760, w: 200, hh: 250, src: img("h03_solt.jpg"), pos: "58% 30%", a: 14.5 }, { x: 1540, y: 200, w: 240, hh: 160, src: img("h05_amplify.jpg"), pos: "75% 50%", a: 14.7 }].map((c, i) => { const kk = prog(s, c.a, c.a + 0.3, E.back); return <div key={i} style={{ position: "absolute", left: c.x, top: c.y, transform: `scale(${kk})`, opacity: kk * (1 - spread) }}><Photo src={c.src} w={c.w} hh={c.hh} pos={c.pos} />{i === 1 && s > 14.9 && [[-6, -6], [c.w - 6, -6], [-6, c.hh - 6], [c.w - 6, c.hh - 6]].map(([x, y], j) => <div key={j} style={{ position: "absolute", left: x, top: y, width: 12, height: 12, background: "#fff", border: "2px solid #5B6270" }} />)}</div>; })}
       <div style={{ position: "absolute", right: 120, top: 640, fontFamily: SANS, fontSize: 24, color: "rgba(255,255,255,.9)", opacity: prog(s, 14.6, 14.9) * (1 - spread) }}>Players helping players</div>
-      {flash > 0 && <AbsoluteFill style={{ background: "#E8E8EC", opacity: flash }} />}
     </AbsoluteFill>);
   }
   // ===== 16.0–21.05 · "Reshape / Motion" + chrome spiral (lovio "Refresh / Daily" + bottle); "Change the layout" → dark =====
@@ -261,8 +276,8 @@ export const Film7: React.FC = () => {
     const press = win(s, 18.85, 18.9, 18.97, 19.05);
     const ck = prog(s, 17.62, 18.15, E.io);
     const script = prog(s, 19.6, 20.6, Easing.bezier(0.35, 0, 0.55, 1));
-    const flick1 = win(s, 19.12, 19.2, 19.28, 19.36), flick2 = win(s, 19.3, 19.38, 19.5, 19.62);
-    const sparkle = win(s, 19.5, 19.56, 19.85, 20.45);
+    const flick1 = win(s, 19.1, 19.22, 19.3, 19.42), flick2 = win(s, 19.3, 19.42, 19.52, 19.78);
+    const sparkle = win(s, 19.52, 19.72, 19.9, 20.45);
     const sc = lerp(1, LT.w / W, shrink), tx = lerp(0, LT.x + LT.w / 2 - CX, shrink), ty = 0;
     const rise = prog(s, 16.0, 16.55, E.out);
     const ink = dark ? "#0E0F12" : "#FFFFFF";
@@ -274,7 +289,7 @@ export const Film7: React.FC = () => {
     const SPK: React.ReactNode[] = [];
     if (sparkle > 0) for (let i = 0; i < 88 * 24; i++) {
       const cx = i % 88, cy = Math.floor(i / 88), y = cy * 22 + 6;
-      const dens = sparkle * Math.pow(cl01(1 - y / 560), 1.4) * 0.7;
+      const dens = sparkle * Math.pow(cl01(1 - y / 560), 1.4) * 0.5;
       if (h(i, 11) < dens && h(i + Math.floor(s * 20) * 5, 13) > 0.3) SPK.push(<div key={i} style={{ position: "absolute", left: cx * 22 + 4, top: y, width: 5, height: 5, background: "#fff", opacity: 0.45 + h(i, 4) * 0.5 }} />);
     }
     add(<AbsoluteFill key="move" style={{ background: shrink > 0 ? BG.deep : undefined }}>
@@ -305,8 +320,8 @@ export const Film7: React.FC = () => {
         {s > 17.1 && s < 19.3 && (() => { const kk = prog(s, 17.12, 17.5, E.out), out = prog(s, 19.08, 19.28); return <div style={{ position: "absolute", left: CX - 260, top: 512, opacity: kk * (1 - out), filter: `blur(${(1 - kk) * 18 + out * 8}px)` }}><Bar w={520} text={typed("Change the layout", s, 17.55, 17.95)} caret={s > 17.5 && s < 18.3 && Math.floor(s * 2.4) % 2 === 0} send={press} ink scale={1.65 * lerp(0.7, 1, kk) * (1 - press * 0.02)} /></div>; })()}
         {s > 17.58 && s < 19.2 && <Hand x={lerp(1580, 1342, ck) + Math.sin(s * 3) * 3 * prog(s, 18.15, 18.4)} y={lerp(1010, 556, ck)} press={press} op={prog(s, 17.58, 17.7) * (1 - prog(s, 19.05, 19.2))} />}
         {/* the layout flicks through washes before it lands dark (lovio: peach → violet → blue) */}
-        {flick1 > 0 && <AbsoluteFill style={{ background: "#F2F1EE", opacity: flick1 * 0.72 }} />}
-        {flick2 > 0 && <AbsoluteFill style={{ background: "linear-gradient(180deg, #8B8E97, #E6E7EA)", opacity: flick2 * 0.8 }} />}
+        {flick1 > 0 && <AbsoluteFill style={{ background: "#F2F1EE", opacity: flick1 * 0.62 }} />}
+        {flick2 > 0 && <AbsoluteFill style={{ background: "linear-gradient(180deg, #5E616A, #DADCE1)", opacity: flick2 * 0.92 }} />}
       </div>
     </AbsoluteFill>);
   }
@@ -338,7 +353,7 @@ export const Film7: React.FC = () => {
     </AbsoluteFill>);
   }
   // ===== 25.2–28.45 · "Premium sites used to take months" (V4 keyed) =====
-  if (s > 25.15 && s < 28.6) {
+  if (s > 25.15 && s < 28.82) {
     const k = prog(s, 25.2, 25.35);
     const leftOut = prog(s, 26.5, 26.75), rightIn = prog(s, 26.7, 27.0);
     const pop = (a: number) => prog(s, a, a + 0.3, E.back);
@@ -365,12 +380,12 @@ export const Film7: React.FC = () => {
   }
   // ===== 28.4–30.3 · the field: the valley (V7) with the desk in it; push in; whip into the laptop =====
   if (s > 28.35 && s < 30.35) {
-    const card = prog(s, 28.4, 28.78, Easing.bezier(0.6, 0, 0.2, 1));
+    const card = prog(s, 28.42, 28.8, Easing.bezier(0.6, 0, 0.2, 1));
     const push = prog(s, 28.8, 30.0, E.io), whip = prog(s, 30.0, 30.28, E.in);
-    const R = { x: lerp(560, 0, card), y: lerp(330, 0, card), w: lerp(800, W, card), hh: lerp(450, H, card) };
+    const R = { x: lerp(1010, 0, card), y: lerp(470, 0, card), w: lerp(440, W, card), hh: lerp(248, H, card) };
     const sc = lerp(1, 1.6, push) * lerp(1, 6, whip);
-    add(<AbsoluteFill key="field" style={{ background: BG.white }}>
-      <div style={{ position: "absolute", left: R.x, top: R.y, width: R.w, height: R.hh, borderRadius: lerp(28, 0, card), overflow: "hidden" }}>
+    add(<AbsoluteFill key="field">
+      <div style={{ position: "absolute", left: R.x, top: R.y, width: R.w, height: R.hh, borderRadius: lerp(22, 0, card), overflow: "hidden", opacity: prog(s, 28.36, 28.44), boxShadow: card < 1 ? "0 24px 60px rgba(0,0,0,.25)" : undefined, filter: whip > 0 ? `blur(${whip * 18}px)` : undefined }}>
         <div style={{ position: "absolute", left: 0, top: 0, width: W, height: H, transform: `translate(${(R.w - W) / 2}px, ${(R.hh - H) / 2}px) scale(${sc})`, transformOrigin: "1330px 800px" }}>
           <Sequence from={F(28.35)} durationInFrames={F(2.1)} layout="none"><OffthreadVideo src={ft("v7_valley.mp4")} startFrom={F(3.0)} muted style={{ width: W, height: H }} /></Sequence>
           <div style={{ position: "absolute", left: 845, top: H - H * 0.62, width: W, height: H, transform: "scale(0.62)", transformOrigin: "0 0", filter: "contrast(0.96) saturate(0.9) brightness(0.98)" }}>
@@ -378,7 +393,6 @@ export const Film7: React.FC = () => {
           </div>
         </div>
       </div>
-      {whip > 0 && <AbsoluteFill style={{ background: "#F4F4F6", opacity: whip }} />}
     </AbsoluteFill>);
   }
   // ===== 30.25–32.2 · emblem → OBSIDIAN =====
@@ -474,21 +488,22 @@ export const Film7: React.FC = () => {
   // ===== 43.7–44.75 · "Great brands" =====
   if (s > 43.7 && s < 44.8) add(<AbsoluteFill key="great" style={{ background: BG.white }}><div style={{ position: "absolute", left: 0, width: W, top: CY - 50, textAlign: "center", fontFamily: SANS, fontWeight: 500, fontSize: 124, letterSpacing: "-0.035em", color: "#16161A" }}><Blur k={prog(s, 43.75, 43.95)}>Great</Blur>{" "}<Blur k={prog(s, 43.85, 44.2)}><GradText g={INKG}>brands</GradText></Blur></div></AbsoluteFill>);
   // ===== 44.7–47.05 · "no longer start" → "with templates" + the pile of heroes =====
-  if (s > 44.7 && s < 47.1) {
+  if (s > 44.7 && s < 47.02) {
     const PILE = ["h03_solt.jpg", "h07_mindful.jpg", "h11_villa.jpg", "h04_orsbite.jpg", "h09_fern.jpg", "h12_aigreen.jpg", "h10_irona.jpg", "h06_silence.jpg"];
     const swap = prog(s, 45.92, 46.25, E.io);
-    add(<AbsoluteFill key="pile" style={{ background: BG.white, opacity: 1 - prog(s, 46.9, 47.05) }}>
-      {PILE.map((p, i) => { const a = 44.95 + i * 0.11, k = prog(s, a, a + 0.55, Easing.bezier(0.2, 0.8, 0.3, 1)); const tx = lerp(560, 40, swap) + (h(i, 1) - 0.4) * 520, ty = lerp(560, 470, swap) + (h(i, 2) - 0.5) * 320 + Math.sin(s * 0.8 + i) * 6, rot = (h(i, 3) - 0.5) * 30; return k > 0 ? <div key={i} style={{ position: "absolute", left: lerp(-700, tx, k), top: lerp(1300, ty, k), transform: `rotate(${lerp(rot - 40, rot, k)}deg)` }}><Photo src={img(p)} w={600} hh={378} r={18} /></div> : null; })}
-      <div style={{ position: "absolute", left: 0, width: W, top: CY - 90, textAlign: "center", fontFamily: SANS, fontWeight: 500, fontSize: 124, letterSpacing: "-0.035em", color: "#16161A", transform: `translateX(${lerp(0, 290, swap)}px)` }}>
+    const exitK = prog(s, 46.7, 47.0, E.in);
+    add(<AbsoluteFill key="pile" style={{ background: BG.white }}>
+      {PILE.map((p, i) => { const a = 44.95 + i * 0.11, k = prog(s, a, a + 0.55, Easing.bezier(0.2, 0.8, 0.3, 1)); const tx = lerp(560, 40, swap) + (h(i, 1) - 0.4) * 520, ty = lerp(560, 470, swap) + (h(i, 2) - 0.5) * 320 + Math.sin(s * 0.8 + i) * 6, rot = (h(i, 3) - 0.5) * 30; return k > 0 ? <div key={i} style={{ position: "absolute", left: lerp(-700, tx, k) - exitK * (1300 + i * 60), top: lerp(1300, ty, k) - exitK * (800 + i * 40), transform: `rotate(${lerp(rot - 40, rot, k) - exitK * 25}deg)`, filter: exitK > 0 ? `blur(${exitK * 10}px)` : undefined }}><Photo src={img(p)} w={600} hh={378} r={18} /></div> : null; })}
+      <div style={{ position: "absolute", left: 0, width: W, top: CY - 90, textAlign: "center", fontFamily: SANS, fontWeight: 500, fontSize: 124, letterSpacing: "-0.035em", color: "#16161A", transform: `translateX(${lerp(0, 290, swap) - exitK * 700}px)`, opacity: 1 - exitK, filter: exitK > 0 ? `blur(${exitK * 12}px)` : undefined }}>
         {swap < 1 && <span style={{ opacity: 1 - swap, filter: `blur(${swap * 12}px)` }}><Blur k={prog(s, 44.75, 44.9)}>no</Blur>{" "}<Blur k={prog(s, 44.95, 45.15)}>longer</Blur>{" "}<Blur k={prog(s, 45.1, 45.35)}><GradText g={INKG}>start</GradText></Blur></span>}
         {swap > 0 && <span style={{ position: "absolute", left: 0, right: 0, opacity: swap, filter: `blur(${(1 - swap) * 12}px)` }}>with <GradText g={INKG}>templates</GradText></span>}
       </div>
     </AbsoluteFill>);
   }
   // ===== 47.0–49.25 · the 3D emblem (lovio's flower bloom) =====
-  if (s > 46.95 && s < 49.35) {
+  if (s > 47.0 && s < 49.4) {
     const grow = prog(s, 47.0, 48.3, Easing.bezier(0.2, 0.7, 0.2, 1)), back = prog(s, 48.45, 49.25, E.io);
-    const sc = lerp(0.4, 3.9, grow) * lerp(1, 0.12, back);
+    const sc = lerp(0.4, 3.9, grow) * lerp(1, 150 / 245 / 3.9, back);
     const ry = lerp(75, -18, grow) + back * 18, rx = 12 * (1 - back);
     const LAY = 14;
     add(<AbsoluteFill key="bloom" style={{ background: BG.deep, perspective: 1600 }}>
@@ -500,8 +515,8 @@ export const Film7: React.FC = () => {
   // ===== 49.2–52 · OBSIDIAN on the horizon =====
   if (s > 49.15) {
     add(<AbsoluteFill key="end" style={{ background: BG.horizon, opacity: prog(s, 49.15, 49.35) }}>
-      {s < 49.95 && <div style={{ position: "absolute", left: CX - 61, top: CY - 75, transform: `scale(${prog(s, 49.2, 49.45, E.back)})` }}><EmblemSVG size={150} /></div>}
-      {s >= 49.95 && <Lockup s={s} t0={49.95} x={CX} y={CY} />}
+      {s < 50.05 && (() => { const sl = prog(s, 49.7, 50.05, E.io), sz = lerp(150, 245 * LockLS, sl); return <div style={{ position: "absolute", left: lerp(CX - 61, CX - LockLW / 2, sl), top: lerp(CY - 75, CY - 122 * LockLS, sl) }}><EmblemSVG size={sz} /></div>; })()}
+      {s >= 50.05 && <Lockup s={s} t0={50.05} x={CX} y={CY} />}
     </AbsoluteFill>);
   }
   return <AbsoluteFill style={{ background: "#000", overflow: "hidden" }}>{L}</AbsoluteFill>;
