@@ -151,3 +151,16 @@ Each item below cost at least one round of rework on a real client job. They are
 65. **Colour worlds** (owner storyboard, Obsidian 30 s): the background becomes each hero section's world as the ball
     passes it (white hero → white world, black+green hero → black+green world); the ball takes the world's colours but
     keeps a purple core so the brand never disappears; it turns fully purple again on the owner's own site.
+66. **The ball is a soft cloud, not liquid** (owner, 2026-10-10, on the 30 s): "plain cloud-like colour like
+    ElevenLabs, a colour mix with blur and a translucent gradient — take away the liquid structure". gl.tsx SoftWorld +
+    SoftBalls: big low-frequency colour clouds; the ball = three blurred colour pools (lilac · sky · pink) drifting
+    in a translucent sphere with a soft light pool, no hard specular (a white base reads as a pearl — rejected in
+    testing). One ball colour for the whole film; only the worlds change.
+67. **Transition + UI-flow models: ref14 LangEase, ref15 NeuralSeek, ref16 lovio** (teardown/ref14-16). The owner
+    wants buttons and UI to be physically part of the film (cursor clicks are the cuts), full-frame hero sections
+    (the old "never fill the frame" note was untested — now allowed), and lovio 3–6 s: one anchor UI element stays
+    still while the hero inside a container and the world behind it change. For premium studios keep the anchor but
+    never the "AI builds your site in seconds" prompt message — Obsidian uses a client BRIEF pill.
+68. **Story beats the owner asked for** (Obsidian): add your own story between the owner's ideas — the drop passes
+    through the problems (grey template site → skipped ad → unanswered enquiries) and the film answers them in the
+    same order (websites → ads → agents) before merging them into one brand.

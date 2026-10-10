@@ -52,3 +52,14 @@ locked: true                # black-dominant, purple/pink accent on every Obsidi
   (black & white → black & green → 360° loop → forest → the real Obsidian hero) → the line runs around START A PROJECT →
   zoom → thumb swipes the ball across the button, camera moves with the swipe → emblem bars → lockup. Hero sections are
   PLACEHOLDERS (owner will design the real ones; swap the Hero components for images).
+- 48 s 16:9 "Websites, ads, agents" (obsidian-ad/brand-film/src/Film5.tsx, OBS-48; 2026-10-10): typed "Years to build a
+  reputation." → the caret becomes the soft cloud ball → it falls through a grey template (crumbles), a grey ad (cursor
+  clicks Skip), a pile of unanswered enquiries → lands → dive → white → brief pill + cursor click → the hero builds in a
+  container (lovio panels) → the ball orbits the container; each pass changes brief, hero (bloom) and world (Atelier Vale
+  cream · Cape Atlantic ember · Northlight night · Private Estates forest) → 3 × 3 grid of real heroes → scroll → three
+  glass containers → long lines, camera trucks right → merge → "This isn't a template." → "It's yours." pill push →
+  LangEase phone tunnel ("Ads that stop the scroll." / "Story. Post. Video.") → light trail becomes Publish → click,
+  rings, whip into a wall of ads → "Campaign live." + confetti → agents (02:14 enquiry, orbiting agents, toggles, ready
+  notes, "Built for Estates / Clinics / Hospitality / Premium brands", powered by Avant Intelligence) → pile of hero
+  cards "Built from scratch. Every time." → Websites · Ads · AI agents balls merge → bars → lockup.
+  Uses the owner's REAL site captures full-frame (permission per client still to be confirmed by the owner).
