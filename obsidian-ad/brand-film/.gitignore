@@ -2,3 +2,4 @@ node_modules
 out/
 audio/*.wav
 public/site/
+public/heroes2/
