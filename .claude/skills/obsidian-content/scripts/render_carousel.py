@@ -1,5 +1,6 @@
-# Render an Obsidian carousel: slides.json -> one PNG per slide (1080x1350), a PDF (LinkedIn) and a contact sheet.
-# usage: python3 -I render_carousel.py <post_dir>      (post_dir holds slides.json; output goes to <post_dir>/out/)
+# Render an Obsidian carousel: slides.json -> one JPG per slide (1080x1350, saves straight to a phone gallery) and a
+# contact sheet. The owner posts from his phone gallery: no PDFs unless he asks (--pdf).
+# usage: python3 -I render_carousel.py <post_dir> [--pdf]   (post_dir holds slides.json; output goes to <post_dir>/out/)
 # slides.json: {"slides": [{"type": "cover"|"text"|"skill"|"end", ...fields}]} — see SKILL.md "Slide types".
 import json, os, subprocess, sys, html
 from PIL import Image
@@ -98,11 +99,12 @@ def main():
                         # headless chrome takes ~90 px of window chrome off the viewport: open taller, body is fixed at H, crop below
                         f"--window-size={W},{H + 200}", "--virtual-time-budget=4000", f"--screenshot={pp}", f"file://{hp}"],
                        check=True, capture_output=True)
-        im = Image.open(pp).convert("RGB")
-        im = im.crop((0, 0, W, H))
-        im.save(pp); pngs.append(pp); os.remove(hp)
+        im = Image.open(pp).convert("RGB").crop((0, 0, W, H))
+        jp = os.path.join(out, f"slide_{k:02d}.jpg")
+        im.save(jp, quality=95, subsampling=0); pngs.append(jp); os.remove(hp); os.remove(pp)
     ims = [Image.open(p).convert("RGB") for p in pngs]
-    ims[0].save(os.path.join(out, "carousel.pdf"), save_all=True, append_images=ims[1:], resolution=144)
+    if "--pdf" in sys.argv:
+        ims[0].save(os.path.join(out, "carousel.pdf"), save_all=True, append_images=ims[1:], resolution=144)
     tw = 360; th = int(tw * H / W); cols = 4; rows = (len(ims) + cols - 1) // cols
     sheet = Image.new("RGB", (cols * tw + (cols + 1) * 12, rows * th + (rows + 1) * 12), (40, 40, 44))
     for k, im in enumerate(ims):

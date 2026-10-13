@@ -1,7 +1,7 @@
 # Day 1 · Tue 13 Oct 2026 · 5 Claude skills that stop AI websites looking the same
 
 ## Instagram / LinkedIn caption
-(LinkedIn: upload `out/carousel.pdf` as a document. Instagram: upload `out/slide_01.png` … `slide_08.png` in order.)
+(Upload `out/slide_01.jpg` … `slide_08.jpg` in order from your gallery.)
 
 AI websites all look the same. Anthropic explains why: without direction, the model picks the most likely answer. Inter fonts, purple gradients, safe animations.
 

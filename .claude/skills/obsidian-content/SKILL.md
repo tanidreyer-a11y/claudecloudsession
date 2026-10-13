@@ -14,11 +14,13 @@ front-end designers, scroll-scrub / 3D / interactive site builders, vibe coders 
 2. **Research from primary sources** (rules below). Write `sources.md` as you go: claim → URL → how it was checked.
 3. **Write the copy** in `slides.json` (copy rules below). One idea per slide, 6–9 slides.
 4. **Render**: `python3 -I .claude/skills/obsidian-content/scripts/render_carousel.py content/posts/<YYYY-MM-DD-slug>`
-   → `out/slide_NN.png` (1080×1350), `out/carousel.pdf` (LinkedIn document post), `out/contact_sheet.jpg`.
-5. **Look at every slide** (Read the PNGs, not only the sheet): overflow, wrapped names, orphans, empty frames, legibility
+   → `out/slide_NN.jpg` (1080×1350) + `out/contact_sheet.jpg`. No PDF unless the owner asks (`--pdf`).
+5. **Look at every slide** (Read the JPGs, not only the sheet): overflow, wrapped names, orphans, empty frames, legibility
    at phone size. Fix and re-render.
 6. **Write `caption.md`**: IG/LinkedIn caption, X thread (X takes 4 images per post → split into posts of ≤4), alt text.
-7. **Deliver**: send the PNGs + PDF + caption to the owner; commit the post folder.
+7. **Deliver**: send each slide JPG with SendUserFile `display: "render"` (images he can long-press and save to his phone
+   gallery — owner: "I can't download a pdf into my gallery"), then the caption as text in the reply so he can copy it.
+   Commit the post folder.
 
 ## Research rules (non-negotiable)
 - Every factual claim on a slide traces to a **primary source opened in this session**: the official blog/changelog, the
