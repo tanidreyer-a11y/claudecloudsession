@@ -1,9 +1,14 @@
 # Brand profile — Obsidian (the owner's own studio)
 status: incomplete          # domain still open
-last_updated: 2026-10-10
+last_updated: 2026-10-13
 locked: true                # MONOCHROME (owner 2026-10-10: "get rid of the whole purple idea"); emblem black or white
 
 ## Business
+- POSITIONING NOW (owner, 2026-10-11 — supersedes the one-line and services below until he says otherwise): a creative
+  freelance studio for **web only** — front-end design and UI/UX, scroll-scrub animated websites, 3D interactive
+  websites. Ads, AI agents and branding are dropped for now ("the only proof I have right now is animated websites").
+  Frame: "your website doesn't quite show the quality of work you actually do." Social content system:
+  .claude/skills/obsidian-content (daily carousels, primary sources only).
 - one-line (owner, 2026-10-10): "a creative studio that combines front-end design and ads marketing for premium brands."
 - tagline: **Digital precision that builds reputation.**
 - who for: premium, established brands whose online presence doesn't show the quality of work they actually do

@@ -1,0 +1,96 @@
+{
+  "slides": [
+    {
+      "type": "cover",
+      "title": "AI websites all look the same.",
+      "sub": "5 Claude skills that fix it, with the exact install commands.",
+      "cue": "Swipe"
+    },
+    {
+      "type": "text",
+      "kicker": "Why it happens",
+      "title": "The model picks the average.",
+      "size": 76,
+      "body": "Without direction, Claude samples from the **high-probability center** of its training data. Anthropic says the result is almost always:",
+      "quote": "Inter fonts, purple gradients on white backgrounds, and minimal animations.",
+      "quote_src": "Anthropic, “Improving frontend design through Skills”, 12 Nov 2025",
+      "close": "A skill gives Claude a point of view **before** it writes code."
+    },
+    {
+      "type": "skill",
+      "kicker": "Skill 1 of 5",
+      "name": "frontend-design",
+      "maker": "Official, by Anthropic",
+      "what": "Makes Claude choose a palette, type and layout first, then check that plan against **generic AI defaults** and revise it before building.",
+      "use": "Every project. Install this one first.",
+      "install": [
+        "/plugin install frontend-design@claude-plugins-official"
+      ],
+      "source": "github.com/anthropics/claude-plugins-official",
+      "size": 82
+    },
+    {
+      "type": "skill",
+      "kicker": "Skill 2 of 5",
+      "name": "Impeccable",
+      "maker": "Open source, by Paul Bakaus",
+      "what": "One skill, **24 commands**: audit, critique, polish, bolder, quieter. Plus **59 detector rules** that catch AI-generated design tells, with no API key.",
+      "use": "The last pass before a client sees it.",
+      "install_label": "Install, then run inside Claude Code",
+      "install": [
+        "npx impeccable install",
+        "/impeccable init"
+      ],
+      "source": "github.com/pbakaus/impeccable"
+    },
+    {
+      "type": "skill",
+      "kicker": "Skill 3 of 5",
+      "name": "UI/UX Pro Max",
+      "size": 92,
+      "maker": "Open source, by Next Level Builder",
+      "what": "Builds a design system from your brief: style, colours, font pairing and page pattern. **79 searchable UI styles**, **192 reasoning rules**.",
+      "use": "Starting a new site from a blank page.",
+      "install": [
+        "/plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill",
+        "/plugin install ui-ux-pro-max@ui-ux-pro-max-skill"
+      ],
+      "source": "github.com/nextlevelbuilder/ui-ux-pro-max-skill"
+    },
+    {
+      "type": "skill",
+      "kicker": "Skill 4 of 5",
+      "name": "GSAP skills",
+      "maker": "Official, by GreenSock",
+      "what": "Teaches Claude correct GSAP: timelines, **ScrollTrigger pin and scrub**, React cleanup and performance. Every GSAP plugin is now free.",
+      "use": "Scroll-scrub and scroll-story websites.",
+      "install_label": "Install (works with Claude Code)",
+      "install": [
+        "npx skills add https://github.com/greensock/gsap-skills"
+      ],
+      "source": "github.com/greensock/gsap-skills"
+    },
+    {
+      "type": "skill",
+      "kicker": "Skill 5 of 5",
+      "name": "webapp-testing",
+      "maker": "Official, by Anthropic",
+      "what": "Claude opens your site in a real browser with Playwright, **takes screenshots** and reads the console logs. No more designing blind.",
+      "use": "Checking the build on phone and desktop.",
+      "install_label": "Install in Claude Code (Anthropic's example pack)",
+      "install": [
+        "/plugin marketplace add anthropics/skills",
+        "/plugin install example-skills@anthropic-agent-skills"
+      ],
+      "source": "github.com/anthropics/skills"
+    },
+    {
+      "type": "end",
+      "kicker": "Before you install anything",
+      "title": "Read a skill first.",
+      "body": "A skill is instructions plus scripts that run with **your permissions**. Open SKILL.md and skim the scripts before you install.",
+      "note": "All five are public repos, updated in 2026.",
+      "cta": "Save this for your next build."
+    }
+  ]
+}
