@@ -26,8 +26,9 @@ front-end designers, scroll-scrub / 3D / interactive site builders, vibe coders 
    in `notes.txt`.
 7. **Package**: `python3 -I .claude/skills/obsidian-content/scripts/package_post.py content/posts/<slug>` → ONE zip
    (`out/Obsidian_<slug>.zip`): Instagram/, LinkedIn/, X/post-1, X/post-2, captions, sources, READ-ME.
-8. **Deliver**: send the zip with SendUserFile `display: "attach"` (owner: "a normal file that I can download all at
-   once"; no PDFs — they can't go into his gallery), plus `out/contact_sheet.jpg` with `display: "render"` as a preview.
+8. **Deliver**: in ONE SendUserFile call send every slide JPG as its own file (`display: "attach"`, 01→NN in order),
+   then the zip in a second call. Never send the contact sheet: it is a grid, and the owner wants separate images he
+   can save to his gallery (owner, 2026-10-13: "that's just a grid, not separate images"). No PDFs.
    Commit the post folder.
 
 ## Claude-topic posts (owner, 2026-10-13)
