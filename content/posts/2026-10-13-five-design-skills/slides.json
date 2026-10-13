@@ -1,10 +1,13 @@
 {
+  "claude": true,
   "slides": [
     {
       "type": "cover",
       "title": "AI websites all look the same.",
       "sub": "5 Claude skills that fix it, with the exact install commands.",
-      "cue": "Swipe"
+      "cue": "Swipe",
+      "logo_label": "Claude skills for web design",
+      "clawd": "title"
     },
     {
       "type": "text",
@@ -14,7 +17,8 @@
       "body": "Without direction, Claude samples from the **high-probability center** of its training data. Anthropic says the result is almost always:",
       "quote": "Inter fonts, purple gradients on white backgrounds, and minimal animations.",
       "quote_src": "Anthropic, “Improving frontend design through Skills”, 12 Nov 2025",
-      "close": "A skill gives Claude a point of view **before** it writes code."
+      "close": "A skill gives Claude a point of view **before** it writes code.",
+      "clawd": "quote"
     },
     {
       "type": "skill",
@@ -27,7 +31,8 @@
         "/plugin install frontend-design@claude-plugins-official"
       ],
       "source": "github.com/anthropics/claude-plugins-official",
-      "size": 82
+      "size": 82,
+      "clawd": "card"
     },
     {
       "type": "skill",
@@ -55,7 +60,12 @@
         "/plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill",
         "/plugin install ui-ux-pro-max@ui-ux-pro-max-skill"
       ],
-      "source": "github.com/nextlevelbuilder/ui-ux-pro-max-skill"
+      "source": "github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+      "clawd": {
+        "x": 830,
+        "y": 735,
+        "px": 8
+      }
     },
     {
       "type": "skill",
@@ -82,7 +92,8 @@
         "/plugin marketplace add anthropics/skills",
         "/plugin install example-skills@anthropic-agent-skills"
       ],
-      "source": "github.com/anthropics/skills"
+      "source": "github.com/anthropics/skills",
+      "clawd": "kicker"
     },
     {
       "type": "end",
@@ -90,7 +101,8 @@
       "title": "Read a skill first.",
       "body": "A skill is instructions plus scripts that run with **your permissions**. Open SKILL.md and skim the scripts before you install.",
       "note": "All five are public repos, updated in 2026.",
-      "cta": "Save this for your next build."
+      "cta": "Save this for your next build.",
+      "clawd": "cta"
     }
   ]
 }

@@ -17,10 +17,30 @@ front-end designers, scroll-scrub / 3D / interactive site builders, vibe coders 
    → `out/slide_NN.jpg` (1080×1350) + `out/contact_sheet.jpg`. No PDF unless the owner asks (`--pdf`).
 5. **Look at every slide** (Read the JPGs, not only the sheet): overflow, wrapped names, orphans, empty frames, legibility
    at phone size. Fix and re-render.
-6. **Write `caption.md`**: IG/LinkedIn caption, X thread (X takes 4 images per post → split into posts of ≤4), alt text.
-7. **Deliver**: send each slide JPG with SendUserFile `display: "render"` (images he can long-press and save to his phone
-   gallery — owner: "I can't download a pdf into my gallery"), then the caption as text in the reply so he can copy it.
+6. **Write the captions** in `captions/`: `instagram.txt`, `linkedin.txt`, `x_thread.txt` (X takes 4 images per post:
+   POST 1 = slides 1–4, POST 2 = a reply with 5–8; each ≤ 270 characters, check with Python), optional `notes.txt`
+   (who wasn't tagged and why). Each platform gets its own copy: IG casual + hashtags, LinkedIn first-person and a
+   question at the end, X short with @tags.
+   **Tags**: only handles confirmed today on the company's/person's own site, repo or profile (e.g. @AnthropicAI on
+   anthropic.com, @claudeai on claude.com, @pbakaus on github.com/pbakaus). Never guess a handle; list the untagged ones
+   in `notes.txt`.
+7. **Package**: `python3 -I .claude/skills/obsidian-content/scripts/package_post.py content/posts/<slug>` → ONE zip
+   (`out/Obsidian_<slug>.zip`): Instagram/, LinkedIn/, X/post-1, X/post-2, captions, sources, READ-ME.
+8. **Deliver**: send the zip with SendUserFile `display: "attach"` (owner: "a normal file that I can download all at
+   once"; no PDFs — they can't go into his gallery), plus `out/contact_sheet.jpg` with `display: "render"` as a preview.
    Commit the post folder.
+
+## Claude-topic posts (owner, 2026-10-13)
+When the post is about Claude / Claude Code, set `"claude": true` in slides.json:
+- the Claude symbol sits on the cover above the headline with a label (`logo_label`, e.g. "Claude skills for web design");
+- Clawd, the Claude Code robot, appears small on about half the slides, in places that fit: `"clawd": "title"` (after
+  the headline), `"card"` (standing on the install card), `"quote"` (on the quote), `"kicker"`, `"cta"`, or
+  `{"x":…,"y":…,"px":…}` for an empty area. Vary the spots; never on every slide; never covering text;
+- the last slide automatically carries "Claude, Claude Code and Clawd are trademarks of Anthropic. Obsidian is not
+  affiliated with Anthropic." Keep it.
+- The marks in `assets/marks/` are the originals (Clawd captured from Claude Code's own welcome screen, colour #D77757;
+  Claude symbol #D97757). Never recolour, redraw or re-pose them. Anthropic's trademark guidelines say their marks may
+  be used only in materials they approve; the owner chose to use them anyway; see `assets/marks/SOURCE.md`.
 
 ## Research rules (non-negotiable)
 - Every factual claim on a slide traces to a **primary source opened in this session**: the official blog/changelog, the
@@ -59,7 +79,7 @@ front-end designers, scroll-scrub / 3D / interactive site builders, vibe coders 
 - Template: `scripts/render_carousel.py` — black, white type, white emblem, Archivo (expanded 125 % / 800 for titles,
   normal width for body), JetBrains Mono **only** for code/commands. 1080×1350, 92 px side margins, footer = emblem +
   "Obsidian" + page "n / N". The cover carries the large two-bar emblem bleeding off the right edge.
-- Slide types in `slides.json`: `cover` {title, sub, cue}, `text` {kicker, title, body, quote?, quote_src?, close?},
+- Slide types in `slides.json`: `cover` {title, sub, cue, logo_label?}, `text` {kicker, title, body, quote?, quote_src?, close?},
   `skill` {kicker, name, maker, what, use, install[], install_label?, source}, `end` {kicker, title, body, note, cta}.
   Optional `size` on any slide overrides the title size (shrink long names until they sit on one line).
 - Avoid the AI-design tells Anthropic's frontend-design skill lists (we post about them — we can't commit them): no

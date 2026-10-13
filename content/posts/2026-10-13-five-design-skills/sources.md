@@ -15,3 +15,14 @@ Every claim on the slides was checked against the primary source the same day. L
 
 Leads used (not cited on slides): firecrawl.dev, snyk.io, designrevision.com, shiftpress.ai, chaseai.io listicles on Claude design skills.
 Not used: install counts and star counts (could not be read from a primary source today; skills.sh did not resolve from this environment).
+
+## Tags and marks (checked 13 Oct 2026)
+| Item | Source |
+|---|---|
+| X @AnthropicAI | footer of https://www.anthropic.com |
+| X @claudeai, Instagram @claudeai | footer of https://claude.com |
+| X @pbakaus | https://github.com/pbakaus (profile link twitter.com/pbakaus) |
+| Clawd (shape + #D77757) | welcome screen of the installed Claude Code CLI v2.1.296, captured in a terminal |
+| Claude symbol (#D97757) | simple-icons 16.35.0, source https://claude.ai |
+| Trademark rules | https://www.anthropic.com/legal/trademark-guidelines (effective 1 Aug 2024) |
+Not tagged: GreenSock and Next Level Builder (no handle found on their own sites/repos from this environment).
