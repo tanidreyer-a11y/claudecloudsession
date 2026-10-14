@@ -205,3 +205,10 @@ Each item below cost at least one round of rework on a real client job. They are
     — never the reference's beat order, word pairs, props or layouts. Copy that read as forced in the study ("Where the
     quiet begins" → "This isn't") is replaced by lines that state the offer plainly ("Even at 02:14, / your brand
     answers.", "One shoot. / Every format.", "Built from scratch. Every time.").
+
+77. **HyperFrames is a parts library, we are the architect (2026-10-14).** The owner asked for every HyperFrames
+    skill and block. They are vendored (`.claude/skills/*`, `vendor/hyperframes`), but `obsidian-motion-architect`
+    decides the engine and the look. In this container blocks need two fixes before they render: FFmpeg/FFprobe on
+    PATH and `hf_localize.py` (GSAP/three come from jsdelivr, which is blocked). Talking-head transcription needs a
+    whisper model from huggingface.co, also blocked — never fake word timings. Answer to "the camera is flat":
+    `references/camera-moves.md` (10 moves read frame by frame, each mapped to a block or a three.js build).

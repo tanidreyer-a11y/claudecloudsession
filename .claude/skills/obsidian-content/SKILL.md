@@ -20,7 +20,7 @@ front-end designers, scroll-scrub / 3D / interactive site builders, vibe coders 
 6. **Write the captions** in `captions/`: `instagram.txt`, `linkedin.txt`, `x_thread.txt` (X takes 4 images per post:
    POST 1 = slides 1–4, POST 2 = a reply with 5–8; each ≤ 270 characters, check with Python), optional `notes.txt`
    (who wasn't tagged and why). Each platform gets its own copy: IG casual + hashtags, LinkedIn first-person and a
-   question at the end, X short with @tags.
+   question at the end, X short with @tags. **Instagram: at most 5 hashtags** (owner, 2026-10-14). LinkedIn: 3.
    **Tags**: only handles confirmed today on the company's/person's own site, repo or profile (e.g. @AnthropicAI on
    anthropic.com, @claudeai on claude.com, @pbakaus on github.com/pbakaus). Never guess a handle; list the untagged ones
    in `notes.txt`.
@@ -90,5 +90,10 @@ When the post is about Claude / Claude Code, set `"claude": true` in slides.json
 - New layouts: add a slide type to the renderer instead of hand-making one-off HTML, so every post stays one system.
 
 ## Calendar
-`calendar.md` holds the 30-day plan (pillars, formats, seeds). When it runs out, write the next 30 days with the same
+`calendar.md` holds the 30-day plan (pillars, formats, seeds). After delivering a post, mark its row ✅ with the
+folder name and update the "Status: n of 30 done" line. When it runs out, write the next 30 days with the same
 mix and ask the owner to confirm before using it.
+
+## Motion and video posts
+For a reel, an animated post or a talking-head edit, read `.claude/skills/obsidian-motion-architect/SKILL.md` first:
+it picks Remotion or a HyperFrames block/workflow and keeps the output in the house style.

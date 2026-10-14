@@ -6,13 +6,17 @@ description: Obsidian's house ad style ("Obsidian Precision") — use for ANY Ob
 # Obsidian ad style
 
 Read, in this order:
+0. `.claude/skills/obsidian-motion-architect/SKILL.md` — which engine builds what (Remotion house build vs
+   HyperFrames blocks/workflows) and the rules that keep HyperFrames output on-brand.
 1. `skills/motion-studio/library/styles/obsidian-precision.md` — the style card (palette, type, transitions with
    timings and curves, UI, sound, signature moves, do_not_copy).
 2. `skills/motion-studio/brands/obsidian.md` — the brand (monochrome, white emblem, voice, what the owner approved
    and rejected, film history).
 3. `skills/motion-studio/references/frame-analysis.md` — how to read a reference and our own render precisely
    (motion strips, measure-and-convert, side-by-side sheets, the frame-jump scan, stills before full renders).
-4. `skills/motion-studio/references/lessons-learned.md` lessons 64–76.
+4. `skills/motion-studio/references/lessons-learned.md` lessons 64–77.
+4b. `skills/motion-studio/references/camera-moves.md` — the 3D camera moves from the reference re-scan, each
+   mapped to a HyperFrames block or our three.js build.
 5. `.claude/skills/remotion-best-practices` for Remotion API details (transitions, audio, render).
 
 Working build: `obsidian-ad/brand-film` (Remotion 4.0.529, 60 fps render → 2-frame blend → 30 fps; `--gl=angle`).

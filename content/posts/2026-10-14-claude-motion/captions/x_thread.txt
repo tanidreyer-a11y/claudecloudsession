@@ -1,0 +1,16 @@
+POST 1 (attach images from folder post-1: 01–04)
+
+Claude can animate now.
+
+@claudeai Motion (beta, 8 Oct): you prompt, Claude writes code, you download an MP4. No video model, no AI people.
+
+Team and Enterprise only for now 🧵
+
+
+POST 2 (reply to post 1, attach images from folder post-2: 05–07)
+
+Also out of beta: Claude Design, Docs and Slides, on every plan incl. Free.
+
+On Pro or Max? @HyperFrames_ by @HeyGen is open source and does the same inside Claude Code. 210 ready blocks.
+
+Code-built motion stays editable. That's the point.

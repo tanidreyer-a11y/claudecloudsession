@@ -1,0 +1,12 @@
+Claude can animate now.
+
+@claudeai Motion launched in beta on 8 Oct. You describe the animation, Claude writes code that animates your text, charts and images, and you download an MP4. No video model, so no generated footage and no AI people.
+
+The catch: Team and Enterprise only, for now.
+On Pro or Max? HyperFrames (open source, by HeyGen) does the same job inside Claude Code. Install commands on slide 6.
+
+Also on 8 Oct: Claude Design, Docs and Slides came out of beta, on every plan including Free.
+
+Save this for your next build.
+
+#claudeai #motiondesign #webdesign #claudecode #aitools
