@@ -66,3 +66,15 @@ Rule: the reveal must be **visible**, not only said. The viewer sees the same fr
 - [ ] Every visual beat lands within 2 frames of its word.
 - [ ] Nothing on screen without a job; one idea per screen.
 - [ ] No AI-design tells (purple gradients, Inter, lime accents, all-caps eyebrows).
+
+## Reference build (2026-10-14): OBS-KOVA
+`obsidian-ad/brand-film/src/Film10.tsx` (33 s, 1080×1920, 60 fps → 30 fps blend), sound `audio/build_kova.py`,
+render `render_kova.sh`. What worked and is reusable:
+- `Invoice({ t, wire })`: every product scene takes a time and a `wire` flag, so the reveal re-renders the same frame
+  as its own wireframe, the rewind plays scenes backwards, and the filmstrip shows real mini frames.
+- Rewind through recognisable frames only (a piecewise time map), never through empty transition frames.
+- three.js text: `TextGeometry` with `public/fonts/helvetiker_bold.typeface.json`, metal material + RoomEnvironment;
+  keep the word inside the frame at its widest yaw (size 1.8 at camera z 11.5 for 1080 wide).
+- Tunnel plate: HyperFrames `gallery-tunnel` re-sized to 1080×1920 (edit the 1920/1080 constants), filled with the
+  film's own stills — never reference screenshots in anything published.
+- Goo transitions sit UNDER the next scene and fade out after they flood the frame, or they hide the next beat.

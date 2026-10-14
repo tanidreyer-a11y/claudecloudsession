@@ -18,6 +18,7 @@ News rows have no fixed topic: research decides it on the day. If nothing ≤ 7 
 |---|---|---|---|---|---|
 | ✅ 1 | Tue 13 Oct | Skills | Carousel 8 | **DONE:** "AI websites all look the same." 5 Claude skills that fix it (frontend-design, Impeccable, UI/UX Pro Max, GSAP skills, webapp-testing) → `content/posts/2026-10-13-five-design-skills` | — |
 | ✅ 2 | Wed 14 Oct | News | Carousel 7 | **DONE:** "Claude can animate now." Claude Motion beta (8 Oct), Team/Enterprise only; Design/Docs/Slides on Free; HyperFrames as the Pro/Max route → `content/posts/2026-10-14-claude-motion` | — |
+| ✅ + | Wed 14 Oct | Proof (video) | Reel 33 s, 9:16 | **DONE (bonus):** "Nothing in this video was filmed." OBS-KOVA, the first made-by-Claude product film (concept app Kova) → `content/posts/2026-10-14-kova-made-by-claude` | — |
 | 3 | Thu 15 Oct | Tools | Carousel 8 | The scroll-scrub stack: frames vs video, GSAP ScrollTrigger, smooth scroll, image-sequence weight (cite docs) | — |
 | 4 | Fri 16 Oct | Proof | Carousel / reel | "Your website doesn't show the quality of work you actually do": one Obsidian hero, before vs after | Breakdown of OBS-SCRATCH film frames |
 | 5 | Sat 17 Oct | Skills | Carousel 7 | 3D on the web with Claude: three.js / React Three Fiber / Spline skills and MCPs that exist today | Remotion skills for motion |

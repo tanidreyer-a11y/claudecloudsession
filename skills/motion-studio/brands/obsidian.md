@@ -101,3 +101,6 @@ locked: true                # MONOCHROME (owner 2026-10-10: "get rid of the whol
   enquiry ("Even at 02:14, / your brand answers.") → services list → pull back over the wall of sites "Built from
   scratch. Every time." → 3D emblem → lockup + "Digital precision that builds reputation." with the caret.
   Hero images are still the owner's REFERENCE images (other studios' work) — replace with Obsidian's own before publishing.
+
+- OBS-KOVA (2026-10-14): "Nothing in this video was filmed." First made-by-Claude product film, concept invoicing app
+  Kova, 33 s 9:16, format `.claude/skills/ai-reveal-product-video`. No voice-over yet (owner will send one).

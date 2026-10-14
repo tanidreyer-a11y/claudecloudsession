@@ -195,8 +195,8 @@ const Chart: React.FC<{ t: number }> = ({ t }) => {
   return (
     <AbsoluteFill style={{ background: "#FAFAFB" }}>
       <AbsoluteFill style={{ transformOrigin: `${fx}px ${fy}px`, transform: `scale(${sc})` }}>
-        <Words s={t} t0={9.9} lines={["Shows the cash", "landing this week."]} size={92} y={290} out={12.2} />
-        <div style={{ position: "absolute", left: 0, right: 0, top: 600, textAlign: "center", fontFamily: WIDE, fontSize: 34, color: "#8E919B", opacity: P(t, 10.1, 10.5) * (1 - P(t, 12.1, 12.4)) }}>Landing this week</div>
+        <Words s={t} t0={9.72} step={0.09} lines={["Shows the cash", "landing this week."]} size={92} y={290} out={12.2} />
+        <div style={{ position: "absolute", left: 0, right: 0, top: 600, textAlign: "center", fontFamily: WIDE, fontSize: 34, color: "#8E919B", opacity: P(t, 9.95, 10.3) * (1 - P(t, 12.1, 12.4)) }}>Landing this week</div>
         <div style={{ position: "absolute", left: 0, right: 0, top: 650, textAlign: "center", fontFamily: WIDE, fontWeight: 800, fontStretch: "118%", fontSize: 150, letterSpacing: "-0.04em", color: INK, opacity: P(t, 10.1, 10.4) * (1 - P(t, 12.1, 12.4)) }}>{fmt(48200 * P(t, 10.2, 11.3))}</div>
         {BARS.map((v, i) => {
           const g = P(t, 10.4 + i * 0.07, 10.95 + i * 0.07, BACK), hh = BAR.hmax * v * g;
@@ -219,7 +219,7 @@ const ThreeD: React.FC<{ s: number }> = ({ s }) => {
   const { gl, scene, camera } = useThree();
   const font = useLoader(FontLoader, staticFile("fonts/helvetiker_bold.typeface.json"));
   const geo = React.useMemo(() => {
-    const g = new TextGeometry("3D", { font, size: 2.2, depth: 0.7, curveSegments: 10, bevelEnabled: true, bevelThickness: 0.08, bevelSize: 0.06, bevelSegments: 5 });
+    const g = new TextGeometry("3D", { font, size: 1.8, depth: 0.7, curveSegments: 10, bevelEnabled: true, bevelThickness: 0.08, bevelSize: 0.06, bevelSegments: 5 });
     g.computeBoundingBox(); const bb = g.boundingBox!; g.translate(-(bb.max.x + bb.min.x) / 2, -(bb.max.y + bb.min.y) / 2, -(bb.max.z + bb.min.z) / 2);
     return g;
   }, [font]);
