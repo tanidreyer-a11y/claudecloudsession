@@ -212,3 +212,9 @@ Each item below cost at least one round of rework on a real client job. They are
     PATH and `hf_localize.py` (GSAP/three come from jsdelivr, which is blocked). Talking-head transcription needs a
     whisper model from huggingface.co, also blocked — never fake word timings. Answer to "the camera is flat":
     `references/camera-moves.md` (10 moves read frame by frame, each mapped to a block or a three.js build).
+
+78. **Voice-over sync without a speech model (2026-10-14).** `scripts/vo_timing.py` aligns the script to the VO:
+    whisper.cpp word times when a model exists; otherwise FFmpeg pauses + a dynamic-programming snap of every line
+    boundary to the real pauses at once (per-boundary nearest-pause snapping put a short line on the wrong pause).
+    Tested on a synthetic 4-line VO: all boundaries landed on the pauses. Words inside a line are spread by syllables,
+    so check word hits by eye.

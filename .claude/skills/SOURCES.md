@@ -21,4 +21,4 @@ HyperFrames block library (210 blocks, 237 components): `vendor/hyperframes/regi
 `vendor/hyperframes/INDEX.md`, same commit. Local change to a vendored file (Apache-2.0 §4b): the first line of the
 `hyperframes` router's description now points to `obsidian-motion-architect`, so our architect decides before
 HyperFrames' "default framework" rule. Re-apply it after any HyperFrames skills update.
-`obsidian-motion-architect` and `obsidian-content` are ours.
+`obsidian-motion-architect`, `obsidian-content` and `ai-reveal-product-video` are ours.

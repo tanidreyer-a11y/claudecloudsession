@@ -19,6 +19,7 @@ set the look, and HyperFrames supplies parts and workflows.
 | Owner sends a video of himself talking → graphics on top | HyperFrames `talking-head-recut` (designed cards synced to his words) | the clip plays untouched; cards are HTML we style |
 | Owner wants subtitles on his video | HyperFrames `embedded-captions` (quiet `anchor` rail by default) | |
 | Website on a laptop/phone screen | corner-pin onto his generated laptop clip (OpenCV/ffmpeg), or block `vfx-iphone-device` / `macos-tahoe-liquid-glass` (real GLTF MacBook) | see section 4 for the html-in-canvas caveat |
+| Product / SaaS video with the mid-video "made by Claude" reveal, driven by a voice-over | `.claude/skills/ai-reveal-product-video` (Remotion master + HyperFrames 3D plates; `vo_timing.py` for sync) | the owner's signature format |
 | Short stat / chart / title sting, lower-third | HyperFrames `motion-graphics` + registry blocks, restyled | fast |
 | Explainer from text, product promo from a URL, music-driven cut | HyperFrames `faceless-explainer` / `product-launch-video` / `music-to-video` | only when the owner asks for that format |
 
