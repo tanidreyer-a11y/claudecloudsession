@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 # Grade + grain + loudness (-16 LUFS, TP -1.5) + master and size-budget web encodes, then verify.
-# ./finish.sh master.mp4 out/name [web_MB=13.8]
+# [LUFS=-14] ./finish.sh master.mp4 out/name [web_MB=13.8]   (default -16 LUFS = website; -14 = social feeds)
 set -euo pipefail
-FF=${FFMPEG:-ffmpeg}; IN="$1"; OUT="$2"; MB=${3:-13.8}
+FF=${FFMPEG:-ffmpeg}; IN="$1"; OUT="$2"; MB=${3:-13.8}; LUFS=${LUFS:--16}   # LUFS=-14 for Reels/TikTok/X
 GRADE="scale=in_color_matrix=bt709:out_color_matrix=bt709,format=gbrp,curves=all='0/0 0.25/0.23 0.75/0.78 1/1',colorbalance=rh=.02:gh=.005:bs=-.01,format=yuv420p"
 TAGS="-colorspace bt709 -color_primaries bt709 -color_trc bt709"
 # loudness pass 1 (measure)
-M=$($FF -hide_banner -i "$IN" -af "alimiter=limit=0.9,loudnorm=I=-16:TP=-1.5:LRA=11:print_format=json" -f null - 2>&1 | sed -n '/^{/,/^}/p')
+M=$($FF -hide_banner -i "$IN" -af "alimiter=limit=0.9,loudnorm=I=$LUFS:TP=-1.5:LRA=11:print_format=json" -f null - 2>&1 | sed -n '/^{/,/^}/p')
 g(){ echo "$M" | grep "\"$1\"" | sed -E 's/.*: "([^"]+)".*/\1/'; }
-LN="alimiter=limit=0.9,loudnorm=I=-16:TP=-1.5:LRA=11:measured_I=$(g input_i):measured_TP=$(g input_tp):measured_LRA=$(g input_lra):measured_thresh=$(g input_thresh):offset=$(g target_offset):linear=true"
+LN="alimiter=limit=0.9,loudnorm=I=$LUFS:TP=-1.5:LRA=11:measured_I=$(g input_i):measured_TP=$(g input_tp):measured_LRA=$(g input_lra):measured_thresh=$(g input_thresh):offset=$(g target_offset):linear=true"
 # master
 $FF -v error -y -i "$IN" -vf "$GRADE,noise=c0s=4:c0f=t+u" -af "$LN" -c:v libx264 -profile:v high -crf 18 -preset slow $TAGS -c:a aac -b:a 320k -ar 48000 -movflags +faststart "${OUT}-master.mp4"
 # web copy

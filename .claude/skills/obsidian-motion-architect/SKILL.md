@@ -1,6 +1,6 @@
 ---
 name: obsidian-motion-architect
-description: Read FIRST for any video, animation, motion graphic, 3D camera move, talking-head edit, caption job or laptop/device mockup in this repository — before the HyperFrames router (/hyperframes) or Remotion. Decides which engine builds it (our Remotion build, a HyperFrames block, or a HyperFrames workflow like talking-head-recut), and makes every output follow Obsidian's house style. HyperFrames is a parts library here, not the art director.
+description: Detail file of obsidian-video-studio (read that first; it picks the format). Engine choice and HyperFrames setup for any video, animation, 3D camera move, talking-head edit, caption job or device mockup in this repository — decides Remotion house build vs a HyperFrames block or workflow, and keeps every output in Obsidian's house style. HyperFrames is a parts library here, not the art director.
 ---
 
 # Obsidian motion architect

@@ -372,7 +372,7 @@ export const Film10: React.FC = () => {
       <AbsoluteFill style={{ transformOrigin: "50% 46%", transform: `scale(${lerp(1, 0.62, shrink)})`, borderRadius: shrink * 44, overflow: "hidden", border: shrink > 0 ? `${shrink * 3}px solid rgba(255,255,255,.7)` : "none", opacity: inn }}>
         <Sequence from={Math.round(24.9 * FPS10)} layout="none"><OffthreadVideo src={staticFile("plates/tunnel_v.mp4")} muted style={{ width: W, height: H, objectFit: "cover" }} /></Sequence>
         <AbsoluteFill style={{ background: "radial-gradient(60% 40% at 50% 48%, rgba(0,0,0,.55), transparent 70%)" }} />
-        <Words s={s} t0={25.15} step={0.14} lines={["Seamless", "camera moves."]} size={100} y={840} stretch={118} color="#F4F5F7" stretch={125} out={26.7} />
+        <Words s={s} t0={25.15} step={0.14} lines={["Seamless", "camera moves."]} size={100} y={840} color="#F4F5F7" stretch={125} out={26.7} />
       </AbsoluteFill>
       {shrink > 0 && <div style={{ position: "absolute", left: 0, right: 0, top: 1650, textAlign: "center", fontFamily: WIDE, fontWeight: 800, fontStretch: "125%", fontSize: 120, color: "#F4F5F7", letterSpacing: "-0.03em", opacity: P(s, 27.1, 27.45), filter: `blur(${(1 - P(s, 27.1, 27.45)) * 12}px)` }}>All code.</div>}
     </AbsoluteFill>);

@@ -10,6 +10,7 @@ import { Film6, DUR6, FPS6 } from "./Film6";
 import { Film7, DUR7, FPS7 } from "./Film7";
 import { Film8, DUR8, FPS8 } from "./Film8";
 import { Film10, DUR10, FPS10 } from "./Film10";
+import { FxDemo, DURX, FPSX } from "./FxDemo";
 export const Root: React.FC = () => (
   <>
     {(["A", "B", "C"] as const).map((v) => (
@@ -23,6 +24,9 @@ export const Root: React.FC = () => (
     <Composition id="OBS-LOVIO" component={Film7} durationInFrames={Math.round(DUR7 * FPS7)} fps={FPS7} width={1920} height={1080} />
     <Composition id="OBS-SCRATCH" component={Film8} durationInFrames={Math.round(DUR8 * FPS8)} fps={FPS8} width={1920} height={1080} />
     <Composition id="OBS-KOVA" component={Film10} durationInFrames={Math.round(DUR10 * FPS10)} fps={FPS10} width={1080} height={1920} />
+    {(["signal", "obsidian"] as const).map((lk) => (
+      <Composition key={lk} id={`FX-DEMO-${lk}`} component={FxDemo} defaultProps={{ look: lk }} durationInFrames={Math.round(DURX * FPSX)} fps={FPSX} width={1080} height={1920} />
+    ))}
     <Composition id="GLTEST" component={GLTest} durationInFrames={120} fps={60} width={1080} height={1920} />
   </>
 );

@@ -1,6 +1,6 @@
 ---
 name: ai-reveal-product-video
-description: Obsidian's "made by Claude" product video — a voice-over-driven SaaS/product explainer (cinematic motion graphics, kinetic typography, liquid shape transitions, 3D elements, seamless camera moves) that turns halfway and reveals the whole video was made by Claude, frame by frame. Use when the owner asks for a product video, a SaaS promo, an ad "made by AI/Claude", or sends a voice script / voice-over for one.
+description: Detail file of obsidian-video-studio (read that first). Obsidian's "made by Claude" product video — a voice-over-driven SaaS/product explainer (cinematic motion graphics, kinetic typography, liquid shape transitions, 3D elements, seamless camera moves) that turns halfway and reveals the whole video was made by Claude, frame by frame. Use when the owner asks for a product video, a SaaS promo, an ad "made by AI/Claude", or sends a voice script / voice-over for one.
 ---
 
 # AI-reveal product video

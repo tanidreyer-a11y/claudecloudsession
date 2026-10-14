@@ -1,7 +1,7 @@
 ---
 name: hyperframes
 description: >
-  In this repository read obsidian-motion-architect first: it decides the engine and the look; this router
+  In this repository read obsidian-video-studio first: it decides the engine and the look; this router
   then runs the HyperFrames part. Mandatory entry point: read this first for any request to make, create, edit, animate, or render a
   video, animation, or motion graphic, including a promo, explainer, captioned clip, title card,
   overlay, slideshow or interactive deck, Remotion port, or any HyperFrames HTML composition. Also

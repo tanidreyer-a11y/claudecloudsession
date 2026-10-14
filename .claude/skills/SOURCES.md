@@ -22,3 +22,13 @@ HyperFrames block library (210 blocks, 237 components): `vendor/hyperframes/regi
 `hyperframes` router's description now points to `obsidian-motion-architect`, so our architect decides before
 HyperFrames' "default framework" rule. Re-apply it after any HyperFrames skills update.
 `obsidian-motion-architect`, `obsidian-content` and `ai-reveal-product-video` are ours.
+
+## Added 2026-10-14 (obsidian-video-studio)
+- `obsidian-video-studio` is ours: the single entry for all video work; it routes to `obsidian-motion-architect`,
+  `ai-reveal-product-video` and `obsidian-ad-style` (also ours).
+- `vendor/pdoom-video` — github.com/mexicat/pdoom-video @ fa164b7, MIT (LICENSE kept). Removed: audio/ (copyrighted
+  song), lyrics/, data/lyrics*.json. Used as engine reference only.
+- Fonts in `obsidian-ad/brand-film/public/fonts` (Unbounded, Space Grotesk, IBM Plex Mono, Cormorant Garamond,
+  Instrument Serif) — SIL OFL 1.1 via fontsource, licence in `LICENSE-OFL-fontsource.txt`.
+- Method references (no files copied): "Level 5 Workflow Guide" (@visionaryclown.tv) and "Motion as Code —
+  Workflow Guide" (PDFs supplied by the owner).
