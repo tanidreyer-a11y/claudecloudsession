@@ -1,0 +1,9 @@
+Nothing in this video was filmed.
+
+I made this 33-second product ad for Kova, a concept invoicing app, without a camera, stock footage or a video model. Claude wrote every scene as code (kinetic typography, liquid shape transitions, a real 3D render, a camera flight through the ad's own frames) and a renderer drew it frame by frame.
+
+What that means for a brand: every word, number and timing stays editable. Change the price, the colour or the line, and render again in minutes.
+
+If your product deserves a launch video that looks this deliberate, message me.
+
+#MotionDesign #ClaudeAI #ProductMarketing
