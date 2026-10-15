@@ -146,7 +146,7 @@ const ride2 = (s: number) => RIDE(cl((s - 14.4) / (17.1 - 14.4)));
 const KINV: CamKey[] = [{ t: 10.6, x: 330, y: -170, z: 3.2, r: 0 }, { t: 11.0, x: 330, y: -170, z: 3.0, r: 0 }, { t: 12.4, x: 0, y: 0, z: 1, r: 0, e: MV }];
 const camInv = (s: number): Cam => {
   const u = ride2(s), chase = follow((q) => threadHead(D2, ride2(q)), s, { lag: 0.16, bank: 0.08, z: 1 - 0.3 * Math.sin(Math.PI * u) });
-  const c = mixCam(camAt(KINV, s), chase, prog(s, 14.3, 14.75));
+  const c = mixCam(camAt(KINV, s), chase, prog(s, 14.05, 14.95, SM)); // slow hand-off: no jolt at the ride start
   return mixCam(c, { x: B.x, y: B.y, z: 1, r: 0 }, prog(s, 16.95, 17.55, MV));
 };
 const Invoice: React.FC<{ t: number }> = ({ t }) => {
