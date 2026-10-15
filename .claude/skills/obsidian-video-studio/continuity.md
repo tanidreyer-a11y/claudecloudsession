@@ -62,6 +62,26 @@ are the hero changing form. Presets stay useful for the voice-HUD format. For th
 - `screenOf` and `worldAt`: for match cuts and for placing mattes.
 - `pop(t, at)`: an overshoot pop for contact reactions.
 
+Full catalogue proof: composition `OBS-PUZZLE` (`src/Puzzle.tsx`, 40 s, 9:16) chains every move in one story. Use it
+as a menu to pick from, not as a template:
+
+| Time | Moves |
+|---|---|
+| 0–3 s | 3D crane down through lit rings, tilt to top-down |
+| 3–5.6 s | ring = system, node split, star morph, flip-to-edge |
+| 5.6–9 s | hairline → 12-col grid, grazing tilt, wireframe snap, wireframe resolves into a real site |
+| 9–10.6 s | star → cursor, click, contact flood |
+| 10.6–14 s | track matte, camera pull-back, timeline ride, stamp |
+| 14–17.6 s | thread ride with lag, bank, pull-out and whip |
+| 17.6–22.4 s | 3D orbit, scroll-scrub drag, rack focus, dolly |
+| 22.4–24.2 s | material dive, hyperspace warp |
+| 24.2–29 s | 3D carousel with depth of field over a grid floor, liquid flood |
+| 29–34 s | the point draws the data line, crash zoom + dutch tilt, chart-fill matte |
+| 34 s | match cut + slice glitch |
+| 34–40 s | fly out of the emblem gap, lockup |
+
+Sound: `audio/puzzle/cues.json`, one cue per move.
+
 Proof: composition `ONESHOT` (`src/OneShot.tsx`, 12.4 s, 9:16). It goes point → ring → star → pill → thread ride →
 contact flood → track matte → pull-back onto a site → match cut → white emblem. Rendered 2026-10-15.
 

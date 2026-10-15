@@ -105,6 +105,11 @@ in `library/styles/` still apply as before. Fonts are local in `public/fonts` (O
 - One idea on screen; 2–6 words per screen; inside the middle 80 % (phones crop); captions off the bottom UI third.
 - Every keyword: a visual and a sound within 2 frames of the word.
 - No AI-design tells (purple gradients, Inter, lime accents, tracked all-caps eyebrows).
+- **UI inside a video is designed, never a template** (owner, 2026-10-15: "a tax invoice is just a white sheet with
+  numbers, there's no design to it"). Before drawing any screen, run the `frontend-design` plan: what it is for, one
+  bold element, real hierarchy, data shown as a visual, sentence-case labels. Worked example in `src/Puzzle.tsx`
+  `Invoice`: the total on a white slab, a proportional bar for where the money goes, a payment timeline the focus
+  point rides, the status as a stamp that lands on contact. Real sites = the owner's own (`public/site`).
 - Claude marks only per the `obsidian-content` Claude-topic rule, with the non-affiliation line.
 - Never other studios' footage or screenshots in anything published; never a real brand without permission.
 
