@@ -5,3 +5,4 @@ export * from "./Captions";
 export * from "./Finish";
 export * from "./Backgrounds";
 export * from "./Transitions";
+export * from "./Camera";

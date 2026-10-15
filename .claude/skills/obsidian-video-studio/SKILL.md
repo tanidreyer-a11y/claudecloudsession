@@ -1,6 +1,6 @@
 ---
 name: obsidian-video-studio
-description: THE one entry point for every Obsidian video job — ads, marketing and product videos, "made by Claude" reveals, voice-over ads with HUD and keyword captions, edits of the owner's own talking-head footage, captions/subtitles, motion graphics, laptop/device mockups, sound design and finishing. Read this first; it picks the format, the engine (Remotion house build or a HyperFrames block/workflow), the look from the styles library, and runs LISTEN → PLAN → STORYBOARD → BUILD → SOUND → FINISH → QA → DELIVER. Detail files it points to: obsidian-motion-architect (engines/HyperFrames), ai-reveal-product-video (reveal format), obsidian-ad-style (house look).
+description: THE one entry point for every Obsidian video job — ads, marketing and product videos, "made by Claude" reveals, voice-over ads with HUD and keyword captions, edits of the owner's own talking-head footage, captions/subtitles, motion graphics, laptop/device mockups, sound design and finishing. Read this first; it picks the format, the engine (Remotion house build or a HyperFrames block/workflow), the look from the styles library, and runs LISTEN → PLAN → STORYBOARD → BUILD → SOUND → FINISH → QA → DELIVER. Detail files it points to: continuity.md (one-shot focus-point films: camera rides one point, morphs, track matte, pull-back, match cut), obsidian-motion-architect (engines/HyperFrames), ai-reveal-product-video (reveal format), obsidian-ad-style (house look).
 ---
 
 # Obsidian video studio
@@ -20,6 +20,7 @@ Method sources (credited, not copied): Level 5 Workflow Guide (@visionaryclown.t
 | His own talking-head video → graphics on top | Talking-head recut | HyperFrames `talking-head-recut` (cards) restyled; needs transcription (section 10) |
 | Subtitles on his video | Captions | HyperFrames `embedded-captions` (`anchor` rail) or our `Captions` over `<OffthreadVideo>` |
 | His website on a laptop/phone in a room | Device composite | corner-pin onto his generated clip (OpenCV/FFmpeg), or blocks `vfx-iphone-device` / `macos-tahoe-liquid-glass` |
+| One-shot motion film: one focus point leads the eye, the camera rides with it, no cuts ("rollercoaster") | Continuity film | `continuity.md` in this folder (eye trace, morph, thread ride, track matte, pull-back, match cut) + `src/fx/Camera.tsx`; proof `src/OneShot.tsx` |
 | Short sting, stat, chart, lower-third (< 10 s) | Motion graphic | HyperFrames `motion-graphics` + registry blocks, restyled |
 Unclear → ask one question with the 2 likeliest formats. Engine details and HyperFrames setup:
 `.claude/skills/obsidian-motion-architect/SKILL.md`.
@@ -54,13 +55,17 @@ Unclear → ask one question with the 2 likeliest formats. Engine details and Hy
 | `Grain` `Vignette` `Chroma` `Slices` `Bloom` | the same effects one by one | |
 | Backgrounds | `LightPools` (drifting light), `FlowField` (noise strokes), `Warp` (starfield → hyperspace on a dive), `Dust`, `GridFloor`, `DotRipple` (ripples out on a beat) | behind type and UI; plus `src/gl.tsx` `World` (domain-warped clouds, ink wipes) and `Balls` (liquid metaballs) |
 | Transitions | `liquid` (metaball flood), `slices` (tear + RGB split), `whip` (pan with directional blur), `through` (fly through the old scene) | `<TransitionSeries>`; see section 4 |
+| Camera (one-shot) | `camAt`/`mixCam`/`follow` camera, `<World>` (world px + speed blur), `<At>`, `<Thread>` + `threadHead`, `<Shape>` ring→star morph, `<Matte>` track matte, `screenOf`/`worldAt`, `pop` | continuity films; read `continuity.md` first |
 | `@remotion/motion-blur` | `<CameraMotionBlur>` real motion blur, `<Trail>` echo trails | fast moves and whips only (expensive) |
 | `@remotion/three` + three.js | real 3D (extruded text, objects, camera flights) | pattern in `Film10.tsx` `ThreeD` |
 | `@remotion/paths`, `@remotion/shapes`, `@remotion/noise` | SVG morphs (`interpolatePath`), shapes (star, pie, polygon…), organic motion | shape transitions, line draws, wobble |
-Proof: `FX-DEMO-signal` and `FX-DEMO-obsidian` in `src/Root.tsx` (stills checked 2026-10-14).
+Proof: `FX-DEMO-signal` and `FX-DEMO-obsidian` in `src/Root.tsx` (stills checked 2026-10-14); `ONESHOT` (2026-10-15).
 
 ## 4. Transitions catalogue (motion, never a plain cut off the beat)
 - **Ours (render here):** `liquid`, `slices`, `whip`, `through`; Film10 goo; blur-to-sharp arrivals.
+- **Continuity (one world, no preset):** hero morph, thread ride, contact flood, **track matte**, **camera
+  pull-back** / push-through, **match cut**. These beat presets whenever the brief is "keep my eye on one thing";
+  how to build each: `continuity.md`.
 - **Remotion built-ins (render here):** `fade`, `slide`, `wipe`, `flip`, `clockWipe`, `iris`, `pushCut`.
 - **Remotion shader set — test one frame first:** `crosswarp`, `ripple`, `filmBurn`, `dreamyZoom`, `zoomBlur`,
   `crossZoom`, `dissolve`, `linearBlur`, `blurSlide`, `swap`, `bookFlip`, `zoomInOut` use html-in-canvas, which
@@ -92,7 +97,8 @@ Effects: `whoosh` `blip` `hit808` `riser` `drop` `pop` `glitch` `typing` `stamp`
 Default is **Obsidian Precision** (`skills/motion-studio/library/styles/obsidian-precision.md`, monochrome,
 Archivo, white emblem). Reference looks, only when the owner asks for that energy:
 `signal-hud.md` (Level 5: warm black, signal orange, Unbounded/Space Grotesk/JetBrains Mono, HUD) and
-`plotter-ink.md` (pdoom: ink, bone, hazard orange, Archivo/Cormorant/Plex Mono, plotter lines). All other cards
+`plotter-ink.md` (pdoom: ink, bone, hazard orange, Archivo/Cormorant/Plex Mono, plotter lines), `focus-thread.md`
+(one-shot focus point; method card, colour stays ours). All other cards
 in `library/styles/` still apply as before. Fonts are local in `public/fonts` (OFL) and registered in `src/fonts.ts`.
 
 ## 8. Rules that don't bend
@@ -123,3 +129,7 @@ the voice comes from the owner. jsdelivr is blocked → `hf_localize.py` before 
 - FFmpeg `alimiter` auto-levels to 0 dBFS unless `level=disabled`; limit at 4× sample rate for true peak.
 - CSS `borderLeft: "2px solid"` resets the colour to currentColor; pass the colour in the shorthand.
 - Captions in 4-word chunks read; full lines on 9:16 become 3-line walls.
+- Separate scenes joined by presets make the eye restart at every change. When the owner wants to be "dragged
+  along", build one world + one camera + one focus point (`continuity.md`). (2026-10-15)
+- Remotion stills/renders here need `--browser-executable` (or `BROWSER=`) pointing at
+  `/opt/pw-browsers/chromium_headless_shell-*/chrome-linux/headless_shell`, or Remotion tries to download one and fails.

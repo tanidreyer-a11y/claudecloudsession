@@ -32,3 +32,13 @@ HyperFrames' "default framework" rule. Re-apply it after any HyperFrames skills 
   Instrument Serif) — SIL OFL 1.1 via fontsource, licence in `LICENSE-OFL-fontsource.txt`.
 - Method references (no files copied): "Level 5 Workflow Guide" (@visionaryclown.tv) and "Motion as Code —
   Workflow Guide" (PDFs supplied by the owner).
+
+## 2026-10-15 — continuity method (one-shot focus point)
+- Owner's reference reels (screen recordings, not stored in the repo): a one-shot focus-point reel and a
+  "3 transitions to never get stuck in motion design" reel (camera pull-back, track matte, match cut). Method only.
+- Walter Murch, *In the Blink of an Eye* — rule of six / eye trace (via https://artlist.io/blog/eye-trace-and-rule-of-six-editing/,
+  https://studiobinder.com/blog/walter-murch-rule-of-six).
+- Adobe, track mattes for custom transitions: https://www.adobe.com/learn/after-effects/web/create-custom-transitions
+- School of Motion, six essential transitions: https://schoolofmotion.com/blog/six-essential-motion-design-transitions-tutorial
+- Morph at speed hides imperfect matches: https://motiondesign.school/blog/morphing-study-how-to-create-animated-transition/
+- Our code: `obsidian-ad/brand-film/src/fx/Camera.tsx`, `src/OneShot.tsx` (written here, no third-party code).
