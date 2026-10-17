@@ -4,6 +4,9 @@ last_updated: 2026-10-13
 locked: true                # BLACK + WHITE main, electric blue second, "lightbulb" white light (owner 2026-10-17); emblem black or white; no purple
 
 ## Business
+- VIDEO OFFER (owner, 2026-10-17): product/ad films for **SaaS platforms, marketing tools and businesses that run on
+  software** first. Branding / fashion / lifestyle companies are out for now ("our skills file isn't good enough for
+  that yet"). Proof piece in progress: OBS-AD-ATTENTION, being re-cut SaaS-only (src/AdAttention.tsx).
 - POSITIONING NOW (owner, 2026-10-11 — supersedes the one-line and services below until he says otherwise): a creative
   freelance studio for **web only** — front-end design and UI/UX, scroll-scrub animated websites, 3D interactive
   websites. Ads, AI agents and branding are dropped for now ("the only proof I have right now is animated websites").
