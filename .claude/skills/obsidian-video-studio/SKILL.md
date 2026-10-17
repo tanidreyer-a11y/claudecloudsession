@@ -26,6 +26,16 @@ Unclear → ask one question with the 2 likeliest formats. Engine details and Hy
 `.claude/skills/obsidian-motion-architect/SKILL.md`.
 
 ## 2. Workflow (never skip a step; the owner approves at step 4)
+0. **BRIEF + LOCKED RULES — before anything else, every time.**
+   - Read `skills/motion-studio/history/locked.md`. L1–L11 are owner-approved and override this file.
+   - For any client or brand film, send `skills/motion-studio/intake.md` as the first reply (defaults in brackets).
+     No script, code or plan before the answers.
+   - Inputs decide the result. Klick Kulture worked because it was built from the client's own brand board, real
+     photos and an ElevenLabs voice. The 2026-10-15→17 tests drifted: invented brands, no voice, floating captions.
+   - Brand film with a brand board → **Brand Board Collage** (`skills/motion-studio/library/styles/brand-board-collage.md`,
+     template `skills/motion-studio/templates/brand-collage-film`).
+   - Text lives in the scene (L9), never subtitle captions on top. The Voice HUD format is the one deliberate exception.
+   - Voice carries emotion, the screen carries information (L10). Transitions chain object to object with meaning (L11).
 1. **LISTEN** — voice-over + exact script (one beat per line). Mark the script:
    `*word*` keyword (visual + blip + bracketed caption), `**word**` big word (808 hit, flash card, shake),
    line starting `!` = the drop (silence before it, riser → drop).
