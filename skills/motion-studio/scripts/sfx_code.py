@@ -114,6 +114,33 @@ def impact():
     return _norm(a + tail)
 def tick(f=3200):
     t = _t(0.02); return _norm(np.sin(2 * np.pi * f * t) * np.exp(-t * 300) + rng.standard_normal(len(t)) * np.exp(-t * 800) * 0.3, 0.6)
+def shutter():
+    """photo transitions: a camera shutter — mirror slap, then the curtain, 45 ms apart, with a body thunk."""
+    def click(n_ms, lo, hi, dec):
+        t = _t(n_ms / 1000); x = rng.standard_normal(len(t)); return (_lpv(x, hi) - _lpv(x, lo)) * np.exp(-t * dec)
+    t = _t(0.16); body = np.sin(2 * np.pi * np.cumsum(180 * (1 + 0.6 * np.exp(-t * 60))) / SR) * np.exp(-t * 45) * 0.5
+    y = np.zeros(len(t)); a = click(30, 900, 7000, 180); b = click(40, 1500, 9000, 140)
+    y[: len(a)] += a; k = int(0.045 * SR); y[k:k + len(b)] += b[: len(y) - k] * 0.8
+    return _norm(y + body)
+def balloon():
+    """the pop: a hard broadband crack with an air burst and a small low thump."""
+    t = _t(0.5); x = rng.standard_normal(len(t))
+    crack = x * np.exp(-t * 90) * _env(len(t), 0.0003, 0.01)
+    air = (x - _lpv(x, 1200)) * np.exp(-t * 12) * 0.35
+    thump = np.sin(2 * np.pi * np.cumsum(70 + 90 * np.exp(-t * 40)) / SR) * np.exp(-t * 18) * 0.6
+    return _norm(np.tanh((crack * 1.6 + air + thump) * 1.4))
+def stretch(dur=1.2):
+    """rubber under pressure: a squeaky creak that tightens (pitch and grain rise toward the end)."""
+    t = _t(dur); k = t / dur; f = 380 + 900 * k ** 1.8 + 40 * np.sin(2 * np.pi * 23 * t)
+    tone = np.sin(2 * np.pi * np.cumsum(f) / SR) * (0.5 + 0.5 * (rng.random(len(t)) > 0.35 - 0.3 * k))
+    grit = (rng.standard_normal(len(t)) - 0) * 0.15
+    return _norm(_lpv(tone + grit, 3500) * k ** 1.3 * _env(len(t), 0.05, 0.02), 0.7)
+def drone(dur=5.0):
+    """tension under a hook: a low beating sine bed with a thin whine that rises; ends dead (for the hit)."""
+    t = _t(dur); k = t / dur
+    low = np.sin(2 * np.pi * 55 * t) + np.sin(2 * np.pi * (55.6 + 2.5 * k) * t)
+    whine = np.sin(2 * np.pi * np.cumsum(1800 + 1400 * k ** 2) / SR) * 0.06 * k ** 2
+    return _norm((low * 0.5 * (0.4 + 0.6 * k) + whine) * _env(len(t), 0.4, 0.003))
 
 FX = {k: v for k, v in dict(globals()).items() if callable(v) and not k.startswith("_") and k not in ("load", "mix", "auto", "main", "kenney", "write_wav")}
 

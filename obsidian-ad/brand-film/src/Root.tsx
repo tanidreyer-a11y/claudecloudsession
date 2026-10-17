@@ -13,6 +13,7 @@ import { Film10, DUR10, FPS10 } from "./Film10";
 import { FxDemo, DURX, FPSX } from "./FxDemo";
 import { OneShot, DUR1, FPS1 } from "./OneShot";
 import { Puzzle, DURP, FPSP } from "./Puzzle";
+import { AdAttention, DURA, FPSA } from "./AdAttention";
 export const Root: React.FC = () => (
   <>
     {(["A", "B", "C"] as const).map((v) => (
@@ -29,6 +30,7 @@ export const Root: React.FC = () => (
     {(["signal", "obsidian"] as const).map((lk) => (
       <Composition key={lk} id={`FX-DEMO-${lk}`} component={FxDemo} defaultProps={{ look: lk }} durationInFrames={Math.round(DURX * FPSX)} fps={FPSX} width={1080} height={1920} />
     ))}
+    <Composition id="OBS-AD-ATTENTION" component={AdAttention} durationInFrames={Math.round(DURA * FPSA)} fps={FPSA} width={1080} height={1920} />
     <Composition id="OBS-PUZZLE" component={Puzzle} durationInFrames={Math.round(DURP * FPSP)} fps={FPSP} width={1080} height={1920} />
     <Composition id="ONESHOT" component={OneShot} durationInFrames={Math.round(DUR1 * FPS1)} fps={FPS1} width={1080} height={1920} />
     <Composition id="GLTEST" component={GLTest} durationInFrames={120} fps={60} width={1080} height={1920} />
