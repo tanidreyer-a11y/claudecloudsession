@@ -81,7 +81,8 @@ When the post is about Claude / Claude Code, set `"claude": true` in slides.json
   normal width for body), JetBrains Mono **only** for code/commands. 1080×1350, 92 px side margins, footer = emblem +
   "Obsidian" + page "n / N". The cover carries the large two-bar emblem bleeding off the right edge.
 - Slide types in `slides.json`: `cover` {title, sub, cue, logo_label?}, `text` {kicker, title, body, quote?, quote_src?, close?},
-  `skill` {kicker, name, maker, what, use, install[], install_label?, source}, `end` {kicker, title, body, note, cta}.
+  `skill` {kicker, name, maker, what, use, install[], install_label?, source}, `end` {kicker, title, body, note, cta},
+  `bars` {kicker, title, bars: [[label, value, unit, highlight?]], note, source} for measured comparisons; `text` also takes `source`.
   Optional `size` on any slide overrides the title size (shrink long names until they sit on one line).
 - Avoid the AI-design tells Anthropic's frontend-design skill lists (we post about them — we can't commit them): no
   ALL-CAPS tracked eyebrow labels, no "WORD — fragment" labels, no "A · B · C" meta strings, no monospace for labels,

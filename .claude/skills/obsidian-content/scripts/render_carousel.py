@@ -87,6 +87,19 @@ def slide_html(s, i, n, spec={}):
           <div class="wide" style="font-size:{s.get('size', 80)}px;line-height:1.0;margin-top:26px">{esc(s['title'])}{sticker(s, 'title', s.get('size', 80))}</div>
           <div class="body" style="margin-top:44px">{esc(s['body'])}</div>{q}
           {f'<div class="body" style="margin-top:58px">{esc(s["close"])}</div>' if s.get("close") else ""}</div>"""
+        if s.get("source"):
+            body += f'<div class="src" style="position:absolute;left:92px;right:92px;bottom:168px">Source: {esc(s["source"])}</div>'
+    elif t == "bars":  # measured comparison: [label, value, unit, highlight?]; bars scale to the largest value
+        mx = max(b[1] for b in s["bars"])
+        rows = "".join(f"""<div style="margin-top:30px"><div style="display:flex;justify-content:space-between;align-items:baseline;font-size:34px;color:{'#fff' if len(b) > 3 and b[3] else '#E4E5E9'};font-weight:{600 if len(b) > 3 and b[3] else 400}">
+              <span>{esc(b[0])}</span><span style="font-variant-numeric:tabular-nums">{b[1]:.1f} {esc(b[2])}</span></div>
+              <div style="margin-top:12px;height:18px;border-radius:9px;background:rgba(255,255,255,.08)"><div style="width:{100 * b[1] / mx:.1f}%;height:100%;border-radius:9px;background:{'#2F6BFF' if len(b) > 3 and b[3] else 'rgba(244,245,247,.82)'}"></div></div></div>"""
+                       for b in s["bars"])
+        body = f"""<div class="pad"><div class="kick">{esc(s['kicker'])}</div>
+          <div class="wide" style="font-size:{s.get('size', 80)}px;line-height:1.0;margin-top:26px">{esc(s['title'])}</div>
+          <div style="margin-top:28px">{rows}</div>
+          <div class="body muted" style="font-size:28px;line-height:1.35;margin-top:44px">{esc(s.get('note', ''))}</div></div>
+          <div class="src" style="position:absolute;left:92px;right:92px;bottom:168px">Source: {esc(s['source'])}</div>"""
     elif t == "skill":
         lines = s["install"]; fs = cmd_size(lines)
         cmd = "\n".join(html.escape(l) for l in lines)
