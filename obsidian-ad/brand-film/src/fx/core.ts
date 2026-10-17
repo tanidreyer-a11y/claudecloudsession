@@ -8,9 +8,14 @@ export type Look = {
   display: string; ui: string; mono: string; serif: string;
 };
 // Obsidian house look stays the default; the other two are reference looks from the library, used only when asked.
-export const LOOKS: Record<"obsidian" | "signal" | "plotter", Look> = {
+export const LOOKS: Record<"obsidian" | "lumen" | "signal" | "plotter", Look> = {
   obsidian: { name: "obsidian", bg: "#000000", ink: "#DCDEE2", dim: "#9A9CA5", line: "rgba(220,222,226,.32)", accent: "#FFFFFF",
     hot: "#FFFFFF", deep: "#1A1B1F", display: "ArchivoW, Helvetica, Arial, sans-serif", ui: "ArchivoW, Helvetica, Arial, sans-serif",
+    mono: "JBMono, ui-monospace, monospace", serif: "InstSerif, Georgia, serif" },
+  // lumen = the owner's palette from 2026-10-17: black + white main, electric blue second, lightbulb-white light (hot =
+  // the warm halo around the white focus point). White world: bg #F4F5F7 with ink #000. Blue world: deep → bg.
+  lumen: { name: "lumen", bg: "#000000", ink: "#F4F5F7", dim: "#9AA0AD", line: "rgba(244,245,247,.3)", accent: "#2F6BFF",
+    hot: "#FFE7C2", deep: "#0A1330", display: "ArchivoW, Helvetica, Arial, sans-serif", ui: "ArchivoW, Helvetica, Arial, sans-serif",
     mono: "JBMono, ui-monospace, monospace", serif: "InstSerif, Georgia, serif" },
   signal: { name: "signal", bg: "#0B0A09", ink: "#ECEAE4", dim: "#8F8B84", line: "rgba(236,234,228,.28)", accent: "#FF5A26",
     hot: "#FF3B1F", deep: "#1B1D4A", display: "Unbounded, ArchivoW, sans-serif", ui: "SpaceGrotesk, ArchivoW, sans-serif",

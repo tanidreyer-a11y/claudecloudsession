@@ -1,7 +1,7 @@
 # Brand profile — Obsidian (the owner's own studio)
 status: incomplete          # domain still open
 last_updated: 2026-10-13
-locked: true                # MONOCHROME (owner 2026-10-10: "get rid of the whole purple idea"); emblem black or white
+locked: true                # BLACK + WHITE main, electric blue second, "lightbulb" white light (owner 2026-10-17); emblem black or white; no purple
 
 ## Business
 - POSITIONING NOW (owner, 2026-10-11 — supersedes the one-line and services below until he says otherwise): a creative
@@ -26,7 +26,14 @@ locked: true                # MONOCHROME (owner 2026-10-10: "get rid of the whol
   one fixed container; the caret/hairline motif; cursor clicks cause the next beat; blur-to-sharp arrivals; recorded
   UI sounds. Owner: "I love the branding of our emblem and our colour palette now." Build every new Obsidian creative
   from this card + references/frame-analysis.md; take mechanisms from references, never their beats, words or props.
-- PALETTE CHANGE (owner, 2026-10-10): NO PURPLE. Monochrome — black, white, greys, a pearl/silver cloud ball; colour only
+- PALETTE (owner, 2026-10-17, supersedes "monochrome only"): "black and white as the main colours, blue as the other
+  colour, a lightbulb white; other colours if necessary; it doesn't have to be all black, you can change the worlds."
+  Tokens (`LOOKS.lumen` in obsidian-ad/brand-film/src/fx/core.ts; board: obsidian-ad/brand-film/out/palette_lumen.jpg):
+  black #000000 (main world) · white #F4F5F7 (type; the white world for act changes, black ink on it) · electric blue
+  #2F6BFF (light pools, buttons, impacts) · deep blue #0A1330 (the blue world) · lightbulb white = a #FFFFFF core with a
+  warm #FFE7C2 halo (the focus point and light sweeps). Black stays dominant; blue is light, not paint. Any other hue
+  only where the content needs it (a product, a photo), one per scene. Still no purple.
+- PALETTE CHANGE (owner, 2026-10-10, SUPERSEDED in part by 2026-10-17): NO PURPLE. Monochrome — black, white, greys, a pearl/silver cloud ball; colour only
   comes from the hero sections themselves (their worlds). Emblem + wordmark in plain WHITE on dark or BLACK on light
   (render the lockup PNG with grayscale + brightness; never the violet Λ again).
 - palette (SUPERSEDED, kept for history): black dominant (≈ #08070B), white for type, accent purple → pink (≈ #A855F7 → #D946EF; earlier brief:

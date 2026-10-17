@@ -94,7 +94,8 @@ Effects: `whoosh` `blip` `hit808` `riser` `drop` `pop` `glitch` `typing` `stamp`
 - Last: `[LUFS=-14] skills/motion-studio/scripts/finish.sh master.mp4 out/name` (grade, grain, loudness, web copy).
 
 ## 7. Looks — the styles library stays the source
-Default is **Obsidian Precision** (`skills/motion-studio/library/styles/obsidian-precision.md`, monochrome,
+Palette from 2026-10-17: **`LOOKS.lumen`** (black + white main, electric blue second, lightbulb-white light; details
+in `skills/motion-studio/brands/obsidian.md`). Default style is **Obsidian Precision** (`skills/motion-studio/library/styles/obsidian-precision.md`,
 Archivo, white emblem). Reference looks, only when the owner asks for that energy:
 `signal-hud.md` (Level 5: warm black, signal orange, Unbounded/Space Grotesk/JetBrains Mono, HUD) and
 `plotter-ink.md` (pdoom: ink, bone, hazard orange, Archivo/Cormorant/Plex Mono, plotter lines), `focus-thread.md`
