@@ -56,10 +56,29 @@ Never two engines in one timeline. Never two finishing stacks on the same frames
 6. `save_as_video`. Final: normalise with `finish.sh` (−14 LUFS), add no extra grain. Plate: see below.
 7. `update_share_page`: ask the owner before making a video public.
 
-## Raylight export as a plate in Remotion
-`save_as_video` gives an mp4. Play it with `<OffthreadVideo>` inside a Remotion composition and add our captions, HUD,
-sound and finishing on top. Before exporting set Raylight's grain, chromatic aberration and vignette to 0 and mute its audio,
-so the frames are only graded once.
+## Combining them in one film (owner wants both: "I need a combination")
+The rule is one MASTER timeline per film; the other engine feeds it finished clips. Two routes:
+**Route 1: our video inside Raylight's 3D (recommended first test).** Render a focus-follow UI clip in Remotion (for example
+`DEMO-SAAS`, `STUDY-LIVE`). `upload_media` it to the Raylight project, then put it on a template's screen slot
+(`add_shot` with `mediaSrc`, or `add_image`/video layer with `set_device_frame` for a MacBook or phone). Raylight supplies the
+tilted device, dollies, liquid glass and depth of field; we supply the screen content, which is the part that looks bespoke.
+Templates built for this: "Macbook pro around Linear", "Dark cinematic mobile app", "SAAS Demo Video".
+Master = Raylight. Finish = Raylight's effects only. Sound: ours, laid under the export, or Raylight's tools, not both.
+**Route 2: Raylight scenes inside our film.** `save_as_video` a Raylight act, then play it with `<OffthreadVideo>` in a Remotion
+composition and join it to our acts with a match cut (`Matte`, `screenOf`, `worldAt` in `src/fx/Camera.tsx`). Before exporting
+set Raylight's grain, chromatic aberration and vignette to 0 and mute its audio, so the frames are only graded once.
+Master = Remotion. Finish = `<Finish>` and `post_fx.sh` only.
+Either way: the same palette (`LOOKS.lumen`) and font on both sides, 30 fps, 1080x1920 (check the Raylight project's canvas and
+frame rate with `get_project_overview` first), and one pass of captions.
+Untested limits: whether this container can reach Raylight's signed upload URL, the maximum upload size, and the export frame
+rate. Test with one short clip first.
+
+## Money (unverified; from tool descriptions and a Raylight template's on-screen copy, 2026-10-18)
+- Referrals: `list_videos` and `update_share_page` say new Raylight accounts that start on a video's share page count toward
+  the owner's referral earnings. The rate is not stated anywhere I could open.
+- Template marketplace: the official "Raylight Marketplace" template shows a creator offer ("You can make serious designing
+  money in Raylight", a "3D Mobile" template at $49, "You get 50%", "Apply now", raylight.app/creators). That is promotional
+  copy inside a template, not terms. Confirm at raylight.app/creators before building a business plan on it.
 
 ## Status
 Nothing in this file has been run end to end: no editor tab was connected on 2026-10-18. The first real test needs the owner
