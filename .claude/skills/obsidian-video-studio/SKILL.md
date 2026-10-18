@@ -1,6 +1,6 @@
 ---
 name: obsidian-video-studio
-description: THE one entry point for every Obsidian video job — ads, marketing and product videos, "made by Claude" reveals, voice-over ads with HUD and keyword captions, edits of the owner's own talking-head footage, captions/subtitles, motion graphics, laptop/device mockups, sound design and finishing. Read this first; it picks the format, the engine (Remotion house build or a HyperFrames block/workflow), the look from the styles library, and runs LISTEN → PLAN → STORYBOARD → BUILD → SOUND → FINISH → QA → DELIVER. Detail files it points to: continuity.md (one-shot focus-point films: camera rides one point, morphs, track matte, pull-back, match cut), obsidian-motion-architect (engines/HyperFrames), ai-reveal-product-video (reveal format), obsidian-ad-style (house look).
+description: THE one entry point for every Obsidian video job — ads, marketing and product videos, "made by Claude" reveals, voice-over ads with HUD and keyword captions, edits of the owner's own talking-head footage, captions/subtitles, motion graphics, laptop/device mockups, sound design and finishing. Read this first; it picks the format, the engine (Remotion house build or a HyperFrames block/workflow), the look from the styles library, and runs LISTEN → PLAN → STORYBOARD → BUILD → SOUND → FINISH → QA → DELIVER. Detail files it points to: raylight.md (the Raylight MCP lane: when to use it, which rules win, how it coexists with this kit), continuity.md (one-shot focus-point films: camera rides one point, morphs, track matte, pull-back, match cut), obsidian-motion-architect (engines/HyperFrames), ai-reveal-product-video (reveal format), obsidian-ad-style (house look).
 ---
 
 # Obsidian video studio
@@ -20,6 +20,7 @@ Method sources (credited, not copied): Level 5 Workflow Guide (@visionaryclown.t
 | His own talking-head video → graphics on top | Talking-head recut | HyperFrames `talking-head-recut` (cards) restyled; needs transcription (section 10) |
 | Subtitles on his video | Captions | HyperFrames `embedded-captions` (`anchor` rail) or our `Captions` over `<OffthreadVideo>` |
 | His website on a laptop/phone in a room | Device composite | corner-pin onto his generated clip (OpenCV/FFmpeg), or blocks `vfx-iphone-device` / `macos-tahoe-liquid-glass` |
+| Fast template-based SaaS / product launch ad, or a film the client will edit themselves | Raylight lane | `raylight.md` in this folder (needs the owner's live Raylight tab open); never mixed with Remotion in one timeline |
 | One-shot motion film: one focus point leads the eye, the camera rides with it, no cuts ("rollercoaster") | Continuity film | `continuity.md` in this folder (eye trace, morph, thread ride, track matte, pull-back, match cut) + `src/fx/Camera.tsx`; proof `src/OneShot.tsx` |
 | Short sting, stat, chart, lower-third (< 10 s) | Motion graphic | HyperFrames `motion-graphics` + registry blocks, restyled |
 Unclear → ask one question with the 2 likeliest formats. Engine details and HyperFrames setup:
@@ -34,6 +35,8 @@ Unclear → ask one question with the 2 likeliest formats. Engine details and Hy
      photos and an ElevenLabs voice. The 2026-10-15→17 tests drifted: invented brands, no voice, floating captions.
    - Brand film with a brand board → **Brand Board Collage** (`skills/motion-studio/library/styles/brand-board-collage.md`,
      template `skills/motion-studio/templates/brand-collage-film`).
+   - If the Raylight MCP is connected, choose ONE engine per film (Remotion or Raylight) using `raylight.md`; that file also
+     says which rules win when Raylight's craft-rules and ours disagree. Locked rules always win.
    - Text lives in the scene (L9), never subtitle captions on top. The Voice HUD format is the one deliberate exception.
    - Voice carries emotion, the screen carries information (L10). Transitions chain object to object with meaning (L11).
 1. **LISTEN** — voice-over + exact script (one beat per line). Mark the script:
