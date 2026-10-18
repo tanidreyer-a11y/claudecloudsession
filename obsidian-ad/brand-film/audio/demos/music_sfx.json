@@ -1,0 +1,98 @@
+[
+{
+"t": 2.45,
+"sfx": "pop",
+"db": -12,
+"args": {
+"f": 600
+}
+},
+{
+"t": 2.6,
+"sfx": "whoosh",
+"db": -15,
+"args": {
+"dur": 2.4,
+"bright": 0.9
+}
+},
+{
+"t": 5.4,
+"sfx": "whoosh",
+"db": -17,
+"args": {
+"dur": 0.4,
+"bright": 1.2
+}
+},
+{
+"t": 6.4,
+"sfx": "whoosh",
+"db": -17,
+"args": {
+"dur": 0.4,
+"bright": 1.2
+}
+},
+{
+"t": 7.4,
+"sfx": "whoosh",
+"db": -17,
+"args": {
+"dur": 0.4,
+"bright": 1.2
+}
+},
+{
+"t": 8.05,
+"sfx": "whoosh",
+"db": -14,
+"args": {
+"dur": 0.35,
+"bright": 1.4
+}
+},
+{
+"t": 8.33,
+"sfx": "glitch",
+"db": -16,
+"args": {
+"dur": 0.16
+}
+},
+{
+"t": 8.6,
+"sfx": "lock",
+"db": -16
+},
+{
+"t": 13.0,
+"sfx": "whoosh",
+"db": -17,
+"args": {
+"dur": 1.4,
+"bright": 0.5
+}
+},
+{
+"t": 15.45,
+"sfx": "glitch",
+"db": -15,
+"args": {
+"dur": 0.12
+}
+},
+{
+"t": 17.0,
+"sfx": "stamp",
+"db": -14
+},
+{
+"t": 18.7,
+"sfx": "pop",
+"db": -14,
+"args": {
+"f": 650
+}
+}
+]
