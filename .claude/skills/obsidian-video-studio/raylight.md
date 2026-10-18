@@ -20,20 +20,23 @@ Facts checked on 2026-10-18 in a cloud session (tool lists, `get_design_guide cr
   terms at raylight.app before selling anything that touches them. A Gumroad pack must NOT contain Raylight templates or
   guide text; it tells buyers to connect their own Raylight account.
 
-## One engine per film
-| Job | Lane |
-|---|---|
-| Bespoke brand film, focus-follow UI walkthrough, one-shot point film, voice-HUD ad, sound made in code | **Remotion** (our kit) |
-| Fast SaaS / product launch from a proven template: tilted 3D screenshots, MacBook / phone devices, liquid glass, dollies | **Raylight** |
-| The client will edit copy or screens themselves later | **Raylight** (they can open and edit it) |
-| Needs our loop, our sound design or our loudness chain | **Remotion**, or a Raylight export used as a plate (below) |
-Never two engines in one timeline. Never two finishing stacks on the same frames (grain, chromatic aberration, vignette).
+## How the two fit (owner's model, 2026-10-18)
+**Raylight is a parts library: templates, transitions and UI you can use inside a video. This skill file is the director and
+the builder of the whole film:** locked rules, brand file, intake, motion and camera rules, kit, sound, finishing, QA, delivery.
+Raylight never decides the look, the pacing or the rules; it supplies parts, and every part is judged against the skill's rules.
+- A template supplies a proven structure (scene beats, camera moves, 3D device or tilted-screen layouts, liquid glass, UI
+  shapes). Pick the closest one in the PLAN step, read its beat sheet, and mirror its measured moves with our content.
+- A Raylight-made part comes into the film as a finished clip, or its measured numbers are used to build the same move in our
+  kit. Either way the skill's palette (`LOOKS.lumen`), font, sound and finish apply.
+- Grade frames once: before exporting a Raylight clip that will go under our `<Finish>`, set its grain, chromatic aberration and
+  vignette to 0 and mute its audio. That is housekeeping, not a ban on combining.
 
 ## Which rules win
 1. `skills/motion-studio/history/locked.md` (the owner's locks) beats everything.
 2. The brand file (`skills/motion-studio/brands/<slug>.md`).
-3. Inside the Raylight lane: Raylight's `craft-rules` for the numbers (timings, easings, effect values, camera moves).
-   Inside the Remotion lane: `continuity.md`.
+3. This skill's own rules (`continuity.md`, the kit). Raylight's `craft-rules` and template beat sheets supply measured
+   numbers (timings, easings, effect values, camera moves) when we build or adapt a part; where one disagrees with a lock or
+   the brand, it loses.
 | Topic | Raylight says | We say | Resolution |
 |---|---|---|---|
 | Cuts | prefers hard cuts, cut on motion (`add_speed_cut`) | L6 never hard cuts to black; L11 object to object | **OPEN, the owner decides.** Default until then: in the Raylight lane only `add_speed_cut` (one continuous move across the cut), never a cut to black. |
@@ -44,7 +47,7 @@ Never two engines in one timeline. Never two finishing stacks on the same frames
 | Effects | graded bloom, vignette, depth of field, grain | `<Finish>` | One stack only, in the lane that renders the final frames. |
 | Sound | `add_sound`, `check_sync` | `sfx_code.py` | Raylight lane: its sound tools and `check_sync`. Plate: ours, with Raylight's audio muted. |
 
-## Raylight lane workflow
+## Workflow when a Raylight part is used
 0. Main workflow step 0 first (locked rules, brand file, intake).
 1. `get_editor_status`. Not connected: `list_projects`, give the exact `editUrl`, stop and wait for the owner.
 2. `list_templates`. Pick the closest official template. `get_design_guide` with that template's topic (its beat sheet), and
@@ -57,17 +60,17 @@ Never two engines in one timeline. Never two finishing stacks on the same frames
 7. `update_share_page`: ask the owner before making a video public.
 
 ## Combining them in one film (owner wants both: "I need a combination")
-The rule is one MASTER timeline per film; the other engine feeds it finished clips. Two routes:
+The skill file leads; Raylight parts come in as clips or as measured moves. Two routes:
 **Route 1: our video inside Raylight's 3D (recommended first test).** Render a focus-follow UI clip in Remotion (for example
 `DEMO-SAAS`, `STUDY-LIVE`). `upload_media` it to the Raylight project, then put it on a template's screen slot
 (`add_shot` with `mediaSrc`, or `add_image`/video layer with `set_device_frame` for a MacBook or phone). Raylight supplies the
 tilted device, dollies, liquid glass and depth of field; we supply the screen content, which is the part that looks bespoke.
 Templates built for this: "Macbook pro around Linear", "Dark cinematic mobile app", "SAAS Demo Video".
-Master = Raylight. Finish = Raylight's effects only. Sound: ours, laid under the export, or Raylight's tools, not both.
+Raylight's effects finish this route; sound is ours (laid under the export) or Raylight's, not both.
 **Route 2: Raylight scenes inside our film.** `save_as_video` a Raylight act, then play it with `<OffthreadVideo>` in a Remotion
 composition and join it to our acts with a match cut (`Matte`, `screenOf`, `worldAt` in `src/fx/Camera.tsx`). Before exporting
 set Raylight's grain, chromatic aberration and vignette to 0 and mute its audio, so the frames are only graded once.
-Master = Remotion. Finish = `<Finish>` and `post_fx.sh` only.
+`<Finish>` and `post_fx.sh` finish this route.
 Either way: the same palette (`LOOKS.lumen`) and font on both sides, 30 fps, 1080x1920 (check the Raylight project's canvas and
 frame rate with `get_project_overview` first), and one pass of captions.
 Untested limits: whether this container can reach Raylight's signed upload URL, the maximum upload size, and the export frame

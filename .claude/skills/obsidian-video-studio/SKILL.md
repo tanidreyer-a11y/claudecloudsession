@@ -20,7 +20,7 @@ Method sources (credited, not copied): Level 5 Workflow Guide (@visionaryclown.t
 | His own talking-head video → graphics on top | Talking-head recut | HyperFrames `talking-head-recut` (cards) restyled; needs transcription (section 10) |
 | Subtitles on his video | Captions | HyperFrames `embedded-captions` (`anchor` rail) or our `Captions` over `<OffthreadVideo>` |
 | His website on a laptop/phone in a room | Device composite | corner-pin onto his generated clip (OpenCV/FFmpeg), or blocks `vfx-iphone-device` / `macos-tahoe-liquid-glass` |
-| Fast template-based SaaS / product launch ad, or a film the client will edit themselves | Raylight lane | `raylight.md` in this folder (needs the owner's live Raylight tab open); never mixed with Remotion in one timeline |
+| Any film that can use a proven template, transition or UI shape (SaaS launch, 3D device, tilted screens, liquid glass) | This skill + Raylight parts | `raylight.md` in this folder; editing or exporting in Raylight needs the owner's live Raylight tab open |
 | One-shot motion film: one focus point leads the eye, the camera rides with it, no cuts ("rollercoaster") | Continuity film | `continuity.md` in this folder (eye trace, morph, thread ride, track matte, pull-back, match cut) + `src/fx/Camera.tsx`; proof `src/OneShot.tsx` |
 | Short sting, stat, chart, lower-third (< 10 s) | Motion graphic | HyperFrames `motion-graphics` + registry blocks, restyled |
 Unclear → ask one question with the 2 likeliest formats. Engine details and HyperFrames setup:
@@ -35,8 +35,9 @@ Unclear → ask one question with the 2 likeliest formats. Engine details and Hy
      photos and an ElevenLabs voice. The 2026-10-15→17 tests drifted: invented brands, no voice, floating captions.
    - Brand film with a brand board → **Brand Board Collage** (`skills/motion-studio/library/styles/brand-board-collage.md`,
      template `skills/motion-studio/templates/brand-collage-film`).
-   - If the Raylight MCP is connected, choose ONE engine per film (Remotion or Raylight) using `raylight.md`; that file also
-     says which rules win when Raylight's craft-rules and ours disagree. Locked rules always win.
+   - Raylight (MCP) is a parts library: templates, transitions and UI to use inside the film. This skill file still directs and
+     builds everything. In PLAN, look for the closest Raylight template (`raylight.md`) and mirror its measured moves. Locked
+     rules always win over Raylight's craft-rules.
    - Text lives in the scene (L9), never subtitle captions on top. The Voice HUD format is the one deliberate exception.
    - Voice carries emotion, the screen carries information (L10). Transitions chain object to object with meaning (L11).
 1. **LISTEN** — voice-over + exact script (one beat per line). Mark the script:
