@@ -16,6 +16,7 @@ import { Puzzle, DURP, FPSP } from "./Puzzle";
 import { AdAttention, DURA, FPSA } from "./AdAttention";
 import { DemoMusic, DURM, FPSM } from "./DemoMusic";
 import { DemoSaas, DURS, FPSS } from "./DemoSaas";
+import { StudyLive, DURL, FPSL } from "./StudyLive";
 export const Root: React.FC = () => (
   <>
     {(["A", "B", "C"] as const).map((v) => (
@@ -32,6 +33,7 @@ export const Root: React.FC = () => (
     {(["signal", "obsidian"] as const).map((lk) => (
       <Composition key={lk} id={`FX-DEMO-${lk}`} component={FxDemo} defaultProps={{ look: lk }} durationInFrames={Math.round(DURX * FPSX)} fps={FPSX} width={1080} height={1920} />
     ))}
+    <Composition id="STUDY-LIVE" component={StudyLive} durationInFrames={Math.round(DURL * FPSL)} fps={FPSL} width={1080} height={1920} />
     <Composition id="DEMO-MUSIC" component={DemoMusic} durationInFrames={Math.round(DURM * FPSM)} fps={FPSM} width={1080} height={1920} />
     <Composition id="DEMO-SAAS" component={DemoSaas} durationInFrames={Math.round(DURS * FPSS)} fps={FPSS} width={1080} height={1920} />
     <Composition id="OBS-AD-ATTENTION" component={AdAttention} durationInFrames={Math.round(DURA * FPSA)} fps={FPSA} width={1080} height={1920} />

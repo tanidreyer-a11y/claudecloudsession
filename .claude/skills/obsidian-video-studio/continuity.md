@@ -101,3 +101,26 @@ contact flood → track matte → pull-back onto a site → match cut → white 
   `@remotion/three`, or CSS `perspective` + `rotateX`. It is not in the kit yet.
 - The reference charges elements with **colour gradients** (blue/magenta). The house look uses white light sweeps
   only. Colour is used only if the owner asks, and never purple (brand rule).
+
+## UI walkthrough format ("focus-follow") — measured from the owner's reference reel, 2026-10-18
+Proof: composition `STUDY-LIVE` (`src/StudyLive.tsx`, 14 s, loops). Owner's words: "Why can't you create visuals like this?
+Something is slow about how you do the UI and focus points. It looks like clutter in some places."
+The diagnosis (measured, not guessed): our films showed whole screens and scenes; the reference shows ONE component.
+1. **One component at a time, read-size.** Anything outside the camera's focus falls to ~6 % opacity and blurs. Our
+   `Foc` wrapper in StudyLive does it: opacity/blur from distance to the camera centre (start fading 150 px past the
+   component's edge, gone by +230 px). Never show a full dashboard; show the part that matters.
+2. **Fast move, long settle, then hold.** Camera moves 0.55 s on `bezier(.16, 1, .3, 1)` (hard start, long glide) with
+   motion blur from camera speed, then 1.0–1.8 s hold. Our older moves were 1.5–2.5 s eased both ends: that is the "slow".
+3. **Every hold has an event in its first 0.3 s** (chips pop, avatars arrive, a caret types). A hold with nothing
+   happening reads as slow.
+4. **The highlight is the focus point.** It slides between pills, then that same shape grows into the next card
+   (object → object, L11). No cuts, no scene changes.
+5. **Interaction tells the story:** select, expand, react, type, send. The final action's button becomes the point that
+   carries into the closing text.
+6. **Text in the scene, 2–3 words, a UI chip inline in the sentence** ("Right now [avatars] are listening."), one word
+   in the accent. Quiet size next to the UI.
+7. **Sound is sparse:** a low thump on each landing, small UI ticks, typing clicks. No music. (Reference audio: low-band
+   energy peaks every ~1.8 s on landings, mid-band clicks at the start, −18 LUFS; ours −14.)
+8. **It loops:** the last frame is the first frame.
+Copy rule (L3): this was a STUDY of someone else's reel. Mechanisms are ours to use; its brand, copy, beat order and UI are not.
+Never ship the study as a client or sales piece without replacing the story and copy.
