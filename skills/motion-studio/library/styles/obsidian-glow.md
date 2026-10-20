@@ -7,13 +7,16 @@ soft-gradient cover; a "Websites 4 Designers" list with a container and a link p
   no hue in the glow. The second brand colour (blue `#2F6BFF`) stays out of this family.
 - **Type:** Archivo. Titles 650 / width 112 %, silver vertical gradient (`#FFFFFF` to `#A9ADB6`). Body 36–42 px, `#C4C6CD`.
   Anything that sits on the bright glow is dark ink `#0B0C0E` (handles, "Save for later"). Never white text on the glow.
-- **Identity block:** round photo + name + Instagram and X handle with their glyphs. Handles are the owner's to supply; a missing
-  one draws a dimmed placeholder and prints a warning. Never guess a handle.
+- **Identity block:** round photo + name + tagline + Instagram and X handle with their glyphs (`identity` in slides.json: name, instagram, x, tagline).
+  On file (owner's Instagram screenshot, 2026-10-20): Instagram `@_studioobsidian`, tagline "Building premium digital experiences." X handle: not on file.
+  A handle that is not set is left out and a warning is printed. Never guess a handle, never draw a placeholder.
 - **Container:** the site recording or screenshot in a rounded box with a hairline border and a soft shadow. Colour lives only inside it.
 ## Carousel (`render_carousel.py`, `"style": "glow"`)
-`glow_cover` {title, sub} (emblem top-left, identity at the bottom) · `site` {rank, name, line, url, image, aspect, focus, video?}
-(topic label top, container, name, one line, link pill, handle + "Save for later") · `links` {title, body} (call to action + identity).
-A `site` slide with `video` also writes `slide_NN.mp4` (the recording plays inside the container). 1080 x 1350.
+`glow_cover` {title, sub, video?} (emblem top-left, identity at the bottom; with `video` the owner's clip sits under the glow, blurred 14 px, dimmed to 45 %,
+desaturated to 75 %, so only colour and movement remain, and slide_NN.mp4 is written) · `site` {rank, name, line, url?, image, aspect, focus, video?}
+(topic label top, container, name, one line, link pill when a url is given, owner's photo and Instagram handle; no "Save for later", owner's call) ·
+`links` {title, body} (call to action + identity). A `site` slide with `video` {src, start, dur, crop?} also writes `slide_NN.mp4` (the recording plays
+inside the container). 1080 x 1350. Third-party footage as a background (the owner used a recording of motionsites.ai): crop its footer and logo out first.
 Ranked lists ("top 3 3D platforms", "top 4 free templates on motion sites"): cover, one `site` slide per entry, `links` last.
 Facts on those slides still follow the research rules in `obsidian-content/SKILL.md`.
 ## Website reel (`scripts/site_reel.py`, 9:16, 1080 x 1920, 60 fps, silent)
@@ -25,9 +28,10 @@ Facts on those slides still follow the research rules in `obsidian-content/SKILL
   The reel's only other transition in the reference is a 0.25 s blur through white from a face clip into the sites; not used here.
 - **Background:** per site, near-black with a soft glow from that site's own colour (sampled; override with `glow`), partner colour
   from the top. This is the colour variant; the white variant above is for carousels.
-- **Text:** one topic line above the container ("3D animated websites"). Nothing else.
-- **Intro (owner, 2026-10-20):** 2 s card before the first site on the Obsidian Glow background (off-black, white glow from the bottom, grain) with one header in
-  Archivo 300 / 156 px / -0.035em that blurs to sharp in 0.5 s. Config `"intro": {"text": "3D animated<br>websites", "dur": 2.0, "size": 156, "y": 700}`.
-  The site section after it is unchanged (checked frame by frame against the version before the intro).
+- **Text:** none on the previews. (A topic line above the container is still supported with `"topic"`, but the owner removed it on 2026-10-20.)
+- **Intro (owner, 2026-10-20):** 2.5 s card before the first site, built to match the carousel cover: the owner's video blurred, dimmed and desaturated as
+  texture, the white glow over it, the silver header (Archivo 650, expanded, 112 px) blurring to sharp in 0.5 s, and the identity block. Config
+  `"intro": {"text": "3D animated<br>websites", "dur": 2.5, "size": 112, "y": 690, "ident_bottom": 240, "video": {"src", "start", "crop"}}` plus top-level `identity`.
+  The previews carry no text (owner: remove the topic line above the containers). The site section is unchanged (checked frame by frame).
 - Run: `python3 -I skills/motion-studio/scripts/site_reel.py config.json out_dir` with `"stagger": 3`, `"cw": 1080, "ch": 608,
   "cy": 568, "radius": 18, "w": 1080, "h": 1920`, `"topic": {"text": "...", "y": 455, "size": 64}`.

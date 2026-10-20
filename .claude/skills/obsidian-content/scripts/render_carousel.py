@@ -78,6 +78,7 @@ GLOW_CSS = """
 .ink { color: #0B0C0E; }
 """
 CSS += GLOW_CSS
+VID_BLUR, VID_DIM, VID_SAT = 14, 0.45, 0.75  # background video under the glow: blur px, brightness, saturation
 GX = {"bl": "22%", "br": "78%", "bc": "50%"}
 X_PATH = "M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
 
@@ -88,50 +89,59 @@ def icon(kind, px, color="#0B0C0E"):
          "save": f'<path d="M6 3h12v18l-6-4.6L6 21z" fill="{color}"/>'}[kind]
     return f'<svg viewBox="0 0 24 24" style="width:{px}px;height:{px}px;flex:none">{d}</svg>'
 
-def identity(spec, size=84, both=True, ink="#0B0C0E"):
-    """avatar + name + the owner's handles. A missing handle draws a dimmed placeholder and prints a warning: handles are never guessed."""
+def identity(spec, size=84, ink="#0B0C0E"):
+    """avatar + name + tagline + the owner's handles. A handle that is not on file is left out (and a warning printed): handles are never guessed."""
     idn = spec.get("identity", {}); photo = os.path.join(HERE, "..", idn.get("photo", "assets/people/nathaniel.jpg"))
-    def row(kind, h):
-        txt = h or f"@your_{kind if kind == 'x' else 'instagram'}"
-        if not h: print(f"WARNING: identity.{'instagram' if kind == 'ig' else 'x'} missing, placeholder drawn")
-        return f'<div style="display:flex;align-items:center;gap:10px;font-size:{round(size*.31)}px;font-weight:500;opacity:{1 if h else .45}">{icon(kind, round(size*.3), ink)}{html.escape(txt)}</div>'
-    rows = row("ig", idn.get("instagram")) + (row("x", idn.get("x")) if both else "")
+    rows = ""
+    for kind, key in (("ig", "instagram"), ("x", "x")):
+        if idn.get(key):
+            rows += f'<div style="display:flex;align-items:center;gap:10px;font-size:{round(size*.31)}px;font-weight:500">{icon(kind, round(size*.3), ink)}{html.escape(idn[key])}</div>'
+        else: print(f"WARNING: identity.{key} not set, row left out")
+    tag = f'<div style="font-size:{round(size*.3)}px;font-weight:500;opacity:.72;margin-top:4px">{html.escape(idn["tagline"])}</div>' if idn.get("tagline") else ""
     return f"""<div style="display:flex;align-items:center;gap:{round(size*.28)}px;color:{ink}">
       <img src="file://{photo}" style="width:{size}px;height:{size}px;border-radius:50%;object-fit:cover;border:2px solid rgba(11,12,14,.18)">
-      <div><div style="font-size:{round(size*.37)}px;font-weight:700;font-stretch:112%;letter-spacing:-0.01em">{html.escape(idn.get('name', 'Nathaniel Dreyer'))}</div>
-      <div style="margin-top:6px;display:flex;flex-direction:column;gap:4px">{rows}</div></div></div>"""
+      <div><div style="font-size:{round(size*.37)}px;font-weight:700;font-stretch:112%;letter-spacing:-0.01em">{html.escape(idn.get('name', 'Nathaniel Dreyer'))}</div>{tag}
+      <div style="margin-top:8px;display:flex;flex-direction:column;gap:4px">{rows}</div></div></div>"""
 
 def site_geom(s):
     """container rect (x, y, w, h) of a `site` slide; the video overlay uses the same numbers."""
     w = 984; h = round(w / s.get("aspect", 16 / 9)); return 48, s.get("top", 170), w, h
 
-def glow_wrap(inner, s, i):
+FG_MODE = False  # True: render only the layers that sit ON TOP of a video (transparent canvas, no grain); the mp4 step composites them
+
+def glow_wrap(inner, s, i, under=""):
     gx = GX[s.get("glow", ["bl", "br", "bc"][(i - 1) % 3])]
-    return f'<div class="glowbg" style="--gx:{gx}"></div><div class="grain"></div>{inner}'
+    clear = "background-color:transparent;" if (under or FG_MODE) else ""
+    grain = "" if FG_MODE else '<div class="grain"></div>'
+    return f'{under}<div class="glowbg" style="--gx:{gx};{clear}"></div>{grain}{inner}'
 
 def glow_slide(s, i, n, spec):
     t = s["type"]; topic = spec.get("topic", "")
     label = f'<div style="position:absolute;left:0;right:0;top:78px;text-align:center;font-size:30px;font-weight:500;color:rgba(244,245,247,.86)">{esc(s.get("topic", topic))}</div>' if (s.get("topic", topic) and t != "glow_cover") else ""
     if t == "glow_cover":
+        under = ""
+        if s.get("video") and not FG_MODE:  # still frame of the owner's video, dimmed and blurred so only colour and movement remain
+            under = f'<div style="position:absolute;inset:0;overflow:hidden"><img src="file://{s["_still"]}" style="width:100%;height:100%;object-fit:cover;filter:blur({VID_BLUR}px) brightness({VID_DIM}) saturate({VID_SAT});transform:scale(1.04)"></div>'
         return glow_wrap(f"""<div style="position:absolute;left:64px;top:64px;display:flex;align-items:center;gap:14px;font-size:30px;font-weight:600;font-stretch:112%;color:#F4F5F7">{emblem(40)}Obsidian</div>
           <div style="position:absolute;left:64px;right:64px;top:{s.get('top', 380)}px;text-align:center">
             <div class="silver" style="font-size:{s.get('size', 112)}px;font-weight:650;font-stretch:112%;line-height:1.0;letter-spacing:-0.03em">{esc(s['title'])}</div>
             <div style="font-size:40px;line-height:1.3;color:#B9BCC4;margin-top:38px">{esc(s['sub'])}</div></div>
-          <div style="position:absolute;left:64px;right:64px;bottom:76px;display:flex;justify-content:center">{identity(spec, 92)}</div>""", s, i)
+          <div style="position:absolute;left:64px;right:64px;bottom:76px;display:flex;justify-content:center">{identity(spec, 92)}</div>""", s, i, under)
     if t == "site":
         x, y, w, h = site_geom(s)
         img = f'<img src="file://{os.path.abspath(os.path.join(spec["_dir"], s["image"]))}" style="width:100%;height:100%;object-fit:cover;object-position:{s.get("focus", 50)}% 50%;display:block">' if s.get("image") and not s.get("video_only") else ""
         by = y + h + 54
+        pill = (f'<div style="display:inline-flex;align-items:center;gap:14px;margin-top:34px;padding:16px 28px 16px 22px;border-radius:999px;background:rgba(255,255,255,.10);'
+                f'border:1.5px solid rgba(255,255,255,.2);font-size:29px;color:#F4F5F7">{icon("link", 28, "#F4F5F7")}{esc(s["url"])}</div>') if s.get("url") else ""
         return glow_wrap(f"""{label}
           <div style="position:absolute;left:{x}px;top:{y}px;width:{w}px;height:{h}px;border-radius:28px;overflow:hidden;background:#101114;border:1.5px solid rgba(255,255,255,.16);box-shadow:0 30px 70px rgba(0,0,0,.55)">{img}</div>
           <div style="position:absolute;left:{x}px;right:48px;top:{by}px">
             <div style="display:flex;align-items:baseline;gap:22px"><span style="font-size:34px;color:#8E919B;font-variant-numeric:tabular-nums">{esc(s.get('rank', ''))}</span>
               <span class="wide" style="font-size:{s.get('size', 78)}px;line-height:1.0">{esc(s['name'])}</span></div>
             <div style="font-size:36px;line-height:1.3;color:#C4C6CD;margin-top:20px;max-width:900px">{esc(s['line'])}</div>
-            <div style="display:inline-flex;align-items:center;gap:14px;margin-top:34px;padding:16px 28px 16px 22px;border-radius:999px;background:rgba(255,255,255,.10);border:1.5px solid rgba(255,255,255,.2);font-size:29px;color:#F4F5F7">{icon('link', 28, '#F4F5F7')}{esc(s['url'])}</div></div>
-          <div class="ink" style="position:absolute;left:48px;right:48px;bottom:64px;display:flex;align-items:center;justify-content:space-between">
-            <div style="display:flex;align-items:center;gap:14px;font-size:28px;font-weight:600"><img src="file://{os.path.join(HERE, '..', spec.get('identity', {}).get('photo', 'assets/people/nathaniel.jpg'))}" style="width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid rgba(11,12,14,.18)">{html.escape(spec.get('identity', {}).get('instagram') or '@your_instagram')}</div>
-            <div style="display:flex;align-items:center;gap:12px;font-size:28px;font-weight:600">{icon('save', 28)}Save for later</div></div>""", s, i)
+            {pill}</div>
+          <div class="ink" style="position:absolute;left:48px;right:48px;bottom:64px;display:flex;align-items:center">
+            <div style="display:flex;align-items:center;gap:14px;font-size:28px;font-weight:600"><img src="file://{os.path.join(HERE, '..', spec.get('identity', {}).get('photo', 'assets/people/nathaniel.jpg'))}" style="width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid rgba(11,12,14,.18)">{html.escape(spec.get('identity', {}).get('instagram') or spec.get('identity', {}).get('name', ''))}</div></div>""", s, i)
     if t == "links":
         return glow_wrap(f"""{label}
           <div style="position:absolute;left:64px;right:64px;top:{s.get('top', 330)}px;text-align:center">
@@ -214,28 +224,51 @@ def site_video(s, jpg, mp4, post):
     k = 4; mk = Image.new("L", (w * k, h * k), 0)
     from PIL import ImageDraw; ImageDraw.Draw(mk).rounded_rectangle((0, 0, w * k - 1, h * k - 1), 28 * k, fill=255); mk.resize((w, h), Image.LANCZOS).save(m)
     v = s["video"]; src = v["src"] if isinstance(v, dict) else v; ss = v.get("start", 0) if isinstance(v, dict) else 0; d = v.get("dur", 4) if isinstance(v, dict) else 4
-    fg = (f"[1:v]fps=30,scale={w}:{h}:force_original_aspect_ratio=increase:flags=lanczos,crop={w}:{h}:(iw-{w})*{s.get('focus', 50) / 100}:(ih-{h})/2,setsar=1,format=rgba[v];"
+    cr = v.get("crop") if isinstance(v, dict) else None
+    fg = (f"[1:v]fps=30," + (f"crop={cr[2]}:{cr[3]}:{cr[0]}:{cr[1]}," if cr else "") + f"scale={w}:{h}:force_original_aspect_ratio=increase:flags=lanczos,crop={w}:{h}:(iw-{w})*{s.get('focus', 50) / 100}:(ih-{h})/2,setsar=1,format=rgba[v];"
           f"[2:v]format=gray[m];[v][m]alphamerge[vm];[0:v][vm]overlay={x}:{y}:shortest=1,format=yuv420p[o]")
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-loop", "1", "-framerate", "30", "-t", str(d), "-i", jpg, "-ss", str(ss), "-t", str(d), "-i", os.path.join(post, src) if not os.path.isabs(src) else src,
                     "-loop", "1", "-framerate", "30", "-t", str(d), "-i", m, "-filter_complex", fg, "-map", "[o]", "-an", "-c:v", "libx264", "-preset", "slow", "-crf", "18",
                     "-pix_fmt", "yuv420p", "-movflags", "+faststart", mp4], check=True)
     os.remove(m)
 
+def shoot(html_text, png, transparent=False):
+    hp = png.replace(".png", ".html"); open(hp, "w").write(html_text)
+    subprocess.run([CHROME, "--headless=new", "--no-sandbox", "--disable-gpu", "--hide-scrollbars", "--allow-file-access-from-files"] + (["--default-background-color=00000000"] if transparent else []) +
+                   # headless chrome takes ~90 px of window chrome off the viewport: open taller, body is fixed at H, crop below
+                   [f"--window-size={W},{H + 200}", "--virtual-time-budget=4000", f"--screenshot={png}", f"file://{hp}"], check=True, capture_output=True)
+    os.remove(hp); return Image.open(png).convert("RGBA").crop((0, 0, W, H))
+
+def vid_crop(v):
+    cr = v.get("crop") if isinstance(v, dict) else None
+    return (f"crop={cr[2]}:{cr[3]}:{cr[0]}:{cr[1]}," if cr else "") + f"scale={W}:{H}:force_original_aspect_ratio=increase:flags=lanczos,crop={W}:{H}"
+
+def cover_video(s, fg_png, mp4):
+    """the owner's video fills the cover: same crop, then blurred, dimmed and desaturated like the poster, glow + header + identity on top, light film grain."""
+    v = s["video"]; d = v.get("dur", 5)
+    fg = (f"[0:v]fps=30,{vid_crop(v)},gblur=sigma={VID_BLUR},eq=saturation={VID_SAT},lutrgb=r=val*{VID_DIM}:g=val*{VID_DIM}:b=val*{VID_DIM},format=rgba[b];"
+          f"[b][1:v]overlay=0:0:shortest=1,noise=alls=3:allf=t,format=yuv420p[o]")
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str(v.get("start", 0)), "-t", str(d), "-i", v["src"], "-loop", "1", "-framerate", "30", "-t", str(d), "-i", fg_png,
+                    "-filter_complex", fg, "-map", "[o]", "-an", "-c:v", "libx264", "-preset", "slow", "-crf", "24", "-maxrate", "5M", "-bufsize", "10M", "-pix_fmt", "yuv420p", "-movflags", "+faststart", mp4], check=True)
+
 def main():
     post = os.path.abspath(sys.argv[1]); spec = json.load(open(os.path.join(post, "slides.json")))
     out = os.path.join(post, "out"); os.makedirs(out, exist_ok=True)
     spec["_dir"] = post; slides = spec["slides"]; pngs = []
+    global FG_MODE
     for k, s in enumerate(slides, 1):
-        hp = os.path.join(out, f"slide_{k:02d}.html"); pp = os.path.join(out, f"slide_{k:02d}.png")
-        open(hp, "w").write(slide_html(s, k, len(slides), spec))
-        subprocess.run([CHROME, "--headless=new", "--no-sandbox", "--disable-gpu", "--hide-scrollbars", "--allow-file-access-from-files",
-                        # headless chrome takes ~90 px of window chrome off the viewport: open taller, body is fixed at H, crop below
-                        f"--window-size={W},{H + 200}", "--virtual-time-budget=4000", f"--screenshot={pp}", f"file://{hp}"],
-                       check=True, capture_output=True)
-        im = Image.open(pp).convert("RGB").crop((0, 0, W, H))
-        jp = os.path.join(out, f"slide_{k:02d}.jpg")
-        im.save(jp, quality=95, subsampling=0); pngs.append(jp); os.remove(hp); os.remove(pp)
+        pp = os.path.join(out, f"slide_{k:02d}.png"); jp = os.path.join(out, f"slide_{k:02d}.jpg")
+        if s.get("type") == "glow_cover" and s.get("video"):  # still frame of the video (same crop) for the poster
+            v = s["video"]; s["_still"] = os.path.join(out, "_cover_still.jpg")
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str(v.get("still", 1.0)), "-i", v["src"], "-frames:v", "1", "-vf", vid_crop(v), "-q:v", "2", s["_still"]], check=True)
+        FG_MODE = False
+        shoot(slide_html(s, k, len(slides), spec), pp).convert("RGB").save(jp, quality=95, subsampling=0); pngs.append(jp); os.remove(pp)
         if s.get("type") == "site" and s.get("video"): site_video(s, jp, os.path.join(out, f"slide_{k:02d}.mp4"), post)
+        if s.get("type") == "glow_cover" and s.get("video"):
+            FG_MODE = True
+            fgp = os.path.join(out, "_cover_fg.png")
+            shoot(slide_html(s, k, len(slides), spec).replace("</style>", "html,body{background:transparent!important}</style>", 1), fgp, True)
+            cover_video(s, fgp, os.path.join(out, f"slide_{k:02d}.mp4")); os.remove(fgp); FG_MODE = False
     ims = [Image.open(p).convert("RGB") for p in pngs]
     if "--pdf" in sys.argv:
         ims[0].save(os.path.join(out, "carousel.pdf"), save_all=True, append_images=ims[1:], resolution=144)

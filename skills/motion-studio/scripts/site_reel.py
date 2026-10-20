@@ -14,10 +14,11 @@
 # both sides (reference: 16:9, radius about 1.5 % of the width, centred at 45 % of the height). Extra clip keys: "focus" 0..1 (which
 # part of the recording a narrower container keeps, default 0.5). Extra config: "topic": {"text": "3D animated websites", "y": 470,
 # "size": 62} draws one line of text above the container; outputs reel_stagger.mp4.
-# INTRO (owner, 2026-10-20): "intro": {"text": "3D animated<br>websites", "dur": 2.0, "size": 132, "y": 700, "glow": "bc"} puts a card before the
-# first site: the Obsidian Glow background (off-black, soft white glow from the bottom, grain; css from obsidian-content/render_carousel.py)
-# and one header in light Archivo that blurs to sharp in 0.5 s. The site backgrounds are not touched; the intro joins the first site with
-# the same staggered cut (container first, background 3 frames later).
+# INTRO (owner, 2026-10-20): "intro": {"text": "3D animated<br>websites", "dur": 2.5, "size": 112, "y": 690, "glow": "bc",
+# "video": {"src": ..., "start": 0.4, "crop": [x, y, w, h]}} + top-level "identity": {...} puts a card before the first site that matches the
+# carousel cover: the owner's video blurred, dimmed and desaturated as texture, the white Obsidian Glow over it, the silver header (Archivo 650,
+# expanded) blurring to sharp in 0.5 s, and the identity block (photo, name, tagline, handles). Css and identity html come from
+# obsidian-content/render_carousel.py. The site backgrounds are not touched; the intro joins the first site with the same staggered cut.
 import json, os, subprocess, sys, colorsys
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
@@ -102,27 +103,26 @@ def topic_layer(t):
 
 
 def intro_assets(it):
-    """returns (background uint8 HxWx3, header mask float HxW 0..1) for the intro card, both drawn by headless Chrome."""
+    """Intro layers drawn by headless Chrome with the carousel's own css and identity block, so the intro and the carousel cover match.
+    returns rc (the carousel module), glow alpha HxW, identity RGBA HxWx4, header alpha HxW (the animated part), header box (y0, y1)."""
     import importlib.util
     here = os.path.dirname(os.path.abspath(__file__))
     rc_path = os.path.join(here, "..", "..", "..", ".claude", "skills", "obsidian-content", "scripts", "render_carousel.py")
     sp = importlib.util.spec_from_file_location("rc", rc_path); rc = importlib.util.module_from_spec(sp); sp.loader.exec_module(rc)
-    fonts = os.path.join(here, "..", "..", "..", ".claude", "skills", "obsidian-content", "assets", "fonts")
-    gx = rc.GX[it.get("glow", "bc")]
-    face = f"@font-face{{font-family:A;src:url('file://{fonts}/archivo-latin-wdth-normal.woff2');font-weight:100 900;font-stretch:62% 125%}}"
-    base = f"html,body{{margin:0;width:{W}px;height:{H}px;overflow:hidden}}"
     chrome = os.environ.get("CHROME", "/opt/pw-browsers/chromium-1194/chrome-linux/chrome")
-    def shot(name, html, transparent):
-        hp, pp = os.path.join(out, f"_{name}.html"), os.path.join(out, f"_{name}.png"); open(hp, "w").write(html)
-        subprocess.run([chrome, "--headless=new", "--no-sandbox", "--disable-gpu", "--hide-scrollbars", "--allow-file-access-from-files"] +
-                       (["--default-background-color=00000000"] if transparent else []) +
-                       [f"--window-size={W},{H + 200}", "--virtual-time-budget=3000", f"--screenshot={pp}", f"file://{hp}"], check=True, capture_output=True)
-        return Image.open(pp).convert("RGBA").crop((0, 0, W, H))
-    bg = shot("intro_bg", f"<style>{face}{base}{rc.GLOW_CSS}body{{background:#0A0A0C}}</style><div class='glowbg' style='--gx:{gx}'></div><div class='grain'></div>", False).convert("RGB")
-    txt = (f"<style>{face}{base}html,body{{background:transparent}}div{{position:absolute;left:0;right:0;top:{it.get('y', 700)}px;transform:translateY(-50%);text-align:center;"
-           f"font:{it.get('weight', 300)} {it.get('size', 132)}px/1.04 A;font-stretch:{it.get('width', 100)}%;letter-spacing:-0.035em;color:#FFFFFF}}</style><div>{it['text']}</div>")
-    mask = np.array(shot("intro_txt", txt, True))[..., 3].astype(np.float32) / 255
-    return np.array(bg), mask
+    base = f"<style>{rc.CSS}html,body{{width:{W}px!important;height:{H}px!important;background:transparent!important}}</style>"
+    def shot(name, body):
+        hp, pp = os.path.join(out, f"_{name}.html"), os.path.join(out, f"_{name}.png"); open(hp, "w").write(base + body)
+        subprocess.run([chrome, "--headless=new", "--no-sandbox", "--disable-gpu", "--hide-scrollbars", "--allow-file-access-from-files", "--default-background-color=00000000",
+                        f"--window-size={W},{H + 200}", "--virtual-time-budget=3000", f"--screenshot={pp}", f"file://{hp}"], check=True, capture_output=True)
+        return np.array(Image.open(pp).convert("RGBA").crop((0, 0, W, H))).astype(np.float32)
+    gx = rc.GX[it.get("glow", "bc")]
+    glow = shot("intro_glow", f"<div class='glowbg' style='--gx:{gx};background-color:transparent'></div>")[..., 3] / 255
+    ident = shot("intro_ident", f"<div style='position:absolute;left:64px;right:64px;bottom:{it.get('ident_bottom', 240)}px;display:flex;justify-content:center'>{rc.identity({'identity': cfg['identity']}, 92)}</div>") / 255
+    head = shot("intro_head", f"<div style='position:absolute;left:64px;right:64px;top:{it.get('y', 690)}px;transform:translateY(-50%);text-align:center'>"
+                              f"<div style='font-size:{it.get('size', 112)}px;font-weight:650;font-stretch:112%;line-height:1.0;letter-spacing:-0.03em;color:#FFFFFF'>{it['text']}</div></div>")[..., 3] / 255
+    rows = np.where(head.max(axis=1) > 0.05)[0]
+    return rc, glow, ident, head, (int(rows.min()), int(rows.max()))
 
 if cfg.get("stagger") is not None:
     LAG = int(cfg["stagger"]); alpha = (np.array(Image.open(mpath).convert("L")).astype(np.float32) / 255)[..., None]
@@ -137,13 +137,32 @@ if cfg.get("stagger") is not None:
                             "-movflags", "+faststart", os.path.join(out, "reel_stagger.mp4")], stdin=subprocess.PIPE)
     fsz = CW * CH * 3; prev_last = None; total = 0; intro_bg = None
     if cfg.get("intro"):
-        it = cfg["intro"]; intro_bg, hmask = intro_assets(it); n_in = round(it.get("dur", 2.0) * FPS); ink = np.array([244, 245, 247], np.float32)
-        for f in range(n_in):  # header: fade and blur-to-sharp over 0.5 s, then hold
-            p = min(1.0, f / (0.5 * FPS)); e = 1 - (1 - p) ** 3
-            m = np.array(Image.fromarray((hmask * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(max(0.01, (1 - e) * 20)))).astype(np.float32)[..., None] / 255 * e if p < 1 else hmask[..., None]
-            frame = np.clip(intro_bg.astype(np.float32) * (1 - m) + ink * m, 0, 255).astype(np.uint8)
-            enc.stdin.write(frame.tobytes()); total += 1
-        prev_last = intro_bg[CY:CY + CH, CX:CX + CW].astype(np.float32)  # the half-blended join frame mixes with the clean background, not the header
+        it = cfg["intro"]; rc, glow, ident, hmask, (hy0, hy1) = intro_assets(it); n_in = round(it.get("dur", 2.5) * FPS); rng = np.random.default_rng(3)
+        v = it["video"]; vc = v.get("crop"); vf = (f"crop={vc[2]}:{vc[3]}:{vc[0]}:{vc[1]}," if vc else "") + f"scale={W}:{H}:force_original_aspect_ratio=increase:flags=lanczos,crop={W}:{H}"
+        vf = f"fps={FPS},{vf},gblur=sigma={rc.VID_BLUR},eq=saturation={rc.VID_SAT},lutrgb=r=val*{rc.VID_DIM}:g=val*{rc.VID_DIM}:b=val*{rc.VID_DIM}"
+        dec = subprocess.Popen([FF, "-v", "error", "-ss", str(v.get("start", 0)), "-t", str(n_in / FPS + 0.2), "-i", v["src"], "-vf", vf, "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], stdout=subprocess.PIPE)
+        ga = glow[..., None]; ia = ident[..., 3:4]; irgb = ident[..., :3] * 255
+        yy = np.clip((np.arange(H, dtype=np.float32) - hy0) / max(1, hy1 - hy0), 0, 1)[:, None, None]  # silver header: white to #A9ADB6, top to bottom (the carousel cover's gradient)
+        hcol = np.array([255, 255, 255], np.float32) * (1 - yy) + np.array([169, 173, 182], np.float32) * yy
+        hblur = {}
+        vlast = None
+        for f in range(n_in):
+            raw = dec.stdout.read(W * H * 3)
+            vframe = np.frombuffer(raw, np.uint8).reshape(H, W, 3).astype(np.float32) if len(raw) == W * H * 3 else vlast
+            vlast = vframe
+            lit = vframe * (1 - ga) + 255 * ga                                # video, then the white glow
+            p = min(1.0, f / (0.5 * FPS)); e = 1 - (1 - p) ** 3                # identity and header arrive over 0.5 s; the header blurs to sharp
+            if p < 1:
+                k = round((1 - e) * 20)
+                if k not in hblur: hblur[k] = np.array(Image.fromarray((hmask * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(max(0.01, k)))).astype(np.float32)[..., None] / 255
+                m = hblur[k] * e
+            else: m = hmask[..., None]
+            comp = lit * (1 - ia * e) + irgb * ia * e
+            comp = comp * (1 - m) + hcol * m + rng.normal(0, 3.0, (H, W, 1))
+            enc.stdin.write(np.clip(comp, 0, 255).astype(np.uint8).tobytes()); total += 1
+        dec.stdout.close(); dec.wait()
+        intro_bg = np.clip(vlast * (1 - ga) + 255 * ga + rng.normal(0, 2.4, (H, W, 1)), 0, 255).astype(np.uint8)  # what the lagging background shows after the cut: video + glow, no text
+        prev_last = intro_bg[CY:CY + CH, CX:CX + CW].astype(np.float32)
     for i, c in enumerate(cfg["clips"]):
         crop = c.get("crop"); focus = c.get("focus", 0.5); n_seg = len(c["segments"]); inputs = []; parts = []
         for s_, d_ in c["segments"]: inputs += ["-ss", f"{s_:.3f}", "-t", f"{d_:.3f}", "-i", c["src"]]

@@ -1,17 +1,18 @@
 {
   "style": "glow",
   "topic": "3D animated websites",
-  "identity": {"name": "Nathaniel Dreyer", "instagram": null, "x": null},
+  "identity": {"name": "Nathaniel Dreyer", "instagram": "@_studioobsidian", "x": null, "tagline": "Building premium digital experiences."},
   "slides": [
-    {"type": "glow_cover", "title": "3D animated websites", "sub": "Four sites we built.", "glow": "bl"},
+    {"type": "glow_cover", "title": "3D animated websites", "sub": "Four sites we built.", "glow": "bl",
+     "video": {"src": "/root/.claude/uploads/c4a5069d-a34a-58d2-a335-0631d389d9ef/ae3ac71c-ScreenRecording_10-20-2026_18-46-45_1.mov", "start": 0.2, "dur": 5, "still": 1.2, "crop": [0, 0, 828, 1490]}},
     {"type": "site", "rank": "1", "name": "Batto", "line": "A gold chronograph, made to be looked at closely.", "url": "battoluxurywatch.vercel.app",
      "image": "shots/batto.jpg", "aspect": 2.164, "focus": 50, "glow": "br", "video": {"src": "/root/.claude/uploads/c4a5069d-a34a-58d2-a335-0631d389d9ef/904c7677-ScreenRecording_10-20-2026_15-11-26_1.mov", "start": 0, "dur": 4}},
     {"type": "site", "rank": "2", "name": "Cast & Render", "line": "Form One headphones, taken apart and rebuilt.", "url": "headsetwebsite.vercel.app",
      "image": "shots/headset.jpg", "aspect": 2.164, "focus": 50, "glow": "bl", "video": {"src": "/root/.claude/uploads/c4a5069d-a34a-58d2-a335-0631d389d9ef/98b7d284-ScreenRecording_10-20-2026_15-14-30_1.mov", "start": 0.12, "dur": 4}},
     {"type": "site", "rank": "3", "name": "Mizukagami", "line": "Nine rooms on a still pond above Kyoto.", "url": "mizukagami-sand.vercel.app",
      "image": "shots/mizukagami.jpg", "aspect": 2.164, "focus": 50, "glow": "bc", "video": {"src": "/root/.claude/uploads/c4a5069d-a34a-58d2-a335-0631d389d9ef/b533cf2e-ScreenRecording_10-20-2026_15-15-38_1.mov", "start": 0, "dur": 4}},
-    {"type": "site", "rank": "4", "name": "Scroll cinematic", "line": "Hold to build it. Let go and it falls apart.", "url": "scroll-cinematic-hero.vercel.app",
-     "image": "shots/scroll.jpg", "aspect": 2.164, "focus": 50, "glow": "br", "video": {"src": "/root/.claude/uploads/c4a5069d-a34a-58d2-a335-0631d389d9ef/422b8713-ScreenRecording_10-20-2026_15-17-59_1.mov", "start": 1.9, "dur": 4}},
+    {"type": "site", "rank": "4", "name": "Norr", "line": "Quiet objects for calm homes.",
+     "image": "shots/norr.jpg", "aspect": 2.0907, "focus": 50, "glow": "br", "video": {"src": "/root/.claude/uploads/c4a5069d-a34a-58d2-a335-0631d389d9ef/5e576f6a-NORR___Quiet_objects_for_calm_homes_and_3_more_pages_-_Personal_-_Microsoft_Edge_2026-10-12_18-56-22.mp4", "start": 6.6, "dur": 4, "crop": [8, 127, 1890, 904]}},
     {"type": "links", "title": "Want a site that moves like this?", "body": "Message Obsidian on WhatsApp, 079 244 9607.", "glow": "bl"}
   ]
 }
