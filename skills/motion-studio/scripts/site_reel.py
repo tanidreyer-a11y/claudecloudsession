@@ -14,6 +14,10 @@
 # both sides (reference: 16:9, radius about 1.5 % of the width, centred at 45 % of the height). Extra clip keys: "focus" 0..1 (which
 # part of the recording a narrower container keeps, default 0.5). Extra config: "topic": {"text": "3D animated websites", "y": 470,
 # "size": 62} draws one line of text above the container; outputs reel_stagger.mp4.
+# INTRO (owner, 2026-10-20): "intro": {"text": "3D animated<br>websites", "dur": 2.0, "size": 132, "y": 700, "glow": "bc"} puts a card before the
+# first site: the Obsidian Glow background (off-black, soft white glow from the bottom, grain; css from obsidian-content/render_carousel.py)
+# and one header in light Archivo that blurs to sharp in 0.5 s. The site backgrounds are not touched; the intro joins the first site with
+# the same staggered cut (container first, background 3 frames later).
 import json, os, subprocess, sys, colorsys
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
@@ -96,6 +100,30 @@ def topic_layer(t):
                     f"--window-size={W},{H + 200}", "--virtual-time-budget=3000", f"--screenshot={pp}", f"file://{hp}"], check=True, capture_output=True)
     return np.array(Image.open(pp).convert("RGBA").crop((0, 0, W, H))).astype(np.float32)
 
+
+def intro_assets(it):
+    """returns (background uint8 HxWx3, header mask float HxW 0..1) for the intro card, both drawn by headless Chrome."""
+    import importlib.util
+    here = os.path.dirname(os.path.abspath(__file__))
+    rc_path = os.path.join(here, "..", "..", "..", ".claude", "skills", "obsidian-content", "scripts", "render_carousel.py")
+    sp = importlib.util.spec_from_file_location("rc", rc_path); rc = importlib.util.module_from_spec(sp); sp.loader.exec_module(rc)
+    fonts = os.path.join(here, "..", "..", "..", ".claude", "skills", "obsidian-content", "assets", "fonts")
+    gx = rc.GX[it.get("glow", "bc")]
+    face = f"@font-face{{font-family:A;src:url('file://{fonts}/archivo-latin-wdth-normal.woff2');font-weight:100 900;font-stretch:62% 125%}}"
+    base = f"html,body{{margin:0;width:{W}px;height:{H}px;overflow:hidden}}"
+    chrome = os.environ.get("CHROME", "/opt/pw-browsers/chromium-1194/chrome-linux/chrome")
+    def shot(name, html, transparent):
+        hp, pp = os.path.join(out, f"_{name}.html"), os.path.join(out, f"_{name}.png"); open(hp, "w").write(html)
+        subprocess.run([chrome, "--headless=new", "--no-sandbox", "--disable-gpu", "--hide-scrollbars", "--allow-file-access-from-files"] +
+                       (["--default-background-color=00000000"] if transparent else []) +
+                       [f"--window-size={W},{H + 200}", "--virtual-time-budget=3000", f"--screenshot={pp}", f"file://{hp}"], check=True, capture_output=True)
+        return Image.open(pp).convert("RGBA").crop((0, 0, W, H))
+    bg = shot("intro_bg", f"<style>{face}{base}{rc.GLOW_CSS}body{{background:#0A0A0C}}</style><div class='glowbg' style='--gx:{gx}'></div><div class='grain'></div>", False).convert("RGB")
+    txt = (f"<style>{face}{base}html,body{{background:transparent}}div{{position:absolute;left:0;right:0;top:{it.get('y', 700)}px;transform:translateY(-50%);text-align:center;"
+           f"font:{it.get('weight', 300)} {it.get('size', 132)}px/1.04 A;font-stretch:{it.get('width', 100)}%;letter-spacing:-0.035em;color:#FFFFFF}}</style><div>{it['text']}</div>")
+    mask = np.array(shot("intro_txt", txt, True))[..., 3].astype(np.float32) / 255
+    return np.array(bg), mask
+
 if cfg.get("stagger") is not None:
     LAG = int(cfg["stagger"]); alpha = (np.array(Image.open(mpath).convert("L")).astype(np.float32) / 255)[..., None]
     bgs = []; rep = []
@@ -107,7 +135,15 @@ if cfg.get("stagger") is not None:
     enc = subprocess.Popen([FF, "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-", "-an", "-c:v", "libx264",
                             "-preset", "slow", "-crf", str(cfg.get("crf", 18)), "-maxrate", cfg.get("maxrate", "12M"), "-bufsize", "24M", "-pix_fmt", "yuv420p",
                             "-movflags", "+faststart", os.path.join(out, "reel_stagger.mp4")], stdin=subprocess.PIPE)
-    fsz = CW * CH * 3; prev_last = None; total = 0
+    fsz = CW * CH * 3; prev_last = None; total = 0; intro_bg = None
+    if cfg.get("intro"):
+        it = cfg["intro"]; intro_bg, hmask = intro_assets(it); n_in = round(it.get("dur", 2.0) * FPS); ink = np.array([244, 245, 247], np.float32)
+        for f in range(n_in):  # header: fade and blur-to-sharp over 0.5 s, then hold
+            p = min(1.0, f / (0.5 * FPS)); e = 1 - (1 - p) ** 3
+            m = np.array(Image.fromarray((hmask * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(max(0.01, (1 - e) * 20)))).astype(np.float32)[..., None] / 255 * e if p < 1 else hmask[..., None]
+            frame = np.clip(intro_bg.astype(np.float32) * (1 - m) + ink * m, 0, 255).astype(np.uint8)
+            enc.stdin.write(frame.tobytes()); total += 1
+        prev_last = intro_bg[CY:CY + CH, CX:CX + CW].astype(np.float32)  # the half-blended join frame mixes with the clean background, not the header
     for i, c in enumerate(cfg["clips"]):
         crop = c.get("crop"); focus = c.get("focus", 0.5); n_seg = len(c["segments"]); inputs = []; parts = []
         for s_, d_ in c["segments"]: inputs += ["-ss", f"{s_:.3f}", "-t", f"{d_:.3f}", "-i", c["src"]]
@@ -121,10 +157,11 @@ if cfg.get("stagger") is not None:
             raw = dec.stdout.read(fsz)
             if len(raw) < fsz: break
             cur = np.frombuffer(raw, np.uint8).reshape(CH, CW, 3).astype(np.float32)
-            cont = prev_last * 0.35 + cur * 0.65 if (i > 0 and l == 0) else cur  # container: one half-blended frame, then the new site
+            joined = i > 0 or intro_bg is not None; pbg = bgs[i - 1] if i > 0 else intro_bg
+            cont = prev_last * 0.35 + cur * 0.65 if (joined and l == 0) else cur  # container: one half-blended frame, then the new site
             # background lags the container by LAG frames, with its own half-blended frame
-            if i > 0 and l < LAG: bg = bgs[i - 1]
-            elif i > 0 and l == LAG: bg = ((bgs[i - 1].astype(np.float32) + bgs[i].astype(np.float32)) * 0.5).astype(np.uint8)
+            if joined and l < LAG: bg = pbg
+            elif joined and l == LAG: bg = ((pbg.astype(np.float32) + bgs[i].astype(np.float32)) * 0.5).astype(np.uint8)
             else: bg = bgs[i]
             frame = bg.copy(); reg = frame[CY:CY + CH, CX:CX + CW].astype(np.float32)
             frame[CY:CY + CH, CX:CX + CW] = np.clip(reg + (cont - reg) * alpha, 0, 255).astype(np.uint8)
