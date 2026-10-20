@@ -6,6 +6,7 @@
 # config.json: {"clips": [{"name": "batto", "src": "rec.mov", "segments": [[0.0, 2.0], [3.5, 2.0]],
 #                          "crop": [x, y, w, h] | null, "glow": ["#C99A3E", "#16264A"] | null, "pos": "br"|"bl"|"bc"}, ...],
 #               "w": 1920, "h": 1080, "cw": 1760, "ch": 813, "radius": 44, "fps": 60, "dissolve": 0.25}
+# 9:16 version of the same container (same shape and gap proportion): "w": 1080, "h": 1920, "cw": 990, "ch": 458, "radius": 25.
 # ch 813 matches a phone-shaped recording (1792x828) without cropping. Outputs one mp4 per clip, reel.mp4 (hard cuts) and, when
 # "dissolve" > 0, reel_smooth.mp4 (that many seconds of cross-fade at each join).
 import json, os, subprocess, sys, colorsys
@@ -48,23 +49,27 @@ def palette(c):
 def hexrgb(h): return np.array([int(h[i:i + 2], 16) for i in (1, 3, 5)], float)
 
 def background(glow, pos, seed):
-    """near-black base tinted by the glow, a big soft glow rising from one corner (like the reference), a pale top sheen, fine grain."""
+    """near-black base tinted by the glow, a big soft glow rising from the bottom (like the reference), a partner glow from the top
+    (stronger in portrait, where there is a lot of empty frame), fine grain. Shadow sizes scale with the container width."""
     y, x = np.mgrid[0:H, 0:W].astype(float); x /= W; y /= H
     A, B = hexrgb(glow[0]), hexrgb(glow[1])
     # keep the glow vivid but not neon: lift toward mid brightness
     A = A * (0.85 / max(A.max() / 255, 0.35)); A = np.clip(A, 0, 255)
-    cx, cy = {"br": (0.78, 1.08), "bl": (0.22, 1.08), "bc": (0.5, 1.10)}[pos]
-    d = ((x - cx) / 0.62) ** 2 + ((y - cy) / 0.46) ** 2
-    g1 = np.exp(-d * 1.15)[..., None]
-    g2 = np.exp((-(((x - (1 - cx)) / 0.55) ** 2 + ((y + 0.15) / 0.30) ** 2)) * 1.2)[..., None]
+    if H > W:  # 9:16: the glow climbs from the bottom edge, the partner colour hangs from the top corner opposite it
+        cx, cy = {"br": (0.80, 1.05), "bl": (0.20, 1.05), "bc": (0.5, 1.06)}[pos]; r1x, r1y, c2y, r2x, r2y, wB = 0.85, 0.34, -0.06, 0.90, 0.26, 0.50
+    else:
+        cx, cy = {"br": (0.78, 1.08), "bl": (0.22, 1.08), "bc": (0.5, 1.10)}[pos]; r1x, r1y, c2y, r2x, r2y, wB = 0.62, 0.46, -0.15, 0.55, 0.30, 0.30
+    g1 = np.exp(-(((x - cx) / r1x) ** 2 + ((y - cy) / r1y) ** 2) * 1.15)[..., None]
+    g2 = np.exp((-(((x - (1 - cx)) / r2x) ** 2 + ((y - c2y) / r2y) ** 2)) * 1.2)[..., None]
     base = np.array([8, 8, 10], float) + (B * 0.06 + A * 0.025)
-    img = base + A * g1 * 0.95 + B * g2 * 0.30 + np.array([200, 200, 205]) * g2 * 0.035
+    img = base + A * g1 * 0.95 + B * g2 * wB + np.array([200, 200, 205]) * g2 * 0.035
     img *= (1 - 0.25 * ((x - 0.5) ** 2 + (y - 0.5) ** 2))[..., None]
     rng = np.random.default_rng(seed); img += rng.normal(0, 2.4, (H, W, 1))
     im = Image.fromarray(np.clip(img, 0, 255).astype(np.uint8))
     # soft container shadow baked into the background
-    sh = Image.new("L", (W, H), 0); ImageDraw.Draw(sh).rounded_rectangle((CX, CY + 26, CX + CW, CY + CH + 26), R, fill=140)
-    sh = sh.filter(ImageFilter.GaussianBlur(46))
+    k = CW / 1760
+    sh = Image.new("L", (W, H), 0); ImageDraw.Draw(sh).rounded_rectangle((CX, CY + 26 * k, CX + CW, CY + CH + 26 * k), R, fill=140)
+    sh = sh.filter(ImageFilter.GaussianBlur(46 * k))
     return Image.composite(Image.new("RGB", (W, H), (0, 0, 0)), im, sh)
 
 def mask():
