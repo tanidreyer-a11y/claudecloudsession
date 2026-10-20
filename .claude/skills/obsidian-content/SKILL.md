@@ -28,7 +28,8 @@ front-end designers, scroll-scrub / 3D / interactive site builders, vibe coders 
    (`out/Obsidian_<slug>.zip`): Instagram/, LinkedIn/, X/post-1, X/post-2, captions, sources, READ-ME.
 8. **Deliver**: in ONE SendUserFile call send every slide JPG as its own file (`display: "attach"`, 01→NN in order),
    then the zip in a second call. Never send the contact sheet: it is a grid, and the owner wants separate images he
-   can save to his gallery (owner, 2026-10-13: "that's just a grid, not separate images"). No PDFs.
+   can save to his gallery (owner, 2026-10-13: "that's just a grid, not separate images"). No PDFs. Video slides
+   (`slide_NN.mp4`) go in the same call, in order.
    Commit the post folder.
 
 ## Claude-topic posts (owner, 2026-10-13)
@@ -77,12 +78,19 @@ When the post is about Claude / Claude Code, set `"claude": true` in slides.json
   work you actually do."
 
 ## Design rules
-- Template: `scripts/render_carousel.py` — black, white type, white emblem, Archivo (expanded 125 % / 800 for titles,
+- **Default family (owner, 2026-10-20): GLOW.** Obsidian's own identity: off-black with a soft white glow, the Obsidian emblem, his face and
+  handles. Set `"style": "glow"` in slides.json and use the slide types `glow_cover`, `site`, `links` (card: `skills/motion-studio/library/styles/obsidian-glow.md`).
+  Claude marks and Clawd are now opt-in (`"claude": true` on the older black types) and are not the default. Ranked-list posts
+  ("top 3 3D platforms") run: cover, one `site` slide per entry (a screenshot, or the owner's screen recording as `video`), `links`.
+  `slides.json` carries `"identity": {"name", "instagram", "x"}`; ask the owner for any missing handle (never guess one).
+  This family overrides the "no gradient washes / no tinted near-black" tells below for glow slides only.
+- Older black family template: `scripts/render_carousel.py` — black, white type, white emblem, Archivo (expanded 125 % / 800 for titles,
   normal width for body), JetBrains Mono **only** for code/commands. 1080×1350, 92 px side margins, footer = emblem +
   "Obsidian" + page "n / N". The cover carries the large two-bar emblem bleeding off the right edge.
 - Slide types in `slides.json`: `cover` {title, sub, cue, logo_label?}, `text` {kicker, title, body, quote?, quote_src?, close?},
   `skill` {kicker, name, maker, what, use, install[], install_label?, source}, `end` {kicker, title, body, note, cta},
   `bars` {kicker, title, bars: [[label, value, unit, highlight?]], note, source} for measured comparisons; `text` also takes `source`.
+  Glow family: `glow_cover` {title, sub}, `site` {rank, name, line, url, image, aspect?, focus?, video?}, `links` {title, body}; slide-level `glow`: bl | br | bc.
   Optional `size` on any slide overrides the title size (shrink long names until they sit on one line).
 - Avoid the AI-design tells Anthropic's frontend-design skill lists (we post about them — we can't commit them): no
   ALL-CAPS tracked eyebrow labels, no "WORD — fragment" labels, no "A · B · C" meta strings, no monospace for labels,

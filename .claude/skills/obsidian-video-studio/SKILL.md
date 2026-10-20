@@ -143,6 +143,11 @@ timing and talking-head transcription can't run here; `vo_timing.py` falls back 
 huggingface.co in the environment's network settings, or run on his Mac. **ElevenLabs** = paid external service;
 the voice comes from the owner. jsdelivr is blocked → `hf_localize.py` before any HyperFrames render.
 
+## Website preview reel (owner, 2026-10-20)
+Recordings of sites in a container on a per-site soft glow, 9:16, silent, with one topic line. Script `skills/motion-studio/scripts/site_reel.py`;
+look, geometry and the measured "staggered cut" (container first, background 3 frames later) are in
+`skills/motion-studio/library/styles/obsidian-glow.md`. No dissolve between sites. Check the join frames before sending.
+
 ## 11. Lessons (add new ones at the bottom)
 - SVG blur/threshold filters (goo, feTurbulence grain) render in raster tiles → faint horizontal seams on flat
   colour. Use canvas (our `liquid`, `Grain`) for anything that floods the frame.

@@ -21,7 +21,7 @@ locked: true                # BLACK + WHITE main, electric blue second, "lightbu
   Avant Intelligence — credit on screen and in VO as "powered by Avant Intelligence" (owner, 2026-10-10).
 - the psychology (owner): two competitors, same service, same price — the market assumes the one with the premium
   brand, site and marketing brings more value. Perception is the product.
-- owner: Nathaniel Dreyer · WhatsApp 079 244 9607 · domain: not registered yet (suggested obsidian.co.za)
+- owner: Nathaniel Dreyer · Instagram and X handles: NOT ON FILE, ask before any slide that shows them · WhatsApp 079 244 9607 · domain: not registered yet (suggested obsidian.co.za)
 
 ## Look
 - HOUSE STYLE (owner, 2026-10-10 — supersedes the "logic only, no screenshots" rule below for ads): **Obsidian
