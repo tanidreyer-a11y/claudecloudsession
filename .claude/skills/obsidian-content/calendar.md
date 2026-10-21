@@ -1,5 +1,7 @@
 # 30-day content calendar · 13 Oct – 11 Nov 2026
 
+> From 21 Oct 2026 the schedule is `content/plan/social-agent-brief.md` (28 days, buyer and peer posts, Obsidian Glow design). The rows below stay as the seed bank; the plan reuses most of them.
+
 **Status: 3 of 30 done.** ✅ = generated and delivered (folder in `content/posts/`).
 
 Weekly rhythm (one post a day):
