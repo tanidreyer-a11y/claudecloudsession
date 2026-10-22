@@ -83,6 +83,25 @@ rate. Test with one short clip first.
   money in Raylight", a "3D Mobile" template at $49, "You get 50%", "Apply now", raylight.app/creators). That is promotional
   copy inside a template, not terms. Confirm at raylight.app/creators before building a business plan on it.
 
+## Update 2026-10-22: what the connector offers now (read from the tool descriptions and raylight.app/docs; NOTHING below has been run)
+`get_editor_status` still said `connected: false`. The connector has grown two routes that do not depend on the owner's open tab, plus a reference library.
+1. **Motion reference library (free to read): `search_motion_references`, `get_motion_reference`.** 24 official templates, 113 scenes, each measured:
+   layer beats with arrival times, amounts, easings, camera, effects. Query by what a beat DOES ("typing in a prompt bar then click send",
+   "pull back to reveal a grid", "close on the wordmark"). Tags include ui, card, chip, chat, window, sidebar, liquid-glass, 3d, tilt, parallax.
+   **Use it for the UI problem:** the owner finds our UI "bland". In PLAN, run one search per UI beat, read the scenes you would borrow from,
+   and copy their timing, easing, settle shape, layer stagger and layout logic into our kit. Splice several sources; never rebuild one entry
+   one to one (L3). The library's own rule says the same.
+2. **Productions (costs credits): `create_production`, `list_productions`, `get_production`, `greenlight_production`, `comment_on_production`.**
+   A one-sentence intent plus optional context, media links, brand fields and `code` (React + Tailwind UI source, "rebuilt as canvas layers, never run")
+   gives a free pitch (script + shot list). Greenlighting charges 60 credits per second of video (300 to 900 credits for 5 to 15 s; the pitch quotes the
+   exact number). Output: a share link plus an editable project in the owner's "Raylight" folder, no watermark, sound on by default. A production is
+   at most 15 s. **Never greenlight without the owner's explicit yes: it spends his credits.** Free steps (create_production, which writes the pitch,
+   and reading it) are fine after he approves the brief. Use it for a 5 to 15 s UI moment inside a longer film (Route 2 below), not for the whole film.
+3. **`plan_film`** validates a from-scratch film plan against the library before `apply_edits` may add 3 or more shots to an empty project. Every beat
+   must cite a reference id you read. Editing still needs the live tab. `code_to_layers` and `critique_film` exist; their behaviour has not been read.
+Decision rule: the skill file still directs and builds the film. Raylight supplies (a) measured beat numbers, (b) optionally a short finished UI clip.
+If neither the tab nor credits are available, use (a) only and say so in the storyboard.
+
 ## Status
 Nothing in this file has been run end to end: no editor tab was connected on 2026-10-18. The first real test needs the owner
 to open a project from `list_projects` and keep the tab open.

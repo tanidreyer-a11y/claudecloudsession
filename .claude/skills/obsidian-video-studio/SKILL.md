@@ -10,6 +10,19 @@ sounds, animated and physical transitions". Keep the styles library; this file a
 Method sources (credited, not copied): Level 5 Workflow Guide (@visionaryclown.tv) and Motion as Code
 (pdoom-video by mexicat, MIT, `vendor/pdoom-video`). Every rule below is ours to apply in Obsidian's look.
 
+## Owner direction, 2026-10-22 (read before PLAN; not yet locked in `locked.md`)
+Owner's words after watching every film we made: "Kova is the only one I like. Kova is spot on brilliant. The transitions are perfect, everything
+else is perfect. That's how I want all ads to look." And: "the way the user interface templates are looking are bland ... use Raylight
+(raylight.app) for the user interfaces ... some things look dry."
+- **Benchmark film: OBS-KOVA** (`obsidian-ad/brand-film/src/Film10.tsx`, composition `OBS-KOVA`, render `render_kova.sh`, audio `audio/build_kova.py`;
+  the 33 s result is `Obsidian_Kova_made-by-Claude_9x16.mp4` if it is supplied with this pack). Before any storyboard, watch it (or contact-sheet it) and
+  write down what it does: pacing, how each transition is made, how the 3D and type arrive, how sound lands. New ads match that level of finish and that
+  kind of transition. The other films we made are NOT the benchmark. He also said he liked "a few other things we built" without naming them: ask which.
+- **UI comes from Raylight's measured references first** (`raylight.md`, update 2026-10-22): search the library per UI beat, borrow timing/easing/layout,
+  build it in our kit with real hierarchy and a bold element. A flat, template-looking screen is a fail ("dry"). Say in the storyboard which Raylight
+  scene each UI beat borrows from, or that Raylight was not reachable.
+- Honest status: this pack has not been run end to end by a fresh chat. If something in it does not work, say exactly what and stop; do not paper over it.
+
 ## 1. Pick the format
 | Owner asks for | Format | Built with |
 |---|---|---|
