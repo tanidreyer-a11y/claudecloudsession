@@ -1,0 +1,16 @@
+{
+  "style": "glow",
+  "claude": true,
+  "topic": "Tools for web designers",
+  "identity": {"name": "Nathaniel Dreyer", "instagram": "@_studioobsidian", "x": null, "tagline": "Building premium digital experiences."},
+  "slides": [
+    {"type": "glow_cover", "title": "One tool per job", "sub": "The six tools behind a modern website.", "logo_label": "Web design with Claude Code", "glow": "bl"},
+    {"type": "site", "rank": "Design", "name": "Figma", "line": "VERIFY on figma.com: one sentence, what it is for.", "url": "figma.com", "image": "shots/1-design.png", "video": {"src": "shots/1-design.mp4", "dur": 5}, "aspect": 1.778, "claude_mark": false, "glow": "br"},
+    {"type": "site", "rank": "Build", "name": "Claude Code", "line": "VERIFY on docs.claude.com: one sentence, what it does.", "url": "docs.claude.com", "image": "shots/2-build.png", "video": {"src": "shots/2-build.mp4", "dur": 5}, "aspect": 1.778, "claude_label": "Claude Code", "glow": "bl"},
+    {"type": "site", "rank": "Motion", "name": "GSAP + ScrollTrigger", "line": "Scroll-driven animation. Free under GSAP's standard licence (npm, 22 Oct 2026).", "url": "gsap.com", "image": "shots/3-motion.png", "video": {"src": "shots/3-motion.mp4", "dur": 5}, "aspect": 1.778, "claude_mark": false, "glow": "bc", "size": 70},
+    {"type": "site", "rank": "3D", "name": "three.js", "line": "Real-time 3D in the browser. Release 0.186.1, 24 Sep 2026 (npm).", "url": "threejs.org", "image": "shots/4-3d.png", "video": {"src": "shots/4-3d.mp4", "dur": 5}, "aspect": 1.778, "claude_mark": false, "glow": "br"},
+    {"type": "site", "rank": "Test", "name": "Playwright", "line": "Clicks through your site in real browsers. Version 1.64.1, 22 Oct 2026 (npm).", "url": "playwright.dev", "image": "shots/5-test.png", "video": {"src": "shots/5-test.mp4", "dur": 5}, "aspect": 1.778, "claude_mark": false, "glow": "bl"},
+    {"type": "site", "rank": "Deploy", "name": "Vercel", "line": "VERIFY on vercel.com: one sentence, what it does.", "url": "vercel.com", "image": "shots/6-deploy.png", "video": {"src": "shots/6-deploy.mp4", "dur": 5}, "aspect": 1.778, "claude_mark": false, "glow": "bc"},
+    {"type": "links", "title": "Save this for your next build.", "body": "Tip: learn one tool per job before you add a second.", "glow": "br"}
+  ]
+}

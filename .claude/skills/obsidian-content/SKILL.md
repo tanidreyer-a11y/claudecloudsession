@@ -84,6 +84,12 @@ When the post is about Claude / Claude Code, set `"claude": true` in slides.json
   ("top 3 3D platforms") run: cover, one `site` slide per entry (a screenshot, or the owner's screen recording as `video`), `links`.
   `slides.json` carries `"identity": {"name", "instagram", "x"}`; ask the owner for any missing handle (never guess one).
   This family overrides the "no gradient washes / no tinted near-black" tells below for glow slides only.
+- **Claude emblem on UI (owner, 2026-10-22):** "screenshots or screen recordings of UI with the Claude emblem on top". `"claude": true` in a glow
+  post puts the Claude symbol above the cover title, on top of each UI box (`claude_mark: false` to skip one; recommended on other companies'
+  products) and the non-affiliation line on the closing slide.
+- **No manual recording:** `scripts/capture_ui.cjs shots.json out/` captures a PNG and a 5 s MP4 per URL with Playwright. It needs open
+  internet: in cloud sessions most tool sites are blocked and Chromium rejects the proxy's TLS, so run it on the owner's computer or ask him for
+  the one file that failed. Fresh-chat handoff: `content/plan/CONTENT_PLAN.md` + the kit zip built from this folder.
 - Older black family template: `scripts/render_carousel.py` — black, white type, white emblem, Archivo (expanded 125 % / 800 for titles,
   normal width for body), JetBrains Mono **only** for code/commands. 1080×1350, 92 px side margins, footer = emblem +
   "Obsidian" + page "n / N". The cover carries the large two-bar emblem bleeding off the right edge.

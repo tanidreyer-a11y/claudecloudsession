@@ -90,7 +90,8 @@ mpath = mask(); files = []; report = []
 
 def topic_layer(t):
     """one line of text on a transparent 1080x1920 layer, drawn by headless Chrome in Archivo (the house font)."""
-    fonts = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..", ".claude", "skills", "obsidian-content", "assets", "fonts")
+    here = os.path.dirname(os.path.abspath(__file__))
+    fonts = next(f for f in (os.path.join(here, "..", "assets", "fonts"), os.path.join(here, "..", "..", "..", ".claude", "skills", "obsidian-content", "assets", "fonts")) if os.path.isdir(f))
     html = (f"<style>@font-face{{font-family:A;src:url('file://{fonts}/archivo-latin-wdth-normal.woff2');font-weight:100 900;font-stretch:62% 125%}}"
             f"html,body{{margin:0;width:{W}px;height:{H}px;background:transparent}}"
             f"div{{position:absolute;left:0;right:0;top:{t.get('y', 470)}px;transform:translateY(-50%);text-align:center;font:600 {t.get('size', 62)}px A;"
@@ -107,7 +108,7 @@ def intro_assets(it):
     returns rc (the carousel module), glow alpha HxW, identity RGBA HxWx4, header alpha HxW (the animated part), header box (y0, y1)."""
     import importlib.util
     here = os.path.dirname(os.path.abspath(__file__))
-    rc_path = os.path.join(here, "..", "..", "..", ".claude", "skills", "obsidian-content", "scripts", "render_carousel.py")
+    rc_path = next(p for p in (os.path.join(here, "render_carousel.py"), os.path.join(here, "..", "..", "..", ".claude", "skills", "obsidian-content", "scripts", "render_carousel.py")) if os.path.exists(p))
     sp = importlib.util.spec_from_file_location("rc", rc_path); rc = importlib.util.module_from_spec(sp); sp.loader.exec_module(rc)
     chrome = os.environ.get("CHROME", "/opt/pw-browsers/chromium-1194/chrome-linux/chrome")
     base = f"<style>{rc.CSS}html,body{{width:{W}px!important;height:{H}px!important;background:transparent!important}}</style>"

@@ -4,6 +4,9 @@
 # slides.json: {"claude": true?, "slides": [{"type": "cover"|"text"|"skill"|"end", "clawd"?: anchor, ...fields}]} — see
 # SKILL.md "Slide types". "claude": true marks a Claude-topic post: Claude symbol on the cover, Clawd stickers allowed,
 # non-affiliation line on the last slide.
+# GLOW family + Claude emblem (owner, 2026-10-22: "screenshots or screen recordings of UI with the Claude emblem on top"): with
+# "claude": true the cover carries the Claude symbol above the title, each `site` slide carries it on top of the UI box (optional
+# "claude_label", "claude_mark": false to skip one), and the `links` slide carries the non-affiliation line.
 # GLOW family (owner, 2026-10-20): "style": "glow" + slide types glow_cover | site | links = Obsidian's own identity (off-black with a
 # soft white glow rising from the bottom, the Obsidian emblem, the owner's face and handles). A `site` slide may carry "video": an mp4 of
 # the UI; the renderer then also writes slide_NN.mp4 (the video playing inside the container) next to the JPG poster.
@@ -124,6 +127,7 @@ def glow_slide(s, i, n, spec):
             under = f'<div style="position:absolute;inset:0;overflow:hidden"><img src="file://{s["_still"]}" style="width:100%;height:100%;object-fit:cover;filter:blur({VID_BLUR}px) brightness({VID_DIM}) saturate({VID_SAT});transform:scale(1.04)"></div>'
         return glow_wrap(f"""<div style="position:absolute;left:64px;top:64px;display:flex;align-items:center;gap:14px;font-size:30px;font-weight:600;font-stretch:112%;color:#F4F5F7">{emblem(40)}Obsidian</div>
           <div style="position:absolute;left:64px;right:64px;top:{s.get('top', 380)}px;text-align:center">
+            {f'<div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:44px">{claude_logo(54)}<span style="font-size:30px;color:#C9CBD2">{esc(s.get("logo_label", "Claude"))}</span></div>' if spec.get("claude") else ""}
             <div class="silver" style="font-size:{s.get('size', 112)}px;font-weight:650;font-stretch:112%;line-height:1.0;letter-spacing:-0.03em">{esc(s['title'])}</div>
             <div style="font-size:40px;line-height:1.3;color:#B9BCC4;margin-top:38px">{esc(s['sub'])}</div></div>
           <div style="position:absolute;left:64px;right:64px;bottom:76px;display:flex;justify-content:center">{identity(spec, 92)}</div>""", s, i, under)
@@ -133,7 +137,12 @@ def glow_slide(s, i, n, spec):
         by = y + h + 54
         pill = (f'<div style="display:inline-flex;align-items:center;gap:14px;margin-top:34px;padding:16px 28px 16px 22px;border-radius:999px;background:rgba(255,255,255,.10);'
                 f'border:1.5px solid rgba(255,255,255,.2);font-size:29px;color:#F4F5F7">{icon("link", 28, "#F4F5F7")}{esc(s["url"])}</div>') if s.get("url") else ""
-        return glow_wrap(f"""{label}
+        chip = ""
+        if spec.get("claude") and s.get("claude_mark", True):
+            lab = s.get("claude_label", "")
+            chip = (f'<div style="position:absolute;left:{x}px;top:{y - 58}px;display:flex;align-items:center;gap:10px;font-size:24px;color:#E6E7EA">'
+                    f'{claude_logo(34)}{esc(lab)}</div>')
+        return glow_wrap(f"""{label}{chip}
           <div style="position:absolute;left:{x}px;top:{y}px;width:{w}px;height:{h}px;border-radius:28px;overflow:hidden;background:#101114;border:1.5px solid rgba(255,255,255,.16);box-shadow:0 30px 70px rgba(0,0,0,.55)">{img}</div>
           <div style="position:absolute;left:{x}px;right:48px;top:{by}px">
             <div style="display:flex;align-items:baseline;gap:22px"><span style="font-size:34px;color:#8E919B;font-variant-numeric:tabular-nums">{esc(s.get('rank', ''))}</span>
@@ -149,7 +158,8 @@ def glow_slide(s, i, n, spec):
             <div style="font-size:42px;line-height:1.3;color:#C4C6CD;margin-top:40px">{esc(s['body'])}</div>
             <div style="display:flex;align-items:center;justify-content:center;gap:22px;margin-top:70px">{emblem(84)}<div style="text-align:left"><div style="font-size:42px;font-weight:700;font-stretch:118%;color:#F4F5F7">Obsidian</div>
               <div style="font-size:26px;color:#A3A6AF;margin-top:6px">{esc(s.get('tagline', 'Digital precision that builds reputation.'))}</div></div></div></div>
-          <div style="position:absolute;left:64px;right:64px;bottom:76px;display:flex;justify-content:center">{identity(spec, 92)}</div>""", s, i)
+          <div style="position:absolute;left:64px;right:64px;bottom:76px;display:flex;justify-content:center">{identity(spec, 92)}</div>
+          {'<div class="ink" style="position:absolute;left:64px;right:64px;bottom:26px;text-align:center;font-size:18px;opacity:.7">Claude and Claude Code are trademarks of Anthropic. Obsidian is not affiliated with Anthropic.</div>' if spec.get("claude") else ""}""", s, i)
     raise SystemExit(f"unknown glow slide type {t}")
 
 def cmd_size(lines, inner=W - 184 - 67):
