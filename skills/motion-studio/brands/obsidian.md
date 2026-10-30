@@ -24,6 +24,7 @@ locked: true                # BLACK + WHITE main, electric blue second, "lightbu
 - owner: Nathaniel Dreyer · Instagram and X handles: NOT ON FILE, ask before any slide that shows them · WhatsApp 079 244 9607 · domain: not registered yet (suggested obsidian.co.za)
 
 ## Look
+- BRAND BIBLE v1.0 (2026-10-30): `brands/obsidian-brand-bible/` (9 pages, white/black lockup PNGs, emblem SVGs, tokens CSS; rebuild with build.py). Logo files there replace the violet ones in obsidian-assets/ for any new work.
 - HOUSE STYLE (owner, 2026-10-10 — supersedes the "logic only, no screenshots" rule below for ads): **Obsidian
   Precision** (library/styles/obsidian-precision.md). Real hero sections and footage inside a monochrome UI world;
   one fixed container; the caret/hairline motif; cursor clicks cause the next beat; blur-to-sharp arrivals; recorded

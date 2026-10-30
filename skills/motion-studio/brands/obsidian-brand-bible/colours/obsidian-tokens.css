@@ -1,0 +1,19 @@
+/* Obsidian colour and type tokens (brand bible v1.0, 30 Oct 2026). Palette locked by the owner 2026-10-17; glow system 2026-10-20. */
+:root {
+  /* core */
+  --obsidian-black: #000000;        /* the main world, always dominant */
+  --obsidian-white: #F4F5F7;        /* type, and the white world (black ink on it) */
+  --obsidian-blue: #2F6BFF;         /* electric blue: light pools, buttons, impacts (light, never paint) */
+  --obsidian-deep-blue: #0A1330;    /* the blue world */
+  --obsidian-bulb: #FFFFFF;         /* lightbulb white: the focus point core */
+  --obsidian-bulb-halo: #FFE7C2;    /* its warm halo */
+  /* glow system (carousels, covers, intros) */
+  --obsidian-plate: #0A0A0C;        /* off-black background */
+  --obsidian-silver: #A9ADB6;       /* title gradient end (from #FFFFFF) */
+  --obsidian-body: #C4C6CD;         /* body text on dark */
+  --obsidian-muted: #8E919B;        /* labels, captions, page numbers */
+  --obsidian-ink: #0B0C0E;          /* the only text colour on the bright glow */
+  /* type */
+  --obsidian-font: "Archivo", Helvetica, Arial, sans-serif;   /* display 800 @ width 125 %; titles 650 @ 112 %; body 400 */
+  --obsidian-mono: "JetBrains Mono", ui-monospace, monospace;  /* code only */
+}
