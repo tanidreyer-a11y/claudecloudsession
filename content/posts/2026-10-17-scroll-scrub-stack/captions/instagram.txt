@@ -1,0 +1,13 @@
+One 5-second scroll animation. 19.2 MB of JPEG frames. 😬
+
+We measured our own Northlight build so you don't have to guess:
+• WebP frames: 8.3 MB
+• WebP at half size for phones: 3.5 MB
+• H.264 video: 3.0 MB, but only 2 of 150 frames are keyframes, so scrubbing stutters
+• Video with a keyframe on every frame: 5.9 MB
+
+Plus the stack we use: GSAP ScrollTrigger (now free, every plugin), Lenis for smooth scroll, and the CSS option that just landed everywhere.
+
+Save this for your next scroll-scrub build.
+
+#webdesign #gsap #scrollanimation #frontend #webperformance

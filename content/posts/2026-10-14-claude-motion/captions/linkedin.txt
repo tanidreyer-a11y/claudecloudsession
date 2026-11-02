@@ -1,0 +1,14 @@
+Claude can animate now.
+
+On 8 Oct Anthropic launched Claude Motion in beta. You describe the animation, Claude writes code that animates your own text, charts, shapes and images, and you download an MP4. There's no video generation model behind it, so no generated footage and no AI-generated people.
+
+Why that matters to me as a web designer: motion built from code stays editable. Change a word, a number or a timing and render again. That's the difference between brand work and a lucky generation.
+
+Who gets it: Team and Enterprise, for now.
+On Pro or Max: HyperFrames, an open-source framework from HeyGen, does the same job inside Claude Code and ships 210 ready animation blocks.
+
+Also on 8 Oct: Claude Docs, Slides and Design came out of beta, on every plan including Free.
+
+Would you use Motion for client work, or keep motion in your own pipeline?
+
+#ClaudeAI #MotionDesign #WebDesign

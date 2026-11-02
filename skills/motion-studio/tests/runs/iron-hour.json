@@ -1,0 +1,169 @@
+{
+ "client": "Iron Hour (gym)",
+ "brand": "iron-hour",
+ "axes": {
+  "energy": 5,
+  "warmth": 4,
+  "density": 4,
+  "realism": 4,
+  "polish": 3
+ },
+ "recipes": [
+  {
+   "recipe": {
+    "structure": "craft-reveal",
+    "pacing": "short-punch",
+    "camera": "vertical-travel",
+    "transitions": [
+     "duplicate-cascade",
+     "line-led",
+     "freeze-hook"
+    ],
+    "typography": "editorial-serif",
+    "colour": "cream-terracotta",
+    "ui_treatment": "photo-cards",
+    "motion_feel": "settle-stack",
+    "sound": "warm-cinematic",
+    "hook": "sensory-macro"
+   },
+   "lineage": [
+    "Cream Cascade",
+    "Cobalt Campaign",
+    "Midnight Signal"
+   ],
+   "nearest_card": "Cream Cascade",
+   "needs": [
+    "imagery"
+   ],
+   "names": {
+    "structure": "Craft reveal \u2014 raw material \u2192 process \u2192 finished product \u2192 people enjoying it",
+    "pacing": "Short punch \u2014 10\u201320 s, 0.4 cuts/s, sparse sound",
+    "camera": "Vertical travel \u2014 falls, drops and rises following one object",
+    "transitions": [
+     "Duplicate-and-offset cascade",
+     "Line draws and branches; camera follows the tip",
+     "Freeze and slow to 5 % on the hook word"
+    ],
+    "typography": "Editorial serif headlines, wide tracking caps labels",
+    "colour": "Cream + espresso + peach + terracotta",
+    "ui_treatment": "Photographic creatives on cards (ads, products, listings, dishes)",
+    "motion_feel": "Soft drops that settle into stacks, 100\u2013150 ms staggers",
+    "sound": "Warm cinematic bed, light percussion, very few SFX",
+    "hook": "Sensory macro shot (crust cracking, perfume mist, chalk dust)"
+   },
+   "fonts": [
+    "Playfair Display (OFL)",
+    "Cormorant (OFL)",
+    "Bodoni Moda (OFL)"
+   ],
+   "base": "Cream Cascade",
+   "base_id": "cream-cascade",
+   "donor": "Cobalt Campaign",
+   "donor_id": "cobalt-campaign",
+   "wildcard_slot": "hook"
+  },
+  {
+   "recipe": {
+    "structure": "hype-statements",
+    "pacing": "upbeat-1-1.5",
+    "camera": "locked-type",
+    "transitions": [
+     "beat-cut",
+     "word-roll",
+     "colour-block-wipe"
+    ],
+    "typography": "heavy-rounded",
+    "colour": "mono-flip-gradient",
+    "ui_treatment": "flow-nodes",
+    "motion_feel": "snappy-pop",
+    "sound": "punchy-electronic",
+    "hook": "rolling-slot"
+   },
+   "lineage": [
+    "Kinetic Pop",
+    "Sunset Prompt",
+    "Deep Glass"
+   ],
+   "nearest_card": "Cream Cascade",
+   "needs": [],
+   "names": {
+    "structure": "Statement \u2192 statement \u2192 proof wall \u2192 CTA (music-led)",
+    "pacing": "Upbeat \u2014 beat every 1\u20131.5 s, cuts on the downbeat",
+    "camera": "Locked frame \u2014 motion lives in type and elements",
+    "transitions": [
+     "Hard cut on the downbeat",
+     "Vertical word roll / slot-machine swap",
+     "Colour-block step wipe"
+    ],
+    "typography": "Heavy rounded statements filling the width",
+    "colour": "Paper \u2194 charcoal flips + one loud gradient for hero frames",
+    "ui_treatment": "Nodes and gradient tiles joined by elbow lines",
+    "motion_feel": "Snappy springs with overshoot, 40\u201380 ms staggers",
+    "sound": "Punchy electronic with risers into downbeats",
+    "hook": "Headline with one rolling word slot"
+   },
+   "fonts": [
+    "Poppins (OFL)",
+    "Nunito (OFL)"
+   ],
+   "base": "Kinetic Pop",
+   "base_id": "kinetic-pop",
+   "donor": "Sunset Prompt",
+   "donor_id": "sunset-prompt",
+   "wildcard_slot": "ui_treatment"
+  },
+  {
+   "recipe": {
+    "structure": "craft-reveal",
+    "pacing": "measured-1.5-2",
+    "camera": "locked-type",
+    "transitions": [
+     "fog-wash",
+     "card-flip",
+     "page-turn"
+    ],
+    "typography": "serif-greeting",
+    "colour": "sunset-gradient",
+    "ui_treatment": "photo-cards",
+    "motion_feel": "crisp-ui",
+    "sound": "acoustic-human",
+    "hook": "before-after"
+   },
+   "lineage": [
+    "Lavender Desk",
+    "Cobalt Campaign",
+    "Sunset Prompt"
+   ],
+   "nearest_card": "Cream Cascade",
+   "needs": [
+    "imagery"
+   ],
+   "names": {
+    "structure": "Craft reveal \u2014 raw material \u2192 process \u2192 finished product \u2192 people enjoying it",
+    "pacing": "Measured \u2014 new beat every 1.5\u20132 s, in-camera scene changes",
+    "camera": "Locked frame \u2014 motion lives in type and elements",
+    "transitions": [
+     "Background wash changes colour/family between chapters",
+     "Card flip reveal",
+     "Page turn / paper transitions"
+    ],
+    "typography": "Serif display (gradient) + clean grotesk UI",
+    "colour": "White + full-bleed coral\u2192periwinkle\u2192peach gradients",
+    "ui_treatment": "Photographic creatives on cards (ads, products, listings, dishes)",
+    "motion_feel": "Crisp 200\u2013300 ms ease-out, human typing cadence",
+    "sound": "Acoustic/organic (guitar, piano, hand percussion) \u2014 royalty-free or licensed",
+    "hook": "Before/after split or slider"
+   },
+   "fonts": [
+    "Fraunces (OFL)",
+    "Newsreader (OFL)",
+    "Inter (OFL)"
+   ],
+   "base": "Lavender Desk",
+   "base_id": "lavender-desk",
+   "donor": "Cobalt Campaign",
+   "donor_id": "cobalt-campaign",
+   "wildcard_slot": "motion_feel"
+  }
+ ]
+}

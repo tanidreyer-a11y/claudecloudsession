@@ -1,0 +1,51 @@
+{
+ "file": "ref04.mov",
+ "duration": 10.16,
+ "resolution": "828x1792",
+ "active_area": "1792:828:0:0",
+ "cuts": [],
+ "shots": 1,
+ "avg_shot_s": 10.16,
+ "cuts_per_s": 0.0,
+ "palette": [
+  [
+   "#F4F0ED",
+   0.484
+  ],
+  [
+   "#443834",
+   0.202
+  ],
+  [
+   "#DDB293",
+   0.148
+  ],
+  [
+   "#A9826F",
+   0.102
+  ],
+  [
+   "#F6F3F1",
+   0.037
+  ],
+  [
+   "#FEFAF9",
+   0.027
+  ]
+ ],
+ "mean_luminance": 0.729,
+ "lufs": -14.4,
+ "silence_ratio": 0.0,
+ "onsets": [
+  0.38,
+  0.59,
+  2.29,
+  4.99,
+  5.18,
+  6.66,
+  8.25,
+  8.43
+ ],
+ "onsets_per_s": 0.79,
+ "tempo_bpm_guess": 77.9
+}

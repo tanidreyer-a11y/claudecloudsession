@@ -1,0 +1,112 @@
+{
+ "claude": false,
+ "slides": [
+  {
+   "type": "cover",
+   "title": "One scroll. 19 MB.",
+   "size": 124,
+   "sub": "A 5-second scroll-scrub, measured: frames or video, the scroll engine, smooth scroll, and what each costs.",
+   "cue": "Swipe"
+  },
+  {
+   "type": "text",
+   "kicker": "How it works",
+   "title": "Scroll is the playhead.",
+   "body": "A scroll-scrub section is an animation exported as frames, here **150 of them**. As you scroll, the page shows the frame that matches your position.",
+   "close": "Two ways to do it: draw frames on a canvas, or set a video's currentTime from the scroll."
+  },
+  {
+   "type": "bars",
+   "kicker": "Same 150 frames, measured",
+   "title": "What it weighs",
+   "size": 84,
+   "bars": [
+    [
+     "JPEG frames",
+     19.2,
+     "MB"
+    ],
+    [
+     "AVIF frames (q60)",
+     8.8,
+     "MB"
+    ],
+    [
+     "WebP frames (q80)",
+     8.3,
+     "MB"
+    ],
+    [
+     "WebP, half size for phones",
+     3.5,
+     "MB",
+     true
+    ],
+    [
+     "H.264 video, keyframe every frame",
+     5.9,
+     "MB"
+    ],
+    [
+     "H.264 video, default",
+     3.0,
+     "MB"
+    ]
+   ],
+   "note": "Our Northlight build, 1440×900 frames, measured 17 Oct 2026. AVIF came out bigger than WebP at these settings: test your own frames.",
+   "source": "our measurement (Pillow, FFmpeg 6.1 libx264 crf 23)"
+  },
+  {
+   "type": "text",
+   "kicker": "Frames or video",
+   "title": "Video is lighter. Seeking isn't free.",
+   "size": 72,
+   "body": "In the default file only **2 of 150 frames** are keyframes. Jumping to 4.65 s decodes about 38 frames first.",
+   "close": "A keyframe on every frame (**-g 1**) fixes that, and doubles the file: 3.0 to 5.9 MB.",
+   "source": "keyframes counted with ffprobe; -g = GOP size (ffmpeg -h full)"
+  },
+  {
+   "type": "skill",
+   "kicker": "The scroll engine",
+   "name": "ScrollTrigger",
+   "maker": "Part of GSAP. Free, every plugin included.",
+   "what": "Links an animation's progress to the scrollbar. **scrub: true** locks it to the scroll; **scrub: 1** takes one second to catch up, which feels smoother.",
+   "use": "Frame sequences, pinned sections, anything scrubbed.",
+   "install": [
+    "npm install gsap"
+   ],
+   "install_label": "Install",
+   "source": "github.com/greensock/GSAP; gsap-skills; npm gsap 3.15.0"
+  },
+  {
+   "type": "skill",
+   "kicker": "Smooth scroll",
+   "name": "Lenis",
+   "maker": "Open source (MIT), by darkroom.engineering",
+   "what": "Smooths the wheel but **runs on native scroll**, so position: sticky, anchor links and accessibility keep working. Its README shows the ScrollTrigger hookup.",
+   "use": "Scrub sections that feel steppy on a mouse wheel.",
+   "install": [
+    "npm i lenis",
+    "lenis.on('scroll', ScrollTrigger.update)"
+   ],
+   "install_label": "Install, then sync with ScrollTrigger",
+   "source": "github.com/darkroomengineering/lenis README; lenis 1.3.27, 15 Oct 2026"
+  },
+  {
+   "type": "text",
+   "kicker": "The no-JavaScript option",
+   "title": "CSS scrubs now.",
+   "body": "**animation-timeline: scroll()** ties a CSS animation to scroll. Chrome since 115, Safari since 26, and Firefox adds it in **159, due 27 Oct**.",
+   "close": "Great for reveals and progress bars. Frame sequences still need a canvas.",
+   "source": "MDN browser-compat-data, css/properties/animation-timeline"
+  },
+  {
+   "type": "end",
+   "kicker": "Our rule of thumb",
+   "title": "Ship frames light.",
+   "body": "WebP at the size it's shown, half size on phones, and the first 20 frames before anything else. Use video only with a keyframe on every frame.",
+   "note": "Test on a mid-range phone. Smooth on a MacBook proves nothing.",
+   "cta": "Save this for your next build."
+  }
+ ]
+}

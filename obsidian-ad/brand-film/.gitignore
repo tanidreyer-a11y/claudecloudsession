@@ -1,0 +1,7 @@
+node_modules
+out/
+audio/*.wav
+public/site/
+public/heroes2/
+public/footage/
+public/ad1/

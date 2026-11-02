@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SmartTech NXT — Crossroads</title>
+<style>
+@font-face{font-family:Roboto;font-weight:100;src:url(node_modules/@fontsource/roboto/files/roboto-latin-100-normal.woff2)}
+@font-face{font-family:Roboto;font-weight:300;src:url(node_modules/@fontsource/roboto/files/roboto-latin-300-normal.woff2)}
+@font-face{font-family:Roboto;font-weight:400;src:url(node_modules/@fontsource/roboto/files/roboto-latin-400-normal.woff2)}
+@font-face{font-family:Roboto;font-weight:500;src:url(node_modules/@fontsource/roboto/files/roboto-latin-500-normal.woff2)}
+/* ===== SmartTech NXT brand bible 2021 ===== */
+:root{ --navy:#002548; --navy-d:#00172E; --navy-l:#0B3A66; --lime:#B5D334; --white:#FFFFFF;
+  --ink2:rgba(255,255,255,.62); --ink3:rgba(255,255,255,.34); --glass:rgba(255,255,255,.055); --stroke:rgba(255,255,255,.14); --err:#FF6B5E }
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#000;overflow:hidden}
+#stage{position:relative;width:1920px;height:1080px;overflow:hidden;font-family:Roboto,sans-serif;color:#fff;
+  background:var(--navy)}
+#tex{position:absolute;left:-10%;top:-10%;width:120%;height:120%;background:url(../brand/img_p6_0.png) center/cover;opacity:.5}
+#world{position:absolute;left:0;top:0;width:0;height:0;transform-origin:0 0}
+#world > *{position:absolute}
+.c{transform:translate(-50%,-50%)}
+.win{width:420px;border-radius:16px;background:rgba(8,40,74,.78);border:1px solid var(--stroke);box-shadow:0 30px 80px rgba(0,8,20,.45);overflow:hidden}
+.win .tb{height:40px;display:flex;align-items:center;gap:8px;padding:0 16px;border-bottom:1px solid rgba(255,255,255,.08)}
+.win .tb b{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.22)}
+.win .tb span{margin-left:10px;font-size:13px;letter-spacing:.16em;color:var(--ink2)}
+.win .bd{padding:18px 20px 22px}
+.fld{margin-bottom:12px}
+.fld .l{font-size:11px;letter-spacing:.14em;color:var(--ink3);margin-bottom:6px;text-transform:uppercase}
+.fld .v{height:34px;border-radius:7px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);padding:0 12px;display:flex;align-items:center;font-size:16px;font-weight:300;white-space:nowrap;overflow:hidden}
+.fld .v.err{border-color:rgba(255,107,94,.6);color:#FFB3AB}
+.caret{display:inline-block;width:1.5px;height:18px;background:#fff;margin-left:2px}
+.doc{width:400px;border-radius:10px;background:#F2F4F7;color:#0E2235;padding:32px 34px;box-shadow:0 40px 100px rgba(0,8,20,.55)}
+.doc h4{font-size:20px;font-weight:500;letter-spacing:.02em}
+.doc .m{font-size:12px;letter-spacing:.12em;color:#6C7A89;margin:6px 0 22px}
+.doc .r{display:flex;justify-content:space-between;height:40px;align-items:center;border-bottom:1px solid #DDE2E8;font-size:15px}
+.doc .r b{font-weight:500}
+.doc .bar{height:8px;border-radius:4px;background:#DDE2E8;margin:12px 0}
+.bub{padding:20px 30px;border-radius:30px 30px 30px 8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);font-size:34px;font-weight:300;white-space:nowrap;backdrop-filter:blur(6px)}
+.bub i{display:block;font-style:normal;font-size:16px;letter-spacing:.14em;color:var(--ink3);margin-bottom:6px;text-transform:uppercase}
+.bub.ok{background:rgba(181,211,52,.12);border-color:rgba(181,211,52,.45);border-radius:20px 20px 6px 20px}
+.chip{padding:9px 16px;border-radius:9px;background:rgba(181,211,52,.14);border:1px solid rgba(181,211,52,.6);font-size:16px;white-space:nowrap;color:#fff}
+.row{font-size:30px;font-weight:300;white-space:nowrap;color:rgba(255,255,255,.85)}
+.row span{color:var(--lime);margin-right:26px;font-weight:400;letter-spacing:.04em}
+.person{width:44px;height:58px}
+.ldot{width:22px;height:22px;border-radius:50%;background:var(--lime);box-shadow:0 0 22px 5px rgba(181,211,52,.5)}
+.cap{position:absolute;left:160px;top:880px;font-size:30px;font-weight:300;letter-spacing:.34em;text-transform:uppercase;white-space:nowrap}
+.cap b{color:var(--lime);font-weight:400}
+#flash{position:absolute;inset:0;background:var(--lime);opacity:0;pointer-events:none}
+#grain{position:absolute;inset:0;opacity:.06;pointer-events:none;mix-blend-mode:overlay}
+#vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 75% 75% at 50% 50%,transparent 45%,rgba(0,12,26,.9) 100%)}
+.letter{fill:#fff}.antenna{fill:var(--lime)}.nxt{fill:var(--lime)}#dot{fill:#fff}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="tex"></div>
+  <div id="world"></div>
+  <div id="screen" style="position:absolute;inset:0"></div>
+  <div id="flash"></div>
+  <svg id="grain" width="1920" height="1080"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+  <div id="vig"></div>
+</div>
+<template id="wordmark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1409.3 190.8" width="1409.3" height="190.8">
+<path id="L0" class="letter" fill-rule="nonzero" d="M0.00 171.85C0.00 171.85 16.59 190.84 46.71 190.84C74.00 190.84 91.02 173.16 91.02 151.12C91.02 100.04 12.88 112.48 12.88 72.10C12.88 57.26 26.41 41.98 49.11 41.98C69.41 41.98 82.51 55.07 82.51 55.07L87.75 47.00C87.75 47.00 73.78 32.81 48.89 32.81C21.17 32.81 3.06 52.02 3.06 72.32C3.06 120.12 81.20 108.12 81.20 151.55C81.20 169.89 66.14 181.67 47.15 181.67C21.83 181.67 6.33 164.65 6.33 164.65L0.00 171.85"/>
+<path id="L1" class="letter" fill-rule="nonzero" d="M109.57 188.22L118.96 188.22L128.35 71.66C129.00 64.24 129.00 50.93 129.00 50.93L129.44 50.93C129.44 50.93 134.24 64.46 137.51 71.66L178.33 158.76L187.93 158.76L228.97 71.66C232.46 64.24 236.83 51.36 236.83 51.36L237.26 51.36C237.26 51.36 237.26 64.24 237.92 71.66L247.31 188.22L256.69 188.22L244.47 35.43L235.30 35.43L190.77 131.47C187.28 138.89 183.35 148.71 183.35 148.71L182.91 148.71C182.91 148.71 178.98 138.89 175.49 131.47L130.96 35.43L121.80 35.43L109.57 188.22"/>
+<path id="L2" class="letter" fill-rule="nonzero" d="M399.88 188.22L342.69 35.43L332.65 35.43L275.46 188.22L285.50 188.22L305.15 135.40L369.97 135.40L389.84 188.22L399.88 188.22M366.70 126.67L308.42 126.67L331.78 64.68C334.18 58.13 337.45 46.34 337.45 46.34L337.89 46.34C337.89 46.34 341.16 58.13 343.56 64.68L366.70 126.67"/>
+<path id="L3" class="letter" fill-rule="nonzero" d="M516.43 76.68C516.43 59.22 507.92 46.34 495.26 40.01C489.15 36.96 481.95 35.43 467.76 35.43L423.01 35.43L423.01 188.22L432.40 188.22L432.40 120.56L476.27 120.56L512.51 188.22L523.64 188.22L489.37 124.70C487.40 120.99 485.88 119.25 485.88 119.25L485.88 118.81C503.77 114.88 516.43 98.51 516.43 76.68M506.61 76.68C506.61 97.42 493.95 111.83 473.87 111.83L432.40 111.83L432.40 44.16L467.32 44.16C479.55 44.16 484.35 45.25 488.71 47.22C499.85 52.24 506.61 63.15 506.61 76.68"/>
+<path id="antenna" class="antenna" fill-rule="nonzero" d="M522.73 0.00H692.01V8.46H522.73Z"/>
+<path id="L4" class="letter" fill-rule="nonzero" d="M690.83 44.16L690.83 35.43L646.96 35.43L624.42 35.43L624.48 188.22L633.86 188.22L633.86 44.16L646.96 44.16L690.83 44.16M590.10 35.43L567.51 35.43L523.63 35.43L523.63 44.16L567.51 44.16L580.60 44.16L580.60 188.22L589.99 188.22L590.10 35.43"/>
+<path id="L5" class="letter" fill-rule="nonzero" d="M707.42 188.22L795.17 188.22L795.17 179.49L716.81 179.49L716.81 115.54L777.70 115.54L777.70 106.81L716.81 106.81L716.81 44.16L791.02 44.16L791.02 35.43L707.42 35.43L707.42 188.22"/>
+<path id="L6" class="letter" fill-rule="nonzero" d="M807.17 110.73C807.17 155.04 839.26 190.84 883.79 190.84C920.89 190.84 941.41 167.70 941.41 167.70L935.52 161.16C935.52 161.16 916.53 181.89 883.79 181.89C845.37 181.89 817.00 150.46 817.00 110.73C817.00 71.23 845.59 41.76 883.13 41.76C913.69 41.76 931.81 59.00 931.81 59.00L937.48 52.02C937.48 52.02 919.15 32.81 882.92 32.81C839.91 32.81 807.17 66.42 807.17 110.73"/>
+<path id="L7" class="letter" fill-rule="nonzero" d="M964.55 188.22L973.93 188.22L973.93 115.97L1070.85 115.97L1070.85 188.22L1080.23 188.22L1080.23 35.43L1070.85 35.43L1070.85 107.24L973.93 107.24L973.93 35.43L964.55 35.43L964.55 188.22"/>
+<path id="N0" class="nxt" fill-rule="nonzero" d="M1117.95 186.66L1126.66 186.66L1126.66 136.06C1126.66 131.09 1127.08 126.32 1128.32 121.96C1133.51 102.68 1150.72 88.99 1170.21 88.99C1193.43 88.99 1195.72 106.00 1195.72 124.04L1195.72 186.66L1204.42 186.66L1204.42 120.93C1204.42 96.46 1197.17 80.49 1170.21 80.49C1144.29 80.49 1129.77 99.98 1126.25 109.73L1125.83 109.73C1125.83 109.73 1126.66 106.00 1126.66 101.23L1126.66 82.98L1117.95 82.98L1117.95 186.66"/>
+<path id="N1" class="nxt" fill-rule="nonzero" d="M1216.14 186.66L1226.93 186.66L1255.54 143.74C1257.62 140.63 1259.27 137.72 1259.27 137.72L1259.69 137.72C1259.69 137.72 1261.56 140.83 1263.42 143.74L1292.04 186.66L1302.82 186.66L1265.50 131.92L1298.88 82.98L1288.31 82.98L1263.21 120.72C1261.56 123.42 1259.69 126.53 1259.69 126.53L1259.27 126.53C1259.27 126.53 1257.41 123.42 1255.75 120.72L1230.66 82.98L1220.08 82.98L1253.47 131.92L1216.14 186.66"/>
+<path id="N2" class="nxt" fill-rule="nonzero" d="M1249.17 186.66L1259.95 186.66L1288.57 143.74C1290.64 140.63 1292.30 137.72 1292.30 137.72L1292.72 137.72C1292.72 137.72 1294.58 140.83 1296.45 143.74L1325.06 186.66L1335.85 186.66L1298.52 131.92L1331.91 82.98L1321.33 82.98L1296.24 120.72C1294.58 123.42 1292.72 126.53 1292.72 126.53L1292.30 126.53C1292.30 126.53 1290.43 123.42 1288.78 120.72L1263.68 82.98L1253.11 82.98L1286.49 131.92L1249.17 186.66"/>
+<path id="dot" class="dot" fill-rule="nonzero" d="M1353.29 171.68C1349.23 171.68 1345.93 174.99 1345.93 179.04C1345.93 183.10 1349.23 186.41 1353.29 186.41C1357.35 186.41 1360.66 183.10 1360.66 179.04C1360.66 174.99 1357.35 171.68 1353.29 171.68"/>
+<path id="N3" class="nxt" fill-rule="nonzero" d="M1371.16 149.13C1371.16 183.55 1393.35 187.49 1404.13 187.49C1407.24 187.49 1409.31 187.07 1409.31 187.07L1409.31 178.99C1409.31 178.99 1407.45 179.40 1404.54 179.40C1396.25 179.40 1379.87 175.88 1379.87 148.51L1379.87 91.48L1407.03 91.48L1407.03 83.60L1379.87 83.60L1379.87 35.19L1371.16 35.19L1371.16 83.60L1346.38 83.60L1346.38 91.48L1371.16 91.48L1371.16 149.13"/>
+</svg></template>
+<template id="avatar"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 206 206" width="206" height="206">
+<path id="ring" fill="#002548" stroke="#bfd42f" stroke-width="4.0" fill-rule="nonzero" d="M98.68 198.01C153.36 198.01 197.68 153.68 197.68 99.01C197.68 44.33 153.36 0.00 98.68 0.00C44.00 0.00 -0.33 44.33 -0.33 99.01C-0.33 153.68 44.00 198.01 98.68 198.01"/>
+<path id="tee" fill="#ffffff" stroke="none" stroke-width="0" fill-rule="nonzero" d="M153.00 71.28L153.00 65.60L124.45 65.60L109.85 65.60L109.85 71.50L109.81 71.50L109.81 165.05L115.92 165.05L115.92 71.28L124.45 71.28L153.00 71.28M87.43 65.60L72.73 65.60L44.17 65.60L44.17 71.28L72.73 71.28L81.25 71.28L81.25 165.05L87.36 165.05L87.36 71.28L87.43 71.28L87.43 65.60"/>
+<path id="bar" fill="#bfd42f" stroke="none" stroke-width="0" fill-rule="nonzero" d="M43.59 42.54H153.77V48.05H43.59Z"/>
+<path id="adot" fill="#bfd42f" stroke="none" stroke-width="0" fill-rule="nonzero" d="M132.04 154.97C129.25 154.97 126.99 157.23 126.99 160.01C126.99 162.79 129.25 165.05 132.04 165.05C134.82 165.05 137.08 162.79 137.08 160.01C137.08 157.23 134.82 154.97 132.04 154.97"/>
+</svg></template>
+<script src="timing.js"></script>
+<script src="film.js"></script>
+</body>
+</html>

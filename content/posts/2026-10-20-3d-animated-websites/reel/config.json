@@ -1,0 +1,121 @@
+{
+ "clips": [
+  {
+   "name": "batto",
+   "src": "/root/.claude/uploads/c4a5069d-a34a-58d2-a335-0631d389d9ef/904c7677-ScreenRecording_10-20-2026_15-11-26_1.mov",
+   "segments": [
+    [
+     0.0,
+     2.0
+    ],
+    [
+     3.5,
+     2.0
+    ]
+   ],
+   "glow": [
+    "#C99A3E",
+    "#1B3A78"
+   ],
+   "focus": 0.2
+  },
+  {
+   "name": "headset",
+   "src": "/root/.claude/uploads/c4a5069d-a34a-58d2-a335-0631d389d9ef/98b7d284-ScreenRecording_10-20-2026_15-14-30_1.mov",
+   "segments": [
+    [
+     0.12,
+     4.0
+    ]
+   ],
+   "glow": [
+    "#5F7CC9",
+    "#B9A48E"
+   ],
+   "focus": 0.12
+  },
+  {
+   "name": "mizukagami",
+   "src": "/root/.claude/uploads/c4a5069d-a34a-58d2-a335-0631d389d9ef/b533cf2e-ScreenRecording_10-20-2026_15-15-38_1.mov",
+   "segments": [
+    [
+     0.0,
+     4.0
+    ]
+   ],
+   "glow": [
+    "#B8607E",
+    "#1F3A4D"
+   ],
+   "focus": 0.0
+  },
+  {
+   "name": "scroll_cinematic",
+   "src": "/root/.claude/uploads/c4a5069d-a34a-58d2-a335-0631d389d9ef/422b8713-ScreenRecording_10-20-2026_15-17-59_1.mov",
+   "segments": [
+    [
+     1.9,
+     4.0
+    ]
+   ],
+   "glow": [
+    "#6A4CD8",
+    "#1F4FA8"
+   ],
+   "focus": 0.5
+  },
+  {
+   "name": "norr",
+   "src": "/root/.claude/uploads/c4a5069d-a34a-58d2-a335-0631d389d9ef/5e576f6a-NORR___Quiet_objects_for_calm_homes_and_3_more_pages_-_Personal_-_Microsoft_Edge_2026-10-12_18-56-22.mp4",
+   "segments": [
+    [
+     6.6,
+     8.0
+    ]
+   ],
+   "crop": [
+    8,
+    127,
+    1890,
+    904
+   ],
+   "glow": [
+    "#C28A52",
+    "#6B5A48"
+   ],
+   "focus": 0.45
+  }
+ ],
+ "w": 1080,
+ "h": 1920,
+ "cw": 1080,
+ "ch": 608,
+ "radius": 18,
+ "fps": 60,
+ "cy": 568,
+ "stagger": 3,
+ "intro": {
+  "text": "3D animated<br>websites",
+  "dur": 2.5,
+  "size": 112,
+  "y": 690,
+  "glow": "bc",
+  "ident_bottom": 240,
+  "video": {
+   "src": "/root/.claude/uploads/c4a5069d-a34a-58d2-a335-0631d389d9ef/ae3ac71c-ScreenRecording_10-20-2026_18-46-45_1.mov",
+   "start": 0.4,
+   "crop": [
+    0,
+    0,
+    828,
+    1490
+   ]
+  }
+ },
+ "identity": {
+  "name": "Nathaniel Dreyer",
+  "instagram": "@_studioobsidian",
+  "x": null,
+  "tagline": "Building premium digital experiences."
+ }
+}

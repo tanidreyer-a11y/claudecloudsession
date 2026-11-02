@@ -1,0 +1,18 @@
+POST 1 (attach images from folder post-1: 01–04)
+
+AI websites all look the same.
+
+@AnthropicAI explains why: without direction, the model samples the "high-probability center". Inter, purple gradients, minimal animation.
+
+5 @claudeai skills that fix it, with install commands 🧵
+
+
+POST 2 (reply to post 1, attach images from folder post-2: 05–08)
+
+3. UI/UX Pro Max: a design system from your brief
+4. GSAP skills: ScrollTrigger pin + scrub, done right
+5. webapp-testing: Claude screenshots its own build
+
+Impeccable by @pbakaus is the last pass I'd run.
+
+Read a skill before you install it.

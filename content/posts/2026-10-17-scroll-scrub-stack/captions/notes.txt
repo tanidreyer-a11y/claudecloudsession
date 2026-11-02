@@ -1,0 +1,4 @@
+Tagged: @darkroomdevs (Lenis) only. The handle is linked from Lenis's own README (github.com/darkroomengineering/lenis), opened 17 Oct 2026.
+Not tagged: GSAP / GreenSock and Webflow. No handle is linked from the GSAP README or the gsap-skills README; gsap.com was unreachable from here, so no handle was confirmed today.
+Not tagged: MDN. Data came from the mdn/browser-compat-data repo; no handle confirmed today.
+Posting note: Firefox 159 is listed as beta with release date 2026-10-27 in browser-compat-data. If this posts after 27 Oct, change "adds it in 159, due 27 Oct" to "since 159".

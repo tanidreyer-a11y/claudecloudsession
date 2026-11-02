@@ -1,0 +1,9 @@
+POST 1 (slides 1–4)
+One 5-second scroll animation: 19.2 MB of JPEG frames.
+
+We measured the same 150 frames as WebP, AVIF and video. The lightest isn't the smoothest.
+
+POST 2 (reply, slides 5–8)
+The stack: GSAP ScrollTrigger (free, every plugin), Lenis by @darkroomdevs for smooth scroll, and CSS animation-timeline, which Firefox 159 adds on 27 Oct.
+
+Our rule: WebP at shown size, half size on phones.

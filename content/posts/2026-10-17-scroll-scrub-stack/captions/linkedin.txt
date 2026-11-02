@@ -1,0 +1,16 @@
+A 5-second scroll-scrub animation on one of our builds weighed 19.2 MB as JPEG frames.
+
+So we measured the alternatives on the same 150 frames (1440×900):
+- WebP: 8.3 MB
+- WebP at half size for phones: 3.5 MB
+- AVIF at q60: 8.8 MB (bigger than WebP at these settings, which surprised me)
+- H.264 video: 3.0 MB, but only 2 of the 150 frames were keyframes, so seeking to the end means decoding about 38 frames first
+- H.264 with a keyframe on every frame: 5.9 MB
+
+The stack we build these with: GSAP's ScrollTrigger (scrub ties the animation to the scrollbar), Lenis for smooth scrolling on native scroll, and CSS animation-timeline for simple reveals. Per MDN's compatibility data, Firefox 159 adds it on 27 October, after Chrome (115) and Safari (26).
+
+Our rule: WebP at the size it's shown, half size on phones, and the first 20 frames before anything else.
+
+How heavy is the heaviest scroll section you've shipped?
+
+#webdesign #frontend #webperformance

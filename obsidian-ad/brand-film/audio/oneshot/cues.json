@@ -1,0 +1,18 @@
+[
+ {"t": 0.15, "sfx": "tick", "db": -10, "args": {"f": 2600}},
+ {"t": 1.00, "sfx": "tick", "db": -14, "pan": -0.4}, {"t": 1.06, "sfx": "tick", "db": -14, "pan": 0.4},
+ {"t": 1.12, "sfx": "tick", "db": -14, "pan": -0.2}, {"t": 1.18, "sfx": "tick", "db": -14, "pan": 0.2},
+ {"t": 1.25, "sfx": "whoosh", "db": -18, "args": {"dur": 0.8, "bright": 0.6}},
+ {"t": 2.35, "sfx": "whoosh", "db": -14, "args": {"dur": 0.7, "bright": 0.9}},
+ {"t": 3.05, "sfx": "whoosh", "db": -16, "args": {"dur": 0.45, "bright": 1.2}},
+ {"t": 3.42, "sfx": "pop", "db": -12, "args": {"f": 700}},
+ {"t": 4.35, "sfx": "ping", "db": -20, "args": {"f": 1760, "dur": 0.9}},
+ {"t": 4.85, "sfx": "whoosh", "db": -10, "args": {"dur": 2.1, "bright": 0.8}},
+ {"t": 6.90, "sfx": "pop", "db": -8, "args": {"f": 520}}, {"t": 6.92, "sfx": "lock", "db": -12},
+ {"t": 7.42, "sfx": "hit808", "db": -10, "args": {"f0": 46, "dur": 1.0}},
+ {"t": 7.55, "sfx": "riser", "db": -18, "args": {"dur": 1.3}},
+ {"t": 9.50, "sfx": "punch", "db": -8},
+ {"t": 9.60, "sfx": "whoosh", "db": -14, "args": {"dur": 0.7, "bright": 0.7}},
+ {"t": 10.25, "sfx": "stamp", "db": -12},
+ {"t": 10.30, "sfx": "ping", "db": -18, "args": {"f": 1320, "dur": 1.6}}
+]

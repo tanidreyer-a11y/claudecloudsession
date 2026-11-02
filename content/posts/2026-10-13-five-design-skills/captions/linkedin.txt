@@ -1,0 +1,17 @@
+AI-built websites have a look. You've seen it: Inter, a purple gradient, the same rounded cards.
+
+Anthropic explained why: without direction, a model samples from the "high-probability center" of its training data. The fix isn't a better prompt every time. It's giving Claude a point of view before it writes code.
+
+These are the 5 skills I'd install first as a web designer:
+
+1. frontend-design (Anthropic): plans the palette, type and layout, then checks the plan against generic defaults
+2. Impeccable (Paul Bakaus): 24 commands for audit and polish, plus 59 rules that detect AI design tells
+3. UI/UX Pro Max: generates a design system from your brief
+4. GSAP skills (GreenSock): correct ScrollTrigger, pinning and scrub for scroll-driven sites
+5. webapp-testing (Anthropic): Claude screenshots its own build in a real browser
+
+Install commands are on the slides. One rule: read a skill before you install it. It runs with your permissions.
+
+What would you add to this list?
+
+#WebDesign #ClaudeCode #FrontendDevelopment

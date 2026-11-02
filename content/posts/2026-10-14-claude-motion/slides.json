@@ -1,0 +1,74 @@
+{
+  "claude": true,
+  "slides": [
+    {
+      "type": "cover",
+      "title": "Claude can animate now.",
+      "sub": "Claude Motion launched in beta on 8 Oct. What it does, who gets it, and the open-source route.",
+      "cue": "Swipe",
+      "logo_label": "Claude news, 8 Oct 2026",
+      "clawd": "title"
+    },
+    {
+      "type": "text",
+      "kicker": "What it is",
+      "title": "Prompt in. MP4 out.",
+      "body": "Claude writes code that animates your **text, charts, shapes and images**. Change any word, number or timing in the editor or by asking, then download an MP4.",
+      "quote": "It doesn’t use a video generation model, so there’s no generated footage and no AI-generated people.",
+      "qsize": 54,
+      "quote_src": "Anthropic, claude.com, 8 Oct 2026",
+      "clawd": "quote",
+      "size": 74
+    },
+    {
+      "type": "text",
+      "kicker": "What it’s for",
+      "title": "Explaining your own work.",
+      "size": 76,
+      "body": "Anthropic’s examples: a quarterly report as a 30‑second explainer, motion on a chart in a board deck, a product walkthrough for onboarding.",
+      "close": "Finished pieces open in **Adobe, Descript, HeyGen, Higgsfield, invideo, Luma AI or Runway**. Canva and Captions are coming soon."
+    },
+    {
+      "type": "text",
+      "kicker": "Who gets it",
+      "title": "Team and Enterprise only.",
+      "size": 74,
+      "body": "It’s a beta on **Team** (on by default) and **Enterprise** (off until an admin turns it on in Organization settings › Artifacts). Free, Pro and Max aren’t listed.",
+      "close": "Longer, more complex animations use more of your usage limit.",
+      "clawd": "kicker"
+    },
+    {
+      "type": "text",
+      "kicker": "Also on 8 Oct",
+      "title": "Claude Design is on Free now.",
+      "size": 72,
+      "body": "Docs, Slides and Design left beta and are on **every plan, including Free**. People have made more than 45 million docs, decks and designs.",
+      "close": "New: PowerPoint and PDF exports, sharing outside your organization, editing in the phone app."
+    },
+    {
+      "type": "skill",
+      "kicker": "On Pro or Max?",
+      "name": "HyperFrames",
+      "maker": "Open source, by HeyGen (Apache-2.0)",
+      "what": "The same idea inside Claude Code: Claude writes HTML, HyperFrames renders it to **MP4**. It ships 21 skills and **210 ready animation blocks**.",
+      "use": "Motion on Pro or Max, with full control.",
+      "install_label": "Install in your terminal (needs Claude Code)",
+      "install": [
+        "claude plugin marketplace add heygen-com/hyperframes",
+        "claude plugin install hyperframes@hyperframes"
+      ],
+      "source": "github.com/heygen-com/hyperframes",
+      "clawd": "card"
+    },
+    {
+      "type": "end",
+      "kicker": "My take",
+      "title": "Editable beats generated.",
+      "size": 80,
+      "body": "Motion built from code keeps your exact words, numbers and brand. Change one and render again. For brand work, that’s the whole point.",
+      "note": "Sources: Anthropic on claude.com (8 Oct 2026) and HeyGen on GitHub.",
+      "cta": "Save this for your next build.",
+      "clawd": "cta"
+    }
+  ]
+}

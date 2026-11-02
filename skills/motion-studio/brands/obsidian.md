@@ -1,0 +1,117 @@
+# Brand profile — Obsidian (the owner's own studio)
+status: incomplete          # domain still open
+last_updated: 2026-10-13
+locked: true                # BLACK + WHITE main, electric blue second, "lightbulb" white light (owner 2026-10-17); emblem black or white; no purple
+
+## Business
+- VIDEO OFFER (owner, 2026-10-17): product/ad films for **SaaS platforms, marketing tools and businesses that run on
+  software** first. Branding / fashion / lifestyle companies are out for now ("our skills file isn't good enough for
+  that yet"). Proof piece in progress: OBS-AD-ATTENTION, being re-cut SaaS-only (src/AdAttention.tsx).
+- POSITIONING NOW (owner, 2026-10-11 — supersedes the one-line and services below until he says otherwise): a creative
+  freelance studio for **web only** — front-end design and UI/UX, scroll-scrub animated websites, 3D interactive
+  websites. Ads, AI agents and branding are dropped for now ("the only proof I have right now is animated websites").
+  Frame: "your website doesn't quite show the quality of work you actually do." Social content system:
+  .claude/skills/obsidian-content (daily carousels, primary sources only).
+- one-line (owner, 2026-10-10): "a creative studio that combines front-end design and ads marketing for premium brands."
+- tagline: **Digital precision that builds reputation.**
+- who for: premium, established brands whose online presence doesn't show the quality of work they actually do
+  ("not cheap skates"). Never pitch on price.
+- services: branding · advertising (premium ad films) · high-end 3D front-end websites · add-ons: AI agents that make
+  the presence WORK (lead qualifier, outbound caller, FAQ receptionist, content & social, chat) — in correspondence with
+  Avant Intelligence — credit on screen and in VO as "powered by Avant Intelligence" (owner, 2026-10-10).
+- the psychology (owner): two competitors, same service, same price — the market assumes the one with the premium
+  brand, site and marketing brings more value. Perception is the product.
+- owner: Nathaniel Dreyer · Instagram and X handles: NOT ON FILE, ask before any slide that shows them · WhatsApp 079 244 9607 · domain: not registered yet (suggested obsidian.co.za)
+
+## Look
+- BRAND BIBLE v1.0 (2026-10-30): `brands/obsidian-brand-bible/` (9 pages, white/black lockup PNGs, emblem SVGs, tokens CSS; rebuild with build.py). Logo files there replace the violet ones in obsidian-assets/ for any new work.
+- HOUSE STYLE (owner, 2026-10-10 — supersedes the "logic only, no screenshots" rule below for ads): **Obsidian
+  Precision** (library/styles/obsidian-precision.md). Real hero sections and footage inside a monochrome UI world;
+  one fixed container; the caret/hairline motif; cursor clicks cause the next beat; blur-to-sharp arrivals; recorded
+  UI sounds. Owner: "I love the branding of our emblem and our colour palette now." Build every new Obsidian creative
+  from this card + references/frame-analysis.md; take mechanisms from references, never their beats, words or props.
+- PALETTE (owner, 2026-10-17, supersedes "monochrome only"): "black and white as the main colours, blue as the other
+  colour, a lightbulb white; other colours if necessary; it doesn't have to be all black, you can change the worlds."
+  Tokens (`LOOKS.lumen` in obsidian-ad/brand-film/src/fx/core.ts; board: obsidian-ad/brand-film/out/palette_lumen.jpg):
+  black #000000 (main world) · white #F4F5F7 (type; the white world for act changes, black ink on it) · electric blue
+  #2F6BFF (light pools, buttons, impacts) · deep blue #0A1330 (the blue world) · lightbulb white = a #FFFFFF core with a
+  warm #FFE7C2 halo (the focus point and light sweeps). Black stays dominant; blue is light, not paint. Any other hue
+  only where the content needs it (a product, a photo), one per scene. Still no purple.
+- PALETTE CHANGE (owner, 2026-10-10, SUPERSEDED in part by 2026-10-17): NO PURPLE. Monochrome — black, white, greys, a pearl/silver cloud ball; colour only
+  comes from the hero sections themselves (their worlds). Emblem + wordmark in plain WHITE on dark or BLACK on light
+  (render the lockup PNG with grayscale + brightness; never the violet Λ again).
+- palette (SUPERSEDED, kept for history): black dominant (≈ #08070B), white for type, accent purple → pink (≈ #A855F7 → #D946EF; earlier brief:
+  oklch(0.69 0.255 327)). One accent, used as light, not paint.
+- motion: ElevenLabs-grade premium (refs 01, 02, 10, 11, 12, 13) rebuilt with Obsidian's own devices (black glass shard,
+  purple-pink rim light); 360° orbits, fast object-to-object transitions, one focus point (L6).
+- logo (FINAL, owner 2026-10-10): emblem = two parallel slanted bars (parallelograms, rising to the right) in a
+  metallic white → lavender → violet gradient; wordmark OBSIDIAN in thin, wide-spaced geometric caps, white, with the A
+  as a violet Λ (no crossbar). Files: brands/obsidian-assets/ (obsidian_logo_src.png on black; obsidian_lockup.png and
+  obsidian_emblem.png crops — use with mix-blend screen on dark). Bar geometry (crop coords, 200×245 box):
+  [[171,21],[171,66],[22,170],[22,128]] and [[171,88],[171,136],[46,222],[46,176]]. Never redraw for the final frame —
+  animate the bars as SVG, then cross to the real lockup.
+- brand film style (owner, 2026-10-10): back-end LOGIC only, like the ElevenLabs agent ads — code, flows, nodes,
+  tokens, curves; NO photos, NO site screenshots, NO client films or testimonials. The film's own polish is the proof.
+- villain: templates (generic, grey) vs custom code — never present Obsidian as template work.
+
+## Owner feedback on the direction tests (2026-10-10)
+- Liked ONLY: the exploded flat template (grid layers popping out at an angle) and containers moving right.
+- Rejected: flat purple dot, the obsidian shard, Bricolage/Red Hat Mono, lateral-only camera, colours without depth.
+- Wanted: ElevenLabs liquid soft pink/white colour inside orbs, vertical moves, 360° motion, fast object transitions.
+- v2 (obsidian-ad/brand-film/src/Film2.tsx) rebuilt on that: liquid orbs, drop → dive → stack → frame lands on top
+  layer → templates move right → phone spins 360° → back = code → agents → fall → Obsidian.
+
+## Voice & tone
+- VO: conversational premium male modelled on ElevenLabs (locked L4 amended 2026-10-10); script in obsidian-ad/brand-film/voice-script.md
+- quiet confidence, exclusive, few words; never hype, never "affordable"; speak to the gap between reputation and
+  online presence, not to "being premium".
+
+## History
+- OBSIDIAN ad v3 (obsidian-ad/film-v3) delivered; renders show an old phone number — re-render needed.
+- 2026-10-10: brand film "Digital precision that builds reputation" planned (ref13 + earlier ElevenLabs refs).
+- 30 s "Colour worlds" (obsidian-ad/brand-film/src/Film4.tsx, OBS-30; owner storyboard 2026-10-10): drop runs down a
+  line → dive → white world, glass plane slides off a hero → pull back to a 3 × 3 grid → scroll past hundreds of heroes →
+  3 glass containers (top/middle/bottom) → lines from their right sides (top + bottom curvy, middle straight) join →
+  balls in each hero's colours merge into one purple-white ball → it travels past 4 heroes, the world changing to each
+  (black & white → black & green → 360° loop → forest → the real Obsidian hero) → the line runs around START A PROJECT →
+  zoom → thumb swipes the ball across the button, camera moves with the swipe → emblem bars → lockup. Hero sections are
+  PLACEHOLDERS (owner will design the real ones; swap the Hero components for images).
+- 48 s 16:9 "Websites, ads, agents" (obsidian-ad/brand-film/src/Film5.tsx, OBS-48; 2026-10-10): typed "Years to build a
+  reputation." → the caret becomes the soft cloud ball → it falls through a grey template (crumbles), a grey ad (cursor
+  clicks Skip), a pile of unanswered enquiries → lands → dive → white → brief pill + cursor click → the hero builds in a
+  container (lovio panels) → the ball orbits the container; each pass changes brief, hero (bloom) and world (Atelier Vale
+  cream · Cape Atlantic ember · Northlight night · Private Estates forest) → 3 × 3 grid of real heroes → scroll → three
+  glass containers → long lines, camera trucks right → merge → "This isn't a template." → "It's yours." pill push →
+  LangEase phone tunnel ("Ads that stop the scroll." / "Story. Post. Video.") → light trail becomes Publish → click,
+  rings, whip into a wall of ads → "Campaign live." + confetti → agents (02:14 enquiry, orbiting agents, toggles, ready
+  notes, "Built for Estates / Clinics / Hospitality / Premium brands", powered by Avant Intelligence) → pile of hero
+  cards "Built from scratch. Every time." → Websites · Ads · AI agents balls merge → bars → lockup.
+  Uses the owner's REAL site captures full-frame (permission per client still to be confirmed by the owner).
+- 40 s 16:9 MONOCHROME (obsidian-ad/brand-film/src/Film6.tsx, OBS-40; owner storyboard 2026-10-10): a glass bar types
+  "Years of reputation", its circle button turns 90° (→ to ↓) and becomes the pearl cloud ball → the ball runs down a
+  line past year marks (Year 01 First client · 05 Word of mouth · 10 A name · 20 A reputation) → lands → dive → white →
+  a flat table of hero sections glides past, one stands out (others grey out) → zoom + it flips 90° upright → 3 × 3 →
+  ElevenLabs hairline flows out of the right column, the camera tight on the fast middle ball → merge → the v1 travel
+  past heroes on reflective glass panes that nearly fill the frame (worlds: silver · ocean · 360° loop · fern) → the
+  last pane morphs (homography) onto the monitor in the owner's studio image → "BUILT FOR — Branding / Marketing / Ads"
+  → push into the screen → white emblem bars → white OBSIDIAN lockup.
+  Hero images = the owner's REFERENCE images (other studios' designs; public/heroes2, gitignored) — test only; replace
+  with Obsidian's own work before publishing.
+- 52 s 16:9 lovio REPLICA (obsidian-ad/brand-film/src/Film7.tsx, OBS-LOVIO; owner request 2026-10-10: "duplicate frame
+  for frame the Zelios ad, swapping the creative images and videos with mine"). A capability test of lovio's timing,
+  transitions and cursor clicks with the owner's 6 generated clips (train, lake + horses, tennis, typing, valley, car;
+  public/footage, gitignored; tennis + typing keyed to VP9 alpha) and his hero images. Brand swaps: lovio → OBSIDIAN
+  (white emblem + real lockup), "a prompt" → "a brief", blue worlds → monochrome. It copies another studio's ad
+  structure beat for beat — test only, not for publishing as-is.
+- 40 s 16:9 "BUILT FROM SCRATCH" (obsidian-ad/brand-film/src/Film8.tsx, OBS-SCRATCH, 2026-10-10) — the first ORIGINAL
+  film in the house style. Owner brief: same style and vibe as the replica, not the replica; keep the typed opening
+  without search bars, the hero display, the tennis player, the mountain, the grey shape; surprise me. Beats: caret
+  types "Build / from scratch." → caret opens the frame → grid + wireframe snap → Irona → click opens Solt → blob
+  dissolve to CRAFT → dive into the chrome → PRECISION + chrome spiral + annotations, Light/Dark click → tennis "ONE
+  SHOOT." reframed 9:16 · 1:1 · 16:9 "EVERY FORMAT." → the banner becomes the train window → the agent answers a 02:14
+  enquiry ("Even at 02:14, / your brand answers.") → services list → pull back over the wall of sites "Built from
+  scratch. Every time." → 3D emblem → lockup + "Digital precision that builds reputation." with the caret.
+  Hero images are still the owner's REFERENCE images (other studios' work) — replace with Obsidian's own before publishing.
+
+- OBS-KOVA (2026-10-14): "Nothing in this video was filmed." First made-by-Claude product film, concept invoicing app
+  Kova, 33 s 9:16, format `.claude/skills/ai-reveal-product-video`. No voice-over yet (owner will send one).

@@ -1,0 +1,172 @@
+{
+ "client": "Crumb & Co (bakery, Johannesburg)",
+ "brand": "crumb-and-co",
+ "axes": {
+  "energy": 3,
+  "warmth": 5,
+  "density": 3,
+  "realism": 5,
+  "polish": 4
+ },
+ "recipes": [
+  {
+   "recipe": {
+    "structure": "day-in-the-life",
+    "pacing": "measured-1.5-2",
+    "camera": "parallax-landscape",
+    "transitions": [
+     "tilt-swap",
+     "photo-cross-dissolve",
+     "lens-reveal"
+    ],
+    "typography": "editorial-serif",
+    "colour": "golden-dusk",
+    "ui_treatment": "frosted-glass",
+    "motion_feel": "settle-stack",
+    "sound": "warm-cinematic",
+    "hook": "place-reveal"
+   },
+   "lineage": [
+    "Desert Glass",
+    "Cream Cascade",
+    "Cobalt Campaign"
+   ],
+   "nearest_card": "Desert Glass",
+   "needs": [
+    "imagery"
+   ],
+   "names": {
+    "structure": "A day in the life \u2014 morning problem \u2192 midday turn \u2192 evening calm",
+    "pacing": "Measured \u2014 new beat every 1.5\u20132 s, in-camera scene changes",
+    "camera": "Slow dolly + parallax over a photographic backdrop",
+    "transitions": [
+     "Tilt away / tilt in of planes",
+     "Light-matched photographic cross-dissolve",
+     "Glass lens / rack-focus reveal"
+    ],
+    "typography": "Editorial serif headlines, wide tracking caps labels",
+    "colour": "Golden hour \u2192 dusk: rose, sand, coral, rust, dusk blue",
+    "ui_treatment": "Frosted glass panels, inner highlight, 1 px light edge",
+    "motion_feel": "Soft drops that settle into stacks, 100\u2013150 ms staggers",
+    "sound": "Warm cinematic bed, light percussion, very few SFX",
+    "hook": "The place through a lens"
+   },
+   "fonts": [
+    "Playfair Display (OFL)",
+    "Cormorant (OFL)",
+    "Bodoni Moda (OFL)"
+   ],
+   "base": "Desert Glass",
+   "base_id": "desert-glass",
+   "donor": "Cream Cascade",
+   "donor_id": "cream-cascade",
+   "wildcard_slot": "motion_feel"
+  },
+  {
+   "recipe": {
+    "structure": "one-to-many",
+    "pacing": "one-take",
+    "camera": "vertical-travel",
+    "transitions": [
+     "duplicate-cascade",
+     "line-led",
+     "page-turn"
+    ],
+    "typography": "serif-greeting",
+    "colour": "cream-terracotta",
+    "ui_treatment": "photo-cards",
+    "motion_feel": "crisp-ui",
+    "sound": "warm-cinematic",
+    "hook": "sensory-macro"
+   },
+   "lineage": [
+    "Cream Cascade",
+    "Lavender Desk",
+    "Midnight Signal",
+    "Paper Lab"
+   ],
+   "nearest_card": "Desert Glass",
+   "needs": [
+    "imagery"
+   ],
+   "names": {
+    "structure": "One input \u2192 many outputs cascade",
+    "pacing": "One take \u2014 zero hard cuts, one continuous camera journey",
+    "camera": "Vertical travel \u2014 falls, drops and rises following one object",
+    "transitions": [
+     "Duplicate-and-offset cascade",
+     "Line draws and branches; camera follows the tip",
+     "Page turn / paper transitions"
+    ],
+    "typography": "Serif display (gradient) + clean grotesk UI",
+    "colour": "Cream + espresso + peach + terracotta",
+    "ui_treatment": "Photographic creatives on cards (ads, products, listings, dishes)",
+    "motion_feel": "Crisp 200\u2013300 ms ease-out, human typing cadence",
+    "sound": "Warm cinematic bed, light percussion, very few SFX",
+    "hook": "Sensory macro shot (crust cracking, perfume mist, chalk dust)"
+   },
+   "fonts": [
+    "Fraunces (OFL)",
+    "Newsreader (OFL)",
+    "Inter (OFL)"
+   ],
+   "base": "Cream Cascade",
+   "base_id": "cream-cascade",
+   "donor": "Lavender Desk",
+   "donor_id": "lavender-desk",
+   "wildcard_slot": "ui_treatment"
+  },
+  {
+   "recipe": {
+    "structure": "craft-reveal",
+    "pacing": "measured-1.5-2",
+    "camera": "macro-to-wide",
+    "transitions": [
+     "tilt-swap",
+     "giant-word-pass",
+     "fog-wash"
+    ],
+    "typography": "gradient-chapter-words",
+    "colour": "cobalt-light-dark",
+    "ui_treatment": "photo-cards",
+    "motion_feel": "soft-no-overshoot",
+    "sound": "halftime-cinematic",
+    "hook": "before-after"
+   },
+   "lineage": [
+    "Cobalt Campaign",
+    "Desert Glass",
+    "Cream Cascade"
+   ],
+   "nearest_card": "Desert Glass",
+   "needs": [
+    "imagery"
+   ],
+   "names": {
+    "structure": "Craft reveal \u2014 raw material \u2192 process \u2192 finished product \u2192 people enjoying it",
+    "pacing": "Measured \u2014 new beat every 1.5\u20132 s, in-camera scene changes",
+    "camera": "Macro detail \u2192 wide reveal (photographic)",
+    "transitions": [
+     "Tilt away / tilt in of planes",
+     "Camera passes through a giant word",
+     "Background wash changes colour/family between chapters"
+    ],
+    "typography": "Huge light-weight gradient chapter words",
+    "colour": "Cobalt/indigo darks alternating with ice-blue lights; photos keep their warmth",
+    "ui_treatment": "Photographic creatives on cards (ads, products, listings, dishes)",
+    "motion_feel": "Soft, high damping, long ease-in-out \u2014 nothing snaps",
+    "sound": "Cinematic half-time pulse (~75/150 bpm) with a swell per result",
+    "hook": "Before/after split or slider"
+   },
+   "fonts": [
+    "Montserrat (OFL)",
+    "Manrope (OFL)"
+   ],
+   "base": "Cobalt Campaign",
+   "base_id": "cobalt-campaign",
+   "donor": "Desert Glass",
+   "donor_id": "desert-glass",
+   "wildcard_slot": "camera"
+  }
+ ]
+}

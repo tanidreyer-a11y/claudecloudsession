@@ -1,0 +1,164 @@
+{
+ "client": "Avant Intelligence",
+ "brand": "avant-intelligence",
+ "axes": {
+  "energy": 2,
+  "warmth": 2,
+  "density": 2,
+  "realism": 2,
+  "polish": 5
+ },
+ "recipes": [
+  {
+   "recipe": {
+    "structure": "pain-turn-proof",
+    "pacing": "cinematic-2-3",
+    "camera": "vertical-travel",
+    "transitions": [
+     "line-led",
+     "lens-reveal",
+     "fog-wash"
+    ],
+    "typography": "geometric-light",
+    "colour": "midnight",
+    "ui_treatment": "floating-chat",
+    "motion_feel": "soft-no-overshoot",
+    "sound": "ambient-electronic",
+    "hook": "broken-metric"
+   },
+   "lineage": [
+    "Midnight Signal",
+    "Paper Lab",
+    "Cream Cascade"
+   ],
+   "nearest_card": "Midnight Signal",
+   "needs": [],
+   "names": {
+    "structure": "Pain \u2192 Turn \u2192 Proof \u2192 Trust \u2192 CTA",
+    "pacing": "Cinematic \u2014 new beat every 2\u20133 s, 0\u20132 hard cuts",
+    "camera": "Vertical travel \u2014 falls, drops and rises following one object",
+    "transitions": [
+     "Line draws and branches; camera follows the tip",
+     "Glass lens / rack-focus reveal",
+     "Background wash changes colour/family between chapters"
+    ],
+    "typography": "Light geometric grotesk, text drifts through focus",
+    "colour": "Near-black + cool steel + one soft glow per role",
+    "ui_treatment": "Stylised chat bubbles and glass tiles in space, no device frames",
+    "motion_feel": "Soft, high damping, long ease-in-out \u2014 nothing snaps",
+    "sound": "Ambient electronic bed ~100\u2013110 bpm, soft ticks, airy swells",
+    "hook": "One metric visibly breaking"
+   },
+   "fonts": [
+    "Inter (OFL)",
+    "Manrope (OFL)"
+   ],
+   "base": "Midnight Signal",
+   "base_id": "midnight-signal",
+   "donor": "Paper Lab",
+   "donor_id": "paper-lab",
+   "wildcard_slot": "hook"
+  },
+  {
+   "recipe": {
+    "structure": "logo-anatomy",
+    "pacing": "one-take",
+    "camera": "spline-zoom-through",
+    "transitions": [
+     "object-becomes-object",
+     "giant-word-pass",
+     "lens-reveal"
+    ],
+    "typography": "giant-glass-word",
+    "colour": "navy-glass",
+    "ui_treatment": "floating-chat",
+    "motion_feel": "crisp-ui",
+    "sound": "ambient-electronic",
+    "hook": "particle-rain"
+   },
+   "lineage": [
+    "Midnight Signal",
+    "Deep Glass",
+    "Paper Lab"
+   ],
+   "nearest_card": "Midnight Signal",
+   "needs": [],
+   "names": {
+    "structure": "Logo anatomy \u2014 the logo's parts are the cast, assembled at the end",
+    "pacing": "One take \u2014 zero hard cuts, one continuous camera journey",
+    "camera": "Spline camera with zoom-throughs (dive into a dot, emerge in the next scene)",
+    "transitions": [
+     "Object becomes object (chips \u2192 ball, line \u2192 logo bar)",
+     "Camera passes through a giant word",
+     "Glass lens / rack-focus reveal"
+    ],
+    "typography": "One giant extra-bold word behind glass",
+    "colour": "Deep navy + royal blue glass + ice edges",
+    "ui_treatment": "Stylised chat bubbles and glass tiles in space, no device frames",
+    "motion_feel": "Crisp 200\u2013300 ms ease-out, human typing cadence",
+    "sound": "Ambient electronic bed ~100\u2013110 bpm, soft ticks, airy swells",
+    "hook": "Abstract particles that become the stage"
+   },
+   "fonts": [
+    "Plus Jakarta Sans (OFL)",
+    "Inter Display (OFL)"
+   ],
+   "base": "Midnight Signal",
+   "base_id": "midnight-signal",
+   "donor": "Deep Glass",
+   "donor_id": "deep-glass",
+   "wildcard_slot": "motion_feel"
+  },
+  {
+   "recipe": {
+    "structure": "pain-turn-proof",
+    "pacing": "one-take",
+    "camera": "locked-type",
+    "transitions": [
+     "object-becomes-object",
+     "line-led",
+     "circle-match"
+    ],
+    "typography": "serif-greeting",
+    "colour": "paper-sage",
+    "ui_treatment": "frosted-glass",
+    "motion_feel": "soft-no-overshoot",
+    "sound": "light-pulse-clicks",
+    "hook": "particle-rain"
+   },
+   "lineage": [
+    "Midnight Signal",
+    "Lavender Desk",
+    "Paper Lab"
+   ],
+   "nearest_card": "Midnight Signal",
+   "needs": [],
+   "names": {
+    "structure": "Pain \u2192 Turn \u2192 Proof \u2192 Trust \u2192 CTA",
+    "pacing": "One take \u2014 zero hard cuts, one continuous camera journey",
+    "camera": "Locked frame \u2014 motion lives in type and elements",
+    "transitions": [
+     "Object becomes object (chips \u2192 ball, line \u2192 logo bar)",
+     "Line draws and branches; camera follows the tip",
+     "Circle match iris (avatar circle becomes a chart ring)"
+    ],
+    "typography": "Serif display (gradient) + clean grotesk UI",
+    "colour": "Paper white + cool grey + sage fog + iridescent orbs",
+    "ui_treatment": "Frosted glass panels, inner highlight, 1 px light edge",
+    "motion_feel": "Soft, high damping, long ease-in-out \u2014 nothing snaps",
+    "sound": "Light pulse ~120\u2013130 bpm, clicky UI ticks, no big hits",
+    "hook": "Abstract particles that become the stage"
+   },
+   "fonts": [
+    "Fraunces (OFL)",
+    "Newsreader (OFL)",
+    "Inter (OFL)"
+   ],
+   "base": "Midnight Signal",
+   "base_id": "midnight-signal",
+   "donor": "Lavender Desk",
+   "donor_id": "lavender-desk",
+   "wildcard_slot": "colour"
+  }
+ ]
+}

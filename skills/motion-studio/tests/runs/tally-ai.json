@@ -1,0 +1,169 @@
+{
+ "client": "Tally AI (AI SaaS startup)",
+ "brand": "tally-ai",
+ "axes": {
+  "energy": 4,
+  "warmth": 3,
+  "density": 3,
+  "realism": 2,
+  "polish": 4
+ },
+ "recipes": [
+  {
+   "recipe": {
+    "structure": "launch-teaser",
+    "pacing": "short-punch",
+    "camera": "locked-type",
+    "transitions": [
+     "beat-cut",
+     "word-roll",
+     "send-is-the-cut"
+    ],
+    "typography": "word-swap-colour",
+    "colour": "mono-flip-gradient",
+    "ui_treatment": "prompt-bar-results",
+    "motion_feel": "crisp-ui",
+    "sound": "sparse-minimal",
+    "hook": "typed-promise"
+   },
+   "lineage": [
+    "Sunset Prompt",
+    "Kinetic Pop",
+    "Lavender Desk"
+   ],
+   "nearest_card": "Sunset Prompt",
+   "needs": [
+    "ui"
+   ],
+   "names": {
+    "structure": "Launch teaser \u2014 product chip \u2192 typed promise \u2192 word-swap claims \u2192 \"Available now\"",
+    "pacing": "Short punch \u2014 10\u201320 s, 0.4 cuts/s, sparse sound",
+    "camera": "Locked frame \u2014 motion lives in type and elements",
+    "transitions": [
+     "Hard cut on the downbeat",
+     "Vertical word roll / slot-machine swap",
+     "Prompt \"send\" button is the cut to the result"
+    ],
+    "typography": "Two-word claim, second word swaps and changes colour",
+    "colour": "Paper \u2194 charcoal flips + one loud gradient for hero frames",
+    "ui_treatment": "Glass prompt bar + result cards, tables, trend chips, file chips",
+    "motion_feel": "Crisp 200\u2013300 ms ease-out, human typing cadence",
+    "sound": "Sparse \u2014 key clicks, one tone per swap, silence as a sound",
+    "hook": "A promise being typed in a prompt bar"
+   },
+   "fonts": [
+    "Inter (OFL)",
+    "DM Sans (OFL)"
+   ],
+   "base": "Sunset Prompt",
+   "base_id": "sunset-prompt",
+   "donor": "Kinetic Pop",
+   "donor_id": "kinetic-pop",
+   "wildcard_slot": "colour"
+  },
+  {
+   "recipe": {
+    "structure": "hype-statements",
+    "pacing": "upbeat-1-1.5",
+    "camera": "orbit-carousel",
+    "transitions": [
+     "colour-block-wipe",
+     "beat-cut",
+     "giant-word-pass"
+    ],
+    "typography": "heavy-rounded",
+    "colour": "mono-flip-gradient",
+    "ui_treatment": "frosted-glass",
+    "motion_feel": "snappy-pop",
+    "sound": "punchy-electronic",
+    "hook": "rolling-slot"
+   },
+   "lineage": [
+    "Kinetic Pop",
+    "Deep Glass",
+    "Sunset Prompt"
+   ],
+   "nearest_card": "Sunset Prompt",
+   "needs": [],
+   "names": {
+    "structure": "Statement \u2192 statement \u2192 proof wall \u2192 CTA (music-led)",
+    "pacing": "Upbeat \u2014 beat every 1\u20131.5 s, cuts on the downbeat",
+    "camera": "Curved 3D carousel orbit",
+    "transitions": [
+     "Colour-block step wipe",
+     "Hard cut on the downbeat",
+     "Camera passes through a giant word"
+    ],
+    "typography": "Heavy rounded statements filling the width",
+    "colour": "Paper \u2194 charcoal flips + one loud gradient for hero frames",
+    "ui_treatment": "Frosted glass panels, inner highlight, 1 px light edge",
+    "motion_feel": "Snappy springs with overshoot, 40\u201380 ms staggers",
+    "sound": "Punchy electronic with risers into downbeats",
+    "hook": "Headline with one rolling word slot"
+   },
+   "fonts": [
+    "Poppins (OFL)",
+    "Nunito (OFL)"
+   ],
+   "base": "Kinetic Pop",
+   "base_id": "kinetic-pop",
+   "donor": "Deep Glass",
+   "donor_id": "deep-glass",
+   "wildcard_slot": "ui_treatment"
+  },
+  {
+   "recipe": {
+    "structure": "prompt-result-loops",
+    "pacing": "measured-1.5-2",
+    "camera": "locked-type",
+    "transitions": [
+     "fog-wash",
+     "send-is-the-cut",
+     "line-led"
+    ],
+    "typography": "serif-greeting",
+    "colour": "midnight",
+    "ui_treatment": "prompt-bar-results",
+    "motion_feel": "smooth-parallax",
+    "sound": "light-pulse-clicks",
+    "hook": "typed-promise"
+   },
+   "lineage": [
+    "Lavender Desk",
+    "Paper Lab",
+    "Cobalt Campaign",
+    "Sunset Prompt"
+   ],
+   "nearest_card": "Sunset Prompt",
+   "needs": [
+    "ui"
+   ],
+   "names": {
+    "structure": "Promise \u2192 three prompt\u2192result loops \u2192 system \u2192 brand",
+    "pacing": "Measured \u2014 new beat every 1.5\u20132 s, in-camera scene changes",
+    "camera": "Locked frame \u2014 motion lives in type and elements",
+    "transitions": [
+     "Background wash changes colour/family between chapters",
+     "Prompt \"send\" button is the cut to the result",
+     "Line draws and branches; camera follows the tip"
+    ],
+    "typography": "Serif display (gradient) + clean grotesk UI",
+    "colour": "Near-black + cool steel + one soft glow per role",
+    "ui_treatment": "Glass prompt bar + result cards, tables, trend chips, file chips",
+    "motion_feel": "Smooth ease-out with layered parallax",
+    "sound": "Light pulse ~120\u2013130 bpm, clicky UI ticks, no big hits",
+    "hook": "A promise being typed in a prompt bar"
+   },
+   "fonts": [
+    "Fraunces (OFL)",
+    "Newsreader (OFL)",
+    "Inter (OFL)"
+   ],
+   "base": "Lavender Desk",
+   "base_id": "lavender-desk",
+   "donor": "Paper Lab",
+   "donor_id": "paper-lab",
+   "wildcard_slot": "motion_feel"
+  }
+ ]
+}

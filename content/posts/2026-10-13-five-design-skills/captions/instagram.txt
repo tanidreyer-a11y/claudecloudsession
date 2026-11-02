@@ -1,0 +1,15 @@
+AI websites all look the same. Anthropic explains why: without direction, the model picks the most likely answer. Inter fonts, purple gradients, safe animations.
+
+These 5 skills give @claudeai a point of view before it writes code:
+
+1. frontend-design (Anthropic): picks a direction first, then checks it against generic defaults
+2. Impeccable: 24 commands for audit and polish, 59 rules that catch AI design tells
+3. UI/UX Pro Max: a design system from your brief
+4. GSAP skills (GreenSock): scroll-scrub and ScrollTrigger done right
+5. webapp-testing (Anthropic): Claude screenshots its own work in a real browser
+
+Install commands are on the slides. Read every skill before you install it.
+
+Save this for your next build.
+
+#webdesign #claudecode #frontend #uidesign #gsap #vibecoding #aitools #webdeveloper

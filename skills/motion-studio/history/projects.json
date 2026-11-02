@@ -1,0 +1,155 @@
+[
+ {
+  "id": 1,
+  "date": "2026-09-20",
+  "client": "ADC Innovations",
+  "brand": "adc-innovations",
+  "base": "midnight-signal",
+  "recipe": {
+   "structure": "pain-turn-proof",
+   "pacing": "cinematic-2-3",
+   "camera": "spline-zoom-through",
+   "transitions": [
+    "zoom-through",
+    "object-becomes-object",
+    "freeze-hook"
+   ],
+   "typography": "geometric-light",
+   "colour": "paper-sage",
+   "ui_treatment": "geometry-only",
+   "motion_feel": "soft-no-overshoot",
+   "sound": "ambient-electronic",
+   "hook": "concrete-pain"
+  },
+  "lineage": [
+   "Midnight Signal",
+   "Paper Lab"
+  ],
+  "note": "retro-fitted: Oliver x Starlight film"
+ },
+ {
+  "id": 2,
+  "date": "2026-09-27",
+  "client": "SmartTechNXT",
+  "brand": "smarttechnxt",
+  "base": "deep-glass",
+  "recipe": {
+   "structure": "pain-turn-proof",
+   "pacing": "upbeat-1-1.5",
+   "camera": "spline-zoom-through",
+   "transitions": [
+    "zoom-through",
+    "object-becomes-object",
+    "line-led"
+   ],
+   "typography": "brand-font",
+   "colour": "brand-tokens",
+   "ui_treatment": "geometry-only",
+   "motion_feel": "smooth-parallax",
+   "sound": "ambient-electronic",
+   "hook": "concrete-pain"
+  },
+  "lineage": [
+   "Midnight Signal",
+   "Deep Glass"
+  ],
+  "note": "retro-fitted: Crossroads film"
+ },
+ {
+  "id": 3,
+  "date": "2026-10-03",
+  "client": "Avant Intelligence — Video 1 (16:9)",
+  "brand": "avant-intelligence",
+  "base": "midnight-signal",
+  "donor": "deep-glass",
+  "recipe": {
+   "structure": "logo-anatomy",
+   "pacing": "one-take",
+   "camera": "spline-zoom-through",
+   "transitions": [
+    "object-becomes-object",
+    "giant-word-pass",
+    "lens-reveal"
+   ],
+   "typography": "giant-glass-word",
+   "colour": "midnight",
+   "ui_treatment": "floating-chat",
+   "motion_feel": "crisp-ui",
+   "sound": "ambient-electronic",
+   "hook": "particle-rain"
+  },
+  "lineage": [
+   "Midnight Signal",
+   "Deep Glass",
+   "Paper Lab"
+  ],
+  "note": "client-requested ElevenLabs base; colour swapped to midnight (from recipe A); giant-word-pass not used",
+  "feedback": "\"perfect but bland, no focus and storytelling\" — client preferred the earlier ADC voice-led films",
+  "rejected": true
+ },
+ {
+  "id": 4,
+  "date": "2026-10-03",
+  "client": "Avant Intelligence — Video 2 (9:16)",
+  "brand": "avant-intelligence",
+  "base": "midnight-signal",
+  "donor": "paper-lab",
+  "recipe": {
+   "structure": "pain-turn-proof",
+   "pacing": "cinematic-2-3",
+   "camera": "vertical-travel",
+   "transitions": [
+    "line-led",
+    "lens-reveal",
+    "fog-wash"
+   ],
+   "typography": "geometric-light",
+   "colour": "midnight",
+   "ui_treatment": "floating-chat",
+   "motion_feel": "soft-no-overshoot",
+   "sound": "ambient-electronic",
+   "hook": "broken-metric"
+  },
+  "lineage": [
+   "Midnight Signal",
+   "Paper Lab",
+   "Cream Cascade"
+  ],
+  "note": "9:16 reel; recipe A as proposed",
+  "feedback": "\"perfect but bland, no focus and storytelling\" — client preferred the earlier ADC voice-led films",
+  "rejected": true
+ },
+ {
+  "id": 5,
+  "date": "2026-10-09",
+  "client": "Klick Kulture — 'Makes you click' (9:16, 42 s, demo)",
+  "brand": "klick-kulture",
+  "base": "brand-board-collage",
+  "donor": "signature-vivid",
+  "recipe": {
+   "structure": "scroll-stop-click",
+   "pacing": "measured-1.5-2",
+   "camera": "feed-plane-25d",
+   "transitions": [
+    "clicks-network-checkboxes",
+    "card-becomes-stage",
+    "colour-ring-burst",
+    "disc-swallow-logo"
+   ],
+   "typography": "brand-label-chips",
+   "colour": "brand-board-pop",
+   "ui_treatment": "social-post-native",
+   "motion_feel": "still-photo-puppet",
+   "sound": "gesture-snap-hit",
+   "hook": "grey-feed-scroll"
+  },
+  "lineage": [
+   "Brand Board Collage",
+   "Signature Vivid",
+   "Crossroads"
+  ],
+  "note": "built from KK's one-page brand board + services guide; woman's ElevenLabs voice; v2 adds the fingertip snap",
+  "feedback": "\"phenomenal… unique to their specific style… your skills file is working\"; favourites: opening scroll, clicks → network → check boxes; optional: a more physical snap",
+  "rejected": false
+ }
+]
